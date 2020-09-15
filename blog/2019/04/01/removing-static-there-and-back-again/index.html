@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Removing Static - There and Back Again | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 199 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Removing Static - There and Back Again</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-04-Mon">
+            
+                            Mon, Apr 1, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/04/01/removing-static-there-and-back-again/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-01-removing-static-there-and-back-again.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>The more companies I meet, the more I see <code>static</code> and <code>new</code> everywhere. Not like <code>new Product</code>, but rather <code>new ProductRepository(new Database())</code>. Not just Laravel, but across all PHP frameworks. I wish frameworks could prevent antipatterns, but they don't, do they?
+<br><br>
+Instead of &quot;refactor all the things&quot; step by step, class by class, I'd <strong>like share my thoughts when exploring full automated path</strong>. I look for feedback to improve this process.</p>
+                    </div>
+                </div>
+
+                <p><em>This process will be (in a more practical and detailed way) part of future <a href="https://getrector.org">Rector training</a>, so you'll be to <strong>solve any problem with your PHP</strong> code regardless the size of your project. Static refactoring is just a very nice example, that happens to be very popular around me nowadays and no-one solves it.</em></p>
+<h2 id="1-show-code">1. Show Code</h2>
+<p>I usually start with a minimal code snippet possible, that explore the problem. No comments, no types, just the code. This is the real code I'm currently refactoring:</p>
+<pre><code class="language-php">&lt;?php
+
+final class Product
+{
+    private $price;
+
+    public function __construct(float $price)
+    {
+        $this-&gt;price = $price;
+    }
+
+    public function getPrice(): Price
+    {
+        return new Price($this-&gt;price, CurrencyProvider::get());
+    }
+}
+
+final class Price
+{
+    private $amount;
+
+    private $currency;
+
+    public function __construct(float $amount, Currency $currency)
+    {
+        $this-&gt;amount = $amount;
+        $this-&gt;currency = $currency;
+    }
+
+    public function getAmount()
+    {
+        return $this-&gt;currency-&gt;convertFromCzk($this-&gt;amount);
+    }
+}</code></pre>
+<h2 id="2-describe-the-code">2. Describe the Code</h2>
+<p>Then I describe the problem with a few words using your common sense. No censorship, just flow of words.</p>
+<p>&quot;There is a <code>Product</code> object... no, an entity since I can have multiple products. It has <em>active record pattern</em> since it creates <code>Price</code> in itself. There is also <em>static service locator</em> <code>CurrencyProvider::get()</code> to get current currency. I have no idea where the currency is set and it can be <em>overridden</em> multiple times during code run.</p>
+<p>The goal of all this is probably to have price <em>always</em> in the same currency. Which is not true, since I can change the currency anytime I want. The price computation is input/output relations - so it should be solved by service, not an entity. I'm confused.&quot;</p>
+<h2 id="3-break-the-code">3. Break The Code</h2>
+<p>My favorite part. How can we break this code?</p>
+<pre><code class="language-php">&lt;?php
+
+$product = new Product(100.0);
+
+CurrencyProvider::set('czk');
+$product-&gt;getPrice(); // 100
+
+CurrencyProvider::set('eur'); // this will be invoked in some other method, where the user needs a special price for newletter in Germany
+$product-&gt;getPrice(); // ups, 2500?</code></pre>
+<div class="alert alert-sm alert-danger mt-3">
+   1. An entity with the same ID can return different values on different calls of the same method.
+</div>
+<p>It's like my name would be &quot;Tom&quot; in the morning and &quot;John&quot; in the afternoon.</p>
+<hr />
+<pre><code class="language-php">&lt;?php
+
+$product = new Product(100.0);
+$product-&gt;getPrice(); // Error: 2nd argument of price cannot be null
+
+CurrencyProvider::set('czk');</code></pre>
+<div class="alert alert-sm alert-danger mt-3">
+    2. Due to a static design of <code>CurrencyProvider</code>, we cannot set currency at the single place of application, e.g. container creation, but we have to put it in the "right" place so it doesn't break the code. Here it broke the code because we set it too late.
+</div>
+<hr />
+<pre><code class="language-php">&lt;?php
+
+$product = new Product(100.0);
+
+$allCurrencies = /* get from database */;
+foreach ($allCurrencies as $currency) {
+    CurrencyProvider::set($currency);
+    echo $product-&gt;getPrice();
+}
+
+// what is the currency now?</code></pre>
+<div class="alert alert-sm alert-danger mt-3">
+   3. How do I show a price for all the currencies we support?
+</div>
+<h2 id="3-the-ideal-world">3. The Ideal World</h2>
+<p>Now I imagine how I want this code to be designed in an ideal world, with enough time and skills. My goal is to make code work, while minimal as possible, while readable as quickly as possible. So when I leave the company, the person who reads the code will understand it at the same speed as I did.</p>
+<ol>
+<li>
+<p>There will be a service that will take care of price computation.</p>
+</li>
+<li>
+<p>It will accept <code>Product</code> and <code>Currency</code> as an argument.</p>
+</li>
+<li>
+<p>That way it's easy to tests, method parameters are clearly stating dependencies, nothing to surprise.</p>
+</li>
+</ol>
+<h2 id="4-put-ideal-world-into-code">4. Put Ideal World into Code</h2>
+<p>Now put that ideal into PHP code:</p>
+<pre><code class="language-php">&lt;?php
+
+final class Product
+{
+    private $price;
+
+    public function __construct(float $price)
+    {
+        $this-&gt;price = $price;
+    }
+
+    public function getPrice()
+    {
+        return $this-&gt;price;
+    }
+}
+
+final class Currency
+{
+    private $name;
+
+    public function __construct(string $name)
+    {
+        $this-&gt;name = $name;
+    }
+}
+
+final class PriceCalculator
+{
+    public function calculatePriceForProductAndCurrency(Product $product, Currency $currency): float
+    {
+        // ... computing algorithm ...
+        return $price;
+    }
+}</code></pre>
+<p>And then use:</p>
+<pre><code class="language-php">&lt;?php
+
+final class ProductController
+{
+    public function render()
+    {
+        $product = new Product(1000.0);
+        $currency = new Currency('czk'); // default will be configured parameters in config.yaml
+
+        $price = $this-&gt;priceCalculator-&gt;calculatePriceForProductAndCurrency($product, $currency);
+
+        echo $price;
+    }
+}</code></pre>
+<p>This is the thought process of most refactorings. It is mostly intuition until now. A small piece of code → the problem → the idea of how code should look like → the solution. Just commit and send for review, right?</p>
+<p><br></p>
+<p><a href="https://stackoverflow.com/a/454012/1348344">Martin Fowler</a> once said:</p>
+<blockquote class="blockquote">
+Refactoring is a controlled technique for improving the design of an existing code base. Its essence is applying <strong>a series of small</strong> behavior-preserving transformations, each of which "too small to be worth doing".<br><br>However the cumulative effect of each of these transformations is quite significant. <strong>By doing them in small steps you reduce the risk of introducing errors</strong>. You also avoid having the system broken while you are carrying out the restructuring - which allows you to gradually refactor a system over an <strong>extended period of time</strong>.
+</blockquote>
+<p>This worked well for a long period of time. Today I feel confident enough to say <strong>this paradigm is dead</strong> - and it's a good thing!</p>
+<ul>
+<li>&quot;series of small&quot;</li>
+<li>&quot;small steps&quot;</li>
+<li>&quot;extended period of time&quot;</li>
+</ul>
+<p>In 2019, we can do refactoring in <strong><a href="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/">one big step in short period of time</a></strong> - and still get working application in the end.</p>
+<p>Clear proof is <strong>PHPStorm refactorings</strong> over the whole code base. They're still dumb compared to human and sometimes cause errors, but <a href="https://www.jetbrains.com/phpstorm/whatsnew">they get better and better each version</a>. Trend beats the status quo. You probably also know <strong><a href="https://github.com/kalessil/phpinspectionsea">Php Inspections (EA Extended)</a> plugin</strong> to PHPStorm.</p>
+<p><br></p>
+<p>It's easy to use these tools, but they still tend to solve the most generic problems. Instead of <strong>just blindly using
+rules in these tools, we'll learn how to build them</strong> to solve your problem.</p>
+<p><br></p>
+<img src="/assets/images/posts/2019/removing-static/there.jpg" class="img-thumbnail">
+<h2 id="5-extract-the-journey">5. Extract The Journey</h2>
+<p>Back to the thinking process. This last step might seem a bit weird. We already have the clear code up and running and it's ready to ship. Why would we invest more energy into this? If I don't learn from this, I'm sentencing my future self to do it again in the future. It's funny to watch companies how they go for &quot;a business value&quot;, try to delivery features fast, but never pause to realize, that they do mostly repetitive tasks for the same price as the first one. So by this strategy to deliver business value fast, they cut their business value in half.</p>
+<h3 id="del-think-big-del-think-absolute"><del>Think Big</del> Think Absolute</h3>
+<p>Instead, I ask myself: &quot;how would I describe the process step by step to a machine, so it could refactor <strong>all PHP code</strong> on Github, Gitlab and the whole world with the same issue to the one in the end?&quot; There could be billions of such cases in the whole-world PHP code base.</p>
+<p>If we're able to describe the process, <strong>we'll turn billions of use cases to 1 pattern transformation</strong>.</p>
+<p>Imagine you try to fix typoes one-by-one manually. Or you could write a function, that fixes 5 most common typos for the user and hooks it on the Internet and SMS network (regardless of security) - to process every electronic message in the world. Just like that, the world became smarter thanks to you single function.</p>
+<p>I disagree with Martin's statement: &quot;Its essence is applying a series of small behavior-preserving transformations&quot;. It's not about the behavior of code anymore. Much more important is the pattern in the code. We don't care about <code>Price</code>, nor <code>Currency</code> (it could be also called <code>Name</code> and <code>Invoice</code>).</p>
+<p><br></p>
+<p><strong>Instead we look at &quot;static call in an object&quot;.</strong></p>
+<p><br></p>
+<p>And what we did with that pattern it? Give your ideas in the comments or wait for the next post.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/03/28/how-to-mock-final-classes-in-phpunit" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Mock Final Classes in PHPUnit
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-01-removing-static-there-and-back-again.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Removing Static - There and Back Again" />
+    <meta property="og:description" content="The more companies I meet, the more I see `static` and `new` everywhere. Not like `new Product`, but rather `new ProductRepository(new Database())`. Not just Laravel, but across all PHP frameworks. I wish frameworks could prevent antipatterns, but they don&#039;t, do they?
+
+Instead of &quot;refactor all the things&quot; step by step, class by class, I&#039;d **like share my thoughts when exploring full automated path**. I look for feedback to improve this process.
+" />
+    <meta property="og:url" content="/blog/2019/04/01/removing-static-there-and-back-again" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Removing Static - There and Back Again" />
+    <meta name="twitter:description" content="The more companies I meet, the more I see `static` and `new` everywhere. Not like `new Product`, but rather `new ProductRepository(new Database())`. Not just Laravel, but across all PHP frameworks. I wish frameworks could prevent antipatterns, but they don&#039;t, do they?
+
+Instead of &quot;refactor all the things&quot; step by step, class by class, I&#039;d **like share my thoughts when exploring full automated path**. I look for feedback to improve this process.
+" />

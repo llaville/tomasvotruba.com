@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Ways I Fucked Up Open Source Code: Mock Everything and Test Units | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 136 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Ways I Fucked Up Open Source Code: Mock Everything and Test Units</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-08-Thu">
+            
+                            Thu, Aug 30, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/08/30/ways-i-fucked-up-open-source-code-mock-everything-and-test-units/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-30-ways-i-fucked-up-open-source-code-mock-everything-and-test-units.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In a normal job, decisions are made by those above you. They pay you and when it goes down, you leave in 2 months. Open-source code is different because <strong>you're the one making choices but also the one who deals with results when it fails</strong>. Moreover, if you love the project and want to spend years with it.
+<br>
+<br>
+Today I'll show you one of my many fuckups - let's mock units!</p>
+                    </div>
+                </div>
+
+                <p>I was using <a href="https://github.com/apigen/apigen">ApiGen</a> back in 2014. I had no commit for past 2 years so no surprise it didn't work for PHP 5.5+. I was young inexperienced... <em>a complainer</em> in that time, so I created issues and I blamed every contributor for creating such a bad project.</p>
+<p>At the same time, I had a baby on the way and I didn't want to teach him to complain. <em>Change it or let it go</em> - that's what I wanted to teach him, so I wrote an email to Jarda, joined the project, <strong>started making the code better and failing at it</strong>.</p>
+<h2 id="mock-almost-everything">Mock (Almost) Everything</h2>
+<p>The project had 0 % coverage, so every line I changed raised my heart-beat and blood pressure to enormous levels. I broke completely unrelated code (= regression bug) many times making the project even more bugged than it was before I came.</p>
+<p>&quot;Let's increase the coverage to 90 %&quot;, I thought. I read this number on the Internet, so it had to be true. In that time I was pretty new to unit testing and mocking was on the hype. I didn't know that <em>hype</em> is <em>fake success</em> and that everything popular needs to be tested first instead of blindly integrated.</p>
+<p>I took mocking, aimed for a high coverage and make unit tests strictly unit. Each class had standalone. After all, that will make the project, successful and easy to maintain. That what I thought at least. I managed to go to 84 % of coverage and burn out in the process. But it was &quot;clean&quot; and I thought the open-source is hard to make, so it <em>felt</em> right.</p>
+<h2 id="how-i-found-out-i-failed">How I Found Out I Failed?</h2>
+<p>The story could end here with success final note. I turned 0  % coverage to 84 % on a project I never coded before. I used mocks and unit test - that's cool and great, right? It wasn't until 2 years later I worked on the code again to experience the real &quot;added&quot; value. Without exposing to feedback there is no place to improve.</p>
+<img src="/assets/images/posts/2018/fuckups/before-after.png" class="img-thumbnail">
+<p>ApiGen used 3rd party reflection package that was not developed for 4 years in that time. The only reasonable way to add PHP 5.5+ and features was to use BetterReflection. I won't go in much details here, but you can <a href="/blog/2017/09/04/how-apigen-survived-its-own-death/">read the whole story of migration here</a>.</p>
+<img src="/assets/images/posts/2018/fuckups/change.png" class="img-thumbnail">
+<p>The specific change is not that important. It might have been another situation like Symfony\Console was dead for 5 years and a new better package needed to replace it, or PHP 8.0 is out with many new API changes. The important part is mocking and unit testing. <strong>Do you know what happens if you have 84 % test coverage, mostly unit-tested with mocks and you need to switch 1 single package</strong>?
+Refactoring usually mean that you replace the code in <code>/src</code> with a new one, run tests and fixes anomalies. Not in this case! I had to refactor all the unit tests to respect the new API. Rename every single class, rename every single method in your tests and find out how they work internally and re-simulate they behavior with the new package:</p>
+<pre><code class="language-diff">-/** @var OldReflectionClass|\PHPUnit\Framework\MockObject\MockObject $oldReflectionClassMock */
++/** @var NewReflectionClass|\PHPUnit\Framework\MockObject\MockObject $oldReflectionClassMock */
+-$reflectionClassMock = $this-&gt;createMock('OldReflectionClass');
++$reflectionClassMock = $this-&gt;createMock('NewReflectionClass');
+-$reflectionClass-&gt;method('oldReflectionMethod')
++$reflectionClass-&gt;method('newReflectionMethod')
+-    -&gt;willReturnCallback(...);
++    -&gt;willReturnCallback(...);</code></pre>
+<p>Uff. I was refactoring old code to a new one for weeks. It was hell, hell that made me think why I'm doing it like this? What I <strong>really need</strong>? <strong>I really needed to develop safely when working code of ApiGen and enjoy it</strong>. If I don't enjoy it, I burn out and no matter how &quot;professional&quot; code looks like, it will perish in the past. <em>Better done than perfect</em>.</p>
+<p>Let's turn it into the code language:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Apigen\Tests;
+
+use PHPUnit\Framework\TestCase;
+
+final class ApiGenTest extends TestCase
+{
+    public function test()
+    {
+        exec('bin/apigen tests/test-source --output tests/generated-source');
+
+        $this-&gt;assertSame('tests/expected-source', 'tests/generated-source');
+    }
+}</code></pre>
+<p>This is clearly opposite extreme thinking, that has its flaws. Mock everything and unit test every single class? Run just bin file and before/after? In the end, I found the best deal is somewhere in the middle:</p>
+<ul>
+<li>
+<p>Instead of testing the lowest levels, <strong>I started to use the main parts of the application with before/after approach</strong>. You can see it nicely in this <a href="https://github.com/symplify/symplify/blob/e35b7e0564e08028f626241ca4860123c29a5b5e/packages/CodingStandard/tests/Fixer/Property/ArrayPropertyDefaultValueFixer/ArrayPropertyDefaultValueFixerTest.php#L34-L40">Symplify\CodingStandard test</a>. They've proven to be easily extendable and easier to understand. You see PHP code before and PHP code after. Good old common sense.</p>
+</li>
+<li>
+<p>Instead of mocking, <strong>I started to use <a href="/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests/">anonymous classes</a></strong>. They've proven to be readable, programmers understand them (it's PHP code, you know) and there are no strings or plugins attached.</p>
+</li>
+</ul>
+<h2 id="what-i-learned-from-this-fail">What I Learned From this Fail?</h2>
+<p><strong>I ask more</strong> and go for experience and small experiments.</p>
+<h3 id="1-is-it-hype-or-is-it-quality">1. Is it Hype or is it Quality?</h3>
+<p>Why do I think it's a good solution? Is it based on opinions or experience? If the first one, I make a little experiment to know and prevent huge consequences. I also found out that famous people are taken seriously... or rather miss taken seriously. Without knowing their experience and whys, people take blindly their statements. Take me as an example - I went for strict unit testing and 90 % coverage without really knowing why.</p>
+<p>These statements are usually out of context and <strong>based on their specific experience</strong>. I might be working with 10-years-old PHP project where there is no space (budget) for automated refactorings or code-self-improvement, so I go for unit tests of everything I can. But <strong>does it make sense in your context</strong> where your leader is more educated and focuses on the effectivity in the long-run over today?</p>
+<p>Advice have meaning in their context, <strong>you have to create your own</strong>. The same applies to my me. I share my own views, that is based on my own experience. It might work for you, but it doesn't mean it's right for everybody. Even if I don't write explicitly in every post my whole history, try to think about the background I'm from, what projects I work on and how that relates to you.</p>
+<p>This <em>false positive</em> is called <a href="https://www.google.cz/search?q=anecdotal+evidence+example">anecdotal evidence</a> in psychology research.</p>
+<img src="https://pixfeeds.com/images/32/608973/1200-608973-7125124.jpg" class="img-thumbnail">
+<p><em>Fail fast and fail safe.</em> Try 2 frameworks to understand the first one, try <a href="/blog/2017/10/02/easy-coding-standard-and-phpstan-meet-3-symfony-ecommerce-projects/">3 e-commerce projects to make yours better</a>, try 10-20 projects to understand yours.</p>
+<h3 id="2-what-maintenance-cost-it-brings">2. What Maintenance Cost it Brings?</h3>
+<p>If I'd work in the agency that takes every year new project, I would not mind. I would create code that somebody else would have to rewrite in 5 years and got paid for it. But <strong>I prefer long-term projects and the challenge of keeping them fit and slim even after many years of development</strong>.</p>
+<p>Every feature will make something better, so it doesn't make sense to ask if the project will be better with it. Even the school system gives you something. That's not the point. Instead for every new code feature, I ask - <strong>is added value bigger than an increase in maintenance cost it adds to our daily routine</strong>? I mean it's great to have online support form in javascript, but if it takes 1 hour daily due to bugs of the unstable package... - again, there is space for an experiment.</p>
+<p><br></p>
+<h2 id="out-of-context-takeaways">Out of Context Takeaways</h2>
+<p>So that's my fuckup story based on repeated in headlines and one-line advice I've heard.</p>
+<p>What should you take as one-line takeaways?</p>
+<ul>
+<li>Personal experience from fast and safe experiment over external ideas out of context.</li>
+<li>Stick with a project at least for a year, to see consequences of your early decisions.</li>
+<li>It's ok to fail. It's not ok to fail over and over again with the same mistake.</li>
+<li>Go out and fail to learn!</li>
+</ul>
+<p><br></p>
+<p>Happy failing!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Why and How to Avoid the Memory Lock
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-30-ways-i-fucked-up-open-source-code-mock-everything-and-test-units.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ways I Fucked Up Open Source Code: Mock Everything and Test Units" />
+    <meta property="og:description" content="In a normal job, decisions are made by those above you. They pay you and when it goes down, you leave in 2 months. Open-source code is different because **you&#039;re the one making choices but also the one who deals with results when it fails**. Moreover, if you love the project and want to spend years with it.
+
+
+Today I&#039;ll show you one of my many fuckups - let&#039;s mock units!
+" />
+    <meta property="og:url" content="/blog/2018/08/30/ways-i-fucked-up-open-source-code-mock-everything-and-test-units" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Ways I Fucked Up Open Source Code: Mock Everything and Test Units" />
+    <meta name="twitter:description" content="In a normal job, decisions are made by those above you. They pay you and when it goes down, you leave in 2 months. Open-source code is different because **you&#039;re the one making choices but also the one who deals with results when it fails**. Moreover, if you love the project and want to spend years with it.
+
+
+Today I&#039;ll show you one of my many fuckups - let&#039;s mock units!
+" />

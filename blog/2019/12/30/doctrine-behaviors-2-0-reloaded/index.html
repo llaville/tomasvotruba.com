@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Doctrine Behaviors 2.0 - Reloaded | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 232 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Doctrine Behaviors 2.0 - Reloaded</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-12-Mon">
+            
+                            Mon, Dec 30, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/12/30/doctrine-behaviors-2-0-reloaded/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-30-doctrine-behaviors-2-0-reloaded.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In <a href="/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days//">How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days</a> post, there is a section about Doctrine Behaviors in Symfony 5.
+<br><br>
+<strong>None of stof, gedmo, nor KnpLabs is working with Symfony 5</strong>. There are many issues in each of those projects asking for maintainers to merge PRs and tag it. One of those issues was heard, and the owner gave me maintainer access.
+<br><br>
+How does it look 3 weeks later?</p>
+                    </div>
+                </div>
+
+                <h2 id="from-first-excitement-rush-to-heavy-burden-of-responsibility">From First Excitement Rush to Heavy Burden of Responsibility</h2>
+<p><a href="https://github.com/KnpLabs/DoctrineBehaviors">KnpLabs/DoctrineBehaviors</a> development was stuck since 2015. There were 10+ opened PRs to use interfaces over traits (to give classes clear contract), bug-fix PRs, and design improvements.</p>
+<p>When I got a message from KnpLabs with an offer to maintain, I was super happy to say <a href="https://sivers.org/hellyeah">&quot;hell, yeah&quot;</a>. An excitement rush went through my veins. I could saw all the huge refactoring for better and how it helps the whole PHP community to move another step forward.</p>
+<p>A moment later, when I realized what happened and how quickly, I started to be scared. The repository looked like a massive chunk of code that will need many design changes,  back compatibility breaks, etc. <strong>All the responsibility started to fall on my shoulders, and it was heavy</strong>.</p>
+<p>I took it as challenge and started to <a href="/blog/2018/04/30/programming-climbing-a-huge-mountain/">climb mountain</a>, without knowing if or how this will end-up.</p>
+<blockquote class="blockquote text-center">
+    There were only 2 options:<br>finished tagged version 2 or burn-out in the process.
+</blockquote>
+<p>I took the risk.</p>
+<h2 id="what-can-we-do-in-3-weeks">What Can We Do in 3 Weeks?</h2>
+<ul>
+<li><strong>39 merged pull-requests</strong></li>
+<li><strong>93 closed issues</strong></li>
+<li><strong>5 alpha/beta tag releases</strong></li>
+<li>full support of Symfony 4.4 and 5</li>
+</ul>
+<p><br></p>
+<img src="/assets/images/posts/doc_beha_pulse.png" class="img-thumbnail">
+<p><br></p>
+<p><strong>Added/removed lines per week:</strong></p>
+<img src="/assets/images/posts/doc_beha_stats.png" class="img-thumbnail">
+<h2 id="what-is-new-in-doctrine-behaviors-2-0">What is new in Doctrine Behaviors 2.0?</h2>
+<p>All right, you get it. There were lots changes, but what exactly?</p>
+<p>Let's start with the <em>sad part</em>.</p>
+<h3 id="3-removed-behaviors">3 Removed Behaviors</h3>
+<p>Tests did not cover some behaviors, nor described in README. When you look at them closely and write a test for them, you'll see <strong>they never worked</strong> or worked accidentally. I've cross-references these features with <a href="https://packagist.org/packages/gedmo/doctrine-extensions">gedmo/doctrine-extensions</a> and saw DoctrineBehaviors is the only package that has them, resp. pretend to have them.</p>
+<p><br></p>
+<p><strong>Saying that these 3 behaviors were dropped:</strong></p>
+<p><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/473">Sortable</a></p>
+<ul>
+<li>it only updated all values to <code>1</code>, completely broken</li>
+</ul>
+<p><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/467">Geocodable</a></p>
+<ul>
+<li>it only worked on PostgreSQL with a specific function</li>
+<li>has a conflict with km/miles</li>
+<li>method API was very limited to a few narrow cases</li>
+</ul>
+<p><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/463">Filterable</a></p>
+<ul>
+<li>overcomplicated API 4 required methods for single simple filter</li>
+<li>basically <code>findBy*()</code> magic on steroids, better use explicit non-magic methods with clear naming</li>
+</ul>
+<p><strong>It is recommended to implement them yourself that suite your specific needs</strong>.</p>
+<p><br></p>
+<p>Now that the sad part is behind us let's look at new features.</p>
+<h3 id="from-trait-to-interface">From Trait to Interface</h3>
+<p>This work was initiated <strong>by <a href="https://github.com/bocharsky-bw">bocharsky-bw</a> and <a href="https://github.com/lemoinem">@lemoinem</a></strong> back in 2016. Thank you both for clear PRs, it was quite easy for me to see changes and apply them to new and drastically different code <a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/442">in this single PR</a>.</p>
+<p><strong>The idea is simple</strong>: instead of traits that are problematic to detect by <code>instanceof</code> or <code>is_a()</code>, use interface for method and class contract.</p>
+<p><br></p>
+<p>What does it mean? This is <em>trait-first</em> approach:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
+
+/**
+ * @ORM\Entity
+ */
+class Product
+{
+    use TimestampableTrait;
+}</code></pre>
+<p>You use traits, so you don't have to create properties (<code>$createdBy</code> and <code>$updatedBy</code> in this case) manually. There are also 2 split traits for methods and properties, so the code above equals:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampablePropertiesTrait;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableMethodsTrait;
+
+/**
+ * @ORM\Entity
+ */
+class Product
+{
+    use TimestampablePropertiesTrait;
+    use TimestampableMethodsTrait;
+}</code></pre>
+<p>But what happens if you remove trait and want to override methods?</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Product
+{
+}</code></pre>
+<p>Well, there is no contract by an interface, so we have no idea to fix this, we introduced interfaces:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+
+/**
+ * @ORM\Entity
+ */
+class Product implements TimestampableInterface
+{
+}</code></pre>
+<p>Now PHPStorm tells you what methods it needs. You can use your code or a trait to cover them.</p>
+<p>It also easy to detect an object that uses this behavior, which significantly improved performance and architecture at the same time:</p>
+<pre><code class="language-php">use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+
+// object
+$isTimestampableEntity = $entity instanceof TimestampableInterface;
+
+// string class name
+$isTimestampableEntity = is_a($entityClass, TimestampableInterface::class, true);</code></pre>
+<h3 id="translation-now-needs-id">Translation now needs Id</h3>
+<p>All the behaviors didn't add any id properties. Except for translation, where the id was added with this ugly magic method (mind the <code>@deprecated</code> note):</p>
+<img src="/assets/images/posts/doc_beha_id_magic.png" class="img-thumbnail">
+<p>The <a href="https://github.com/KnpLabs/DoctrineBehaviors/issues/154">inconsistency</a> <a href="https://github.com/KnpLabs/DoctrineBehaviors/issues/415">was</a> <a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/158">problematic</a>. In short: it was buggy and hard to use your id property because DoctrineBehaviors tried to <em>guess</em> what id you probably want.</p>
+<p>The fix was suggested <a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/421">early 2019</a>, but the final fix was <a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/480/files">merged in 2020</a>.</p>
+<p>What does it mean for your entities? <strong>You need to add their own id</strong>:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ namespace App\Entity;
+
+ use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
+ use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
+
+ /**
+  * @ORM\Entity
+  */
+ class TranslatableEntityTranslation implements TranslationInterface
+ {
+     use TranslationTrait;
+
++    /**
++     * @ORM\Id
++     * @ORM\Column(type="integer")
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @var int
++     */
++    private $id;</code></pre>
+<h3 id="scalar-types">Scalar Types</h3>
+<p>Scalar types make bugs more comfortable to discover, e.g., when a subscriber is broken, and it does not add value, return null will result in a fatal error.</p>
+<p>That's why all the traits have scalar param and return types:</p>
+<pre><code class="language-diff"> trait TimestampableMethodsTrait
+ {
+-    /**
+-     * @return DateTimeInterface
+-     */
+-    public function getCreatedAt()
++    public function getCreatedAt(): DateTimeInterface
+     {
+         return $this-&gt;createdAt;
+     }
+ }</code></pre>
+<p>Migration path for these types will be provided based on feedback, so <strong>in case you override these methods manually, you won't have to complete the types</strong>.</p>
+<h3 id="code-quality-changes">Code Quality Changes</h3>
+<p>Feature improvements are essential. But to make them fast and stable, the <a href="/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/"><strong>code quality has the same importance</strong></a>.</p>
+<blockquote class="blockquote text-center">
+    Energy saved on manual maintenance<br>
+    can be used to improve features.
+</blockquote>
+<p>How has been code quality improved?</p>
+<ul>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/435/files">ECS was added with PSR-12 coding standard check</a></li>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/470"><code>CHANGELOG.md</code> is fully generated</a></li>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/commit/3b17cdf656b5f904c4222c559d78bbd17217881a">tests now respect PSR-4</a></li>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/445">Rector CI now checks dead code, code quality and Nette\Utils</a></li>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/436">PHPStan now checks the static analysis</a></li>
+</ul>
+<h2 id="community-driven">Community Driven</h2>
+<p>Without the PHP community, packages are just chunks of code. Community around the package, city, or a meetup group is what makes it specials, gives it power and motivation to grow.</p>
+<p><strong>I'd love to thank <a href="https://github.com/laurentHCM">@laurentHCM</a> and <a href="https://github.com/nicolashachet">@nicolashachet</a></strong> for the testing process of version 2 and instant migration with Rector. For their patience to report issues, test new Rector rules, and trying to solve all the packages conflicts desperately.</p>
+<p>You gave me <strong>the motivation</strong> that helped me to overcome difficult moments when I got lost in the code.</p>
+<h2 id="how-to-migrate-from-version-1-to-2">How to Migrate From version 1 to 2?</h2>
+<p>What is the biggest problem of any significant refactoring? The backward compatibility (<em>BC</em>) breaks:</p>
+<ul>
+<li>Class rename?</li>
+<li>Trait renamed?</li>
+<li>Return type added?</li>
+<li>Param type added?</li>
+</ul>
+<p><strong>Roughly over 80-120 BC breaking changes</strong> were performed between versions 1 and 2.</p>
+<p>Imagine you have 20 such entities in your code, using 4 behavior traits, and now you have to:</p>
+<ul>
+<li>complete interfaces</li>
+<li>complete param types</li>
+<li>complete return types</li>
+<li>rename traits</li>
+<li>add an id to every translation entity</li>
+</ul>
+<p><strong> I'd be angry at any project, who would do such change, without providing one-click upgrade path</strong>.</p>
+<p><br></p>
+<p>That's why during such BC breaking changes <strong>I've prepared <a href="https://github.com/KnpLabs/DoctrineBehaviors/blob/master/upgrade/rector/doctrine-behaviors-20.yaml">instant upgrade Rector set</a> you can run on your code</strong>:</p>
+<pre><code class="language-yaml">composer require rector/rector --dev
+vendor/bin/rector process src --config vendor/knplabs/doctrine-behaviors/upgrade/rector/doctrine-behaviors-20.yaml</code></pre>
+<p>Single command turns to upgrade from 1 to 2 from days to few dozens of minutes.</p>
+<h2 id="how-does-it-compare-to-gedmo-stof">How does it Compare to Gedmo/Stof?</h2>
+<p>Are you a stof/gedmo user? Then you're familiar <a href="https://github.com/stof/StofDoctrineExtensionsBundle/issues">with Symfony 5 issues</a> around it. Don't worry. The KnpLabs\DoctrineBehaviors 2 was developed bearing you in mind.</p>
+<p>KnpLabs\DoctrineBehaviors don't support softdeletable and non-materialized tree path <em>yet</em>, but the rest of the features are covered.</p>
+<h3 id="how-do-you-migrate-from-gedmo-stof-to-knplabs-doctrinebehaviors">How do you Migrate from Gedmo/Stof to KnpLabs\DoctrineBehaviors?</h3>
+<p>Read <a href="/blog/2020/01/06/migrate-gedmo-to-knplabs/">Migrate Gedmo to KnpLabs</a> post to find the answer.</p>
+<p><br></p>
+<p>That's all for me. Use it, bend it, break it, and report issues or pull-request so that we can make migration path together even smoother.</p>
+<p><br></p>
+<p><strong>I wish you happy new year 2020 full of huge adventures not only in code!</strong></p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    5 Things I Improve when I Get  to new Repository
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-30-doctrine-behaviors-2-0-reloaded.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Doctrine Behaviors 2.0 - Reloaded" />
+    <meta property="og:description" content="In [How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days](/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days//) post, there is a section about Doctrine Behaviors in Symfony 5.
+
+**None of stof, gedmo, nor KnpLabs is working with Symfony 5**. There are many issues in each of those projects asking for maintainers to merge PRs and tag it. One of those issues was heard, and the owner gave me maintainer access.
+
+How does it look 3 weeks later?
+" />
+    <meta property="og:url" content="/blog/2019/12/30/doctrine-behaviors-2-0-reloaded" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Doctrine Behaviors 2.0 - Reloaded" />
+    <meta name="twitter:description" content="In [How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days](/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days//) post, there is a section about Doctrine Behaviors in Symfony 5.
+
+**None of stof, gedmo, nor KnpLabs is working with Symfony 5**. There are many issues in each of those projects asking for maintainers to merge PRs and tag it. One of those issues was heard, and the owner gave me maintainer access.
+
+How does it look 3 weeks later?
+" />

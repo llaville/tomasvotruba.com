@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Slowly Turn your Symfony Project to Legacy with Action Injection | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 94 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Slowly Turn your Symfony Project to Legacy with Action Injection</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Mon">
+            
+                            Mon, Apr 23, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-23-how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>The other day I saw the question on Reddit about <a href="https://www.reddit.com/r/PHP/comments/8dw8x5/symfonys_controller_action_dependency_injection">Symfony's controller action dependency injection</a>. More people around me are hyped about <a href="https://symfony.com/doc/current/service_container/3.3-di-changes.html#controllers-are-registered-as-services">this new feature in Symfony 3.3</a> that allows to autowire services via action argument typehints. It's new, it's cool and no one has a bad experience with it. The ideal candidate for any code you write today.
+<br><br>
+Since <a href="https://forum.nette.org/en/19365-nette-framework-2-1-0-finally-released">Nette</a> and <a href="https://mattstauffer.com/blog/laravel-5.0-method-injection">Laravel introduced</a> a similar feature in 2014, there are empirical data that we learn from.
+<br><br>
+<strong>Today I'll share the experience I have from consulting few Nette applications with dangerous overuse of this pattern and how this one thing turned the code to complete mess.</strong></p>
+                    </div>
+                </div>
+
+                <p><em>Disclaimer: this post is not about Symfony, nor critics of its feature. It's rather about teaching, thinking about knowledge embodied in the code, an aware approach of critical thinking to information from authorities.</em></p>
+<p>What is wrong with this code?</p>
+<pre><code class="language-php">class SomeService extends SomeAbstractParentService
+{
+    public function someMethod(SomeArgument $someArgument, SomeOtherService $someOtherService)
+    {
+        return $someOtherService-&gt;process($someArgument);
+    }
+}</code></pre>
+<p>It's not unreal that this code will appear in your project in next 2 years, if you start using action injection. But we'll get to that later, let's start from the beginning.</p>
+<h2 id="welcome-action-injection">Welcome Action Injection</h2>
+<p>Since Symfony 3.3 there is <a href="https://github.com/symfony/symfony/pull/21771">a new feature</a> that allows injecting services to controller actions. It's important to this post, that Symfony <a href="https://symfony.com/doc/current/service_container/3.3-di-changes.html#controllers-are-registered-as-services">documentation includes a warning</a>: &quot;This is only possible in a controller, and your controller service must be tagged with <code>controller.service_arguments</code> to make it happen.&quot;</p>
+<h3 id="wait-wait-what-is-this-feature-again">Wait, Wait... What is this Feature Again?</h3>
+<p>Oh, sorry. In case you don't know what I'm talking about, here is a little example. If you do, skip right to <a href="#injection-everywhere">the pitfall of such approach</a> below.</p>
+<p>If not, let's look at this example. This is the most simple and clear way to register controller as services:</p>
+<pre><code class="language-php">&lt;?php
+
+# app/Controller/SomeController.php
+
+namespace App\Controller;
+
+use App\Model\SomeService;
+
+final class SomeController
+{
+    /**
+     * @var SomeService
+     */
+    private $someService;
+
+    public function __construct(SomeService $someService)
+    {
+        $this-&gt;someService = $someService;
+    }
+
+    public function someAction()
+    {
+        $someData = $this-&gt;someService-&gt;getSomeData();
+        // ...
+    }
+}</code></pre>
+<p>with basic PSR-4 autodiscovery registration:</p>
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    App\:
+        resource: '../'
+
+    # include all controllers and model services</code></pre>
+<p>The <em>argument autowire</em> (also called <em>method injection</em> or <em>action injection</em>) will save us some writing.</p>
+<p>As the name suggests, dependencies won't be passed by a constructor, as it's common in every service, but via method - the action method!</p>
+<pre><code class="language-diff"> # app/Controller/SomeController.php
+
+ namespace App\Controller
+
+ use App\Model\SomeService;
+
+ final class SomeController
+{
+-    /**
+-     * @var SomeService
+-     */
+-    private $someService;
+-
+-    public function __construct(SomeService $someService)
+-    {
+-        $this-&gt;someService = $someService;
+-    }
+
+-    public function someAction()
++    public function someAction(SomeService $someService)
+     {
+-        $someData = $this-&gt;someService-&gt;getSomeData();
++        $someData = $someService-&gt;getSomeData();
+         // ...
+     }
+ }</code></pre>
+<p>On the other hand, service registration is now 3x more complex:</p>
+<pre><code class="language-diff"> # app/config/services.yml
+ services:
+-    App\:
++    App\Controller\:
+-        resource: '../'
++        resource: '../Controller'
++        tags: ['controller.service_arguments']
++
++    App\Model\:
++        resource: '../Model'</code></pre>
+<h3 id="what-are-propagated-advantages">What are Propagated Advantages?</h3>
+<ul>
+<li>less writing</li>
+<li>manual wiring of only used services - with no benchmark this has similar value as statements like &quot;Symfony is 3x faster than Laravel, it's true&quot;</li>
+<li>smaller controllers</li>
+</ul>
+<h3 id="what-are-already-known-disadvantages">What are Already Known Disadvantages?</h3>
+<p>Paul M. Jones wrote that <a href="http://paul-m-jones.com/archives/6589">“Action Injection” As A Code Smell</a>. Why?</p>
+<blockquote class="blockquote">
+"The fact that your controller has so many dependencies, used only in some cases and not in others, <strong>should be an indicator that the class is doing too much</strong>. Indeed, it’s doing so much that you cannot call its action methods directly; you have to use the dependency injection container not only to build the controller object but also to invoke its action methods."
+</blockquote>
+<p>And I agree. It's the same code smell as adding 10th action method to the <code>ProductController</code> that now has 300 lines. Maybe you should split it into 2 classes and add <a href="https://github.com/object-calisthenics/phpcs-calisthenics-rules#7-keep-your-classes-small">sniff</a> to make sure this won't happen in production code ever again (because no-one else will do it better than continuous integration).</p>
+<p>But that's just words and ideas, no legacy (yet).</p>
+<p>What might really happen with <em>autowired arguments</em> approach?</p>
+<h2 id="1-injection-everywhere">1. Injection Everywhere</h2>
+<img src="/assets/images/posts/2018/action-injection/everywhere.jpg" class="img-thumbnail">
+<h2 id="the-nette-framework-tried-it-for-you-story">The Nette-Framework-Tried-It-For-You story</h2>
+<p>Nette &quot;inject&quot; feature released in 2014 in Nette 2.1 started very similarly. It has 2 ways to inject dependencies:</p>
+<h3 id="a-code-inject-code-annotatoin">A. <code>@inject</code> Annotatoin</h3>
+<pre><code class="language-php">namespace App\Controller;
+
+use App\Model\SomeService;
+
+final class SomeController
+{
+    /**
+     * @var SomeService
+     * @inject
+     */
+    public $someService;
+}</code></pre>
+<h3 id="b-code-inject-code-method">B. <code>inject*()</code> Method</h3>
+<pre><code class="language-php">namespace App\Controller;
+
+use App\Model\SomeService;
+
+final class SomeController
+{
+    /**
+     * @var SomeService
+     */
+    private $someService;
+
+    public function injectSomeService(SomeService $someService)
+    {
+        $this-&gt;someService = $someService;
+    }
+}</code></pre>
+<p>It also have to be activated in config manually with specific <code>tags: ['inject']</code> tag, as in Symfony:</p>
+<pre><code class="language-yaml"># app/config/services.neon
+services:
+    App\Controller\SomeController:
+        tags: ['inject']
+
+    - App\Model\SomeService</code></pre>
+<p>Can you see the difference to Symfony? Well, almost none. But so far so good.</p>
+<p>Note to Nette programmers: <a href="/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/"><code>@inject</code> is often a code smell and you should do it cleaner</a></p>
+<h2 id="inspire-by-good-bad-example">Inspire by (Good/Bad) Example</h2>
+<p>If you prepare some &quot;dirty-hack-that-none-should-use&quot; or even better &quot;don't-ever-use-this-unless-you-know-why&quot; and make it public, you can be sure people will ignore it and use it in a very creative way. Unless there is <code>new ForbiddenUseException</code> thrown.</p>
+<p>This effect appeared in Nette many months before 2.1 even became stable and <a href="https://forum.nette.org/cs/13084-presentery-property-lazy-autowire-na-steroidech#p93574">method injection was born</a> (many months before Nette 2.1 even became stable):</p>
+<pre><code class="language-php">final class SomeController
+{
+    public function someAction(SomeService $someService)
+    {
+        $someData = $someService-&gt;getSomeData();
+        // ...
+    }
+}</code></pre>
+<p>So far so good, right?</p>
+<h2 id="use-in-controllers-nowhere-else">Use in Controllers, Nowhere Else!</h2>
+<p>Do you have children? If so, you know that &quot;be careful with that fire&quot; repeated 10 times in 60 seconds will mostly lead to the exact opposite. Human brain works on <a href="https://www.youtube.com/watch?v=o9K6GDBnByk">&quot;Neurons that Fire Together Wire Together&quot;</a> principle - so the final version can sound like &quot;fire&quot;.</p>
+<p>Programmers use the feature you provided. They don't know what you wrote in that single post 2 years ago, nor explore documentation for any reference they found. Sorry jako.</p>
+<h3 id="property-method-injection-in-all-services">Property/Method Injection in all Services</h3>
+<p>Back to our story - it didn't take long to <a href="https://forum.nette.org/cs/17817-jak-dostat-do-basecontrol-sluzbu-aniz-by-se-ji-museli-potomci-zabyvat#p125658">new idea appeared on Nette forum</a> (Czech only): &quot;I have 6 methods in <code>SomeService</code>, why should I inject all dependencies every time one public method is called? I want to use inject there as well, it's shorter and faster&quot; This is the same argument to use <em>action injection</em> in controllers, remember?</p>
+<blockquote class="blockquote text-center">
+    "Where is no exception, there is a way."
+</blockquote>
+<p>It was super easy to turn it on:</p>
+<pre><code class="language-diff"> # app/config/services.neon
+     services:
+     App\Controller\SomeController:
+         tags: ['inject']
+
+     App\Model\SomeService:
++        tags: ['inject']</code></pre>
+<p>I confess <a href="https://forum.nette.org/cs/17817-jak-dostat-do-basecontrol-sluzbu-aniz-by-se-ji-museli-potomci-zabyvat#p139678">I liked this idea too</a>. But it's too much writing... how could we add to every service?</p>
+<p>A <code>Extension</code> (~= <code>CompilerPass</code>) solved it:</p>
+<pre><code class="language-php">foreach ($this-&gt;getContainerBuilder() as $definition) {
+    $definition-&gt;addTag('inject');
+}</code></pre>
+<p>Now we can remove these annoying long constructors and use property/method injection everywhere. Be careful, <a href="https://ocramius.github.io/blog/eliminating-visual-debt">this visual debt</a> is different from <a href="https://blog.sonarsource.com/cognitive-complexity-because-testability-understandability">cognitive overload</a>.</p>
+<p>Now our code looks like this:</p>
+<pre><code class="language-php">class SomeService
+{
+    /**
+     * @inject
+     */
+    public $someOtherService;
+}</code></pre>
+<p>or in Symfony</p>
+<pre><code class="language-php">namespace App\Model;
+
+final class SomeService
+{
+    public function someMethod(SomeArgument $someArgument, SomeOtherService $someOtherService)
+    {
+        return $someOtherService-&gt;process($someArgument);
+    }
+}</code></pre>
+<p><strong>3 lines and documentation is ignored. Great job!</strong></p>
+<p>To achieve similar functionality in Symfony, you'd probably have to override <a href="https://github.com/symfony/symfony/pull/21771/files#diff-58d1479352b43b312746ea6ceb4ada96">this <code>CompilerPass</code></a>. I won't show you nor try on purpose, so I don't spread too much black magic here.</p>
+<h3 id="most-people-are-to-lazy-and-unskilled-write-own-compilepasses">Most People are to Lazy and Unskilled Write own CompilePasses</h3>
+<p>Let's say you're right and I live in micro-open-source cosmos, where people are too lazy not to do it. Also, it's possible, that framework checks the service against interface (<code>IPresenter</code>) or a class (<code>Controller</code>), that it really is a controller.</p>
+<p>But it's still possible. How? Take 3 breaths to think about it, you'll find a way.</p>
+<p><br><br></p>
+<p>Yes, our favorite <a href="https://ocramius.github.io/blog/when-to-declare-classes-final">composition pattern</a>.</p>
+<pre><code class="language-php">namespace App\Model;
+
+final class SomeService extends SomeAbstractService
+{
+    public function someMethod(SomeArgument $someArgument, SomeOtherService $someOtherService)
+    {
+        return $someOtherService-&gt;process($someArgument);
+    }
+}</code></pre>
+<p>Do you know where this goes?</p>
+<pre><code class="language-php">use Symfony\..\Controller;
+
+abstract SomeAbstractService extends Controller
+{
+}</code></pre>
+<p>Kaboom! Method injection works in <code>SomeService</code> and we bypassed the frameworks internals :).</p>
+<h3 id="true-story">True Story</h3>
+<p>I must add, I'm not writing this post because I'm bored and need a topic to babble about. <strong>This is true story, such code exists and it was so much WTF to me, that I don't want my deepest enemy to have to work on project like that</strong>. And I see that Symfony framework is slowly heading a way that opened these doors.</p>
+<p>It was (maybe still is) famous Czech project (can't tell you which one, but you know who you are ;)).</p>
+<blockquote class="blockquote text-center">
+    Everything which is not forbidden is allowed.
+</blockquote>
+<p>Now you know how to take advantage of framework architecture backdoor and save you lot of writing. At least in the present moment. And also how not to fall into this. It's up to you, what you like and what code you love to write.</p>
+<h2 id="is-there-a-way-to-save-your-code-from-this-instant-retirement">Is there a Way To Save Your Code From this Instant Retirement?</h2>
+<p>There are 2 ways ho to avoid this completely and still use your framework:</p>
+<p>-
+Paul M. Jones has written <a href="http://paul-m-jones.com/archives/category/programming/adr">many posts Action-Domain-Responder</a> and even created a <a href="http://pmjones.io/adr">micro-site devoted to ADR topic</a>.</p>
+<ul>
+<li>another approach is <a href="https://jenssegers.com/85/goodbye-controllers-hello-request-handlers">RequestHandler</a></li>
+<li>my favorite approach that <a href="https://symfony.com/doc/current/controller/service.html#invokable-controllers">Symfony</a> and <a href="https://dyrynda.com.au/blog/single-action-controllers-in-laravel">Laravel</a> support by default for a long time are <strong>invokable controllers</strong>, also called <em>single action controllers</em></li>
+</ul>
+<h2 id="what-is-your-experience-with-action-injects">What is Your Experience with Action Injects?</h2>
+<p>I really recommend checking the <a href="https://www.reddit.com/r/PHP/comments/8dw8x5/symfonys_controller_action_dependency_injection">Reddit thread</a>, there are few experiences worth reading that will save your time and energy of personal research:</p>
+<blockquote class="blockquote">
+I've abandoned this [action inject] approach because it makes it harder to differentiate request parameters from services. It also makes this method definition in most cases spread to multiple lines. And it makes it harder to inject non-autowirable services
+    <footer class="blockquote-footer text-right"><a href="https://www.reddit.com/r/PHP/comments/8dw8x5/symfonys_controller_action_dependency_injection/dxsauf2/">gadelat</a>
+    </footer></blockquote>
+<p>What inject approach do you prefer? What happy or WTF inject stories do <em>you</em> have? Let me know in the comments.</p>
+<p><br><br></p>
+<p>Happy Injecting!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/04/19/4-tips-to-get-emotions-to-your-blogging-about-programming" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    4 Tips To Get Emotions to Your Blogging About Programming
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-23-how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Slowly Turn your Symfony Project to Legacy with Action Injection" />
+    <meta property="og:description" content="The other day I saw the question on Reddit about [Symfony&#039;s controller action dependency injection](https://www.reddit.com/r/PHP/comments/8dw8x5/symfonys_controller_action_dependency_injection). More people around me are hyped about [this new feature in Symfony 3.3](https://symfony.com/doc/current/service_container/3.3-di-changes.html#controllers-are-registered-as-services) that allows to autowire services via action argument typehints. It&#039;s new, it&#039;s cool and no one has a bad experience with it. The ideal candidate for any code you write today.
+
+Since [Nette](https://forum.nette.org/en/19365-nette-framework-2-1-0-finally-released) and [Laravel introduced](https://mattstauffer.com/blog/laravel-5.0-method-injection) a similar feature in 2014, there are empirical data that we learn from.
+
+**Today I&#039;ll share the experience I have from consulting few Nette applications with dangerous overuse of this pattern and how this one thing turned the code to complete mess.**
+" />
+    <meta property="og:url" content="/blog/2018/04/23/how-to-slowly-turn-your-symfony-project-to-legacy-with-action-injection" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Slowly Turn your Symfony Project to Legacy with Action Injection" />
+    <meta name="twitter:description" content="The other day I saw the question on Reddit about [Symfony&#039;s controller action dependency injection](https://www.reddit.com/r/PHP/comments/8dw8x5/symfonys_controller_action_dependency_injection). More people around me are hyped about [this new feature in Symfony 3.3](https://symfony.com/doc/current/service_container/3.3-di-changes.html#controllers-are-registered-as-services) that allows to autowire services via action argument typehints. It&#039;s new, it&#039;s cool and no one has a bad experience with it. The ideal candidate for any code you write today.
+
+Since [Nette](https://forum.nette.org/en/19365-nette-framework-2-1-0-finally-released) and [Laravel introduced](https://mattstauffer.com/blog/laravel-5.0-method-injection) a similar feature in 2014, there are empirical data that we learn from.
+
+**Today I&#039;ll share the experience I have from consulting few Nette applications with dangerous overuse of this pattern and how this one thing turned the code to complete mess.**
+" />

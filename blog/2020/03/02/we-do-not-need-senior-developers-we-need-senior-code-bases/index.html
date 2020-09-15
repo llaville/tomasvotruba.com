@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>We Do Not Need Senior Developers, We Need Senior Codebases | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 241 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>We Do Not Need Senior Developers, We Need Senior Codebases</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-03-Mon">
+            
+                            Mon, Mar 2
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-02-we-do-not-need-senior-developers-we-need-senior-code-bases.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>&quot;We're looking for a Senior PHP Developer.&quot;</p>
+<p>&quot;Are you a senior or a junior?&quot;</p>
+<p>&quot;How many senior developers does your company have?&quot;
+<br>
+<br>
+These and similar questions come to appear when you're looking for a job. The IT market says it needs more senior developers.
+<br><br>
+I think there is more than enough. What we need are <strong>senior codebases</strong>.</p>
+                    </div>
+                </div>
+
+                <p>Let's say we have 2 companies.</p>
+<p><br></p>
+<p><strong>Company A</strong> has:</p>
+<ul>
+<li>3 years old project</li>
+<li>3 junior developers</li>
+<li>1 senior developer</li>
+</ul>
+<p><br></p>
+<p><strong>Company B</strong> has:</p>
+<ul>
+<li>1 year old project</li>
+<li>1 junior developer</li>
+<li>3 senior developers</li>
+</ul>
+<p><br></p>
+<p>Which company would you pick as a better place for your next full-time work?</p>
+<p><br></p>
+<h2 id="does-level-and-amount-matter">Does Level and Amount Matter?</h2>
+<p>I have no idea. Fortunately, <em>Bruce Lee</em> is here to help us:</p>
+<blockquote class="blockquote text-center">
+    "It's like a finger pointing away to the moon.<br>
+    Don't concentrate on the finger or you will miss all that heavenly glory."
+
+    <footer class="blockquote-footer">Bruce Lee</footer></blockquote>
+<p>The number of developers is not <em>that</em> relevant, neither is the number of developers by their skill.</p>
+<p>It's <strong>better to have 2 developers instead of 1</strong>, so that they give each other feedback and grow more robust codebase. It's not such a difference if it's 3+.</p>
+<p><br></p>
+<h2 id="reality-of-hiring-process">Reality of Hiring Process</h2>
+<p>The <em>junior/senior</em> game is an essential part of the manipulative process during hiring in companies around me. I'll describe a model hiring situation, that was shared by my friends who were looking for a job, and that I can relate to also from my personal experience.</p>
+<p>John is looking for a job. He found both companies A and B. <strong>After 5 years in the same environment, where he has became an expert, he's looking for somebody to learn from</strong> - a skilled senior developer who's gonna be willing to share their experience.</p>
+<p>John says that he's more attracted to company B, which has 3 senior developers, compared to a company with just 1. For him, it's a clear choice. He signs a full-time contract with a three-month trial period.</p>
+<p><br></p>
+<p>Now let's pause. <strong>What misconceptions have you spotted?</strong> Here are 3:</p>
+<ul>
+<li>senior developer === senior teacher</li>
+<li>senior developer === experienced developer</li>
+<li>3 senior developers have more experience than 1 senior developer</li>
+<li>you can learn only from people</li>
+</ul>
+<p>All 4 of those are <code>false</code>.</p>
+<p><br></p>
+<p>The story continues. During the first week John only learns to run the application and to work with it. It takes some time, but he thinks it's healthy because it's a huge project.</p>
+<p>The second week he realizes the senior developers don't have time to teach him or share any of their experience because they're busy fixing bugs happening in the codebase. All 3 of them!</p>
+<p>Third week he thinks about the meaning of the word <em>senior</em> in this company. It's not as much about experience or teaching, but rather <strong>about being in the company for many years and understanding the codebase</strong> better than anybody else.</p>
+<p>It's not about teaching, experience, nor programming skills. John's expectations have not been met. <strong>John is disappointed</strong>. But who's to blame? Should he blame himself for his bad decision?</p>
+<p><br></p>
+<p>The company also had expectations. John told them he's a senior developer, but his work during the 1st and 2nd week was very slow. Company owners feel like John is lying to them just to get more money. Their expectations have not been met. <strong>They're disappointed</strong> too... But who's to blame? Should they blame themselves for hiring him?</p>
+<h2 id="we-forget-what-s-the-most-important">We Forget What's the Most Important</h2>
+<p>We talked about junior, senior developers, teaching, experience, expectations, humans...
+Everything was so lovely and shiny at the start. We had a great team of great developers that were joined by another great developer.</p>
+<p><strong>Where did it go wrong? What have we missed?</strong></p>
+<h2 id="maturity-of-the-codebase">Maturity of The Codebase</h2>
+<p>People can make you feel better, and coffee might be good, the office might be on the highest floor with a beautiful and sunny view, your salary can be the highest you've ever seen. *<em>But how does it relate to your everyday work?</em></p>
+<p>You're not going to enjoy a coffee while watching over your city from the glass-floor view all day, you're going to work with the codebase.</p>
+<p>That's why before I say I'll cooperate with any company, <strong>I need to see the codebase first</strong>.</p>
+<p><br></p>
+<p>Instead of asking 3 questions at the top of this post, we should focus on:</p>
+<ul>
+<li>&quot;How mature is your codebase?&quot;</li>
+<li>&quot;From <em>junior</em> = spaghetti code with no rules to <em>senior</em> = DI, finalized classes with CI that checks everything that can be checked and <a href="/blog/2019/11/18/how-to-delegate-code-reviews-to-ci/">handles code-review</a>, the newest PHP and version of your favorite framework... where does the codebase stand?&quot;</li>
+<li>&quot;How do I fit into that level with my level of expertise?&quot;</li>
+</ul>
+<p><br></p>
+<h2 id="itinder-miss-match">ITinder Miss Match</h2>
+<p>The most companies I met <strong>have junior codebases, but they look for senior developers</strong>. That's wrong and will lead mostly to John's story with its unhappy ending.</p>
+<p><strong>Junior developers can work with junior codebase</strong> because they're not being slowed down by codebase that is lower than their skill.</p>
+<p>When senior developers are hired to orientate in a terrible codebase, they can't apply their experience with clean code, and they can't build a robust application with their high standards. They have to dig through the legacy code and try to fix leaking pipes.</p>
+<h2 id="senior-codebase-is-the-best-teacher">Senior Codebase is the Best Teacher</h2>
+<blockquote class="blockquote text-center">
+    Monkey see, monkey doo.
+</blockquote>
+<p>That's how our brain works; we're just like monkeys. We come to a new project, and we instinctively copy patterns we see. If there are <a href="https://blog.codinghorror.com/the-broken-window-theory">broken windows all over the code</a>, we make more broken windows.</p>
+<p>Some people join your team, some people stay for a long time enough to be called <em>seniors</em>, and some will leave. <strong>The codebase remains</strong> as long as your company exists. That's why it deserves the best treatment.</p>
+<p>People learn from your codebase, it's their best teacher.</p>
+<p><br></p>
+<p>Let's say you have 2 teachers in your life.</p>
+<p><strong>Teacher A</strong>:</p>
+<ul>
+<li>is teaching children for 5 years</li>
+<li>always worked in the same school</li>
+<li>went to university</li>
+<li>wears a suit</li>
+<li>makes a great coffee</li>
+</ul>
+<p><br></p>
+<p><strong>Teacher B</strong>:</p>
+<ul>
+<li>doesn't belong to any school</li>
+<li>wears a jumper and dirty trousers</li>
+<li>has 80% test coverage</li>
+<li>sleeps well, because CI works for them</li>
+<li>tries to be better every day</li>
+<li>exercises and eats healthy food, so their insides look good</li>
+<li>you learn just by looking at how they do things</li>
+</ul>
+<p><br></p>
+<p><strong>What teacher would you pick?</strong></p>
+<p><br></p>
+<blockquote class="blockquote text-center">
+Take care of your codebase, and your codebase will take care of you when you're older.
+</blockquote>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/02/24/how-many-days-of-technical-debt-has-your-php-project" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How Many Days of Technical Debt Has your PHP Project
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-02-we-do-not-need-senior-developers-we-need-senior-code-bases.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="We Do Not Need Senior Developers, We Need Senior Codebases" />
+    <meta property="og:description" content="&quot;We&#039;re looking for a Senior PHP Developer.&quot;
+
+ &quot;Are you a senior or a junior?&quot;
+
+ &quot;How many senior developers does your company have?&quot;
+
+
+These and similar questions come to appear when you&#039;re looking for a job. The IT market says it needs more senior developers.
+
+I think there is more than enough. What we need are **senior codebases**.
+" />
+    <meta property="og:url" content="/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="We Do Not Need Senior Developers, We Need Senior Codebases" />
+    <meta name="twitter:description" content="&quot;We&#039;re looking for a Senior PHP Developer.&quot;
+
+ &quot;Are you a senior or a junior?&quot;
+
+ &quot;How many senior developers does your company have?&quot;
+
+
+These and similar questions come to appear when you&#039;re looking for a job. The IT market says it needs more senior developers.
+
+I think there is more than enough. What we need are **senior codebases**.
+" />

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How Static Methods Kill You Like Corona | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 276 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How Static&nbsp;Methods Kill&nbsp;You Like&nbsp;Corona</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-08-Mon">
+            
+                            Mon, Aug 31
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/08/31/how-static-methods-kills-you-like-corona/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-31-how-static-methods-kills-you-like-corona.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you know <a href="https://blog.codinghorror.com/the-broken-window-theory/">the Broken Window theory</a>? It's a social pattern in code, a great post written by a guy behind one small manual website - StackOverflow.
+<br><br>
+If you combine this theory and Static Methods in Your code, you'll get Corona. As we already know, it might or might not be deadly. How it spreads, what are ways to protect, can we cure it?</p>
+                    </div>
+                </div>
+
+                <h2 id="single-child-in-classroom-problem">Single Child in Classroom Problem</h2>
+<p>It's September here, and many of friends walked their children to the school. Some for the first time in their life. Everyone is very cautious because it takes precisely <strong>1 corona-infected</strong> child, parent, or teacher to spread to another person very effectively.</p>
+<img src="/assets/images/posts/static_corona_child.jpg" class="img-thumbnail">
+<p>Some of my friends are teachers, and their prognosis is that most schools get closed down till the end of September. Why? Because if you have 1 infected child in a classroom of 30 children, all their teachers and schoolmates can be infected too. The problem is, tests take too long. <strong>It's not instant feedback</strong>. So we have to wait, hope, make up rationalizations in the meantime.</p>
+<p>Playing statistics with fear now, but I think you've already got used to it from the news for the last 9 months.</p>
+<h2 id="elderly-and-weak-people-are-the-corona-goal">Elderly and Weak People are the Corona Goal</h2>
+<p>&quot;Ok, so few schools get closed down, what's a big of a deal?&quot; you might think. And you might be right. There is not much health risk in not going to a place. Have you heard of a person that died from not going to the cinema?</p>
+<p>The problem is when the corona spreads to fragile people - the elderly and those with other illnesses. What happens when a lot of young and strong people get infected? Let's say they have a temperature, but no-one dies. As everything is connected in today's world, this <strong>speeds up corona spread</strong> between <em>strong population</em> and <em>weak population</em> and puts enormous danger on the latter.</p>
+<p>So much for corona.</p>
+<h2 id="corona-infected-child-in-a-classroom-is-like-a-static-method">Corona Infected Child in a Classroom is like a Static Method</h2>
+<p>If we only were as conscious and reacted fast with static methods as we react with a single corona infected person. <strong>But don't care, because it's <a href="/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/">not instant feedback</a></strong>.</p>
+<ul>
+<li>
+<p>Imagine <em>static methods</em> is like a strong population infected by corona. They can go anywhere; they don't care; they will live.</p>
+</li>
+<li>
+<p>Imagine <em>service methods</em> (non-static) are like a weak population; they were not infected yet. They're ok, for now.</p>
+</li>
+</ul>
+<h2 id="quot-show-me-some-code-quot">&quot;Show me Some Code!&quot;</h2>
+<p>Do you want real meat? Let's look at code that can put down the company for many months:</p>
+<h3 id="strong-population">Strong Population</h3>
+<pre><code class="language-php">final class InfectedYoungChild
+{
+    public static function spreadInfection()
+    {
+        // ...
+    }
+}</code></pre>
+<pre><code class="language-php">final class InfectedYoungParent
+{
+    public static function spreadInfection()
+    {
+        // ...
+    }
+}</code></pre>
+<pre><code class="language-php">final class ClassRoom
+{
+    public static function spreadInfection()
+    {
+        InfectedYoungChild::spreadInfection();
+        // ...
+        InfectedYoungParent::spreadInfection();
+        // ...
+    }
+}</code></pre>
+<p>Imagine 100 more static methods in your code, so we save some paper.
+To give your real-life example, one of the projects we migrate now has over 350 static methods in 110 000 lines of code.</p>
+<h3 id="weak-population">Weak Population</h3>
+<p>Let's say grandma feels lonely and <strong>wants to see their grandchildren</strong>, that gives her joy and purpose to live.</p>
+<img src="/assets/images/posts/static_corona_grand_parents.jpg" class="img-thumbnail">
+<p>At least once in a <em>while</em> (pun intended!):</p>
+<pre><code class="language-php">final class HealthyGrandma
+{
+    public function seeGrandChildren(array $youngChildren)
+    {
+        foreach ($youngChildren as $youngChild) {
+            if ($youngChild instanceof HuggableInterfae) {
+                $youngChild-&gt;hug($this);
+            }
+        }
+    }
+}</code></pre>
+<p>But she's afraid, so she wants to be sure her grandchild won't kill her.</p>
+<pre><code class="language-php">final class HealthyGrandma
+{
+    public function seeGrandChildren(array $youngChildren)
+    {
+        foreach ($youngChildren as $youngChild) {
+            if ($youngChild instanceof InfectableInterface) {
+                if ($youngChild-&gt;isInfected()) {
+                    // the child is infected, can't happen, sorry :(
+                    continue;
+                }
+            }
+
+            if ($youngChild instanceof HuggableInterfae) {
+                $youngChild-&gt;hug($this);
+            }
+        }
+    }
+}</code></pre>
+<h2 id="the-italy-mayhem-problem">The Italy Mayhem Problem</h2>
+<p>How can we detect <code>InfectableInterface</code> in a static class? How can we collect data about infections in static classes?</p>
+<p>We can't. And that's what happened in Italy this spring. Little control over the strong and weak part of your code population.</p>
+<p>What can we do about it? I know you won't like it, <a href="/blog/2019/04/01/removing-static-there-and-back-again/">it's a lot of work</a> that has no impact right now - refactor static to non-static:</p>
+<pre><code class="language-diff">-final class InfectedYoungChild
++final class InfectedYoungChild implements InfectableInterface
+ {
+-    public static function spreadInfection()
++    public function spreadInfection()
+     {
+         // ...
+     }
+ }</code></pre>
+<p>And also...</p>
+<pre><code class="language-diff">-final class InfectedYoungParent
++final class InfectedYoungParent implements InfectableInterface
+{
+-    public static function spreadInfection()
++    public function spreadInfection()
+     {
+         // ...
+     }
+ }</code></pre>
+<p><strong>And mostly, all their dependencies... and their dependencies...</strong></p>
+<pre><code class="language-diff">-final class ClassRoom
++final class ClassRoom implements InfectalbeImterface
+ {
++    private InfectedYoungChild $infectedYoungChild;
++
++    InfectedYoungParent $infectedYoungParent
++
++    public fuction __construct(
++        InfectedYoungChild $infectedYoungChild,
++        InfectedYoungParent $infectedYoungParent
++    ) {
++         $this-&gt;infectedYoungChild = $infectedYoungChild;
++         $this-&gt;infectedYoungParent = $infectedYoungParent;
++    }
+
+-    public static function spreadInfection()
++    public function spreadInfection()
+     {
+-        InfectedYoungChild::spreadInfection();
++        $this-&gt;infectedYoungChild-&gt;spreadInfection();
+         // ...
+-        InfectedYoungParent::spreadInfection();
++        $this-&gt;infectedYoungParent-&gt;spreadInfection();
+         // ...
+     }
+ }</code></pre>
+<p>This is the only way to save <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/">from fractal static spread</a>.</p>
+<p><br>
+<br></p>
+<p><strong>It might take time, work, effort, sweat &amp; tears, but it's worth it for the future.</strong></p>
+<p><br></p>
+<img src="/assets/images/posts/static_corona_safe.jpg" class="img-thumbnail">
+<p><br></p>
+<blockquote class="blockquote text-center">
+<p>Great programmers do not live for today's delivered features,<br>
+they live for <a href="/blog/2018/04/30/programming-climbing-a-huge-mountain/">the top of the mountain</a> in years of work.</p>
+</blockquote>
+<p><br></p>
+<h2 id="what-if-we-find-the-corona-cure">What if We Find the Corona Cure?</h2>
+<pre><code class="language-php">$coronaCure = new CoronaCure();
+
+$infectables = $container-&gt;getByType(InfectableInteface::class);
+
+foreach ($infectables as $infectable) {
+    if (! $infectable-&gt;isInfected()) {
+        continue;
+    }
+
+    $coronaCure-&gt;cure($infectable);
+}</code></pre>
+<p>Be sure to have all your services in your container, so they're available <strong>when you need them</strong>.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/08/24/what-if-we-remove-strings-from-symfony-extension-configuratoin" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    What if We Remove Strings from Symfony Extension Configuration
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-31-how-static-methods-kills-you-like-corona.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How Static Methods Kill You Like Corona" />
+    <meta property="og:description" content="Do you know [the Broken Window theory](https://blog.codinghorror.com/the-broken-window-theory/)? It&#039;s a social pattern in code, a great post written by a guy behind one small manual website - StackOverflow.
+
+If you combine this theory and Static Methods in Your code, you&#039;ll get Corona. As we already know, it might or might not be deadly. How it spreads, what are ways to protect, can we cure it?
+" />
+    <meta property="og:url" content="/blog/2020/08/31/how-static-methods-kills-you-like-corona" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How Static Methods Kill You Like Corona" />
+    <meta name="twitter:description" content="Do you know [the Broken Window theory](https://blog.codinghorror.com/the-broken-window-theory/)? It&#039;s a social pattern in code, a great post written by a guy behind one small manual website - StackOverflow.
+
+If you combine this theory and Static Methods in Your code, you&#039;ll get Corona. As we already know, it might or might not be deadly. How it spreads, what are ways to protect, can we cure it?
+" />

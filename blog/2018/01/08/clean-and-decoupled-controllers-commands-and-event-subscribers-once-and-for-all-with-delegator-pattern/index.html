@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 71 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-01-Mon">
+            
+                            Mon, Jan 8, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-01-08-clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you write your application for <strong>better future sustainability</strong> or just to get paid for it today?
+If you're the first one, you care about design patterns. I'm happy to see you!
+<br>
+<br>
+Today I will show you <strong>why and how to use <em>delegator pattern</em></strong> in your application so it makes it to the pension.</p>
+                    </div>
+                </div>
+
+                <p><br></p>
+<blockquote class="blockquote text-center">
+    "Every code is trash!"
+</blockquote>
+<p><br></p>
+<p>You'll see. But before we dig into code... what are the reasons to write sustainable code and how it looks like?</p>
+<h2 id="why-should-you-care-about-future-sustainability">Why Should You Care About Future Sustainability</h2>
+<p>There are 3 levels of developers by the time-frame focus they work on. Every group has it's advantages and disadvantages. You'll soon see which one you fit in.</p>
+<h3 id="1-developers-who-strong-code-for-now-strong">1. Developers who <strong>Code for NOW</strong></h3>
+<p>This project. Single site for 2018 elections. Microsite for new product release in 2019. Include anything that is hype in socials last year.</p>
+<p><strong>If the code would be a trash</strong> (literally!), they'd throw everything to 1 bag or maybe right in the city streets or nature. <strong>Someone
+else will handle cleaning up the city</strong> #yolo</p>
+<img src="/assets/images/posts/2018/delegator/trash-everywhere.jpg" class="img-thumbnail">
+<h3 id="2-developers-who-code-for-next-1-2-years">2. Developers who Code for next 1-2 YEARS</h3>
+<p>The project has tests, continuous integration, uses stable packages with 1.0 release. It's startup or a project with profit. The team is fine and slowly growing. It's their first or second project and they try to take good care about it, with experiences they have.</p>
+<p>They don't make any mess around the city and <strong>put all trash to 1 trash bin</strong>. Take them out regularly once a week. They're nice to the world. Well, at least at first sight.</p>
+<img src="/assets/images/posts/2018/delegator/orbit-junk.jpg" class="img-thumbnail">
+<h3 id="3-developer-who-code-for-next-5-10-years-future-sustainability">3. Developer who Code for next 5-10 YEARS - Future Sustainability</h3>
+<p>...or at least with that mindset in their minds. The code won't probably work with PHP 9.0, but they do their best to make it as easy as possible to do so.</p>
+<p>They have great experience with handful of project described in previous group. They already worked on 5 open-source projects <strong>they need to last as long as possible without as little maintenance as possible</strong>.</p>
+<p><strong>To the trash again...</strong></p>
+<p>It's like recycling plastic bags, glass bottler and papers.</p>
+<p>You put effort to it:</p>
+<ul>
+<li>create space in your home to keep 3 separated trash bins,</li>
+<li>explain everyone to use them and split every product to own bin</li>
+<li>and when it's full you take these bags out for 5 minutes walk to their destination.</li>
+</ul>
+<img src="/assets/images/posts/2018/delegator/manage-it-right.jpg" class="img-thumbnail">
+<p><strong>Though you never see the trash again, you believe it's good for your future self and for your children</strong>, to keep planet clean and away from trash lands. Economists would call it <em>positive externality</em>.</p>
+<p><br></p>
+<p>Now you know <strong>why it's good to separate waste</strong> (= code), let's get to real code.</p>
+<h2 id="4-years-in-life-of-new-web-application">4 years in life of New Web Application</h2>
+<p>Let's have a project that was born in 2015 and see how it slowly grew. It will eventually use all patterns we described in the beginning - except <em>delegator</em>, which is unfortunate for the investors of this project.</p>
+<h3 id="2015-start-with-controllers">2015 - Start with Controllers</h3>
+<p>Project start with few controllers that contain most of logic. It's fast and easy to add new controller with new logic.</p>
+<p>By the end of the year there are 50 controllers like this:</p>
+<pre><code class="language-php">class ProductController extends Controller
+{
+    public function allAction()
+    {
+        $allProducts = $this-&gt;getEntityManager()-&gt;getRepository(Product::class)
+            -&gt;fetchAll();
+
+        return new TemplateResponse('all.twig', [
+            'allProducts' =&gt; $allProducts
+        ]);
+    }
+}</code></pre>
+<p>Also, it's in the documentation of the framework, so it must be <a href="https://matthiasnoback.nl/2014/10/unnecessary-contrapositions-in-the-new-symfony-best-practices">the best practise</a>.</p>
+<p>Little we know, here starts our <a href="https://blog.codinghorror.com/the-broken-window-theory">Broken Window Theory</a>, the most underestimated effect from social science in software world.</p>
+<h3 id="2016-add-few-commands">2016 - Add few Commands</h3>
+<p>Application grows and the size needs pre-caching handled by running commands in CRON. So you start using <a href="/blog/2019/08/12/standalone-symfony-console-from-scratch/">Symfony\Console</a>. You get inspired by <code>Controller</code>, because <code>Command</code> looks like it and by the end of year, there are many command like this one:</p>
+<pre><code class="language-php">class CacheProductsCommand extends Command
+{
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    public function __construct(EntityManager $entityManager)
+    {
+        $this-&gt;entityManager = $entityManager;
+    }
+
+    public function execute()
+    {
+        $allProducts = $this-&gt;entityManager-&gt;getRepository(Product::class)
+            -&gt;fetchAll();
+
+        // cache them all
+    }
+}</code></pre>
+<h3 id="2017-add-just-few-more-eventsubscribers">2017 - Add just few more EventSubscribers</h3>
+<p>It's 2017, AI is on hype and you start thinking about product recommendation feature. You use <a href="/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/">EventSubscribers</a> that saves many information about user behavior and return best producs just for him.</p>
+<pre><code class="language-php">class RecommendedProductsEventSubscriber implements EventSubscriber
+{
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    public function __construct(EntityManager $entityManager)
+    {
+        $this-&gt;entityManager = $entityManager;
+    }
+
+    public static function subscribe()
+    {
+        return ['onPageVisit' =&gt; 'setRecommendedProducts'];
+    }
+
+    public function setRecommendedProducts(BehaviorPatternEvent $behaviorPatternEvent)
+    {
+        $productRepository = $this-&gt;entityManager-&gt;getRepository(Product::class);
+
+        $product = $productRepository-&gt;findBestByBehavior($behaviorPatternEvent-&gt;getBehavior());
+        $behaviorPatternEvent-&gt;setRecommendedProducts($product;
+    }
+}</code></pre>
+<p>So far so good?</p>
+<h3 id="2018-year-of-changes">2018 - Year of Changes</h3>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    "Change is the only constant."
+    <footer class="blockquote-footer">John Candee Dean</footer></blockquote>
+<p>New owner with technical skills comes the the play. And he wants to finally use <code>VueJs</code>, the company is now big enough to use Docker as standards and <strong>there are more programmers that know <a href="https://laravel.com/docs/eloquent">Eloquent</a> than <a href="/blog/2017/03/27/why-is-doctrine-dying/">Doctrine</a> in his country</strong>:</p>
+<p><em>&quot;Alibaba is catching up and we might lose the position #1 leader on market. Just switch it to Eloquent, so we can hire and on board faster.</em>&quot;</p>
+<p>Ups! Your code is coupled to the Doctrine and Symfony pretty hard. You're standing in front of important question: <strong>Do you get extra $ 10 000 to refactor the code?</strong></p>
+<p>Posing this question, now we finally understand <a href="https://blog.codinghorror.com/the-broken-window-theory">Broken Window Theory</a>...</p>
+<img src="/assets/images/posts/2018/delegator/broken-window.jpg" class="img-thumbnail">
+<p>...because we have personal experience with going it the wrong way. Little to late.</p>
+<h2 id="prevention-over-experience">Prevention over Experience</h2>
+<ul>
+<li>What could be done better?</li>
+<li>Could you prevent this?</li>
+<li><strong>Do you separate your trash or do you wait till your country becomes plastic land?</strong></li>
+</ul>
+<img src="/assets/images/posts/2018/delegator/plastic-land.jpg" class="img-thumbnail">
+<p>No. You think for <strong>the future</strong> with prevention!</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    "Plan like you will live forever, and then live like there is no tomorrow."
+    <footer class="blockquote-footer"> Mahatma Gandhi</footer></blockquote>
+<p>Same can be applied to your code.</p>
+<h3 id="delegator-pattern-to-the-del-rescue-del-prevention">Delegator Pattern to the <del>Rescue</del> Prevention</h3>
+<p>This is what we did in <a href="https://www.lekarna.cz">Lekarna.cz</a> - The biggest online drugstore in the Czech Republic. It started on Nette 2.4 and Doctrine 2.5, with <a href="/blog/2017/12/25/composer-local-packages-for-dummies/">monorepo approach</a>.</p>
+<p>When a class pattern is marked as <em>delegator</em>, it <strong>can't contain any direct connection to database layer</strong> (Doctrine in this case).</p>
+<p>Among most popular delegators belongs:</p>
+<ul>
+<li>Controller</li>
+<li>Command</li>
+<li>EventSubscriber</li>
+<li>Presenter or Component in <a href="https://nette.org">Nette</a></li>
+<li>CommandHandler from <a href="https://ocramius.github.io/ShittyCQRSPresentation">CQRS</a> etc.</li>
+</ul>
+<p>In Lekarna, these classes can only use own service to access products - <code>ProductRepository</code>:</p>
+<pre><code class="language-php">class ProductRepository
+{
+    public function __construct(EntityManager $entityManager)
+    {
+        $this-&gt;repository = $entityManager-&gt;getRepository(Product::class);
+    }
+
+    public function fetchAll()
+    {
+        return $this-&gt;repository-&gt;fetchAll();
+    }
+}</code></pre>
+<p>You don't want to check this in code reviews (imagine 5 years doing it), just <a href="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/">write a sniff for that</a> and forget it.</p>
+<p>This will remove any database layer reference from all our <code>delegators</code>:</p>
+<pre><code class="language-php">class CacheProductsCommand extends Command
+{
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this-&gt;productRepository = $productRepository;
+    }
+
+    public function execute()
+    {
+        $allProducts = $productRepository-&gt;fetchAll();
+
+        // cache them all
+    }
+}</code></pre>
+<p>Do you need to switch database layer? Easy!</p>
+<pre><code class="language-diff"> class ProductRepository
+ {
+-     public function __construct(EntityManager $entityManager)
+-     {
+-         $this-&gt;repository = $entityManager-&gt;getRepository(Product::class);
+-     }
++     public function __construct(Eloquent $eloquent)
++     {
++         $this-&gt;repository = $eloquent-&gt;getRepository(Product::class);
++     }
+
+      public function fetchAll()
+      {
+          return $this-&gt;repository-&gt;fetchAll();
+      }
+ }</code></pre>
+<p><strong>1 day of work instead of hundreds of hours.</strong> That's what delegator pattern is all about.</p>
+<h2 id="start-with-best-on-the-knowledge-market">Start with Best on the Knowledge Market</h2>
+<p>When you start with the best known approach possible, you'll end-up in well grown project that you'll love to contribute more the older it gets.</p>
+<p><strong>Just like with children - invest in them right from the start and it will get back to you</strong>!</p>
+<p><br></p>
+<p>Happy Children and Project Raising!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/01/01/new-in-symplify-3-4-time-saving-coding-standard-checkers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    New in Symplify 3: 4 Time-saving Coding Standard Checkers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-01-08-clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern" />
+    <meta property="og:description" content="Do you write your application for **better future sustainability** or just to get paid for it today?
+If you&#039;re the first one, you care about design patterns. I&#039;m happy to see you!
+
+
+Today I will show you **why and how to use *delegator pattern*** in your application so it makes it to the pension.
+" />
+    <meta property="og:url" content="/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern" />
+    <meta name="twitter:description" content="Do you write your application for **better future sustainability** or just to get paid for it today?
+If you&#039;re the first one, you care about design patterns. I&#039;m happy to see you!
+
+
+Today I will show you **why and how to use *delegator pattern*** in your application so it makes it to the pension.
+" />

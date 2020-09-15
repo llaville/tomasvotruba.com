@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How Monolithic Repository in Open Source saved my Laziness | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 25 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How Monolithic Repository in Open Source saved my Laziness</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-01-Tue">
+            
+                            Tue, Jan 31, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-01-31-how-monolithic-repository-in-open-source-saved-my-laziness.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I've started creating open-source about 6 years ago. Now I'm maintaining over 20 repositories. I used classic standalone repositories, but with each new package I wanted to add, I realized, how much work it needs to keep everything up-to-date and consistent. So I didn't and got stuck.
+<br><br>
+Fortunately, I noticed <a href="https://www.youtube.com/watch?v=4w3-f6Xhvu8">talk from Fabien</a> about <a href="http://danluu.com/monorepo/">monorepo</a> and Symfony. I said to myself: &quot;I don't know a thing about it. Let's try it out. I can always return if it sucks.&quot;
+<br><br>
+I never did. Today I will show you <strong>why I see monorepo approach in open-source so awesome</strong>.</p>
+                    </div>
+                </div>
+
+                <p>If you don't have 50 minutes to watch the talk (my case), here are <strong><a href="https://speakerdeck.com/fabpot/a-monorepo-vs-manyrepos">40 slides</a></strong> from it.</p>
+<p>Fabien introduces a tool, that helps you with splits - <a href="https://github.com/splitsh/lite">splitsh</a>. Do you understand it? Me neither. Splitsh is fast yet complex tool to maintain Symfony and Blackfire ecosystem. <strong>All we need is one git command</strong>.</p>
+<p>But we'll get to that later. First things first.</p>
+<h3 id="what-is-monorepo">What is Monorepo?</h3>
+<p><strong>Monorepo</strong> (for monolithic repository) is single repository, which contains code for group of packages (framework, application...).</p>
+<p>Not only Symfony, but also:</p>
+<ul>
+<li><a href="https://github.com/laravel/framework">Laravel</a></li>
+<li><a href="https://github.com/Sylius/Sylius">Sylius</a></li>
+<li><a href="https://github.com/elcodi/elcodi">Elcodi</a> - which is dead now</li>
+</ul>
+<p>Opposed to this is <strong>manyrepo</strong> approach (for many repositories), meaning every package is in his own repository.</p>
+<p>It is used by:</p>
+<ul>
+<li><a href="https://github.com/nette">Nette</a></li>
+<li><a href="https://github.com/doctrine">Doctrine</a></li>
+<li><a href="https://github.com/thephpleague">PHPLeague</a></li>
+</ul>
+<p>and almost everybody else.</p>
+<p>So how does this monorepo work?</p>
+<h2 id="from-one-heart-to-many-arteries">From One Heart to Many Arteries</h2>
+<p>Imagine flow of a oxygenated blood from heart to arteries. All blood that was in heart, will drift to all arteries.</p>
+<img src="/assets/images/posts/2017/monorepo/blood-vein.png" alt="Blod vein" class="img-thumbnail">
+<p>From <strong>1 heart</strong> to <strong>many arteries</strong> in one direction. Same relation is between <strong>1 monolithic repository</strong> and <strong>many repositories</strong>.</p>
+<p>This is related to commits and tagging:</p>
+<ul>
+<li><strong>Every commit</strong> that does changes is Symfony\Console code in monorepo, is also in Symfony\Console manyrepo.</li>
+<li><strong>Every tag</strong> in monorepo, is also in all manyrepos.</li>
+</ul>
+<h2 id="what-are-top-4-advantages-of-monorepo">What Are top 4 Advantages of Monorepo?</h2>
+<h3 id="1-it-scales">1. It scales</h3>
+<p>You have one repo to maintain.</p>
+<ul>
+<li>New package? Not a problem.</li>
+<li>Changing name of method that is used by 10 other packages? Easier than ever.</li>
+<li>Starting a framework? Ideal.</li>
+</ul>
+<p>That's the way Nette, Symfony and Laravel started and grew so much, even if only one person was behind majority of commits.</p>
+<h3 id="2-upgrade-fast-upgrade-safe">2. Upgrade Fast, Upgrade Safe</h3>
+<p>It's easy to make changes that affect all packages - bump to PHP 7.1, Symfony 3.2 or Nette 3.0 is a matter of minutes.
+And I know it works on all packages. Before monorepo, I had to upgrade every package manually, which resulted in dissonance:
+one package used Symfony\Console 3.2, but other only 2.8 and it got messy for no reason.</p>
+<h3 id="3-test-both-on-monorepo-and-manyrepo-level-with-ease">3. Test Both on Monorepo and Manyrepo Level With Ease</h3>
+<p>Another thing I love is testing both monorepo (all packages together) and manyrepo level. Once I spend 5 hours fixing a bug in Symfony\Process. It was difficult to find, because all tests were passing. Even for testing just the Symfony\Process directory made it pass. But when I copied only the Symfony\Process code to the standalone directory, it failed. Few hours later I found out, it's somehow related to having Symfony\Stopwatch package. Yea, WTF.</p>
+<p><strong>That could be caught testing on monorepo level.</strong></p>
+<p>On the other hand, monorepo testing is also important. When Nette <a href="https://phpfashion.com/prave-jsem-smazal-nette-framework">was split from monorepo to manyrepo only</a>, all tests were passing packages were standalone. But in combination some of them didn't.</p>
+<p>This is not issue of the code itself, but of the testing architecture.</p>
+<h3 id="4-the-burnout-is-much-more-harder">4. The Burnout is Much More Harder</h3>
+<p>When maintaining 15 own packages, <a href="https://github.com/Apigen">ApiGen</a> and co-maintaining few more repositories, I spent a lot of time by package management and not coding. It wasn't fun and I contributed less and less.</p>
+<p>Many packages like <a href="https://github.com/doctrine">Doctrine</a> or <a href="https://github.com/Kdyby">Kdyby</a> are slowing down in evolution because of this.</p>
+<p>Again, it's a matter of project architecture rather than the code or maintainers.</p>
+<p>These are the best for me, but there are many more described in <a href="https://speakerdeck.com/fabpot/a-monorepo-vs-manyrepos">those slides</a> by Fabien.</p>
+<h2 id="example-how-it-s-done-in-symplify">Example: How it's done in Symplify</h2>
+<h3 id="monorepo">Monorepo</h3>
+<p><a href="https://github.com/symplify/symplify">symplify/symplify</a></p>
+<pre><code class="language-bash">/packages
+    /Symplify
+        /DefaultAutowire
+            /src
+            /tests
+            composer.json</code></pre>
+<h3 id="run-git-command">Run Git Command</h3>
+<p>Inspired by <a href="https://github.com/laravel/framework/tree/17ee3fd536d1db54dd4ae117c5665b6d03761337/build">Laravel</a>, all we really need is one git command. To split:</p>
+<pre><code class="language-bash">git subsplit init git@github.com:symplify/symplify.git
+git subsplit publish --heads="master" packages/DefaultAutowire:git@github.com:Symplify/DefaultAutowire.git
+rm -rf .subsplit/</code></pre>
+<p>It says: take code from <code>packages/DefaultAutowire</code> directory and put it to <code>git@github.com:Symplify/DefaultAutowire.git</code> repository.</p>
+<h3 id="manyrepo">Manyrepo</h3>
+<p><a href="https://github.com/Symplify/DefaultAutowire">Symplify/DefaultAutowire</a></p>
+<p>As a result, we have this:</p>
+<pre><code class="language-bash">/src
+/tests
+composer.json</code></pre>
+<p>That's it! Could it be simpler?</p>
+<h3 id="further-reading-local-packages">Further reading - Local Packages</h3>
+<p>I recommend to read <a href="http://www.whitewashing.de/2015/04/11/monolithic_repositories_with_php_and_composer.html">Monolithic Repositories with PHP and Composer</a> by Benjamin Eberlei (Doctrine Core Maintainer). It's surpassed by composer <em>local packages</em>, but points remain the same. Don't worry, I will write about <em>local packages</em> in the near future.</p>
+<p>If you like monorepo approach, but prefer own tagging per package, Martin Zlámal recently wrote about <a href="http://zlml.cz/vy-jeste-nemate-svuj-superprojekt">git submodule approach</a> (in Czech).</p>
+<h3 id="how-do-you-like-this">How do you like this?</h3>
+<p>This is my point of view.</p>
+<p>Do you maintain lot of repositories? How do you make it fun to code and care for all of them?</p>
+<p>Let me know in the comments. Thank you.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-01-31-how-monolithic-repository-in-open-source-saved-my-laziness.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How Monolithic Repository in Open Source saved my Laziness" />
+    <meta property="og:description" content="I&#039;ve started creating open-source about 6 years ago. Now I&#039;m maintaining over 20 repositories. I used classic standalone repositories, but with each new package I wanted to add, I realized, how much work it needs to keep everything up-to-date and consistent. So I didn&#039;t and got stuck.
+
+Fortunately, I noticed talk from Fabien about monorepo and Symfony. I said to myself: &quot;I don&#039;t know a thing about it. Let&#039;s try it out. I can always return if it sucks.&quot;
+
+I never did. Today I will show you why I see monorepo approach in open-source so awesome.
+" />
+    <meta property="og:url" content="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How Monolithic Repository in Open Source saved my Laziness" />
+    <meta name="twitter:description" content="I&#039;ve started creating open-source about 6 years ago. Now I&#039;m maintaining over 20 repositories. I used classic standalone repositories, but with each new package I wanted to add, I realized, how much work it needs to keep everything up-to-date and consistent. So I didn&#039;t and got stuck.
+
+Fortunately, I noticed talk from Fabien about monorepo and Symfony. I said to myself: &quot;I don&#039;t know a thing about it. Let&#039;s try it out. I can always return if it sucks.&quot;
+
+I never did. Today I will show you why I see monorepo approach in open-source so awesome.
+" />

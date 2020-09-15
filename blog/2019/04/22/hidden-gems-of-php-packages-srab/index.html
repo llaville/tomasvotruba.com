@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Hidden Gems of PHP Packages: Static Analysis Results Baseliner | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 205 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Hidden Gems of PHP Packages: Static Analysis Results Baseliner</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-04-Mon">
+            
+                            Mon, Apr 22, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/04/22/hidden-gems-of-php-packages-srab/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-22-hidden-gems-of-php-packages-srab.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at November 2019</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>PHPStan itself <a href="https://phpstan.org/blog/phpstans-baseline-feature-lets-you-hold-new-code-to-a-higher-standard">generates the baseline since 0.11.17</a>. Use it instead.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Have you used PHPStan, Psalm or Easy Coding Standard on a very old project and got 10 000+ errors?
+<br>
+<strong>Do you wish to skip fixing these 10 000 errors and check new code only?</strong>
+<br>
+<br>
+Yes and yes? You'll love SARB.</p>
+                    </div>
+                </div>
+
+                <p>I found this package by random clicking on meetups on <a href="https://friendsofphp.org">Friends of PHP</a> and reading program of the meetup. One of them was Dave with his SARB - <em>Static Analysis Results Baseliner</em> tool. What an interesting name. In the Czech, I read <em>SRAB</em>, which means <em>coward</em>... what does such tool do?</p>
+<h2 id="what-does-sarb-help-you-with">What Does SARB Help You With?</h2>
+<p>&quot;SARB is used to create a baseline of these results. As work on the project progresses SARB can take the latest static analysis results, removes those issues in the baseline and report the issues raised since the baseline. SARB does this, in conjunction with it, by tracking lines of code between commits.&quot;</p>
+<p>Such a simple idea with huge application in practice - amazing! What does it mean? Let me show you on a project:</p>
+<ul>
+<li>Let's say you add PHPStan to your project on 1. 4. 2019.</li>
+<li>It shows 10 000 errors, yay!</li>
+<li>You add SARB, get the baseline errors.</li>
+<li>Then you add new 10 new PHP classes on 15. 4 2019.</li>
+<li>Instead of getting 10 000 errors + 20 more on 10 PHP classes, <strong>you get only those 20 new errors on new files since 1. 4. 2019</strong>.</li>
+</ul>
+<p>No stress with the legacy you didn't even write, but full focus on the present moment.</p>
+<h2 id="how-can-you-use-it">How can You use it?</h2>
+<ol>
+<li>Install it</li>
+</ol>
+<pre><code class="language-bash">composer require dave-liddament/sarb --dev</code></pre>
+<ol start="2">
+<li>Create a baseline file</li>
+</ol>
+<pre><code class="language-bash"># for psalm
+vendor/bin/psalm --report reports/psalm-result.json
+vendor/bin/sarb create-baseline reports/psalm-result.json reports/sarb_baseline.json psalm-json
+
+# for phpstan
+vendor/bin/phpstan analyse --error-format json &gt; reports/phpstan-result.json
+vendor/bin/sarb create-baseline reports/phpstan-result.json reports/sarb_baseline.json phpstan-json</code></pre>
+<ol start="3">
+<li>
+<p>Commit the code</p>
+</li>
+<li>
+<p>Rerun the static analysis on the latest code</p>
+</li>
+</ol>
+<pre><code class="language-bash"># for psalm
+vendor/bin/psalm --report reports/psalm-result.json
+
+# for phpstan
+vendor/bin/phpstan analyse --error-format json &gt; reports/phpstan-result.json</code></pre>
+<ol start="5">
+<li>Use SARB to remove baseline results</li>
+</ol>
+<pre><code class="language-bash"># psalm
+vendor/bin/sarb remove-baseline-results reports/psalm-result.json reports/sarb_baseline.json reports/issues_since_baseline.json
+
+# phpstan
+vendor/bin/sarb remove-baseline-results reports/phpstan-result.json reports/sarb_baseline.json reports/issues_since_baseline.json</code></pre>
+<p>That's it!</p>
+<p>You can use this also on EasyCodingStandard:</p>
+<pre><code class="language-bash">vendor/bin/easy-coding-standard check src --output-format reports/ecs-result.json
+vendor/bin/sarb remove-baseline-results reports/ecs-result.json reports/sarb_baseline.json reports/issues_since_baseline.json</code></pre>
+<p>The sky is the limit :)</p>
+<p><br></p>
+<p>Read more about the tool in <a href="https://www.daveliddament.co.uk/sarb/introduction">Introduction post</a> and in <a href="https://github.com/DaveLiddament/sarb">README</a> of the project on Github.</p>
+<p>Great job David!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/04/18/symfony-4-2-is-used-2-times-more-than-symfony-3-4" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Symfony 4.2 is used Twice More than Symfony 3.4
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-22-hidden-gems-of-php-packages-srab.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Hidden Gems of PHP Packages: Static Analysis Results Baseliner" />
+    <meta property="og:description" content="Have you used PHPStan, Psalm or Easy Coding Standard on a very old project and got 10 000+ errors?
+
+**Do you wish to skip fixing these 10 000 errors and check new code only?**
+
+
+Yes and yes? You&#039;ll love SARB.
+" />
+    <meta property="og:url" content="/blog/2019/04/22/hidden-gems-of-php-packages-srab" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Hidden Gems of PHP Packages: Static Analysis Results Baseliner" />
+    <meta name="twitter:description" content="Have you used PHPStan, Psalm or Easy Coding Standard on a very old project and got 10 000+ errors?
+
+**Do you wish to skip fixing these 10 000 errors and check new code only?**
+
+
+Yes and yes? You&#039;ll love SARB.
+" />

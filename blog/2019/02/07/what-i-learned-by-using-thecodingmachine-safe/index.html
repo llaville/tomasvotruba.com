@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>What I Learned by Using thecodingmachine/safe | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 184 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>What I Learned by Using thecodingmachine/safe</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-02-Thu">
+            
+                            Thu, Feb 7, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/02/07/what-i-learned-by-using-thecodingmachine-safe/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-07-what-i-learned-by-using-thecodingmachine-safe.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><a href="https://thecodingmachine.io/introducing-safe-php"><em>Safe</em></a> replaces PHP native functions like <code>file_get_contents</code> with <code>Safe\file_get_contents</code>. Native functions return <code>false</code> on fail, but <em>Safe</em> throw exception instead.
+<br><br>
+&quot;Good idea&quot;, I though, so I tried the package myself in Symplify and Rector.</p>
+                    </div>
+                </div>
+
+                <p>I'm a big fan of <a href="/blog/2018/12/06/dont-learn-to-code/">instant personal experience</a> over over-thinking. I didn't know if this package would be useful for me, so I tried it. My code is different from yours, so your experience might be different.</p>
+<blockquote class="blockquote text-center">
+    If you don't know, just try it.
+</blockquote>
+<p><strong>This is my experience after 2 months of using Safe</strong>.</p>
+<h2 id="what-i-like">What I like 😍</h2>
+<ul>
+<li>
+<p>Less potential errors. I don't have to think about <code>false</code> verification. Mainly on Windows, the paths can fail, because of the <code>\</code> vs <code>/</code> problem, absolute paths not starting with <code>/</code> and different end of lines.</p>
+</li>
+<li>
+<p>Less PHPStan reporting with <a href="https://github.com/thecodingmachine/phpstan-safe-rule">Safe rule</a>. Not sure if the package is useful without it since there is no CI control to tell you where you missed the <em>Safe</em> version of a function.</p>
+</li>
+</ul>
+<h2 id="what-i-didn-t-like">What I didn't like 🙁</h2>
+<h3 id="function-autoloading-sucks-in-php">Function Autoloading Sucks in PHP</h3>
+<p>Function autoloading has much worse support than PSR-4 class autoloading. 3rd party tool is not ready for it, because it's very rare out in the wild. I personally don't know about any other function-based package.</p>
+<p>I got stuck with building prefixed <code>rector.phar</code> for a week. See <a href="https://github.com/humbug/box/issues/352">humbug/box#352</a> for more.</p>
+<h3 id="the-api-changes-fast">The API Changes Fast</h3>
+<p>In 0.11.1 there was added a new function, that caused ci to fail due to PHPStan rule that required to be used for all new functions. I added it to make CI pass. Then 0.11.2 it was removed - PHPStan passed, but function was removed and the code was broken.</p>
+<p>BC breaks on patch versions caused Symplify packages to break down. This is allowed on the 0.x version (see <a href="https://semver.org">Semver point 4</a>), so it really resulted from my over-trust.</p>
+<p>If this was the only issue, <strong>I could solve it with patch-lock</strong> in <code>composer.json</code>:</p>
+<pre><code class="language-diff"> {
+    "require": {
+-       "thecodingmachine/safe": "^0.1.13"
++       "thecodingmachine/safe": "0.1.13"
+    }
+ }</code></pre>
+<p>But the combination of PHPStan rule CI fail or code fails forced to upgrade. <strong>Optional use of functions</strong> would be probably better, so I'd drop the PHPStan rule next time. But who would check the need for a <em>Safe</em> alternative? Chicken vs egg problem.</p>
+<h3 id="memory-lock-on-every-native-function">Memory Lock on Every Native Function</h3>
+<p>This leads me to <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">memory lock</a> problem.</p>
+<p>When I add new native function <code>array_filter</code>, should I use the <em>Safe</em> version or not? I have to:</p>
+<ul>
+<li>run PHPStan to see the answer</li>
+<li>fix it manually or <a href="https://github.com/thecodingmachine/safe#automated-refactoring">better with Rector</a></li>
+<li>import namespace to <code>Safe\array_filter</code> with Easy Coding Standard</li>
+</ul>
+<p>Before? I just typed <code>array_filter</code> <em class="fas fa-fw fa-check text-success fa-lg"></em></p>
+<p><br></p>
+<p>In the end, I feel it didn't solve any real problems for me, but add huge maintenance cost to my daily workflow. All this leads me to a conclusion:</p>
+<blockquote class="blockquote text-center">
+    A problem that doesn't exist, doesn't need a solution.
+</blockquote>
+<p>Hence, I <a href="https://github.com/symplify/symplify/pull/1409/files">removed the Safe package</a> from my workflow.</p>
+<h2 id="what-are-real-issues-with-native-functions">What are Real Issues with Native Functions?</h2>
+<h3 id="code-sprintf-code"><code>sprintf</code></h3>
+<p>During the code cleanup, I found this:</p>
+<pre><code class="language-php">&lt;?php
+
+throw new ShouldNotHappenException(
+    sprintf('The is problem "%s"', $message, __METHOD__)
+);</code></pre>
+<p>Can you spot the problem? <a href="https://3v4l.org/5bmvp">See code on 3v4l.org</a>.</p>
+<p>It reports the <code>$message</code>, <strong>but the location of the error - <code>__METHOD__</code> is skipped silently</strong>.</p>
+<p>I'd expect Safe function to help me exactly with this because this is a real problem. The code doesn't work as supposed to.</p>
+<h3 id="code-realpath-code"><code>realpath</code></h3>
+<p>Another real problem I have is <code>realpath</code> (it clear from the function name, right? :)):</p>
+<pre><code class="language-php">&lt;?php
+
+$filePath = 'missing_file';
+
+$realFilePath = realpath($filePath);
+
+$fileInfo = new SplFileInfo($realFilePath);
+
+var_dump($fileInfo-&gt;getRealPath());</code></pre>
+<p>Here PHP creates <code>$fileInfo</code> object, that might be a file... but is it?</p>
+<p><a href="https://3v4l.org/Xflr4">See code on 3v4l.org</a>.</p>
+<h3 id="code-preg-code"><code>preg_*</code></h3>
+<p>David Grudl wrote about this issue <a href="https://phpfashion.com/zradne-regularni-vyrazy-v-php">many years ago</a>. How to make <code>preg_*</code> really safe? He suggests the following:</p>
+<pre><code class="language-php">&lt;?php
+
+function safeReplaceCallback($pattern, $callback, $subject)
+{
+    // verify callback
+    if (! is_callable($callback)) {
+        throw new Exception('Invalic callback.');
+    }
+
+    // test on empty string
+    if (preg_match($pattern, '') === false) { // compilation error?
+        $error = error_get_last();
+        throw new Exception($error['message']);
+    }
+
+    // call PCRE
+    $result = preg_replace_callback($pattern, $callback, $subject);
+
+    // execution error?
+    if ($result === null &amp;&amp; preg_last_error()) {
+        throw new Exception('Error during regular execution.', preg_last_error());
+    }
+
+    return $result;
+}</code></pre>
+<p>So...</p>
+<h2 id="is-there-a-better-way">Is there a Better Way?</h2>
+<p>Have you read <em>Hidden Gems of PHP Packages</em>?</p>
+<ul>
+<li><a href="/blog/2018/08/13/hidden-gems-of-php-packages-symfony-finder-and-spl-file-info/">Hidden Gems of PHP Packages: Symfony\Finder and SplFileInfo</a></li>
+<li><a href="/blog/2018/07/30/hidden-gems-of-php-packages-nette-utils/">Hidden Gems of PHP Packages: Nette\Utils</a></li>
+</ul>
+<p>The point is simple - replace native functions with classes methods or objects that:</p>
+<ul>
+<li>handle all possible errors <strong>that specific function</strong></li>
+<li><strong>throws tailored informative exception</strong> so you understand what exactly is wrong</li>
+<li>if created, you can be 100% sure it has the value you need (e.g. <code>SplFileInfo</code> existing file)</li>
+</ul>
+<p>Here are few examples I use in my code:</p>
+<pre><code class="language-diff">-file_get_contents($somePath);
++Nette\Utils\FileSystem::read($somePath);</code></pre>
+<pre><code class="language-diff">-preg_match('#Hi (.*?)#', $content);
++Nette\Utils\Strings::match($somePath, '#Hi (.*?)#');</code></pre>
+<pre><code class="language-diff">-// 50 % chance the file doesn't exist
+-$fileInfo = new SplFileInfo($somePath);
++// throw exception on non-existing file
++$fileInfo = new Symplify\PackageBuilder\FileSystem\SmartFileInfo($somePath);</code></pre>
+<p>They also make PHPStan happy, because they return <code>string</code>, <code>array</code>... or throw an exception <em class="fas fa-fw fa-check text-success fa-lg"></em></p>
+<p><br></p>
+<p>I love <a href="https://github.com/nette/utils">Nette\Utils</a> and there are more packages like this in the PHP universe. Packages <strong>that use objects you can rely on</strong>.</p>
+<p>And if not, just create your own object, that does the job you want like I did with <code>Symplify\PackageBuilder\FileSystem\SmartFileInfo</code>. If you know about <code>Sprintf</code> object, let me know :).</p>
+<p><br></p>
+<blockquote class="blockquote text-center">
+    But remember: <strong>only solve problems that you already have</strong>.
+</blockquote>
+<p><br></p>
+<p>Safe coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/02/04/new-in-rector-asterisk-type-match" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    New in Rector: Asterisk Type Match
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-07-what-i-learned-by-using-thecodingmachine-safe.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="What I Learned by Using thecodingmachine/safe" />
+    <meta property="og:description" content="[*Safe*](https://thecodingmachine.io/introducing-safe-php) replaces PHP native functions like `file_get_contents` with `Safe\file_get_contents`. Native functions return `false` on fail, but *Safe* throw exception instead.
+
+&quot;Good idea&quot;, I though, so I tried the package myself in Symplify and Rector.
+" />
+    <meta property="og:url" content="/blog/2019/02/07/what-i-learned-by-using-thecodingmachine-safe" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="What I Learned by Using thecodingmachine/safe" />
+    <meta name="twitter:description" content="[*Safe*](https://thecodingmachine.io/introducing-safe-php) replaces PHP native functions like `file_get_contents` with `Safe\file_get_contents`. Native functions return `false` on fail, but *Safe* throw exception instead.
+
+&quot;Good idea&quot;, I though, so I tried the package myself in Symplify and Rector.
+" />

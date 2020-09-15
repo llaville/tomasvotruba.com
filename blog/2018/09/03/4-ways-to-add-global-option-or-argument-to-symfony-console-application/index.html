@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>4 Ways to Add Global Option or Argument to Symfony Console Application | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 137 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>4 Ways to Add Global Option or Argument to Symfony Console Application</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-09-Mon">
+            
+                            Mon, Sep 3, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/09/03/4-ways-to-add-global-option-or-argument-to-symfony-console-application/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-09-03-4-ways-to-add-global-option-or-argument-to-symfony-console-application.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I'm working on <a href="https://github.com/symplify/changeloglinker">ChangelogLinker</a>, a package that makes managing <code>CHANGELOG.md</code> very easy - it generates it. It a CLI Application with a <a href="https://github.com/Symplify/ChangelogLinker/tree/master/src/Console/Command">3 Console Commands</a>. All was good, until <strong>I needed to add an argument to all commands at once</strong>... and in lazy, extensible, maintainable way.</p>
+                    </div>
+                </div>
+
+                <p>Why? Symplify <code>CHANGELOG.md</code> was growing and growing, keeping upgrade data about 3 major versions. Then I realized there can be more <code>CHANGELOG.md</code> files, right?</p>
+<img src="/assets/images/posts/2018/global-option/multiple-changelog.png" class="img-thumbnail">
+<p>At that time, the path to file was hardcoded as <code>getcwd() . '/CHANGELOG.md'</code>, so each command worked only with that file:</p>
+<pre><code class="language-bash">vendor/bin/changelog dump-merges
+vendor/bin/changelog link
+vendor/bin/changelog cleanup</code></pre>
+<p>But I needed to change the file:</p>
+<pre><code class="language-bash">vendor/bin/changelog dump-merges CHANGELOG.md
+vendor/bin/changelog link CHANGELOG-2.md
+vendor/bin/changelog cleanup CHANGELOG-3.md</code></pre>
+<p>We need to add global file argument. So, what option do we have?</p>
+<h2 id="1-add-argument-to-each-command">1. Add Argument to Each Command</h2>
+<pre><code class="language-diff"> use Symfony\Component\Console\Command\Command;
+ use Symfony\Component\Console\Input\InputArgument;
+
+ final class LinkCommand extends Command
+ {
+     protected function configure(): void
+     {
+         // ...
++        $this-&gt;addArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work wiht');
+     }
+ }
+
+ final class DumpMergesCommandCommand extends Command
+ {
+     protected function configure(): void
+     {
+         // ...
++        $this-&gt;addArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work wiht');
+     }
+ }
+
+ final class LinkCommand extends Command
+ {
+     protected function configure(): void
+     {
+         // ...
++        $this-&gt;addArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work wiht');
+     }
+ }</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>It's the fastest way - under 2 minutes including reading this post.</li>
+<li>It's the most common way to add argument and options to Commands - most people would understand it.</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>Well, have you noticed the &quot;wiht&quot; typo? Now I have to <strong>fix it in every single class</strong>.</li>
+<li>For every change, we have to find and modify every single place this <strong>duplicated code</strong> is in.</li>
+<li>When a new command is added, you have to remember to <strong>add exactly this line there</strong> - you already know <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">how memory-locks backfire</a>, right?</li>
+</ul>
+<p>Good for creating &amp; sell applications, bad for projects you want to work on for a couple of years.</p>
+<h2 id="2-modify-application-definition">2. Modify Application Definition</h2>
+<p>I'll tell you a secret. There is one place you can <strong>modify definition not just for active command, but for the whole application</strong> - it's Application Definition!</p>
+<p>The first simple &amp; short solution you'd <a href="https://gist.github.com/dhrrgn/8847309">Googled up</a> is to modify it in bin file:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ use Symplify\EasyCodingStandard\Console\Application;
+ use Symfony\Component\Console\Input\InputArgument;
+
+ $application = $container-&gt;get(Application::class);
++$applicationDefinition = $application-&gt;getDefinition();
++$applicationDefinition-&gt;addArguments([
++    new InputArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work wiht');
++]);
+ $application-&gt;run();</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>1 place to maintain the code</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>
+<p>we program outside the Application - when we get the application somewhere else (e.g. tests), it might break</p>
+<pre><code class="language-php">$application = $container-&gt;get(Application::class);
+$application-&gt;run();
+// passing `CHANGELOG-2.md` as argument → invalid argument error</code></pre>
+</li>
+<li>
+<p>that's why the should be encapsulated - always prefer tree dependencies over these circle ones</p>
+</li>
+</ul>
+<h2 id="3-the-del-symfony-del-event-subscriber-way">3. The <del>Symfony</del> Event Subscriber Way</h2>
+<p>I found this approach on <a href="https://matthiasnoback.nl/2013/11/symfony2-add-a-global-option-to-console-commands-and-generate-pid-file">Matthias Noback's blog</a>. The process is similar to above, just wrapped in event subscriber that hooks into the Console Application cycle:</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\Console\Event\ConsoleCommandEvent;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Console\ConsoleEvents;
+
+final class FileArgumentEventSubscriber implements EventSubscriberInterface
+{
+    /**
+     * @return string[]
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [ConsoleEvents::COMMAND =&gt; 'onConsoleCommand'];
+    }
+
+    public function onConsoleCommand(ConsoleCommandEvent $event): void
+    {
+        $applicationDefinition = $event-&gt;getCommand()-&gt;getApplication()-&gt;getDefinition();
+        $applicationDefinition-&gt;addArguments([
+           new InputArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work with')
+        ]);
+    }
+}</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>there is 1 place to maintain the code</li>
+<li>our application is consistent everywhere</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<p>There are now new memory-locks, that not really needed:</p>
+<ul>
+<li>we have to have/add event dispatcher - <code>composer require symfony/event-dispatcher</code></li>
+<li>we have to load it with subscribers/listeners</li>
+<li>we have to pass event dispatcher to symfony console</li>
+<li>we break one of <a href="https://williamdurand.fr/2013/06/03/object-calisthenics/#5-one-dot-per-line">object calisthenics</a></li>
+</ul>
+<p>Also, would you add routes this way?</p>
+<pre><code class="language-php">class SomeController
+{
+    public function someAction(Request $request)
+    {
+        $router = $request-&gt;getAttribute('controller')-&gt;getContainer()-&gt;get('router');
+        $router-&gt;addRoute('...');
+    }
+}</code></pre>
+<p>Above, we ask event to get a service, to invoke a callback on another service. <strong>When you ask event (unique object) for a service (global class), there is something wrong</strong>. Events should work with unique information - they're value objects after all.</p>
+<p><br></p>
+<p>The post is 5 years old and I don't think Matthias still sees this as the best way to go, yet Google shows it in top 5 results. Matthias has a popular and valuable blog (I learned a lot myself back in my early years in Symfony) and some people might think this is the best practice. To add more salt to the wound, this answer also <a href="https://stackoverflow.com/questions/40674814/how-to-add-a-new-command-line-option-to-symfony-console">spread to StackOverflow</a> without concurrency.</p>
+<p><br></p>
+<p>What is really important? <strong>The definition of application</strong>, nothing more.</p>
+<h2 id="4-extend-the-application">4. Extend the Application</h2>
+<p>I'm very happy to see that <a href="https://github.com/composer/composer/pull/1110/files">composer code has this right</a>. There is global option <code>--working-dir</code>, that allows you simply run composer in another directory:</p>
+<pre><code class="language-bash">composer update --working-dir projects/open-training
+
+# equals to
+cd projects/open-training
+composer update
+cd ../..</code></pre>
+<p>How did I find this out? I needed to remove one of the basic options Symfony Console Application has out of the box:</p>
+<img src="/assets/images/posts/2018/global-option/basic.png" class="img-thumbnail">
+<p>It took me a while but the track lead to <a href="https://github.com/symfony/symfony/blob/59fad59886fc2e47c4e49bcb668a6e1e0795a6d7/src/Symfony/Component/Console/Application.php#L951"><code>Application::getDefaultInputDefinition()</code></a> method.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ use Symfony\Component\Console\Application;
+ use Symfony\Component\Console\Input\InputArgument;
+
+ final class SomeApplication extends Application
+ {
++    protected function getDefaultInputDefinition()
++    {
++        $definition = parent::getDefaultInputDefinition();
++        $definition-&gt;addArgument(new InputArgument('file', InputArgument::OPTIONAL, 'Path to changelog file to work with'));
++
++        return $definition;
++    }
+ }</code></pre>
+<p><code>Symfony\Component\Console\Application</code> is <strong>one of very few classes I'd allow to <a href="https://ocramius.github.io/blog/when-to-declare-classes-final">extend</a></strong>. It's just 1:1 = easy to maintain and change. Not like entity repository, that can have dozens of children.</p>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>
+<p>very little known → very hard to discover and debug - we should add a note about this to <code>config.yml</code></p>
+<pre><code class="language-yaml">services:
+    # we extend default definition here with `file` argument
+    SomePackage\Console\SomeApplication: ~</code></pre>
+</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li><strong>one place</strong>, that creates a consistent code</li>
+<li><strong>we use API that is designed for these changes</strong></li>
+<li>you don't need any extra packages, adding anything to the application</li>
+<li>very simple to add: it takes 10 lines</li>
+<li>it just works :)</li>
+</ul>
+<p><br></p>
+<p>For all these reasons, this is the one I prefer. Do you want to see it in the real world? Here <a href="https://github.com/symplify/symplify/pull/1047/commits/c07c49ae4eff067db7cfe5e5ed1b283ae37c8c29#diff-3b69acbe6b33a88158b373e6e96de097">is a commit</a> from Monorepo Builder for our <code>file</code> argument.</p>
+<p><br></p>
+<h2 id="think-in-anti-patterns">Think in (Anti) Patterns</h2>
+<p>This post is not just about adding an option/argument to console. It's about applying the best choice in every feature you add. <strong>And if you don't know, look for it</strong>. Don't just blindly take the first result provided Google. It might be popular, widespread, but that doesn't mean it's high quality and valid solution.</p>
+<p>Do you see similar anti-patterns as 1, 2 or 3 in your code you're now happy with? How could you make it better?</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/08/30/ways-i-fucked-up-open-source-code-mock-everything-and-test-units" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Ways I Fucked Up Open Source Code: Mock Everything and Test Units
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-09-03-4-ways-to-add-global-option-or-argument-to-symfony-console-application.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="4 Ways to Add Global Option or Argument to Symfony Console Application" />
+    <meta property="og:description" content="I&#039;m working on [ChangelogLinker](https://github.com/symplify/changeloglinker), a package that makes managing `CHANGELOG.md` very easy - it generates it. It a CLI Application with a [3 Console Commands](https://github.com/Symplify/ChangelogLinker/tree/master/src/Console/Command). All was good, until **I needed to add an argument to all commands at once**... and in lazy, extensible, maintainable way.
+" />
+    <meta property="og:url" content="/blog/2018/09/03/4-ways-to-add-global-option-or-argument-to-symfony-console-application" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="4 Ways to Add Global Option or Argument to Symfony Console Application" />
+    <meta name="twitter:description" content="I&#039;m working on [ChangelogLinker](https://github.com/symplify/changeloglinker), a package that makes managing `CHANGELOG.md` very easy - it generates it. It a CLI Application with a [3 Console Commands](https://github.com/Symplify/ChangelogLinker/tree/master/src/Console/Command). All was good, until **I needed to add an argument to all commands at once**... and in lazy, extensible, maintainable way.
+" />

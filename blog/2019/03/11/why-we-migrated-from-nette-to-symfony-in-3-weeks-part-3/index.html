@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why we Migrated from Nette to Symfony in 3 Weeks - Part 3 - Brain Drain Dead Packages-Lock | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 193 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why we Migrated from Nette to Symfony in 3 Weeks - Part 3 - Brain Drain Dead Packages-Lock</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-03-Mon">
+            
+                            Mon, Mar 11, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/03/11/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-3/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-11-why-we-migrated-from-nette-to-symfony-in-3-weeks-part-3.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you want to <strong>migrate your project from Nette to Symfony</strong>? In <a href="/blog/2019/03/07/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-2/">the part 2</a> we looked at <strong>escaping semver hell</strong>.
+<br><br>
+Today we'll look on <strong>package vendor-locks</strong> caused by brain drain.</p>
+                    </div>
+                </div>
+
+                <p><em>This post will be a bit harder for me because I'm part of this problem. I'm a former Nette activist and open-source hyper. I created many open-source packages Nette developers use, but those are not actively maintained nor developed for the last couple of years. I'm sorry about that.</em></p>
+<p><br></p>
+<p><strong>If you love Nette, <a href="/blog/2018/05/31/symfony-vs-laravel-vs-nette-which-php-framework-you-should-choose/">keep using it</a>. This post is for people, whose companies are hurt by being locked to Nette ecosystem and who want to solve that but don't know how or if that is even possible.</strong></p>
+<h2 id="february-2017">February 2017...</h2>
+<p>When we talked with <a href="https://janmikes.cz">Honza</a> about framework A → framework B migration first related to <a href="https://entry.do">Entry.do</a>, it was on the first PHP Mountains 2017. Rector was still 5 months before being born, so manual work was the only way.</p>
+<p>First, we looked into <code>composer.json</code> and tried to get rid of some packages. What packages we won't need on Symfony?</p>
+<ul>
+<li><code>kdyby/events</code></li>
+<li><code>kdyby/console</code></li>
+<li><code>kdyby/doctrine</code></li>
+<li><code>kdyby/rabbitmq</code></li>
+<li><code>kdyby/redis</code></li>
+<li><code>kdyby/translation</code></li>
+<li><code>zenify/doctrine-behaviors</code></li>
+<li><code>zenify/doctrine-migrations</code></li>
+<li><code>zenify/doctrine-filters</code></li>
+<li><code>zenify/modular-latte-filters</code></li>
+<li><code>zenify/doctrine-fixtures</code></li>
+<li><code>zenify/doctrine-extensions-tree</code></li>
+</ul>
+<p><strong>We could drop all these</strong>, because:</p>
+<ul>
+<li><code>kdyby/*</code> is basically integration of Symfony packages with <code>nette/di</code>,</li>
+<li>and <code>zenify/*</code> is basically <code>doctrine/*</code> integration with <code>nette/di</code></li>
+</ul>
+<p>Of course, you can't delete them right away. Yet, <a href="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/#3-automated-migration-gt-manual-changes">Rector covers most of this migration now</a>, so this part is fine.</p>
+<h2 id="upgrade-lagging">Upgrade Lagging</h2>
+<p>We decided to remove Symfony/Doctrine <em>glue packages</em> first, so we could work with fewer dependencies and be more flexible. And upgrade PHP first, so we can use right the newest Symfony packages.</p>
+<p>We tried to remove one <code>zenify/*</code> package (because it's small → possibly easy to replace) and use the package we have in control.</p>
+<h3 id="code-object-code"><code>object</code></h3>
+<p>Thing is, PHP 7.2 introduced <code>object</code> keyword:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony3/nette-object-easy.png" class="img-thumbnail">
+<p>Nette had class <code>Nette\Object</code> that was actively promoted as the parent of all classes in your code. Now it had *<em>to be removed from all these classes and replaced by trait</em>:</p>
+<pre><code class="language-diff"> &lt;?php
+
+-class SomeClass extends Nette\Object
++class SomeClass
+ {
++    use Nette\SmartObject;
+ }</code></pre>
+<p><em>If you still have this problem, <a href="https://github.com/rectorphp/rector/blob/master/docs/AllRectorsOverview.md#parentclasstotraitsrector">use Rector that handles this case</a>.</em></p>
+<p><br></p>
+<p>In that time, we had to use PHPStorm old-school <em>find &amp; replace</em> with regex pattern:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony3/nette-object-your-code.png">
+<p>The upgrade path is like a road with holes. It's getting crappy, but there is still at least some road 👍</p>
+<p><strong>But what if there are many packages</strong>, that nobody actively takes care of?</p>
+<img src="/assets/images/posts/2019/nette-to-symfony3/nette-object-in-3rd-party.png">
+<p><strong>Until the maintainer fixes that, the upgrade path is closed</strong>. We'd have to fork every Nette package that is not maintained, fix it manually in the code and add them into <code>composer.json</code>.</p>
+<p>We don't talk about small package with few classes that is easy to rewrite:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony3/downloads.png" class="img-thumbnail">
+<p>Most of Kdyby packages still have <a href="https://packagist.org/packages/kdyby/doctrine/stats">500-900 daily downloads</a>. Even if we take CI servers into account, that still <strong>might be 120-150 PHP applications</strong> locked to legacy with packages that no-one maintains.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    "When you stop growing, you start dying."
+</blockquote>
+<h2 id="nette-brain-drain">Nette Brain Drain?</h2>
+<p>With a healthy active community as in Laravel or Symfony, there would be PR and we never came across this problem. What's different with Nette?</p>
+<p>David Grudl, the author of Nette <a href="https://twitter.com/geekovo/status/417869320677367808">tweeted at the end of 2013</a> that <strong>he ends with Nette</strong>. &quot;One tweet&quot;, you might think, but there was more of similar news on Nette forum and popular Czech IT blogs.</p>
+<p>Many years later, when I become a Symfony consultant, I asked companies why did they choose Symfony over Nette. After all, there were Nette meetups in our the Czech Republic every month and maybe 2 non-Nette PHP meetups about other frameworks. The answer was almost unanimous: when they discussed what PHP framework to use, they saw David's tweet. <strong>They needed something stable they could for the next 5 years.</strong></p>
+<p><br></p>
+<p>In following years, without anyone noticing, <strong>slow brain drain from Nette to Symfony, Java or Javascript</strong> started:</p>
+<ul>
+<li><a href="https://prochazka.su">Filip Procházka</a>, the author of Kdyby → is now Java programmer</li>
+<li><a href="https://patrik.votocek.cz">Patrik Votoček</a>, one of first Nette evangelist and author of Nella →  switched to Symfony, then to chaos monkey,</li>
+<li><a href="https://github.com/mrtnzlml">Martin Zlámal</a>, very active Nette evangelist who held many Nette/PHP talks on university → now works with Javascript at Kiwi.com</li>
+<li><a href="http://enumag.cz">Jáchym Toušek</a>, active Symfony to Nette integrator → switched to Symfony</li>
+<li>I, author of Zenify and Symnedi → switched to Symfony</li>
+<li>...</li>
+</ul>
+<p><strong>Many of open-source packages for Nette slowly become unmaintained.</strong> So this error is new status-quo for these packages:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony3/nette-object-in-3rd-party.png">
+<p><br></p>
+<p>When we realized with Honza that night, that to upgrade project means &quot;fork every unmaintained dependency and I hope there will be better times&quot;, we stopped. But <strong>the motivation remained and 2 years later</strong>, with better skills and Rector, we managed to migrate the application from Nette to Symfony in less than a month.</p>
+<p><br></p>
+<h2 id="come-to-meetup-and-tell-us-about-your-problem">Come to Meetup and Tell Us About Your Problem</h2>
+<p>Are you stuck with Nette at home and thinking about in your wet dreams Symfony? This is your lucky week! :)</p>
+<p>Honza will talk about Nette to Symfony migration on <strong><a href="https://www.meetup.com/friends-of-php-prague/events/259627000">PHP meetup in Prague this Thursday - 14. 3.</a></strong></p>
+<p>Entrance free, language is English and I'll be there too!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/03/07/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-2" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Why we Migrated from Nette to Symfony in 3 Weeks - Part 2 - Escaping Semantic Hell
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-11-why-we-migrated-from-nette-to-symfony-in-3-weeks-part-3.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why we Migrated from Nette to Symfony in 3 Weeks - Part 3 - Brain Drain Dead Packages-Lock" />
+    <meta property="og:description" content="Do you want to **migrate your project from Nette to Symfony**? In [the part 2](/blog/2019/03/07/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-2/) we looked at **escaping semver hell**.
+
+Today we&#039;ll look on **package vendor-locks** caused by brain drain.
+" />
+    <meta property="og:url" content="/blog/2019/03/11/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-3" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why we Migrated from Nette to Symfony in 3 Weeks - Part 3 - Brain Drain Dead Packages-Lock" />
+    <meta name="twitter:description" content="Do you want to **migrate your project from Nette to Symfony**? In [the part 2](/blog/2019/03/07/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-2/) we looked at **escaping semver hell**.
+
+Today we&#039;ll look on **package vendor-locks** caused by brain drain.
+" />

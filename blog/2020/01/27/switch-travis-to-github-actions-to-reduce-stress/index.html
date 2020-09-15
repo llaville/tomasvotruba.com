@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Switch Travis to GitHub Actions to Reduce Stress | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 236 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Switch Travis to GitHub Actions to Reduce Stress</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-01-Mon">
+            
+                            Mon, Jan 27
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/01/27/switch-travis-to-github-actions-to-reduce-stress/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-01-27-switch-travis-to-github-actions-to-reduce-stress.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In the previous post, we looked at <a href="/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/">Why is First Instant Feedback Crucial to Developers?</a>.
+<br><br>
+We know why now we look at <em>how</em>. How exactly migrate all jobs from Travis to GitHub Actions, <strong>reduce stress from long feedback loops</strong> and live a more healthy life as a programmer.
+<br><br>
+Yes, in code samples :)</p>
+                    </div>
+                </div>
+
+                <p>In this post, we'll look at examples of migration. I'll share my good and bad times with GitHub Action for my last 3 weeks using it on 5 open-source repositories with over 25 packages.</p>
+<h2 id="the-speed">The Speed</h2>
+<blockquote class="blockquote text-center">
+    From ~15 minutes to just 3 minutes.
+</blockquote>
+<p>I mean, that's a crazy improvement of 80 %. You can read about in <a href="/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/">the previous post</a>, so let's move on.</p>
+<h2 id="the-developer-s-joy">The Developer's Joy</h2>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Github Actions just make everything so easy... <br><br>We merged 177 PR in <a href="https://twitter.com/rectorphp?ref_src=twsrc%5Etfw">@rectorphp</a> in the last month.<br><br>Instant feedback is killer feature for you devs. Don't let them wait...<a href="https://t.co/hP9Epe2CZW">https://t.co/hP9Epe2CZW</a> <a href="https://t.co/0Md9iIisXm">pic.twitter.com/0Md9iIisXm</a></p>— Tomas Votruba (@VotrubaT) <a href="https://twitter.com/VotrubaT/status/1220126675436032005?ref_src=twsrc%5Etfw">January 22, 2020</a></blockquote>
+<p>Cocaine, Facebook, Twitter, and Instagram work the same way. A short feedback loop of dopamine.</p>
+<p>The significant advantage of GitHub is that at the end of your addiction is not an endless loop in the brain, but <strong>higher productivity of your project</strong>.</p>
+<h2 id="simple-unit-test-in-multiple-php-versions">Simple Unit Test in Multiple PHP Versions</h2>
+<p>We'll jump right into the most common case - unit tests.</p>
+<p>In <strong>Travis CI</strong>, we had to:</p>
+<ul>
+<li>install dependencies,</li>
+<li>set PHP versions</li>
+<li>and run unit tests.</li>
+</ul>
+<pre><code class="language-yaml"># .travis.yml
+os: linux
+
+language: php
+
+php:
+    - '7.2'
+    - '7.3'
+    - '7.4'
+
+before_install:
+    # turn off XDebug
+    - phpenv config-rm xdebug.ini
+
+install:
+    - composer install --no-progress
+
+jobs:
+    include:
+        -
+            stage: test
+            name: "Unit Tests"
+            script:
+                - vendor/bin/phpunit --testsuite main</code></pre>
+<p>In <strong>GitHub Action</strong> the same process look like this:</p>
+<pre><code class="language-yaml"># .github/workflows/code_checks.yaml
+name: Code_Checks
+
+on:
+    pull_request: null
+    push:
+        branches:
+            - master
+
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php: ['7.2', '7.3', '7.4']
+
+        name: PHP ${{ matrix.php }} tests
+        steps:
+            # basically git clone
+            -   uses: actions/checkout@v2
+
+            # use PHP of specific version
+            -   uses: shivammathur/setup-php@v1
+                with:
+                    php-version: ${{ matrix.php }}
+                    coverage: none # disable xdebug, pcov
+
+            # if we 2 steps like this, we can better see if composer failed or tests
+            -   run: composer install --no-progress
+
+            -   run: vendor/bin/phpunit</code></pre>
+<p>That's pretty huge for single and confusing to read at the same time, right?</p>
+<p>All that clutter just for <code>vendor/bin/phpunit</code> to pass.</p>
+<h2 id="re-use-code-in-github-actions-hell-no">Re-Use Code in Github Actions? Hell No!</h2>
+<p>What is this?</p>
+<pre><code class="language-yaml">-   uses: actions/checkout@v2</code></pre>
+<p>Github Actions allow references to external <em>recipes</em>. It's usually just a set of actions, packages into a couple of lines in our workflow. You can see it on Github, e.g. <a href="https://github.com/actions/checkout">actions/checkout</a>. It's the recommended way to re-use code because there is no other way.</p>
+<p>In reality: &quot;Do you want to re-use 5 lines of install and setup YAML code? Create a repository on Github, write 100 lines in JavaScript, and you're ready to go!&quot;</p>
+<h3 id="no-dry">No DRY</h3>
+<p>Saying that we'll either have to create custom workflow repository or get used to these lines being repeated over and over:</p>
+<pre><code class="language-yaml">-   uses: actions/checkout@v2
+
+-   uses: shivammathur/setup-php@v1
+    with:
+        php-version: '7.3'
+        coverage: none # xdebug is used by default
+
+-   run: composer install --no-progress</code></pre>
+<p>After a bit of experimenting, I got used to it for now. Also, Github Actions don't have anything close to <strong>YAML Anchors</strong> or re-use of previous job configuration like we have in Travis, e.g., share <code>install</code> for every job:</p>
+<pre><code class="language-yaml"># .travis.yml
+install:
+    - composer install --no-progress</code></pre>
+<p>Do you want YAML Anchors in Github Actions? <a href="https://github.community/t5/GitHub-Actions/Support-for-YAML-anchors/td-p/30336">Let them know</a>.</p>
+<p><br></p>
+<p>Now that we have the worst feature of Github Actions behind us, <strong>let's look at the excellent stuff</strong>.</p>
+<h2 id="power-of-external-workflows">Power of External Workflows</h2>
+<p>On the other hand, external workflows can solve a lot for us. Mainly for us, who don't want to dev-ops experts forever CI there is.</p>
+<p>How do you enable code coverage by PHPUnit? <strong>Change single line</strong>:</p>
+<pre><code class="language-diff">jobs:
+    test_coverage:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   uses: shivammathur/setup-php@v1
+                with:
+                    php-version: '7.3'
+-                   coverage: none
++                   coverage: pcov
+
+            - run: vendor/bin/phpunit --coverage-clover coverage.xml build/logs/clover.xml</code></pre>
+<h2 id="coding-standards">Coding Standards</h2>
+<p>What is the most common use case for CI? Run <em>single line</em> in this <em>specific PHP version</em> → e.g., run coding standards on PHP 7.2.</p>
+<p>In <strong>Travis CI</strong>:</p>
+<pre><code class="language-yaml">language: php
+
+install:
+    - composer install --no-progress
+
+jobs:
+    include:
+        -
+            name: ECS
+            php: 7.2
+            script:
+                - composer check-cs</code></pre>
+<p>In <strong>Github Actions</strong>:</p>
+<pre><code class="language-yaml"># .github/workflows/code_checks.yaml
+jobs:
+    ecs:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   uses: shivammathur/setup-php@v1
+                with:
+                    php-version: 7.2
+                    coverage: none # disable xdebug, pcov
+            -   run: composer install --no-progress
+            -   run: composer check-cs</code></pre>
+<h2 id="learn-from-working-examples">Learn from Working Examples</h2>
+<ul>
+<li><a href="https://github.com/symplify/symplify/blob/373bbc80d73fd8c2777fdb5fb48386b456857b57/.github/workflows/code_checks.yaml"><code>code_checks.yaml</code> in symplify/symplify</a></li>
+<li><a href="https://github.com/rectorphp/rector/blob/1f4b36dfedb1b07d8425093474fc5951358b0590/.github/workflows/code_checks.yml"><code>code_checks.yaml</code> in rectorphp/rector</a></li>
+</ul>
+<h2 id="bad-luck-organization-with-some-private-repositories">Bad Luck Organization with Some Private Repositories</h2>
+<p>Some organizations don't have access to Github Actions because of some open-sources/private accounts.
+This sucks a lot. I tried to have GitHub Actions on <a href="https://github.com/KnpLabs/DoctrineBehaviors/pull/494#issue-360222690">KnpLabs/DoctrineBehaviors</a>, but it's not possible unless the whole <em>KnpLabs</em> switches to some paid accounts. I spoke with support over a dozen emails, and it's wont fix.</p>
+<p>How to work around this? If we create a new organization that is <strong>open-source only</strong>, it will work. Or we can just move the repository to an existing <strong>open-source only</strong> one.</p>
+<h2 id="add-badge">Add Badge?</h2>
+<p><strong>In Travis</strong>, you could add a badge for the whole build on a specific branch. It was nice that it skipped allowed failure.</p>
+<p><strong>In GitHub Actions</strong>, it's different. <del>The badge covers <strong>1 specific workflow</strong>. This workflow should contain all the relevant jobs</del>.</p>
+<p>Actually, on GitHub repository, there is only one badge for all:</p>
+<img src="/assets/images/posts/github_actions_badge.png" class="img-thumbnail">
+<h2 id="concurrent-jobs">Concurrent Jobs</h2>
+<p><strong>Travis CI</strong> allow only <a href="https://travis-ci.com/plans">3 concurrent jobs</a>. This forces us to group similar checks like coding standard, static analysis, and Rector to one big job. If it failed, we had to look inside to find out which of these 3 areas is it.</p>
+<p><strong>GitHub Actions</strong> allows you to run... wait for it <a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-github-actions#usage-limits"><strong>20 jobs</strong></a>.</p>
+<p>Thanks to that, we can have one job for each of:</p>
+<ul>
+<li><code>bin/console lint:yaml</code></li>
+<li><code>bin/console lint:twig</code></li>
+<li><code>bin/console lint:container</code></li>
+</ul>
+<p>When <code>bin/console lint:twig</code> fails, we know right in the pull-request it's something in our templates. That's good quality, precise feedback.</p>
+<h2 id="where-should-we-stay-with-travis-ci">Where Should We Stay with Travis CI</h2>
+<h3 id="local-git">Local Git</h3>
+<p>GitHub Actions are tough to work with local git. I migrated Symplify/MonorepoBuilder and Symplfiy/ChangelogLinker to Github Actions, and it's only troubling.</p>
+<h3 id="building-of-phar-and-push-to-another-repository">Building of PHAR and Push to Another Repository</h3>
+<p>Another weakness is the inability to get the current tag. That's right. Getting something as simple as an existing tag is rocket science.</p>
+<p>That's why we had to <a href="https://github.com/rectorphp/rector/blob/1f4b36dfedb1b07d8425093474fc5951358b0590/.travis.yml">revert <code>rector.phar</code> build and publish to Travis CI</a>.</p>
+<h3 id="monorepo-split">Monorepo Split</h3>
+<p>The monorepo split is the most massive performance operation on the whole CI. Also, GitHub actions have different git settings that break it — saying that it makes sense to have 20 parallel jobs on GitHub Actions and the heaviest on Travis. <strong>We kept <a href="https://github.com/symplify/symplify/blob/716eef260fcdf21362361cc9a3dab51a5a0408eb/.travis.yml#L9-L16">monorepo split</a> on Travis as the only job</strong> and it's now faster than ever.</p>
+<p><br></p>
+<p>I think that's due to the service being pretty new to the market. I hope these issues will be seen as primitive soon. For the rest of the features, <strong>I love GitHub Action</strong> and think you'll too after having feedback under 3 minutes after the last commit :).</p>
+<p><br></p>
+<p>Happy coding!</p>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/01/20/introducing-phar-for-easy-coding-standard" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Introducing PHAR for Easy Coding Standard
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-01-27-switch-travis-to-github-actions-to-reduce-stress.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Switch Travis to GitHub Actions to Reduce Stress" />
+    <meta property="og:description" content="In the previous post, we looked at [Why is First Instant Feedback Crucial to Developers?](/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/).
+
+We know why now we look at *how*. How exactly migrate all jobs from Travis to GitHub Actions, **reduce stress from long feedback loops** and live a more healthy life as a programmer.
+
+Yes, in code samples :)
+" />
+    <meta property="og:url" content="/blog/2020/01/27/switch-travis-to-github-actions-to-reduce-stress" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Switch Travis to GitHub Actions to Reduce Stress" />
+    <meta name="twitter:description" content="In the previous post, we looked at [Why is First Instant Feedback Crucial to Developers?](/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/).
+
+We know why now we look at *how*. How exactly migrate all jobs from Travis to GitHub Actions, **reduce stress from long feedback loops** and live a more healthy life as a programmer.
+
+Yes, in code samples :)
+" />

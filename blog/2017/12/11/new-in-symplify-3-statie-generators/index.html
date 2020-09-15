@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 3: Statie Generators | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 67 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>New in Symplify 3: Statie Generators</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-12-Mon">
+            <strike>
+                            Mon, Dec 11, 2017
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Sep, 2018
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/12/11/new-in-symplify-3-statie-generators/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-12-11-new-in-symplify-3-statie-generators.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at March 2020</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>Statie was deprecated with last version 7, because 99 % of features are covered in Symfony application.<br>
+<br>
+To create static content, migrate to Symfony app and <a href="https://github.com/symplify/symfony-static-dumper">SymfonyStaticDumper</a>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at September 2018</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>Statie 5</strong>, NEON → YAML, Twig and <code>statie.yml</code> config.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Statie missed one important feature. <strong>Posts were the only elements</strong> that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+<br><br>
+<strong>Statie 3 to the rescue!</strong></p>
+                    </div>
+                </div>
+
+                <h2 id="coupled-approach-in-old-statie">Coupled Approach in old Statie</h2>
+<p>Posts in Statie 2 were enabled by defaults with following hard coded logic:</p>
+<ul>
+<li>find all <code>*.md</code> files in <code>_posts</code> directory</li>
+<li>create <code>PostFile</code> objects from them</li>
+<li>save all of them to global variable <code>posts</code></li>
+<li>use route defined in <code>parameters &gt; post_route</code> to render it</li>
+<li>render it with <code>_layouts/post.twig</code> layout</li>
+</ul>
+<p>You could change a <code>post_route</code> or <code>layout</code> in specific post file, but that was it. No flexibility, no extendability and modification of <code>PostFile</code> class was not possible.</p>
+<p>In <a href="https://pehapkari.cz">Pehapkari.cz</a> we're staring community <a href="https://pehapkari.cz/vzdelavej-se">lectures</a> and we need not only posts, but <strong>also lectures to be on stand-alone page</strong>, e.g.</p>
+<ul>
+<li><a href="https://pehapkari.cz/course/doctrine-from-basics">https://pehapkari.cz/course/doctrine-from-basics</a>,</li>
+<li><a href="https://pehapkari.cz/course/phpstorm-hacks-and-tips">https://pehapkari.cz/course/phpstorm-hacks-and-tips</a> etc.</li>
+</ul>
+<p>If this could be only configurable, it would benefit many websites that are more than just a list of posts.</p>
+<h2 id="configurable-approach-in-statie-3-with-generators">Configurable Approach in Statie 3 with Generators</h2>
+<p><strong>So here comes Statie 3 Generators</strong>. Same posts approach is now set by default, but also configurable in <code>parameters &gt; generators</code> section:</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts: # key useful for exception reports
+            # name of variable inside single such item
+            variable: post
+            # name of variable that contains all items
+            varbiale_global: posts
+            # directory, where to look for them
+            path: '_posts'
+            # which layout to use
+            layout: '_layouts/post.twig'
+            # and url prefix, e.g. /blog/some-post.md
+            route_prefix: 'blog'
+            # an object that will wrap it's logic, you can add helper methods into it and use it in templates
+            object: 'Symplify\Statie\Renderable\File\PostFile'</code></pre>
+<p>The whole old posts logic is now configurable.</p>
+<p>Do you need to change path to <code>_articles</code>?</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts:
+            path: '_articles'</code></pre>
+<p>Or do you want to use own simpler object?</p>
+<pre><code class="language-yaml">parameters:
+    generators:
+        posts:
+            object: 'MyWebsite\Statie\SimplePostFile'</code></pre>
+<h2 id="how-to-add-own-generator">How to Add Own Generator?</h2>
+<p>So how did we solved lectures in Pehapkari.cz website?</p>
+<p>Adding new Generator Element is now easy:</p>
+<pre><code class="language-yaml"># statie.yml
+parameters:
+    generators:
+        lectures:
+            variable: 'lecture'
+            variable_global: 'lectures'
+            path: '_lectures'
+            layout: '_layouts/lecture.twig'
+            route_prefix: 'kurz'
+            object: 'Pehapkari\Website\Statie\Generator\LectureFile'</code></pre>
+<p>Do you want <strong>real code</strong>? See <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2">this commit</a> that has it all.</p>
+<p>The configuration is as simple as possible, so <code>object</code> is optional. You can read <strong>how to set own file</strong> in <a href="https://www.statie.org/docs/generators">documentation</a>.</p>
+<h3 id="how-to-add-new-lecture">How to add new Lecture?</h3>
+<ol>
+<li>Create <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-f5b8e6c24f5a089810b255d7d0757105">new <code>*.md</code> file</a> in <code>source/_lectures/</code> directory</li>
+<li>Have <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-63d6418d873273aad1011eb0c40b5f3b"><code>_layout/lecture.twig</code></a> ready</li>
+<li>Create <a href="https://github.com/pehapkari/pehapkari.cz/pull/358/commits/e68d8f98172b2a04e4cf80e635c036c3f2a7bef2#diff-34b7c0f32f7935ef12a8b2f732c8a9d6"><code>LectureFile</code></a> with extra <code>getTitle()</code> method</li>
+</ol>
+<p>That's all!</p>
+<p>These lectures will be available <strong>in every template under <code>{$lectures}</code> variable</strong>, as configured in <code>variable_global</code> option.</p>
+<p>So you can create page <code>source/all-lectures.twig</code> with all lectures (ordered by filename):</p>
+<pre><code class="language-twig">{% for lecture in lectures %}
+    &lt;h2&gt;{{ lecture.getTitle() }}&lt;/h2&gt;
+{% endfor %}</code></pre>
+<h2 id="try-generators-out">Try Generators Out</h2>
+<p>Just upgrade Statie:</p>
+<pre><code class="language-bash">composer update symplify/statie</code></pre>
+<p>and add lectures, talks with details, docs... anything you need.</p>
+<h3 id="date-me">Date Me!</h3>
+<p>One more surprise to prevent. In case you use <code>route_prefix</code> with date in it:</p>
+<pre><code class="language-yaml"># statie.yaml
+parameters:
+    generators:
+        posts:
+            route_prefix: 'blog/:year/:month/:day'</code></pre>
+<p>remember, <strong>the date has to be in start of the filename</strong>:</p>
+<pre><code class="language-bash">_lectures/2018-01-30-use-open-source-statie-for-open-blogging.md</code></pre>
+<p>When setup properly, you get this file in generated code:</p>
+<pre><code class="language-bash">2018/01/30/use-open-source-statie-for-open-blogging</code></pre>
+<h2 id="how-to-upgrade-from-statie-2-to-statie-3">How to Upgrade from Statie 2 to Statie 3?</h2>
+<blockquote class="blockquote text-center mt-lg-5 mb-5">
+    "Real code is worth of thousand words describing it."
+    <footer class="blockquote-footer">Anonymous Lazy Programmer</footer></blockquote>
+<p>See these PRs:</p>
+<ul>
+<li><a href="https://github.com/TomasVotruba/tomasvotruba.com/pull/204">upgrading tomasvotruba.com</a></li>
+<li>and <a href="https://github.com/pehapkari/pehapkari.cz/pull/358">Pehapkari.cz</a></li>
+</ul>
+<p><br></p>
+<p>Happy Generating!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/12/04/life30-what-will-you-do-when-ai-takes-over-the-world" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Life 3.0: What Will You Do When AI Takes Over the World
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-12-11-new-in-symplify-3-statie-generators.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 3: Statie Generators" />
+    <meta property="og:description" content="Statie missed one important feature. **Posts were the only elements** that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+
+**Statie 3 to the rescue!**
+" />
+    <meta property="og:url" content="/blog/2017/12/11/new-in-symplify-3-statie-generators" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 3: Statie Generators" />
+    <meta name="twitter:description" content="Statie missed one important feature. **Posts were the only elements** that you could render as standlone page.
+But what if you want a web porfolio, not with posts but with features projects? Or lectures pages?
+
+**Statie 3 to the rescue!**
+" />

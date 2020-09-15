@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>4 Ways to Speedup Your Symfony Development with PackageBuilder | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 89 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>4 Ways to Speedup Your Symfony Development with PackageBuilder</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Thu">
+            
+                            Thu, Apr 5, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/04/05/4-ways-to-speedup-your-symfony-development-with-packagebuilder/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-05-4-ways-to-speedup-your-symfony-development-with-packagebuilder.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symplify 4 was released and with it also one package, that contains all the Symfony tweaks that Symplify packages use.
+<br><br>
+Throwable render? Test services without public violation? Load parameters with glob? We got you covered!</p>
+                    </div>
+                </div>
+
+                <p>Here are 4 news that were added in Symplify 4 and that you can use in your application right away.</p>
+<p>Just install it...</p>
+<pre><code class="language-bash">composer require symplify/package-builder</code></pre>
+<p>...and enjoy <a href="https://github.com/symplify/package-builder">more than one</a> of these 4 new features:</p>
+<h2 id="1-console-like-code-vvv-code-aware-renders-for-exceptions-and-errors">1. Console-Like <code>-vvv</code>-Aware Renders for Exceptions and Errors</h2>
+<p><a href="https://github.com/symplify/symplify/pull/732" class="btn btn-dark btn-sm mt-2 mb-3 pull-left">
+<em class="fab fa-github"></em>
+&nbsp;
+Check the PR #732
+</a></p>
+<p><a href="https://github.com/symplify/symplify/pull/720" class="btn btn-dark btn-sm mt-2 mb-3 ml-2">
+<em class="fab fa-github"></em>
+&nbsp;
+Check the PR #720
+</a></p>
+<p>If you use Symfony Console you are probably familiar with these errors and with <code>-vvv</code> to get full exception trace:</p>
+<img src="/assets/images/posts/2018/symplify-4-pb/error-without-and-with-vvv.gif" class="img-thumbnail">
+<p>Also works with <code>Error</code> like <code>ParseError</code>. That is super handy, useful and universal.</p>
+<p><strong>But what if you need to use it standalone error reporting. e.g before console build?</strong></p>
+<pre><code class="language-php">$containerFactory = new ContainerFactory();
+$container = $containerFactory-&gt;createFromConfig('config-not-found.yml');
+
+$application = $container-&gt;get(Application::class);
+$application-&gt;run();</code></pre>
+<p>Well, you could use <code>SymfonyStyle</code>:</p>
+<pre><code class="language-php">use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+
+try {
+    $containerFactory = new ContainerFactory();
+    $containerFactory-&gt;createFromConfig('config-with-parse-error.yml');
+
+    $application = $container-&gt;get(Application::class);
+    $application-&gt;run();
+} catch (Throwable $throwable) {
+    (new SymfonyStyle(new ArgvInput(), new ConsoleOutput()))-&gt;error($throwable);
+}</code></pre>
+<p>And that will get you rather chaotic report:</p>
+<pre><code class="language-bash"> [ERROR] Symfony\Component\Yaml\Exception\ParseException: Unable to parse at line 9 (near "@# global templates
+         variables"). in /var/www/tomasvotruba.com/vendor/symfony/yaml/Parser.php:415
+         Stack trace:
+         #0 /var/www/tomasvotruba.com/vendor/symfony/yaml/Parser.php(454): Symfony\Component\Yaml\Parser-&gt;doParse(' @#
+         global temp...', 768)
+         #1 /var/www/tomasvotruba.com/vendor/symfony/yaml/Parser.php(315): Symfony\Component\Yaml\Parser-&gt;parseBlock(8,
+         '@# global templ...', 768)
+         #2 /var/www/tomasvotruba.com/vendor/symfony/yaml/Parser.php(95): Symfony\Component\Yaml\Parser-&gt;doParse(Array,
+         768)
+         #3 /var/www/tomasvotruba.com/vendor/symfony/yaml/Parser.php(62):
+         Symfony\Component\Yaml\Parser-&gt;parse('imports:\n    - ...', 768)
+         #4 /var/www/tomasvotruba.com/vendor/symfony/dependency-injection/Loader/YamlFileLoader.php(621):
+         Symfony\Component\Yaml\Parser-&gt;parseFile('/var/www/tomasv...', 768)
+         #5
+         /var/www/tomasvotruba.com/vendor/symplify/package-builder/src/Yaml/AbstractParameterMergingYamlFileLoader.php(52
+         ): Symfony\Component\DependencyInjection\Loader\YamlFileLoader-&gt;loadFile('/var/www/tomasv...')
+         #6 /var/www/tomasvotruba.com/vendor/symfony/config/Loader/DelegatingLoader.php(40):
+         Symplify\PackageBuilder\Yaml\AbstractParameterMergingYamlFileLoader-&gt;load('/var/www/tomasv...', NULL)
+         #7 /var/www/tomasvotruba.com/vendor/symplify/statie/src/DependencyInjection/StatieKernel.php(43):
+         Symfony\Component\Config\Loader\DelegatingLoader-&gt;load('/var/www/tomasv...')
+         #8 /var/www/tomasvotruba.com/vendor/symfony/http-kernel/Kernel.php(614):
+        ...</code></pre>
+<h3 id="how-to-get-nice-error-reports-even-out-of-console-application-scope">How to Get Nice Error Reports Even out of Console Application Scope?</h3>
+<p>Do you need this to work on your CLI app? Thanks to <a href="https://github.com/ondram">Ondra Machulda</a>'s motivation <a href="https://github.com/symplify/symplify/pull/716">issues</a> I came with decoupled Symfony\Console Application logic.</p>
+<p>It's named <code>Symplify\PackageBuilder\Console\ThrowableRenderer</code> and use it like this:</p>
+<pre><code class="language-php">use Symplify\PackageBuilder\Console\ThrowableRenderer;
+
+try {
+    $containerFactory = new ContainerFactory();
+    $containerFactory-&gt;createFromConfig('config-not-found.yml');
+
+    $application = $container-&gt;get(Application::class);
+    $application-&gt;run();
+} catch (Throwable $throwable) {
+    (new ThrowableRenderer())-&gt;render($throwable);
+}</code></pre>
+<p><strong>And you'll get always nice errors for any <code>Throwable</code> :). Work anywhere right away and also respects <code>-vvv</code> option.</strong></p>
+<p><br></p>
+<h2 id="2-drop-manual-code-public-true-code-for-every-service-you-test">2. Drop Manual <code>public: true</code> for Every Service You Test</h2>
+<p><a href="https://github.com/symplify/symplify/pull/680" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fab fa-github"></em>
+&nbsp;
+Check the PR #680
+</a></p>
+<p>If you need to test a service, this is the most common way to test it using DI:</p>
+<pre><code class="language-php">final class ChangelogLinkerTest extends AbstractContainerAwareTestCase
+{
+    protected function setUp(): void
+    {
+        $this-&gt;changelogLinker = $this-&gt;container-&gt;get(ChangelogLinker::class);
+    }
+
+    // ...
+}</code></pre>
+<p>But if you call it like this, you're informed that it must be public.</p>
+<p>To make that happen, developers will take one of 2 paths. Both with high maintainability:</p>
+<h3 id="1-public-for-every-tested-class">1. Public for Every Tested Class</h3>
+<pre><code class="language-yaml">services:
+    SomeNamespace\:
+        resource: '..'
+
+    SomeNamespace\SomeClass:
+        public: true</code></pre>
+<h3 id="2-custom-tests-only-configs">2. Custom Tests-only Configs</h3>
+<pre><code class="language-yaml"># services-tests.yml
+services:
+    SomeNamespace\SomeClass:
+        public: true</code></pre>
+<p>Both these configs rely on your manual updates. That!s not a way to go - programming should be easy, fun and without any triggers in our heads.</p>
+<h3 id="how-to-overcome-this">How to Overcome This?</h3>
+<p>Just add <code>Symplify\PackageBuilder\DependencyInjection\CompilerPass\PublicForTestsCompilerPass</code>:</p>
+<pre><code class="language-php">final class AppKernel extends Kernel
+{
+    // ...
+
+    protected function build(ContainerBuilder $containerBuilder): void
+    {
+        $containerBuilder-&gt;addCompilerPass(new PublicForTestsCompilerPass());
+    }
+}</code></pre>
+<p>It detects PHPUnit run and adds public to each service, so you don't have to add it for every new service your set.</p>
+<p>Setup &amp; forget.</p>
+<p><br></p>
+<h2 id="3-autowire-singly-implemented-interfaces">3. Autowire Singly-Implemented Interfaces</h2>
+<p><a href="https://github.com/symplify/symplify/pull/645" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fab fa-github"></em>
+&nbsp;
+Check the PR #645
+</a></p>
+<p>Autowiring works great in combination with PSR-4 autoloading since <a href="https://github.com/symfony/symfony/pull/25282">Symfony 3.4</a>. But what about <strong>3-rd party services that have interfaces</strong>?</p>
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    _defaults:
+        autowire: true
+
+    Symfony\Component\Console\Input\ArgvInput: ~
+    Symfony\Component\Console\Output\ConsoleOutput: ~</code></pre>
+<p>If you use <code>Symfony\Component\Console\Input\InputInterace</code>, you'll get error of missing implementation.</p>
+<p>To solve it you need to use an alias for every class that implements an interface:</p>
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    _defaults:
+        autowire: true
+
+    Symfony\Component\Console\Input\ArgvInput: ~
+    Symfony\Component\Console\Input\InputInterace:
+        alias: Symfony\Component\Console\Input\ArgvInput
+
+    Symfony\Component\Console\Output\ConsoleOutput: ~
+    Symfony\Component\Console\Output\OutputInterace:
+        alias: Symfony\Component\Console\Output\ConsoleOutput</code></pre>
+<p>This way, you're actually being punished for using clean code and separation of interfaces in your code, because using <code>Symfony\Component\Console\Input\ArgvInput</code> would be easier.
+But is it really necessary to break SOLID principles just to comply with Symfony behaviors? I don't think that framework should enforce bad design to your application.</p>
+<h3 id="how-to-fix-this">How to fix this?</h3>
+<p>I got inspired by <a href="https://github.com/symfony/symfony/pull/25282">Register singly-implemented interfaces when doing PSR-4 discovery</a> pull-request in Symfony and by Nette default behavior.</p>
+<pre><code class="language-php">namespace App;
+
+use Symfony\Component\HttpKernel\Kernel;
+use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireSinglyImplementedCompilerPass;
+
+final class AppKernel extends Kernel
+{
+    // ...
+    protected function build(ContainerBuilder $containerBuilder): void
+    {
+        $containerBuilder-&gt;addCompilerPass(new AutowireSinglyImplementedCompilerPass());
+    }
+}</code></pre>
+<p>And then clean your configs the same way PSR-4 autodiscovery works:</p>
+<pre><code class="language-diff"> # app/config/services.yml
+ services:
+     _defaults:
+         autowire: true
+
+     Symfony\Component\Console\Input\ArgvInput: ~
+-    Symfony\Component\Console\Input\InputInterace:
+-        alias: Symfony\Component\Console\Input\ArgvInput
+
+     Symfony\Component\Console\Output\ConsoleOutput: ~
+-    Symfony\Component\Console\Output\OutputInterace:
+-        alias: Symfony\Component\Console\Output\ConsoleOutput</code></pre>
+<p><br></p>
+<h2 id="4-how-to-decouple-parameters-to-multiple-files-in-safe-way">4. How to Decouple Parameters to multiple files in Safe Way?</h2>
+<p><a href="https://github.com/symplify/symplify/pull/745" class="btn btn-dark btn-sm mt-2 mb-3">
+<em class="fab fa-github"></em>
+&nbsp;
+Check the PR #745
+</a></p>
+<p>Do you prefer to decouple long parameter list to multiple files and them with <a href="https://symfony.com/blog/new-in-symfony-3-3-import-config-files-with-glob-patterns">Glob</a>?</p>
+<pre><code class="language-yaml"># app/config/config.yml
+imports:
+    - { resource: 'framework/*.yml' }</code></pre>
+<p>In <code>/framework</code> directory there 2 files:</p>
+<pre><code class="language-yaml"># app/config/framework/symfony.yml
+parameters:
+    framework:
+        symfony:
+            controller: '&lt;?php "some Symfony code"'</code></pre>
+<p>and</p>
+<pre><code class="language-yaml"># app/config/framework/laravel.yml
+parameters:
+    framework:
+        laravel:
+            controller: '&lt;?php "some Laravel code"'</code></pre>
+<p>How many items will <code>framework</code> parameter have? 2? 1? 0?</p>
+<p><strong>One is correct</strong>. And which one? <code>laravel</code> or <code>symfony</code>? Well, according the <code>YamlFileLoader</code>, that <a href="https://github.com/symfony/symfony/blob/f77c1d0d0996cc4723bff0411c8b75fe6a575bc8/src/Symfony/Component/DependencyInjection/Loader/YamlFileLoader.php#L135"><em>last wins</em> approach</a> is used. So probably <code>symfony</code>... but it doesn't matter, because you need them all.</p>
+<h3 id="how-to-prefer-merging-of-parameters">How to Prefer Merging of Parameters?</h3>
+<p>The official statement is to <a href="https://github.com/symfony/symfony/issues/26713">create <code>Extension</code>, <code>Configuration</code>, <code>Bundle</code> and merge class</a>, which and then add a custom implementation of <a href="https://symfony.com/blog/new-in-symfony-3-4-local-service-binding">parameter binding</a> and other Symfony parameters related features like composing of parameters, env variables and etc. I asked for this option to be allowed with no BC break in <a href="https://github.com/symfony/symfony/issues/26713">the issue</a>, but it seems it's not needed enough.</p>
+<p>Symplify actually followed the suggested approach and <strong>it was a lot of duplicated code from Symfony\DependencyInjection that barely worked</strong>.</p>
+<p>To save many duplicated classes and take advantage of all Symfony parameter features you could overload <code>YamlFileLoader</code>, where parameters are merged together:</p>
+<pre><code class="language-yaml"># app/config/framework/symfony.yml
+parameters:
+    framework:
+        symfony:
+            controller: '&lt;?php "some Symfony code"'
+        laravel:
+            controller: '&lt;?php "some Laravel code"'</code></pre>
+<p>Do you need this? Just use <code>Symplify\PackageBuilder\Yaml\AbstractParameterMergingYamlFileLoader</code> in your <code>Kernel</code> class:</p>
+<pre><code class="language-php">use Symfony\Component\Config\Loader\DelegatingLoader;
+use Symfony\Component\Config\Loader\LoaderResolver;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\GlobFileLoader;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Kernel;
+
+final class AppKernel extends Kernel
+{
+    // ...
+
+    /**
+     * @param ContainerInterface|ContainerBuilder $container
+     */
+    protected function getContainerLoader(ContainerInterface $container): DelegatingLoader
+    {
+        $kernelFileLocator = new FileLocator($this);
+
+        $loaderResolver = new LoaderResolver([
+            new GlobFileLoader($container, $kernelFileLocator),
+            new class($container, $kernelFileLocator) extends AbstractParameterMergingYamlFileLoader {
+            },
+        ]);
+
+        return new DelegatingLoader($loaderResolver);
+    }
+}</code></pre>
+<p>The class is <code>abstract</code>, so you can modify it <strong>in any way you need</strong>.</p>
+<p><br></p>
+<p>Happy package building!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-05-4-ways-to-speedup-your-symfony-development-with-packagebuilder.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="4 Ways to Speedup Your Symfony Development with PackageBuilder" />
+    <meta property="og:description" content="Symplify 4 was released and with it also one package, that contains all the Symfony tweaks that Symplify packages use.
+
+Throwable render? Test services without public violation? Load parameters with glob? We got you covered!
+" />
+    <meta property="og:url" content="/blog/2018/04/05/4-ways-to-speedup-your-symfony-development-with-packagebuilder" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="4 Ways to Speedup Your Symfony Development with PackageBuilder" />
+    <meta name="twitter:description" content="Symplify 4 was released and with it also one package, that contains all the Symfony tweaks that Symplify packages use.
+
+Throwable render? Test services without public violation? Load parameters with glob? We got you covered!
+" />

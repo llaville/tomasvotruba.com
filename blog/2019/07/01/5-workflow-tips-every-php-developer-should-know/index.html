@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>5 Workflow Tips every PHP Developer Should Know | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 216 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>5 Workflow Tips every PHP Developer Should Know</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-07-Mon">
+            
+                            Mon, Jul 1, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/07/01/5-workflow-tips-every-php-developer-should-know/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-01-5-workflow-tips-every-php-developer-should-know.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I was surprised, how much of your attention got <a href="/blog/2019/02/25/5-tips-to-effective-work-with-github-repository/">5 Tips to Effective Work with Github Repository</a> post.
+<br><br>
+So <a href="https://github.com/TomasVotruba/tomasvotruba.com/issues/226">I started to collect tips</a> I use on training and mentoring that I don't even notice, but others find fascinating. Here is 5 of them.</p>
+                    </div>
+                </div>
+
+                <h2 id="1-find-any-file-in-github-repository-within-a-second">1. Find any file in Github Repository within a Second</h2>
+<p>Github repository is the best documentation, if <a href="/blog/2019/06/17/how-to-upgrade-meetup-com-api-to-oauth2-with-guzzle/">the code is written mindfully</a>.</p>
+<p>E.g. you use Rector and you're curious about its guts. The main bin command is &quot;vendor/bin/rector process&quot;, so you're interested in <code>ProcessCommand</code>. What's inside?</p>
+<p>You go to the Github repository:</p>
+<ul>
+<li>look for &quot;process command&quot; or &quot;ProcessCommand&quot;</li>
+<li>find 150 irrelevant results</li>
+<li>...and close it 😠</li>
+</ul>
+<p>Great documentation is useless without the even better search.</p>
+<p><br></p>
+<p><strong>Good news! Github is closer to PHPStorm than you think:</strong></p>
+<img src="/assets/images/posts/2019/php_workflow_tips/hit_t.gif" class="img-thumbnail" style="max-width:35em">
+<p><strong>Just press <span class="btn btn-light btn-outline-dark">t</span> on your keyboard and &quot;TypeYourClass&quot;.</strong></p>
+<div class="fa-2x mt-3">👍</div>
+<h2 id="2-get-rid-of-phing">2. Get rid of Phing</h2>
+<p>All Phing scripts I've seen look like someone programmed their own Arduino to open glass with water.
+So I migrate them to composer scripts, so people can actually use them without having an MIT degree.</p>
+<p>Martin already wrote about it in <a href="https://blog.martinhujer.cz/have-you-tried-composer-scripts">Have you tried Composer Scripts? You may not need Phing</a></p>
+<div class="fa-2x mt-3">👍</div>
+<h2 id="3-enable-colors-in-composer-scripts">3. Enable Colors in Composer Scripts</h2>
+<p>Let's say you already use composer scripts:</p>
+<pre><code class="language-json">{
+    "scripts": {
+        "fix-cs": "vendor/bin/ecs check bin src tests --fix"
+    }
+}</code></pre>
+<p>Great job! Now all you need to do is run it:</p>
+<pre><code class="language-bash">composer fix-cs</code></pre>
+<p>The scripts are running... Now imagine I'll come to you and slap you in the face for failing build <code>master</code> branch (that's just hypothetical case, we all know <code>master</code> can never fail, right?).</p>
+<p>Your head turns around and you grab a part of the script output. Now...</p>
+<p><strong>&quot;Was it <span class="text-danger">red</span> or <span class="text-success">green</span>?&quot;</strong></p>
+<p>The output is hard to read quickly without <a href="https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452654123">color patterns</a>.</p>
+<p>How to fix this? Just add <code>--ansi</code>:</p>
+<pre><code class="language-diff"> {
+     "scripts": {
+-        "fix-cs": "vendor/bin/ecs check bin src tests --fix"
++        "fix-cs": "vendor/bin/ecs check bin src tests --fix --ansi"
+    }
+}</code></pre>
+<div class="fa-2x mt-3 mb-4">👍</div>
+<p>Thanks for this tip to <a href="https://janmikes.cz">Jan Mikes</a> ❤️️.</p>
+<p><br></p>
+<p><em>For more composer tips, check <a href="https://blog.martinhujer.cz/17-tips-for-using-composer-efficiently">24 Tips for Using Composer Efficiently</a>.</em></p>
+<h2 id="4-get-rid-of-phpmd">4. Get rid of PHPMD</h2>
+<p>You might know PHPMD as <em>PHP Mess Detector</em>. But not many people know, the package is dead:</p>
+<img src="/assets/images/posts/2019/php_workflow_tips/barely.png" class="img-thumbnail">
+<p>Dead packages are ok if there is no alternative that is continuously evolving. If there is, by staying at the same place, <a href="/blog/2019/03/11/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-3/">you're shooting your business and development speed to the leg</a>.</p>
+<p>That's this case. PHPMD features are 99 % compatible with PHP Code Sniffer and PHP CS Fixer rules:</p>
+<pre><code class="language-diff">-PHPMD rule
++PHP_CodeSniffer alternative</code></pre>
+<p>E.g.:</p>
+<pre><code class="language-diff">-rulesets/codesize.xml/CyclomaticComplexity
++Generic.Metrics.CyclomaticComplexity
+
+-rulesets/controversial.xml/CamelCaseMethodName
++PSR1.Methods.CamelCapsMethodName
+
+-rulesets/design.xml/GotoStatement
++Generic.PHP.DiscourageGoto</code></pre>
+<p>I've migrated over 5 of these recently and you can see its a relief in developers eyes - they either have less code to maintain or (more often) they've finally got rid of that &quot;black hole&quot; code that no-one knew what it does.</p>
+<p><strong>How to migrate?</strong></p>
+<p>Just look at <a href="https://github.com/shopsys/shopsys/search?p=2&amp;q=phpmd&amp;type=Commits">PHPMD migration to PHP_CodeSniffer in Shopsys repository</a>.</p>
+<div class="fa-2x mt-3">👍</div>
+<h2 id="5-use-elementary-maths-to-become-master">5. Use Elementary Maths to become Master</h2>
+<p>Tips 2 and 4 have actually similar principals, <a href="/blog/2019/04/15/pattern-refactoring/">a pattern</a>. If you learn to think in patterns, <strong>you can merge 10 specific rules to 1 pattern</strong> and <a href="/blog/2018/09/13/your-brain-is-your-garden/">use that extra brain space for something else</a>.</p>
+<h3 id="least-common-denominator">Least Common Denominator</h3>
+<p>I've learned this principle in 5th grade, it has fascinated me ever since. It fascinates me even more, how they are used to create effective code - easy to write, read, maintain and doing what it should do.</p>
+<p><strong>What is the least common denominator?</strong></p>
+<p>These 2 pictures explain it:</p>
+<div class="row">
+    <div class="col-12 col-md-6">
+        <img src="/assets/images/posts/2019/php_workflow_tips/least.gif" class="img-thumbnail"></div>
+    <div class="col-12 col-md-6">
+        <img src="/assets/images/posts/2019/php_workflow_tips/not_so_least.gif" class="img-thumbnail"></div>
+</div>
+<p>Now, both pictures explain it. Which one do you prefer?</p>
+<p><em>Disclosure</em></p>
+<ul>
+<li>the left image is actually self-explanatory - it's used <em>least common denominator</em> to explain <em>Least Common Denominator</em></li>
+<li>the right image also explain it, but it uses much more extra data, that you don't need (e.g. root) and only slows down your neuron pipelines</li>
+</ul>
+<p><strong>Use the left approach to explain issues and problems. They're easier to understand, focused on the problem you really have and will get to the effective solution faster.</strong></p>
+<p>The right path is how the legacy code is manufactured in companies every day.</p>
+<h3 id="what-else-is-there">What Else is There?</h3>
+<ul>
+<li>
+<p><em>Occam's razor</em> - People that <a href="https://simple.wikipedia.org/wiki/Occam%27s_razor">use Wikipedia</a> or studied university renamed <em>least common denominator</em> to Occam's razor and added more academic words. The logic is the same, but you might prefer it.</p>
+</li>
+<li>
+<p><em>SOLID</em> - Again the same family, just different letters and vocabulary.</p>
+</li>
+</ul>
+<p>That's the beauty example of pattern thinking. Instead of remembering 3 different terms, you pick one and use it.</p>
+<div class="fa-2x mt-3">👍</div>
+<p><br></p>
+<p><strong>Do you want to go <em>balls deep</em> and learn more about this?</strong> Book it:</p>
+<ul>
+<li><a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master-ebook/dp/B003GCTQAE">The Pragmatic Programmer: From Journeyman to Master</a></li>
+<li><a href="https://www.amazon.com/Dont-Make-Think-Revisited-Usability/dp/0321965515">Don't Make Me Think, Revisited</a> (3rd edition from 2014)</li>
+</ul>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/06/24/do-you-use-php-codesniffer-and-php-cs-fixer-phpstorm-plugin-you-are-slow-and-expensive" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Do you use PHP_CodeSniffer and PHP CS Fixer PHPStorm Plugin? You are Slow and Expensive
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-01-5-workflow-tips-every-php-developer-should-know.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="5 Workflow Tips every PHP Developer Should Know" />
+    <meta property="og:description" content="I was surprised, how much of your attention got [5 Tips to Effective Work with Github Repository](/blog/2019/02/25/5-tips-to-effective-work-with-github-repository/) post.
+
+So [I started to collect tips](https://github.com/TomasVotruba/tomasvotruba.com/issues/226) I use on training and mentoring that I don&#039;t even notice, but others find fascinating. Here is 5 of them.
+" />
+    <meta property="og:url" content="/blog/2019/07/01/5-workflow-tips-every-php-developer-should-know" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="5 Workflow Tips every PHP Developer Should Know" />
+    <meta name="twitter:description" content="I was surprised, how much of your attention got [5 Tips to Effective Work with Github Repository](/blog/2019/02/25/5-tips-to-effective-work-with-github-repository/) post.
+
+So [I started to collect tips](https://github.com/TomasVotruba/tomasvotruba.com/issues/226) I use on training and mentoring that I don&#039;t even notice, but others find fascinating. Here is 5 of them.
+" />

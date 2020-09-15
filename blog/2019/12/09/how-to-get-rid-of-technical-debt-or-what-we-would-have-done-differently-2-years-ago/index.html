@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Get Rid of Technical Debt or What We Would Have Done Differently 2 Years ago | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 229 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Get Rid of Technical Debt or What We Would Have Done Differently 2 Years ago</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-12-Mon">
+            <strike>
+                            Mon, Dec 9, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/12/09/how-to-get-rid-of-technical-debt-or-what-we-would-have-done-differently-2-years-ago/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-09-how-to-get-rid-of-technical-debt-or-what-we-would-have-done-differently-2-years-ago.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector/ECS YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>We talked about cleaning legacy code with Rector 2 months ago on <a href="https://www.meetup.com/friends-of-php-prague/events/265615371">40th meetup of PHP friends in Prague</a>.
+<br>
+Who is <em>we</em>? Me and CTO of the <a href="https://spaceflow.io/en">company I worked for</a>, a great leader and technical expert who taught me a lot, <a href="https://www.linkedin.com/in/milanmimra">Milan Mimra</a>.
+<br>
+<br>
+The talk was not full of shallow tips, nor <a href="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/">about framework migration</a>. Instead, <strong>we talked about small decisions that were made 2 years. Decisions, which took 3 months to get rid of</strong>.</p>
+                    </div>
+                </div>
+
+                <p><strong>Do you speak Czech?</strong> Go check <a href="https://docs.google.com/presentation/d/1QSpTVqmtXpE8RvB73cYDBrDYpuChjp_Uz3sLJhLnLXo/edit?usp=sharing">64 slides</a> and <a href="https://www.facebook.com/pehapkari/videos/vl.404478763568491/399224180756304/?type=1">watch the talk video recording on Facebook</a> (it is 60 minutes long and the picture is broken from ~27th minute, but the audio is good).</p>
+<p><a href="https://www.facebook.com/pehapkari/videos/vl.404478763568491/399224180756304/?type=1"></p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/main.png" class="img-thumbnail col-12 col-md-8">
+<p></a></p>
+<p><br></p>
+<p><strong>For all the rest of you who speak English better or don't want to copy-paste code instead of watching the video, I'm writing this post.</strong> So you can learn from our pain and make your brand new mistakes :)</p>
+<h2 id="the-size-del-does-del-doesn-t-matter">The Size <del>Does</del> Doesn't Matter</h2>
+<p>This talk was about my work as <em>cleaning lady</em> in a project, that <strong>wanted to improve their PHP codebase across the whole application</strong>. Any PHP projects I recently consulted would benefit from these changes, so keep reading even if you already run on the latest version of your favorite framework.</p>
+<p>Instant upgrades effectivity doesn't depend on project size, but people still want size numbers, so there you go:</p>
+<ul>
+<li>Symfony 4.* backend for mobile application</li>
+<li>253 endpoints = routes</li>
+<li>105 000 lines of code (bigger than <a href="https://medium.com/@javiereguiluz/30-of-laravel-code-is-symfony-a49dcf30e809">Symfony with ~90 000 lines</a>)</li>
+</ul>
+<p><br></p>
+<p>From all the work we've done, <strong>we've picked 10 most important changes that brought code quality to another level</strong>.</p>
+<h2 id="1-advance-your-coding-standard">1. Advance Your Coding Standard</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/01.png" class="img-thumbnail col-12 col-md-8">
+<p>When people say &quot;we use coding standard&quot;, it usually means &quot;we use only PSR-2 but nothing more&quot;.</p>
+<p>That's like saying &quot;we use Symfony&quot; when you're using only controllers.</p>
+<h3 id="why-you-should-use-it">Why You Should use It?</h3>
+<ul>
+<li>the best code improvements in exchange for massively improved code - for 10 minutes, life-time code check</li>
+<li>it's very easy to start using it if you don't use it yet</li>
+<li>further refactoring with Rector or analysis with PHPStorm or PHPStan is more robust</li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/02.png" class="img-thumbnail col-12 col-md-8">
+<p>It's better to start slow, so the first things we did was:</p>
+<ul>
+<li>moving from string <code>"SomeClass"</code> to <code>SomeClass::class</code></li>
+<li>coding standard enforced line-ending - not just sniff, but a fixer</li>
+<li><a href="/blog/2019/01/24/how-to-kill-parents/">finalized (almost) everything</a></li>
+<li>accidental fatal error check of an empty array</li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/04.png" class="img-thumbnail col-12 col-md-8">
+<h3 id="how-to-apply">How to Apply?</h3>
+<p>Just run <a href="https://github.com/symplify/easy-coding-standard">ECS</a> with following set:</p>
+<pre><code class="language-php">&lt;?php
+
+// ecs.php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\CodingStandard\Fixer\LineLength\LineLengthFixer;
+use PhpCsFixer\Fixer\ClassNotation\FinalClassFixer;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    // keep line-length max. 120 chars long
+    $services-&gt;set(LineLengthFixer::class)
+        -&gt;call('configure', [[
+            'lineLength' =&gt; 120
+        ]]);
+
+    // every non-Entity non-abstract class must be final - you have to skip those that are used + have children, like this ↓
+    $services-&gt;set(FinalClassFixer::class);
+};</code></pre>
+<p>And the result?</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/03.png" class="img-thumbnail col-12 col-md-8">
+<h2 id="2-single-class-single-place">2. Single Class = Single Place</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/05.png" class="img-thumbnail col-12 col-md-8">
+<p>Have you heard about PSR-4? Well, so did many people before you, but it's very to forget it thanks to:</p>
+<ul>
+<li>PHPUnit magic autoload - you can place your tests anywhere, PHPUnit will find them</li>
+<li><a href="/blog/2020/06/08/drop-robot-loader-and-let-composer-deal-with-autoloading/">Nette\RobotLoader</a> - load anything from anywhere, for free</li>
+<li>composer &quot;classmap&quot; - just load the directory, who cares</li>
+<li>DDD - Domain Driven Design - apparently, one of the most favorite principles is to put all files in one directory, templates, configs, services, objects... just put it there</li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/06.png" class="img-thumbnail col-12 col-md-8">
+<p>This all helps a lot to messy applications. As basic as this rule seems, I must sadly say that <strong>lack of PSR-4 is one of the biggest problems of legacy applications</strong>.</p>
+<h3 id="forget-service-autodiscovery-use-ze-handz">Forget Service Autodiscovery, Use Ze Handz!</h3>
+<p>To add more salt into the wound, now imagine <strong>you want to use some sort of services autoregistration</strong> (and you should, unless you want to kill your project slowly). That means you tell your dependency injection container &quot;load these services from this directory&quot;.</p>
+<p>One of such <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">implementaions is PSR-4 autodiscovery in Symfony</a>:</p>
+<p><a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/"></p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/08.png" class="img-thumbnail col-12 col-md-8">
+<p></a></p>
+<p>Such a simple yet powerful idea... which all the Symfony applications I've seen so far struggle. There Symfony 4 and 5 projects, where programmers still have to write each service manually.</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/07.png" class="img-thumbnail col-12 col-md-8">
+<p>I wonder, isn't there something better to do? Like <strong>writing unique PHP code</strong> that cannot be automated?</p>
+<p>So that's what we did:</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/09.png" class="img-thumbnail col-12 col-md-8">
+<h3 id="how-to-apply">How to Apply?</h3>
+<p>This one requires lof ot manual configuration tweaking of <a href="https://github.com/rectorphp/rector">Rector</a> rules, but you can run basic migration with following set:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Autodiscovery\Rector\FileSystem\MoveServicesBySuffixToDirectoryRector;
+use Rector\PSR4\Rector\Namespace_\NormalizeNamespaceByPSR4ComposerAutoloadRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(MoveServicesBySuffixToDirectoryRector::class);
+
+    // configure `composer.json` to desired way
+    $services-&gt;set(NormalizeNamespaceByPSR4ComposerAutoloadRector::class);
+};</code></pre>
+<h2 id="3-make-your-ci-fast-or-die-trying">3. Make Your CI Fast or Die Trying</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/10.png" class="img-thumbnail col-12 col-md-8">
+<p>This is rather a general tip than a specific migration.</p>
+<p><strong>In the beginning we had</strong>:</p>
+<ul>
+<li>slow database test</li>
+<li>Doctrine fixtures that were added on every integration test</li>
+</ul>
+<p>Not only CI but also local testing was slow. That leads to <strong>frustration</strong> due to <strong>loooooooooong feedback loop</strong>. In reality, it means check test = having a coffee or go smoking. And you don't want to hurt your team intentionally like that, do you?</p>
+<p><br></p>
+<p>So after a lot of work <strong>we had super fast CI that</strong>:</p>
+<ul>
+<li>loaded database just once</li>
+<li>reference fixtures via IDs in constants instead of in-Database references</li>
+<li>checked coding standards in standalone job</li>
+<li>checked static analysis in standalone job</li>
+<li>checked Rector in standalone job</li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/11.png" class="img-thumbnail col-12 col-md-8">
+<h2 id="4-remove-what-you-don-t-use">4. Remove What You Don't Use</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/12.png" class="img-thumbnail col-12 col-md-8">
+<p>I see you now thinking &quot;we don't have any dead code, or PHPStorm would tell us&quot;. No, it wouldn't, at least no in level the static analysis can.</p>
+<p>How do we know? Well, we were you in the start... &quot;no, we don't have any dead code&quot;:</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/13.png" class="img-thumbnail col-12 col-md-8">
+<p>The moment you realize:</p>
+<ul>
+<li>the code is broken</li>
+<li>you have to fix it</li>
+<li>you have to maintain it</li>
+<li>oh, it's used in tests</li>
+<li>good</li>
+<li>wait...</li>
+<li><strong>it's used only in the test but nowhere else!</strong></li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/14.png" class="img-thumbnail col-12 col-md-8">
+<p>God, don't do this manually! Automate ↓</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Core\Configuration\Option;
+use Rector\DeadCode\Rector\Class_\RemoveUnusedDoctrineEntityMethodAndPropertyRector;
+use Rector\Set\ValueObject\SetList;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set(Option::SETS, [
+        SetList::DEAD_CODE,
+    ]);
+
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(RemoveUnusedDoctrineEntityMethodAndPropertyRector::class);
+    // + some extra private rules :)
+};</code></pre>
+<p><strong>Soon, you'll be 10-20 % slimmer and you'll fit into your favorite bathing suite :)</strong></p>
+<p>Also, you'll avoid skipping code-reviews:</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/15.png" class="img-thumbnail col-12 col-md-8">
+<h2 id="5-make-your-ground-base-del-rock-del-diamond-solid">5. Make Your Ground Base <del>Rock</del> Diamond SOLID</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/16.png" class="img-thumbnail col-12 col-md-8">
+<p>Have you ever seen code like this?</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/17.png" class="img-thumbnail col-12 col-md-8">
+<p>I'd never expect <code>string</code> turn into <code>null</code>, but it happened anyway. <strong>Silently</strong>. And not just from this function.</p>
+<p><strong>We wanted this code to throw an exception and tell us what's wrong</strong>. Right in the place where it happened, not just &quot;string expect, null given&quot; later.</p>
+<p>There is a <a href="https://github.com/thecodingmachine/safe">Safe package</a> that can partially protect you, but it's rather general and with a generic exception.</p>
+<h3 id="nette-solid">Nette SOLID</h3>
+<p>But there is even better one - <a href="https://github.com/nette/utils">Nette\Utils</a>:</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/18.png" class="img-thumbnail col-12 col-md-8">
+<p>How to get it into your code? Easy:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Core\Configuration\Option;
+use Rector\Set\ValueObject\SetList;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator) : void {
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set(Option::SETS, [
+        SetList::NETTE_UTILS_CODE_QUALITY,
+    ]);
+};</code></pre>
+<h2 id="6-config-spam">6. Config SPAM</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/19.png" class="img-thumbnail col-12 col-md-8">
+<p>We already wrote that config suffers from manual services registration spam. But there is more...</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/20.png" class="img-thumbnail col-12 col-md-8">
+<img src="/assets/images/posts/2019/spaceflow_10_points/21.png" class="img-thumbnail col-12 col-md-8">
+<p>This is <strong><a href="/blog/2018/11/12/will-autowired-arrays-finally-deprecate-tags-in-symfony-and-nette/">famous Symfony tag spam</a></strong>.</p>
+<ul>
+<li>not needed</li>
+<li>overly promoted in documentation</li>
+<li>thus at the end used by everybody</li>
+<li>making application stupidly complex and hard to maintain and extend in the end</li>
+</ul>
+<p>Another typical issues is <strong><a href="/blog/2018/11/05/do-you-autowire-services-in-symfony-you-can-autowire-parameters-too/">manual parameter spam</a></strong>.</p>
+<h3 id="add-spam-filter">Add Spam Filter</h3>
+<p>We don't like spam, do you? So we dropped all this crap and used 2 compiler passes to make it KISS:</p>
+<ul>
+<li><a href="https://github.com/symplify/package-builder#autowire-array-parameters"><code>AutowireArrayParameterCompilerPass</code></a></li>
+<li><a href="https://github.com/symplify/package-builder#autobind-parameters"><code>AutoBindParametersCompilerPass</code></a></li>
+</ul>
+<p>↓</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/22.png" class="img-thumbnail col-12 col-md-8">
+<h2 id="7-remove-all-the-copy-paste-legacy">7. Remove All the Copy-Paste Legacy</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/23.png" class="img-thumbnail col-12 col-md-8">
+<p>We all know how the story goes:</p>
+<ul>
+<li>&quot;They did it&quot;</li>
+<li>&quot;I just maintain it&quot;</li>
+<li>&quot;It's faster to copy-paste it...&quot;</li>
+<li><strong>&quot;I don't have time to fix it now...&quot;</strong></li>
+<li>3 years later...</li>
+<li>&quot;Oh my, what's this? How do we get out of it? <strong>Rewrite?</strong>&quot;</li>
+</ul>
+<p>In our case, it was json, written as a string:</p>
+<img src="/assets/images/posts/2019/spaceflow_10_points/24.png" class="img-thumbnail col-12 col-md-8">
+<p>It was hard to maintain, even read or change a value in that mess. We had many bugs just because of invalid quote concat, missed closing quote or new-line issues. <strong>We needed to use a normal array like most people do</strong>, but it was spread in over 70 use cases, some of them nesting array into 5 levels.</p>
+<p>What now?</p>
+<p>Easy, we made a Rector rule for that:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\CodingStyle\Rector\String_\ManualJsonStringToJsonEncodeArrayRector;use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(ManualJsonStringToJsonEncodeArrayRector::class);
+};</code></pre>
+<img src="/assets/images/posts/2019/spaceflow_10_points/25.png" class="img-thumbnail col-12 col-md-8">
+<h2 id="8-know-all-your-properties">8. Know ALL Your Properties</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/26.png" class="img-thumbnail col-12 col-md-8">
+<p>I already wrote about this here: <a href="/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/">How we Completed Thousands of Missing @var Annotations in a Day</a></p>
+<p><strong>This is super important to make instant refactoring reliable!</strong></p>
+<h2 id="9-enter-anywhere">9. Enter Anywhere?</h2>
+<img src="/assets/images/posts/2019/spaceflow_10_points/27.png" class="img-thumbnail col-12 col-md-8">
+<p>I already wrote about it... twice:</p>
+<ul>
+<li><a href="/blog/2019/05/16/don-t-ever-use-listeners/">Don't Ever use Symfony Listeners</a></li>
+<li><a href="/blog/2019/07/22/how-to-convert-listeners-to-subscribers-and-reduce-your-configs/">How to Convert Listeners to Subscribers and Reduce your Configs</a></li>
+</ul>
+<img src="/assets/images/posts/2019/spaceflow_10_points/28.png" class="img-thumbnail col-12 col-md-8 mt-5">
+<p><strong>Clean, simple, PHP without config magic!</strong></p>
+<h2 id="10-switch-id-to-uuid">10. Switch ID to UUID?</h2>
+<p>This was the biggest problem in the whole project. First, it used classic <code>int</code> ids. Then uuid was about to be used (for whatever good reasons), but for the lack of refactoring time only, new entities used it. So part of the old approach, part of the new approach. Sometimes one class uses one of those and another of those.</p>
+<p><strong>Total mess, maintanece of 2 huge layers and negative effective on input/output layer</strong>, because it had to be consistent. There cannot be a situation where user sees urls like:</p>
+<pre><code class="language-bash">/building/edit/1
+/building/edit/b9a33908-56c8-431f-a159-e4bec344e56c</code></pre>
+<p>And not only the user but also external API, mobile applications, invoice systems, etc.</p>
+<p>This was a real challenge for the whole team - it included database, Doctrine refactoring rules, external service unification refactoring and also changing PHP types all over the application.</p>
+<p>From this <a href="https://github.com/rectorphp/rector/tree/master/config/set/doctrine"><code>id-to-uuid</code> set was born</a>. Use at own risk, but it might be worth it, <strong>since it can save you months</strong> of work while your team can keep delivering features.</p>
+<p><br></p>
+<h2 id="benefits">Benefits?</h2>
+<p>And that's all folks, all we made happen in 3 months work of... 1 person.
+We wanted to show you, that all big changes don't have to be &quot;whole-team-2-years-refactoring-super-expensive-no-features&quot;.</p>
+<p>It can be <strong>smooth, step by step, closed incremental iterations, done by one full-time person</strong>.</p>
+<p>Now the code is:</p>
+<ul>
+<li>200 % more readable</li>
+<li>instead of 3 locations, the class now only has 1 location</li>
+<li>the database has 1 way to use ids instead of 2</li>
+<li>configs are 95 % smaller</li>
+<li>is 40 % safer thanks to exceptions of <code>null</code>/<code>false</code></li>
+<li>most of the time the developer doesn't visit configs at all and can focus on PHP code of the feature instead</li>
+</ul>
+<p>And moreover:</p>
+<ul>
+<li><strong>it has 80 % fewer anti-patterns, so any new developer will produce high-quality code by default, just by reading the already written code</strong></li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    This is Inspiration and Proof, it Can Be Done. Now Yours is Choice to Make:
+    <br>
+    What Are You Going to Clean Tomorrow in Your Code Base?
+</blockquote>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/12/02/how-to-box-symfony-app-to-phar-without-killing-yourself" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Box Symfony App to PHAR without Killing Yourself
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-09-how-to-get-rid-of-technical-debt-or-what-we-would-have-done-differently-2-years-ago.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Get Rid of Technical Debt or What We Would Have Done Differently 2 Years ago" />
+    <meta property="og:description" content="We talked about cleaning legacy code with Rector 2 months ago on [40th meetup of PHP friends in Prague](https://www.meetup.com/friends-of-php-prague/events/265615371).
+
+Who is *we*? Me and CTO of the [company I worked for](https://spaceflow.io/en), a great leader and technical expert who taught me a lot, [Milan Mimra](https://www.linkedin.com/in/milanmimra).
+
+
+The talk was not full of shallow tips, nor [about framework migration](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/). Instead, **we talked about small decisions that were made 2 years. Decisions, which took 3 months to get rid of**.
+" />
+    <meta property="og:url" content="/blog/2019/12/09/how-to-get-rid-of-technical-debt-or-what-we-would-have-done-differently-2-years-ago" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Get Rid of Technical Debt or What We Would Have Done Differently 2 Years ago" />
+    <meta name="twitter:description" content="We talked about cleaning legacy code with Rector 2 months ago on [40th meetup of PHP friends in Prague](https://www.meetup.com/friends-of-php-prague/events/265615371).
+
+Who is *we*? Me and CTO of the [company I worked for](https://spaceflow.io/en), a great leader and technical expert who taught me a lot, [Milan Mimra](https://www.linkedin.com/in/milanmimra).
+
+
+The talk was not full of shallow tips, nor [about framework migration](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/). Instead, **we talked about small decisions that were made 2 years. Decisions, which took 3 months to get rid of**.
+" />

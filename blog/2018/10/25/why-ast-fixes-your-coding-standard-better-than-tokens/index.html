@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why AST Fixes your Coding Standard Better than Tokens | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 153 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why AST Fixes your Coding Standard Better than Tokens</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-10-Thu">
+            
+                            Thu, Oct 25, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/10/25/why-ast-fixes-your-coding-standard-better-than-tokens/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-25-why-ast-fixes-your-coding-standard-better-than-tokens.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In the last post <a href="/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/"><em>Brief History of Tools Watching and Changing Your PHP Code</em></a> we saw there are over <strong>dozen tools in PHP that can modify code</strong>. So there is no surprise coding standard tools are &quot;upgrading&quot; code from PHP 5.6 to PHP 7.2 without knowing types and that AST is moving <code>false</code> to <code>!</code>. <br><br> Should coding standard upgrade your code? Should AST make your code cleaner? Should AST take of coding standard changes? <strong>Which is born for it?</strong></p>
+                    </div>
+                </div>
+
+                <h2 id="tokens">Tokens</h2>
+<p>PHP CS Fixer can upgrade to few features of new PHP using just <code>token_get_all()</code>:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2018/ast-tokens/php-cs-fixer-migrate.png" class="img-thumbnail"><p><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/03e13fb91c775a151dc57ae51e80ba3f2abe7da6/src/RuleSet.php#L209-L240"><code>RuleSet.php</code></a></p>
+</div>
+<h2 id="ast">AST</h2>
+<p><a href="https://github.com/rectorphp/rector">Rector</a> can solve rather low-level changes in <a href="https://github.com/rectorphp/rector/issues/424">code quality</a> level:</p>
+<pre><code class="language-diff">-if (! $this-&gt;isTrue($condition) === false) {
++if ($this-&gt;isTrue($condition)) {</code></pre>
+<pre><code class="language-diff">-count(func_get_args()) === 1);
++func_num_args() === 1</code></pre>
+<h3 id="the-quot-code-quality-quot-level">The &quot;Code Quality&quot; Level</h3>
+<p>It's the most favorite level in Rector. Why?</p>
+<ul>
+<li>it <strong>makes your code clear</strong></li>
+<li>it's <strong>easy to use on any PHP code regardless framework</strong> you're using - from pure PHP, over Drupal, Wordpress, Magento, to frameworks like Symfony, Nette, and Laravel</li>
+<li>it helps you to <strong>use direct PHP functions</strong> instead of wrapping them into complex structures ↓</li>
+</ul>
+<pre><code class="language-diff">-foreach ($this-&gt;oldToNewFunctions as $oldFunction =&gt; $newFunction) {
+-    if ($currentFunction === $oldFunction) {
+-        return $newFunction;
+-    }
+-}
+-
+-return null;
++return $this-&gt;oldToNewFunctions[$currentFunction] ?? null;</code></pre>
+<p>Huge thanks to <a href="https://github.com/carusogabriel">Gabriel Caruso</a>, who brought this idea to Rector and helped me to shift my view to the one I'll show you below.</p>
+<p><br></p>
+<p>If there would be no AST, this all could be handled by <code>token_get_all</code> (<a href="/blog/2017/07/31/how-php-coding-standard-tools-actually-work">like PHP_CodeSniffer and PHP CS Fixer</a>/), but <strong>such implementation needs to be lot longer to achieve similar quality</strong>, since you have to check every previous and next tokens for any unexpected values.</p>
+<blockquote class="blockquote text-center pb-5 pt-5">
+    "I really don't like programming. I built this tool to program less so that I could just reuse code."
+    <footer class="blockquote-footer">Rasmus Lerdorf
+</footer></blockquote>
+<h2 id="shifting-the-scope">Shifting the Scope</h2>
+<p>We're here at the moment:</p>
+<ul>
+<li>tokens / coding standard === styling only</li>
+<li>AST / static analysis === context aware only</li>
+</ul>
+<p>That's very narrow and old-school, but the shift has already begun...</p>
+<h3 id="tokens-are-best-at">Tokens are Best at</h3>
+<ul>
+<li>
+<p>spacing and exact positions</p>
+<pre><code class="language-diff">-if ($condition )
+-{
++if ($condition) {</code></pre>
+</li>
+<li>
+<p>sign changes</p>
+<pre><code class="language-diff">-$items = array(1, 2, 3;);
++$items = [1, 2, 3];</code></pre>
+</li>
+<li>
+<p>doc block changes</p>
+<pre><code class="language-diff">/**
+-* @param    int|string
++* @param int|string $id
+ */</code></pre>
+</li>
+</ul>
+<h3 id="ast-is-best-at">AST is Best at</h3>
+<ul>
+<li>
+<p>logic and structure changes</p>
+<pre><code class="language-diff">-if (! $this-&gt;isTrue($condition) === false) {
++if ($this-&gt;isTrue($condition)) {</code></pre>
+</li>
+<li>
+<p>code cleanup</p>
+<pre><code class="language-diff">-$value = $value;</code></pre>
+</li>
+<li>
+<p>context-aware names</p>
+<pre><code class="language-diff">-$formBuilder-&gt;add('name', new TextType);
++$formBuilder-&gt;add('name', TextType::class);</code></pre>
+</li>
+</ul>
+<h2 id="1-example-for-coding-standards-in-ast">1 Example for Coding Standards in AST</h2>
+<p>Let's take this case of useless variable:</p>
+<pre><code class="language-diff"> function () {
+-    $a = true;
+-    return $a;
++    return true;
+ };</code></pre>
+<p>My first thought was: &quot;Why is it assigned, is there some magic behind this? I need to explore more.&quot;
+Well, there isn't - <strong>it's a trap</strong>. Both for the programmer and for PHP to interpret it.</p>
+<p>So this change will not only make your code more readable but also faster. A nice side effect, right?</p>
+<p>Let's briefly compare how tokens and AST approach this:</p>
+<table class="table table-bordered table-responsive mt-5 mb-5"><thead class="thead-inverse"><tr><th class="text-center w-50">Tokens</th>
+            <th class="text-center w-50">AST</th>
+        </tr></thead><tr><td>PHP_CodeSniffer</td>
+        <td>Rector</td>
+    </tr><tr><td>
+            <a href="https://github.com/slevomat/coding-standard/blob/5ae298bdb3bbdf573d506d0da3e8c6eadde6ba12/SlevomatCodingStandard/Sniffs/Variables/UselessVariableSniff.php">
+                <code>UselessVariableSniff</code>
+            </a>
+        </td>
+        <td>
+            <a href="https://github.com/rectorphp/rector/blob/9855690778272de1033ad1f8c520bbee0a877201/packages/CodeQuality/src/Rector/Return_/SimplifyUselessVariableRector.php">
+                <code>SimplifyUselessVariableRector</code>
+            </a>
+        </td>
+    </tr><tr><td><strong>329 lines</strong></td>
+        <td><strong>120 lines</strong></td>
+    </tr><tr><td>2 helper services</td>
+        <td>1 helper service</td>
+    </tr></table>
+<p>Note that it would be very difficult to write both versions shorter and keep reliability high and I believe <a href="https://github.com/kukulich">kukulich</a> is very good at implementing Sniffs effectively. <strong>It's a matter of used technology, not implementation skill</strong>.</p>
+<p>To sum up, <strong>the AST version takes only 36,47 % of code what token version</strong>.</p>
+<p><br></p>
+<p>Also, AST implementation also solved this case without no extra work:</p>
+<pre><code class="language-diff"> function test() {
+     $a = 1;
+     $b = 1;
+-    $c = [
++    return [
+         $b-- =&gt; $a++,
+         --$b =&gt; ++$a,
+     ];
+-    return $c;
+ }</code></pre>
+<h2 id="coding-standards-on-steroids-with-ast">Coding Standards on Steroids with AST</h2>
+<p>I still imagine how PHP would look like today if we had AST in <a href="https://github.com/nikic/PHP-Parser/issues/41">2012 when Fabien started PHP CS Fixer</a>.</p>
+<img src="/assets/images/posts/2018/ast-tokens/scope.png" class="mb-2">
+<p><br></p>
+<ul>
+<li>
+<p>Would you be interested in such AST rules for coding standard?</p>
+</li>
+<li>
+<p><strong>What rules would you add</strong> if it would be easier to create them with AST?</p>
+</li>
+</ul>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Brief History of Tools Watching and Changing Your PHP Code
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-25-why-ast-fixes-your-coding-standard-better-than-tokens.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why AST Fixes your Coding Standard Better than Tokens" />
+    <meta property="og:description" content="In the last post [*Brief History of Tools Watching and Changing Your PHP Code*](/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/) we saw there are over **dozen tools in PHP that can modify code**. So there is no surprise coding standard tools are &quot;upgrading&quot; code from PHP 5.6 to PHP 7.2 without knowing types and that AST is moving `false` to `!`.  Should coding standard upgrade your code? Should AST make your code cleaner? Should AST take of coding standard changes? **Which is born for it?**" />
+    <meta property="og:url" content="/blog/2018/10/25/why-ast-fixes-your-coding-standard-better-than-tokens" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why AST Fixes your Coding Standard Better than Tokens" />
+    <meta name="twitter:description" content="In the last post [*Brief History of Tools Watching and Changing Your PHP Code*](/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/) we saw there are over **dozen tools in PHP that can modify code**. So there is no surprise coding standard tools are &quot;upgrading&quot; code from PHP 5.6 to PHP 7.2 without knowing types and that AST is moving `false` to `!`.  Should coding standard upgrade your code? Should AST make your code cleaner? Should AST take of coding standard changes? **Which is born for it?**" />

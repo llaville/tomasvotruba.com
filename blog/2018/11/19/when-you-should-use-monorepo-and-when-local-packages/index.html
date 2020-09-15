@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>When You Should Use Monorepo and When Local Packages | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 160 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>When You Should Use Monorepo and When&nbsp;Local&nbsp;Packages</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-11-Mon">
+            
+                            Mon, Nov 19, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/11/19/when-you-should-use-monorepo-and-when-local-packages/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-19-when-you-should-use-monorepo-and-when-local-packages.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Recently I gave <a href="/talks/#monorepo/">a few talks about monorepo in PHP</a> and how to integrate it to companies in a useful way. I'm very happy to see many people already use it and know what problems it solves.
+<br><br>
+Before monorepo hype takes over private PHP projects, I think <strong>you should know about its limits</strong>: When is the best time for you to <a href="/clusters/#monorepo-from-zero-to-hero/">go monorepo</a>? When you gain less complexity while integrating it? How can you make the transition better? Is it really needed?</p>
+                    </div>
+                </div>
+
+                <p>There are already <a href="/clusters/#monorepo-from-zero-to-hero/">6 posts</a> about why is monorepo so good in dealing with complexity. So if you hear about it the first time or still don't believe it might help you, go check those.</p>
+<p>Today we'll not focus on open-source projects, but <strong>rather on your private code</strong>. All from point of <strong>timing and transition</strong>. Let me show you the architecture that <a href="https://www.lekarna.cz">Lekarna.cz</a> uses to this day and how did we get there despite very chaotic start.</p>
+<h3 id="1-monolith">1. Monolith</h3>
+<p>We started development in a single repository, adding features here and there. It grew, the <code>/src</code> directory had over 150 classes very soon and it became more and more cluttered. The development was coupled to one monolithic code and the architecture started to disappear from code-review focus and from the code itself. <strong>Not good.</strong></p>
+<p>↓</p>
+<h3 id="2-many-repository">2. Many-Repository</h3>
+<p>So we've decided to split too many repositories. There was a repository <code>lekarna/cms</code>, <code>lekarna/shop</code>, <code>lekarna/warehouse</code> etc.</p>
+<p>First, it looked cool, each with own repository, own <code>composer.json</code>. Now you can spot this <em>academic coolness</em> by <strong>focusing mostly on technical facts</strong> (e.g. each repository has own <code>composer.json</code>) rather <strong>than how it feels to use it</strong> (e.g. it really sucks to do one change in many places).</p>
+<p>In every PR more energy and attention was invested in the maintenance of there many-repositories and their mutual dependencies, than to PR itself. <strong>Not good.</strong></p>
+<p>↓</p>
+<h3 id="3-local-packages">3. Local Packages</h3>
+<p>We realized, we needed the code to be at one place <strong>and</strong> keep it as separate as possible. In 2014 it didn't have a name, but I came with an idea to create a <code>/packages</code> directory in our main repository and <em>pretend</em> we have repositories there. <em>Treat it like</em> one day it might be decoupled to own repository, with own dependencies and own tests. Few years later it became known as <a href="/blog/2017/12/25/composer-local-packages-for-dummies/">local packages</a>.</p>
+<p>This lead new programmers to focus deeply on a single part of huge codebase at a time and also make changes the easiest way possible. <strong>We didn't have to explain them anything</strong>, the knowledge was embodied in the code. This is a <strong>golden pattern you look for</strong> in any part of business or life - you just give people smartphone and they <em>intuitively know</em> what to do.</p>
+<p>↓</p>
+<h3 id="4-open-sourced-monorepo">4. Open-Sourced Monorepo</h3>
+<p>This next step can be used to build a community to fuel your code-base. It's a state when your <strong>need a feedback from the community to push the quality further</strong> and also turning that code to a product for others. That's what happened to all companies that were private in the start - Symfony, Sylius or Shopsys.</p>
+<p>But this was not a step for Lekarna.cz code-base. It has no such ambitions and it doesn't make sense. You don't have to do everything you can, just because you can.</p>
+<p><br></p>
+<p>So do <em>local packages</em> have meaning? <strong>Yes, they do</strong>, because their purpose is not to become an open-source monorepo company, but to make your private/public code as easy to work with as possible while it grows. In short: <strong>to enjoy coding in very large code-bases.</strong></p>
+<p><br></p>
+<h2 id="when-you-should-evolve">When You Should Evolve?</h2>
+<p>As you can see, we had to make many costly transitions. Switching from monolith to many-repo and then to local packages is no cheap fun.</p>
+<p>The rule that guides a <strong>good transition</strong> is:</p>
+<blockquote class="blockquote text-center">
+    Value after transition &gt; Cost lost by transition
+</blockquote>
+<p>E.g. if your project is 20 % easier to contribute, but it costs 50 % of your team energy on learning new technologies, fixing regression bugs or not believing in it, it's not worth it.</p>
+<p>As future is unclear and hindsight is always 20/20, these numbers are not easy to establish before you do any real change. <strong>So how to decide?</strong> You can see the code <strong>is maturing and is ready to evolution jump</strong>. If we take a broader picture and look at PHP frameworks, in the last 5 years there is a big evolution jump from service locators to constructor injection. Do you want a more recent example? Weak typing to strict typing.</p>
+<p>You just feel it. It's not an easy skill to build but <strong>the more and more you develop and make transitions, the more you'll improve this skill and your success rate</strong>. You'll get there by trying, believe in yourself and learn from mistakes. How crazy this might sound, the more mistakes you make, the faster you learn.</p>
+<p><br></p>
+<h2 id="when-monorepo-makes-sense-for-private-projects">When Monorepo Makes sense For Private Projects?</h2>
+<p>I was asked this question at <a href="https://www.hubbr.cz/udalosti/events/developer-day-2018">Developer Day 2018</a> (amazing event by amazing brothers duo). To answer completely: if I were you, I'd <strong>start every project with local packages by default</strong>. You never ever have to jump to monorepo nor open-source, but you make any future possible transition very cheap. Very!</p>
+<p>All it costs you is to learn what local packages are how to work with them. Too busy to learn? Just <a href="/contact">give me a call</a> and I'll explain it to you.</p>
+<p>Because one day, you might see one of obvious <strong>reasons to go monorepo</strong>:</p>
+<ol>
+<li>Your product becomes useful to others</li>
+<li>Your component becomes useful to others</li>
+<li>You develop <strong>multiple-projects with the same code base</strong>, e.g. 5 projects running on Symfony 4.1</li>
+<li>You develop the <strong>single project for multiple clients</strong>, e.g. one e-commerce platform for 10 customers</li>
+</ol>
+<p>And we're still in privates here.</p>
+<p>But these <strong>reasons never have to come</strong>, so just going monorepo blindly from the start might actually hurt your development.</p>
+<p><br></p>
+<p>Happy evolving!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/11/15/how-to-get-php-74-typed-properties-to-your-code-in-few-seconds" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Get PHP 7.4 Typed Properties to Your Code in Few Seconds
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-19-when-you-should-use-monorepo-and-when-local-packages.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="When You Should Use Monorepo and When Local Packages" />
+    <meta property="og:description" content="Recently I gave [a few talks about monorepo in PHP](/talks/#monorepo/) and how to integrate it to companies in a useful way. I&#039;m very happy to see many people already use it and know what problems it solves.
+
+Before monorepo hype takes over private PHP projects, I think **you should know about its limits**: When is the best time for you to [go monorepo](/clusters/#monorepo-from-zero-to-hero/)? When you gain less complexity while integrating it? How can you make the transition better? Is it really needed?
+" />
+    <meta property="og:url" content="/blog/2018/11/19/when-you-should-use-monorepo-and-when-local-packages" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="When You Should Use Monorepo and When Local Packages" />
+    <meta name="twitter:description" content="Recently I gave [a few talks about monorepo in PHP](/talks/#monorepo/) and how to integrate it to companies in a useful way. I&#039;m very happy to see many people already use it and know what problems it solves.
+
+Before monorepo hype takes over private PHP projects, I think **you should know about its limits**: When is the best time for you to [go monorepo](/clusters/#monorepo-from-zero-to-hero/)? When you gain less complexity while integrating it? How can you make the transition better? Is it really needed?
+" />

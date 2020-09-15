@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why Config Coding Sucks | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 186 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why Config Coding Sucks</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-02-Thu">
+            
+                            Thu, Feb 14, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/02/14/why-config-coding-sucks/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-14-why-config-coding-sucks.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Rector and static analysis help us to work with code better, but it also helps us spot new weak-points of our PHP code.
+<br><br>
+One of the biggest evils is <em>config coding</em>. <strong>How it can hurt you and how get rid of it</strong>?</p>
+                    </div>
+                </div>
+
+                <p>Many frameworks propagate config coding over PHP code. It's cool, it's easy to type, short and we have a feeling we learned something new.</p>
+<p>One of the good examples is Laravel with its <a href="https://laravel.com/docs/5.7/configuration"><code>config/app.php</code></a> - really good work!</p>
+<p>Since <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">Symfony 3.3+ service autodiscovery</a> feature, there is almost no reason to use code in config.</p>
+<p>By coding in the config I mean anything more complex than:</p>
+<ul>
+<li>
+<p>named services</p>
+<pre><code class="language-yaml">services:
+    someService: SomeService
+    AnotherService:
+        arguments:
+            - '@someService'</code></pre>
+</li>
+<li>
+<p><code>_defaults</code></p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+        autoconfigure: true</code></pre>
+</li>
+<li>
+<p>and PSR-4 autodiscovery</p>
+<pre><code class="language-yaml">services:
+    App\:
+        resource: '../src'</code></pre>
+</li>
+</ul>
+<h2 id="the-dark-side">The Dark Side</h2>
+<p>Less discussed side of config coding is that in exchange for sweet syntax sugar we lose:</p>
+<ul>
+<li>static analysis,</li>
+<li>PHPStorm refactoring</li>
+<li>and instant upgrades and refactoring by Rector.</li>
+</ul>
+<p>PHP code written in config format has the same value to these tools as a screen-shot of code... with scrollbar:</p>
+<img src="/assets/images/posts/2019/config-evil/useless.png" alt="" class="img-thumbnail">
+<p>Here are <strong>3 problems you invite to your code</strong> with config coding and how to get rid of them with PHP.</p>
+<h2 id="1-crappy-code-refactoring-automation">1. Crappy Code Refactoring Automation</h2>
+<pre><code class="language-yaml">services:
+    - FirstService(@secondService::someMethod())</code></pre>
+<h3 id="what-if">What if...</h3>
+<ul>
+<li>...we <strong>change</strong> method name <code>someMethod</code>?</li>
+<li>...we <strong>change</strong> class name <code>FirstService</code>?</li>
+<li>...we <strong>change</strong> service name <code>secondService</code>?</li>
+</ul>
+<p>With PHPStorm these changes are pretty easy:</p>
+<img src="/assets/images/posts/2019/config-evil/rename.gif" alt="" class="img-thumbnail">
+<p>But the config has to be changed manually - everywhere where Symfony/Nette/... plugins cannot reach.</p>
+<p><em>How can we do this better?</em></p>
+<h3 id="in-php-em-class-fas-fa-fw-fa-lg-fa-check-text-success-em">In PHP <em class="fas fa-fw fa-lg fa-check text-success"></em></h3>
+<pre><code class="language-php">&lt;?php
+
+final class FirstServiceFactory
+{
+    /**
+     * @var SecondService
+     */
+    private $secondService;
+
+    public function __construct(SecondService $secondService)
+    {
+        $this-&gt;secondService = $secondService;
+    }
+
+    public function createFirstService(): FirstService
+    {
+        return new FirstService($this-&gt;secondService);
+    }
+}</code></pre>
+<pre><code class="language-diff"> services:
+-   - FirstService(@secondService::someMethod())
++   - FirstServiceFactory</code></pre>
+<h2 id="2-learn-the-neon-yaml-syntax-by-heart">2. Learn the Neon/YAML Syntax by Heart</h2>
+<p>When you start to use more and more &quot;cool&quot; syntax of your favorite markup language, you'll have to remember the spacing, chars and key names:</p>
+<pre><code class="language-yaml">services:
+    FirstService:
+        setup:
+        # or was is?
+        calls:
+            - 'setLogger', '@logger']
+            # or was it?
+            - ['setLogger', ['@logger']]
+            # or was it?
+            setLogger: '@logger'</code></pre>
+<p>You can also say goodbye to <em>rename method</em> refactoring.</p>
+<p>We don't want to pollute our brains with these syntax details, <strong>we want to code</strong> with light and clear mind.</p>
+<p><em>How can we do this better?</em></p>
+<h3 id="in-php-em-class-fas-fa-fw-fa-lg-fa-check-text-success-em">In PHP <em class="fas fa-fw fa-lg fa-check text-success"></em></h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+final class FirstServiceFactory
+{
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this-&gt;logger = $logger;
+    }
+
+    public function create(): FirstService
+    {
+        $someService = new FirstService();
+        $someService-&gt;setLogger($this-&gt;logger);
+
+        return $someService;
+    }
+}</code></pre>
+<p>The service is autowired by return type declaration <code>public function create(): FirstService</code>.</p>
+<h2 id="3-service-re-use-with-bugs">3. Service Re-use With Bugs</h2>
+<pre><code class="language-yaml">services:
+    - EmailCodeCleaner(HTMLPurifier(HTMLPurifier_Config::create({
+        Attr.EnableID: true
+    })))</code></pre>
+<p>Later that year somebody wants to use <code>HTMLPurifier</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+final class MicrositeHtmlCodeCleaner
+{
+    /**
+     * @var HTMLPurifier
+     */
+    private $htmlPurifier;
+
+    public function __construct(HTMLPurifier $htmlPurifier)
+    {
+        $this-&gt;htmlPurifier = $htmlPurifier;
+    }
+
+    // ...
+}</code></pre>
+<p>Let's run the code:</p>
+<pre><code class="language-bash">Service 'HTMLPurifier' was not found. Register it in the config.</code></pre>
+<p>Ups! It looks like it's the first use of this service. It requires <code>HTMLPurifier_Config</code> class, so we have to create it too:</p>
+<pre><code class="language-yaml">services:
+    - HTMLPurifier(HTMLPurifier_Config::create())</code></pre>
+<p>Done!</p>
+<p>A few months later, you have an email campaign with a link to a microsite. Both with the same content. But a weird bug is reported - the microsite and email have different HTML outputs with the same content.</p>
+<p>You already know, that's because <code>create()</code> had different arguments.</p>
+<p><em>How can we remove this potential bug?</em></p>
+<h3 id="in-php-em-class-fas-fa-fw-fa-lg-fa-check-text-success-em">In PHP <em class="fas fa-fw fa-lg fa-check text-success"></em></h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+use HTMLPurifier;
+
+final class HTMLPurifierFactory
+{
+    public function create(): HTMLPurifier
+    {
+        return new HTMLPurifier(HTMLPurifier_Config::create());
+    }
+}</code></pre>
+<p>We just returned the benefits of PHP code:</p>
+<ul>
+<li>the <strong>autowiring works</strong></li>
+<li>there is only one instance of <code>HTMLPurifier</code> in your container</li>
+<li>if you register more by accident, the container tells you</li>
+</ul>
+<p><br></p>
+<p>Instead of config coding, use factories and <a href="/blog/2018/11/05/do-you-autowire-services-in-symfony-you-can-autowire-parameters-too/">autowired parameters</a>. You can also remove factory from configs with <a href="https://github.com/symplify/package-builder#do-not-repeat-simple-factories"><code>AutoReturnFactoryCompilerPass</code></a>.</p>
+<pre><code class="language-diff"> services:
+     App\:
+        resource: ../src
+-
+-    SomeClass:
+-         factory: ['@SomeClassFactory', 'create']</code></pre>
+<p>That's it!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/02/11/introducing-neon-to-yaml-converter" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Introducing Neon to YAML Converter
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-14-why-config-coding-sucks.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why Config Coding Sucks" />
+    <meta property="og:description" content="Rector and static analysis help us to work with code better, but it also helps us spot new weak-points of our PHP code.
+
+One of the biggest evils is *config coding*. **How it can hurt you and how get rid of it**?
+" />
+    <meta property="og:url" content="/blog/2019/02/14/why-config-coding-sucks" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why Config Coding Sucks" />
+    <meta name="twitter:description" content="Rector and static analysis help us to work with code better, but it also helps us spot new weak-points of our PHP code.
+
+One of the biggest evils is *config coding*. **How it can hurt you and how get rid of it**?
+" />

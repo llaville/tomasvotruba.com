@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Decouple Monolith like a Boss with Composer Local Packages | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 26 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Decouple Monolith like a Boss with Composer Local Packages</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-02-Tue">
+            
+                            Tue, Feb 7, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-02-07-how-to-decouple-monolith-like-a-boss-with-composer-local-packages.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at May 2017</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>This approach is very limited and creates unexpected messy behavior.
+<br>
+<br>
+<strong>Use <a href="/blog/2017/12/25/composer-local-packages-for-dummies/">Composer Local Packages for Dummies</a> with <a href="https://github.com/symplify/monorepo-builder">Symplify/MonorepoBuilder</a> instead.</strong></p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>While building PHP applications that grows and grows, you often get to the situation when there is too much code. You get easily lost, duplicate and code smells and rottens. The cognitive upkeep to add a new class is bigger every day.
+<br><br></p>
+                    </div>
+                </div>
+
+                <p>I found first <a href="http://www.whitewashing.de/2015/04/11/monolithic_repositories_with_php_and_composer.html">article about this topic</a> in 2015, when Benjamin Eberlei created a tool called Fiddler. I was using similar approach in that time for a few months and I was happy I'm not alone.</p>
+<p>Benjamin wrote about an idea, that is <strong>now integrated in composer by default</strong>. To my surprise, nobody knows about it!
+That's similar case for great Composer tools like <a href="https://github.com/hirak/prestissimo">prestissimo</a> or <a href="https://github.com/Soullivaneuh/composer-versions-check">versions-check</a>.</p>
+<p>But first, we'll look at current solutions and why I don't see them scalable. We all tried them in Lekarna.cz and learned by painful experience that they don't work.</p>
+<h2 id="1-just-put-the-code-to-code-libs-code-or-code-src-code-directory">1. Just Put The Code to <code>/libs</code> or <code>/src</code> Directory</h2>
+<p>This is most common solution I see. Is there a login logic? Just put the code to <code>/libs/Login</code> or <code>/src/LoginBundle</code>.
+Add it to <code>$robotLoader</code> (Nette) or Composer in Symfony and it works.</p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>it's simple</li>
+<li>it's the least you can do</li>
+</ul>
+<h3 id="disadvantages">Disadvantages</h3>
+<ul>
+<li>still coupled to the application, just now on 2 different places instead of 1</li>
+<li>service/route registration is in <code>app</code> - this is cyclic dependency (also known as &quot;vicious circle&quot;)</li>
+<li>it shows others that putting code to 2 or 3 places is ok</li>
+<li>the &quot;package&quot; is coupled to the application and it's not easy to use somewhere else</li>
+<li>dependencies of this &quot;package&quot; are unknown</li>
+</ul>
+<p><strong>It doesn't scale!</strong></p>
+<h2 id="2-create-private-packages">2. Create Private Packages</h2>
+<p>This way is a bit pro. We used Gitlab and Satis - it took a month to set up all access rights correctly (Gitlab CI and Satis server tend to argue). It's so much pain, there is even <a href="https://packagist.com">official paid service</a> for it.</p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>all is clean, separated and leads to good practices</li>
+<li>all code and test are in separated extension</li>
+<li>package have own README.md with documentation, so it's natural to document it</li>
+</ul>
+<h3 id="disadvantages">Disadvantages</h3>
+<ul>
+<li>development is 4 step hell:
+<ul>
+<li>add feature to the package</li>
+<li>push and tag package</li>
+<li>wait</li>
+<li>run <code>composer update</code> in application and see the results</li>
+</ul></li>
+<li>it requires lot of maintainer skills (I would say at least 1 year in open-source) to do it fine</li>
+<li>it's premature decoupling that doesn't bring joy</li>
+</ul>
+<p><strong>It doesn't scale!</strong></p>
+<h2 id="3-publish-open-source-packages">3. Publish Open-source Packages</h2>
+<p>I love this most and it was great for some packages. That's how many <a href="https://github.com/Zenify">Zenify</a> Doctrine-related packages were born.</p>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li>you feel great for giving back to community</li>
+<li>people will help improve the package</li>
+<li>open-source packages tend to have longer lifespan than private packages</li>
+</ul>
+<h3 id="disadvantages">Disadvantages</h3>
+<ul>
+<li>even more steps to hell</li>
+<li>it's less flexible in experiments - somebody else is using it</li>
+<li>you can't money or security related packages like that</li>
+</ul>
+<p><strong>It doesn't scale.</strong></p>
+<p>During this path of packages we started to feel desperate. Nothing was good enough. I was losing my belief in open source packages and packages themselves.</p>
+<h2 id="composer-saved-my-life">Composer Saved my Life!</h2>
+<p>Not sure why and how, but in composer <a href="https://getcomposer.org/doc/05-repositories.md#path">&quot;path&quot; feature</a> was added. <strong>And it was exactly what we looked for!</strong></p>
+<p>This is so simple that many people find it hard to believe. Forget private and open-sourced packages. Forget Gitlab, Satis and Github. This is <strong>local filesystem only</strong> solution. <strong>All you need is composer</strong>.</p>
+<h3 id="lets-create-first-local-package-filesystem">Lets create First Local Package - Filesystem</h3>
+<p>Back to Lekarna.cz. We had application that used own <em>filesystem services</em>. It was registered in <code>app/config/config.neon</code> (Nette app) and it was used in various scenarios. Once we needed to create directory, store image, create image from database, download remote <code>.xml</code> etc. <strong>It was growing and more and more coupled.</strong></p>
+<p>People started to create new classes and methods for what was already there, because there was too much code and nobody knew about it.</p>
+<p>I had enough!</p>
+<p>So I started to decouple this filesystem logic. How?</p>
+<h3 id="1-create-directory-for-local-package">1. Create Directory For Local Package</h3>
+<pre><code class="language-bash">/packages
+    /lekarna
+        /filesystem</code></pre>
+<h3 id="2-add-basic-package-directories-and-files">2. Add Basic Package Directories and Files</h3>
+<pre><code class="language-bash">/packages
+    /lekarna
+        /filesystem
+            /src
+            /tests
+            README.md
+            composer.json</code></pre>
+<h3 id="3-name-the-package-in-its-code-composer-json-code">3. Name the Package in its <code>composer.json</code></h3>
+<p>The file is <code>packages/lekarna/filesystem/composer.json</code>:</p>
+<pre><code class="language-javascript">{
+    "name": "lekarna/filesystem",
+    "require": {
+        "php": "^7.1",
+        "nette/utils": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lekarna\\Filesystem\\": "src"
+        }
+    }
+}</code></pre>
+<h3 id="4-register-package-to-main-code-composer-json-code">4. Register Package to Main <code>composer.json</code></h3>
+<pre><code class="language-javascript">{
+    "require": {
+        "lekarna/filesystem": "@dev"
+    },
+    "repositories": [
+        { "type": "path", "url": "packages/lekarna/filesystem" }
+    ]
+}</code></pre>
+<p>Run</p>
+<pre><code class="language-bash">composer update</code></pre>
+<p>and your package is ready. That's it! Easy, step-by-step maturing and scalable architecture pattern.</p>
+<p><strong>How do you maintain huge code bases?</strong></p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-02-07-how-to-decouple-monolith-like-a-boss-with-composer-local-packages.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Decouple Monolith like a Boss with Composer Local Packages" />
+    <meta property="og:description" content="While building PHP applications that grows and grows, you often get to the situation when there is too much code. You get easily lost, duplicate and code smells and rottens. The cognitive upkeep to add a new class is bigger every day.
+
+" />
+    <meta property="og:url" content="/blog/2017/02/07/how-to-decouple-monolith-like-a-boss-with-composer-local-packages" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Decouple Monolith like a Boss with Composer Local Packages" />
+    <meta name="twitter:description" content="While building PHP applications that grows and grows, you often get to the situation when there is too much code. You get easily lost, duplicate and code smells and rottens. The cognitive upkeep to add a new class is bigger every day.
+
+" />

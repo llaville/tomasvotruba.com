@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Drop RobotLoader and let Composer Deal with Autoloading | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 255 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Drop RobotLoader and let Composer Deal with Autoloading</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-06-Mon">
+            <strike>
+                            Mon, Jun 8
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Jun, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/06/08/drop-robot-loader-and-let-composer-deal-with-autoloading/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-08-drop-robot-loader-and-let-composer-deal-with-autoloading.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at June 2020</strong>
+                        </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+<br><br>
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.</p>
+                    </div>
+                </div>
+
+                <h2 id="where-is-robotloader-useful">Where is RobotLoader Useful</h2>
+<p><a href="https://doc.nette.org/en/auto-loading#toc-nette-loaders-robotloader">RobotLoader</a> is a Nette Component that is used to autoload classes. Its killer feature is simple: <strong>in whatever file it is and whatever the class name is, I will load it</strong>. You can have 20 classes in 1 file or classes located in various locations, they won't hide.</p>
+<h2 id="before-composer-appeared-it-was-the-best">Before Composer appeared, it was The Best</h2>
+<p>RobotLoader was a very useful tool in times before Composer, because <strong>there were not so many efficient tools for loading classes</strong>.</p>
+<p>Also, when people could not agree upon where to put their classes, how to name them, whether use or don't use namespace and how many classes to put in one file, we can say <strong>this tool saved a lot of argument-hours</strong>.</p>
+<p>After many discussions, followed by the first standard, <a href="http://www.php-fig.org/psr/psr-0">PSR-0</a>, people agreed upon <a href="http://www.php-fig.org/psr/psr-4">PSR-4</a>, a more mature replacement of PSR-0.</p>
+<h2 id="why-it-s-not-anymore">Why it's not Anymore</h2>
+<p>Have your heard about PSR-4? It is a <em>PHP Standard Recommendation</em> about naming and location of the classes. This says you completely nothing, but in the simplest form it means:</p>
+<p><strong>1 class</strong> (or interface/trait) = <strong>1 file</strong></p>
+<p><strong>class name</strong> = <strong>file name</strong>.php</p>
+<p><strong>namespace\class name</strong> = <strong>directory/file name</strong>.php</p>
+<pre><code class="language-bash"># class =&gt; file
+MyClass =&gt; MyClass.php
+App\MyClass =&gt; App/MyClass.php
+App\Presenter\MyClass =&gt; App/Presenter/MyClass.php</code></pre>
+<p>I know I can rely on this in 99% of places when <code>composer.json</code> is used.</p>
+<p>When I see <code>App\Presenter\MyClass</code> I  it's located in <code>App/Presenter/MyClass.php</code> file.</p>
+<p>And this is the place where <strong>RobotLoader</strong> (or any custom ultimate loader) <strong>fails</strong>. I came around many applications where classes are located at random. And I had to use my brain to find them. But I don't want to focus my mental activity on thinking about their location, <strong>I want to develop my application</strong>.</p>
+<h2 id="how-to-move-to-composer-in-a-nette-application">How to move to Composer in a Nette application?</h2>
+<p>There are 2 levels of how to achieve this.</p>
+<h3 id="level-1-change-your-composer">Level 1: Change your Composer</h3>
+<p>The first level requires 3 small steps.</p>
+<h4 id="1-tune-code-composer-json-code-autoloading">1. Tune <code>composer.json</code> Autoloading</h4>
+<pre><code class="language-json">{
+    "require": {
+        "..."
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Forms\\": "app/forms",
+            "App\\Model\\": "app/model",
+            "App\\Presenters\\": "app/presenters",
+            "App\\Router\\": "app/router"
+        }
+    }
+}</code></pre>
+<p>This means, all classes residing in <code>App\\Forms</code> namespace have to be located in <code>app/forms</code> directory.</p>
+<p>One important rule - it works in <strong>case-sensitive</strong> manner.</p>
+<p>So this will work:</p>
+<pre><code class="language-bash">App\Presenters\HomepagePresenter =&gt; app/presenters/HomepagePresenter.php</code></pre>
+<p>But this will not:</p>
+<pre><code class="language-bash">App\Presenters\HomepagePresenter =&gt; app/presenters/homepagePresenter.php</code></pre>
+<h4 id="2-disable-robotloader">2. Disable RobotLoader</h4>
+<p>Now you can clean up your <code>app/bootstrap.php</code>:</p>
+<pre><code class="language-php">// $configurator-&gt;createRobotLoader()
+//      -&gt;addDirectory(__DIR__)
+//      -&gt;register();</code></pre>
+<p>But RobotLoader is still silently enabled for presenters. We don't want that either now:</p>
+<pre><code class="language-yaml"># app/config/config.neon
+application:
+    scanDirs: false</code></pre>
+<h4 id="3-refresh-composer-autoloading">3. Refresh Composer Autoloading</h4>
+<p>And tell Composer, to regenerate its autoloader:</p>
+<pre><code class="language-bash">composer dump-autoload</code></pre>
+<p>Note: This command is run by default after <code>composer update</code>, <code>composer require ...</code> and similar commands. Since we'd manually changed our <code>autoload</code> section, we had to run it manually.</p>
+<p>Now try our application and it should run.</p>
+<p><strong>You are finished and all your classes are loaded by Composer.</strong> Congratulations!</p>
+<h3 id="level-2-rename-directories-to-capital-case-to-respect-psr-4">Level 2: Rename Directories to capital case, to Respect PSR-4</h3>
+<p>There is one more level I do with my applications, so my <code>composer.json</code> is nice and clear. But this is optional. Do it only if you'd like to write better code with lower WTF factor!</p>
+<p>Turn this:</p>
+<pre><code class="language-bash">/app
+    /forms
+    /model
+    /presenters
+    /routing
+    /...</code></pre>
+<p>Into this:</p>
+<pre><code class="language-bash">/app
+    /Forms
+    /Model
+    /Presenters
+    /Routing
+    /...</code></pre>
+<p>After these steps, you can simplify your <code>autoload</code> section as such:</p>
+<pre><code class="language-json">{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}</code></pre>
+<p>Don't forget to run:</p>
+<pre><code class="language-bash">composer dump-autoload</code></pre>
+<p>And you've unlocked Level 2.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/01/inject-or-required-will-get-you-any-service-fast" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    @inject or @required will Get You Any Services Fast
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-08-drop-robot-loader-and-let-composer-deal-with-autoloading.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Drop RobotLoader and let Composer Deal with Autoloading" />
+    <meta property="og:description" content="Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.
+" />
+    <meta property="og:url" content="/blog/2020/06/08/drop-robot-loader-and-let-composer-deal-with-autoloading" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Drop RobotLoader and let Composer Deal with Autoloading" />
+    <meta name="twitter:description" content="Using 2 tools for one thing, in this case 2 packages to autoload classes, are sign of an architecture smell. Many applications I see contain RobotLoader for historical reasons. I will borrow this from psychology: pathological behavioral patterns tear us down in the present, but were useful in past.
+
+The best way to deal with them is acknowledge their purpose and then, let them go and enjoy the gift of present.
+" />

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to turn Laravel from Static to Dependency Injection in one Day | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 191 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to turn Laravel from Static to Dependency Injection in one Day</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-03-Mon">
+            
+                            Mon, Mar 4, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/03/04/how-to-turn-laravel-from-static-to-dependency-injection-in-one-day/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-04-how-to-turn-laravel-from-static-to-dependency-injection-in-one-day.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>A framework is just a tool. Each teaches you coding habits you need to use them effectively.
+Like Laravel gives you speed at prototyping with static &quot;facades&quot;. But the applications grows, so does the team, so does your skill and <strong>you start to prefer constructor injection</strong>.
+<br><br>
+What then? Switch framework or rewrite? But what if all you need is to <strong>switch single pattern</strong>?</p>
+                    </div>
+                </div>
+
+                <p>I don't use Laravel in my own life, but I follow the community closely. It likes the idea of Contracts from day 1 and it's also part of Rector upgrade set.</p>
+<p>Recently I read the <a href="https://medium.freecodecamp.org/moving-away-from-magic-or-why-i-dont-want-to-use-laravel-anymore-2ce098c979bd">Moving away from magic — or: why I don’t want to use Laravel anymore</a> on medium by <em>Niklas Schöllhorn</em>.</p>
+<p><a href="https://medium.freecodecamp.org/moving-away-from-magic-or-why-i-dont-want-to-use-laravel-anymore-2ce098c979bd"></p>
+<img src="/assets/images/posts/2019/laravel/best-seller.png" class="img-thumbnail">
+<p></a></p>
+<p>Read the post, it's really beautifully written with respect to the framework by somebody, who uses is for 2 years. Also, I think it's <strong>about the natural evolution of code and how to deal with it</strong>, not Laravel itself.</p>
+<p>Niklas finishes the post with a reasonable statement:</p>
+<blockquote>
+<p>Other frameworks and tools come with better-designed defaults and less magic. So for now, I’ll say goodbye to Laravel.</p>
+</blockquote>
+<p>But is switching the framework (language, girlfriends, parents...) really the best solution?</p>
+<h2 id="do-you-leave-your-kid-on-puberty">Do You Leave Your Kid on Puberty?</h2>
+<p>Thing is, every framework (and developer) has this step in evolution. So did <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/">Symplify with static methods</a>.</p>
+<p>Each framework I used in some period of its evolution used static:</p>
+<p><strong>Nette</strong></p>
+<pre><code class="language-php">&lt;?php
+
+$result = Container::get('some_service')-&gt;someMethod();</code></pre>
+<p><strong>Symfony</strong></p>
+<pre><code class="language-php">&lt;?php
+
+$result = $this-&gt;get('some_service')-&gt;someMethod();</code></pre>
+<p><strong>Laravel</strong></p>
+<pre><code class="language-php">&lt;?php
+
+$result = SomeService::someMethod();</code></pre>
+<h2 id="help-your-parents-grow">Help Your Parents Grow</h2>
+<p>I don't think the point is to leave the framework but to help it to the quality. E.g. Symfony constructor injection autowiring as we know it today wasn't always there. It was first suggested around Symfony 2.3 but strictly rejected by Fabien as an anti-pattern.</p>
+<p>It took many bundles like Kutny\AutowiringBundle, Skrz\Autowiring or Symplify\Autowiring, closed issues and PRs with proof of concept before the Symfony core team was convinced enough to accept next autowiring-PR, that laid the foundation to autowiring we use today.</p>
+<p>This is a completely normal process of community learning.</p>
+<h2 id="quot-so-how-do-i-get-rid-of-static-in-laravel-quot">&quot;So How do I get rid of Static in Laravel?&quot;</h2>
+<p>One option is change pattern by <strong>switching to another framework</strong>, that already promotes the feature you want. I did this once with Nette when the development stopped around 2015. First, I tried to add a feature, make packages with integration and propose PRs and issues. But after a few years of failure, I decided to switch to Symfony.</p>
+<p>The second option is to try the approach in your framework, regardless of what is considered <em>best practice</em> or the <em>framework-way</em>.</p>
+<h2 id="how-move-to-dependency-injection-in-laravel">How move to Dependency Injection in Laravel?</h2>
+<p>I like the way suggested in <a href="https://medium.freecodecamp.org/moving-away-from-magic-or-why-i-dont-want-to-use-laravel-anymore-2ce098c979bd">post above</a>.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ namespace App\Http;
+
+ use App\Example;
+ use Request;
+ use Response;
+
+ class ExampleController extends Controller
+ {
++    /**
++     * @var ResponseFactory
++     */
++    private $responseFactory;
++
++    public function __construct(ResponseFactory $responseFactory)
++    {
++        $this-&gt;responseFactory = $responseFactory;
++    }
++
+     public function store()
+     {
+         $example = 5;
+-        return Response::view('example',
++        return $this-&gt;responseFactory-&gt;view('example',
+             ['new_example' =&gt; $example]
+         );
+     }
+ }</code></pre>
+<p>That looks great! If you have ~10 cases like that, you're done instead of reading this post.</p>
+<p>But what if your project is commercially successful and there are 100+ cases like this? You'd probably think &quot;it would be nice for my small pet project, but my boss wouldn't pay for that&quot;.</p>
+<h2 id="rector-to-the-rescue">Rector to the Rescue</h2>
+<p>These kinds of problems are <em>so 2018</em>. Recently Rector got on board <a href="https://github.com/rectorphp/rector/pulls?utf8=%E2%9C%93&amp;q=laravel">Laravel instant upgrades</a>, first with Laravel 5.8.</p>
+<p>Next impulse was the post by Niklas, so I've <strong>converted his idea to Rector rule</strong>. The change from facades to constructor injection can be done with new <code>laravel-static-to-injection</code>:</p>
+<pre><code class="language-bash">vendor/bin/rector process /src --set laravel-static-to-injection</code></pre>
+<p>No need to switch framework and you can enjoy new constructor injection in your Laravel application matter of minutes.</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/02/28/how-to-upgrade-symfony-2-8-to-3-4" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Upgrade Symfony 2.8 to 3.4
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-04-how-to-turn-laravel-from-static-to-dependency-injection-in-one-day.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to turn Laravel from Static to Dependency Injection in one Day" />
+    <meta property="og:description" content="A framework is just a tool. Each teaches you coding habits you need to use them effectively.
+Like Laravel gives you speed at prototyping with static &quot;facades&quot;. But the applications grows, so does the team, so does your skill and **you start to prefer constructor injection**.
+
+What then? Switch framework or rewrite? But what if all you need is to **switch single pattern**?
+" />
+    <meta property="og:url" content="/blog/2019/03/04/how-to-turn-laravel-from-static-to-dependency-injection-in-one-day" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to turn Laravel from Static to Dependency Injection in one Day" />
+    <meta name="twitter:description" content="A framework is just a tool. Each teaches you coding habits you need to use them effectively.
+Like Laravel gives you speed at prototyping with static &quot;facades&quot;. But the applications grows, so does the team, so does your skill and **you start to prefer constructor injection**.
+
+What then? Switch framework or rewrite? But what if all you need is to **switch single pattern**?
+" />

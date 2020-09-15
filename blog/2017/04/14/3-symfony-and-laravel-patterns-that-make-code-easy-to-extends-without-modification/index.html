@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>3 Symfony and Laravel Patterns that Make Code Easy to Extend Without Modification | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 36 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>3 Symfony and Laravel Patterns that Make Code Easy to Extend Without Modification</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-04-Fri">
+            
+                            Fri, Apr 14, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/04/14/3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-04-14-3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you write open-source? If so, you probably get many PR and issues about adding new feature, that people miss.</p>
+                    </div>
+                </div>
+
+                <h2 id="how-is-open-source-different-from-private-code">How is Open-Source Different from Private Code</h2>
+<p>There is a big mind-shift from closed-source to open-source. To make it really work, you need to move from <em>my ego first</em> to <em>other people's feelings first</em>.</p>
+<p>It is like building Matrix open to everybody. <strong>You have to predict future and unexpected use cases</strong>. Your code have to be <strong>extendable without making any changes in it</strong>.</p>
+<h3 id="quot-opened-for-extension-closed-for-modification-quot">&quot;Opened for Extension, Closed for Modification&quot;</h3>
+<p>Now, I can refer to <a href="https://en.wikipedia.org/wiki/Open/closed_principle"><strong>Open/closed principle</strong> on Wikipedia</a>, which is the worst way to explain it.</p>
+<p>Instead, <strong>I took a time to find simple example</strong> (pro tip: Google with &quot;simple&quot;) and actually found one - <a href="https://github.com/wataridori/solid-php-example/blob/b84657cb736f86dda1453061d15df01f260e5140/2-open-closed-principle.php#L20-L32">go check it</a>, it clearly shows wrong approach.</p>
+<p>Today I will show you 3 ways to create such entrances.</p>
+<h2 id="1-interfaces-for-everything">1. Interfaces for Everything</h2>
+<p>When I first saw Laravel, I've noticed one big difference to other PHP projects I've seen. There is <a href="https://github.com/laravel/framework/tree/master/src/Illuminate/Contracts">Contracts</a> directory, that contains <strong>interface for every service there is in Laravel</strong>. And they're not only in this directory, but used everywhere in the code. Crazy move by <a href="https://medium.com/@taylorotwell">Taylor Otwell</a> in that times, but very useful.</p>
+<h3 id="why-is-this-useful">Why is this Useful?</h3>
+<ul>
+<li>You don't have to think about every service, if it could be replaced or not.</li>
+<li>People <strong>will love your package</strong>, because they will <strong>see freedom and understanding</strong>, not obedience as in other packages. That's what happened for me.</li>
+</ul>
+<h3 id="don-t-forget-to-have-final-word">Don't forget to have Final Word</h3>
+<p>To promote using interfaces instead of extending your classes like this:</p>
+<pre><code class="language-php">class BoothCallEntrance implements MatrixEntranceInterface
+{
+
+}
+
+class ComputerEntrance extends BoothCallEntrance
+{
+
+}</code></pre>
+<p><strong>always <a href="https://ocramius.github.io/blog/when-to-declare-classes-final">mark your classes final</a></strong>. There is event <a href="https://github.com/symplify/coding-standard/blob/master/src/Fixer/Solid/FinalInterfaceFixer.php">sniff for that</a>. Use it.</p>
+<pre><code class="language-php">final class BoothCallEntrance implements MatrixEntranceInterface
+{
+
+}
+
+final class ComputerEntrance implements MatrixEntranceInterface
+{
+
+}</code></pre>
+<p>Programmers won't have to think about raping your classes in the night - <strong>they just use the interface you provide</strong>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/extendable-open-source/override.jpg" class="img-thumbnail"></div>
+<p><strong>This is code-embodied composition over inheritance</strong>. No documentation nor Wikipedia links required.</p>
+<h2 id="2-go-to-party-events-when-in-the-mood">2. Go to Party Events, when in the Mood</h2>
+<p>Back to Matrix world: imagine you can listen to every phone booth. Let's say you <strong>write a script, that sends you sms with geo location of the booth every time it gets called</strong> (favorite tool for agent Smith ;-)).</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/extendable-open-source/booth.png" class="img-thumbnail"></div>
+<p>This approach is implemented in PHP under name of EventDispatcher. While working with Symfony, <strong>events gave me very similar feeling of freedom</strong> - <a href="https://symfony.com/doc/current/reference/events.html#kernel-events">in docs</a> as well in small book <a href="https://leanpub.com/a-year-with-symfony">A Year with Symfony</a>.</p>
+<p>Do you want simple example of such listening script? <a href="/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/">Check this tested post</a> with all code snippets you need.</p>
+<h3 id="while-on-event-listen-carefully">While on Event, Listen Carefully</h3>
+<p>Matrix situation above would look like this:</p>
+<p>Code of your package:</p>
+<pre><code class="language-php">// some CRON script checking all booths are working
+
+if ($booth-&gt;isCalled()) {
+    // you with people could get here without sending you a PR for everything they might need? Easy! ↓
+
+    // this is the entry point, just listen to 'boothCall'
+    $this-&gt;eventDispatcher-&gt;dispatch('boothCall', $booth-&gt;getLocation();
+    // ...
+}</code></pre>
+<p>And custom script listening:</p>
+<pre><code class="language-php">final class BoothSpy
+{
+    public function listenTo()
+    {
+        return 'boothCall';
+    }
+
+    public function runOnPing($location)
+    {
+        $this-&gt;smsSender-&gt;sendABoothAlert($location);
+    }
+}</code></pre>
+<h3 id="why-is-this-useful">Why is this Useful?</h3>
+<ul>
+<li>You can introduce entry point via event.</li>
+<li>You can <strong>also pass metadata</strong>, like location. Those data <strong>can be open to change</strong>, but don't have to be.</li>
+</ul>
+<p>It might be confusing while using at first, but after few weeks I get used to it. Trust me, it's the best.</p>
+<h2 id="3-like-collecting-stamps-just-on-steroids">3. Like Collecting stamps, just on Steroids</h2>
+<p>This is most powerful and less known architecture pattern.</p>
+<p><strong>1 service collects all services of specific type</strong></p>
+<h3 id="where-it-came-from">Where it came from?</h3>
+<p>Do you know <a href="https://symfony.com/doc/current/reference/dic_tags.html">service tagging in Symfony</a>?</p>
+<pre><code class="language-yaml">services:
+    app.custom_subscriber:
+        class: AppBundle\EventListener\CustomSubscriber
+        tags:
+            - { name: kernel.event_subscriber }</code></pre>
+<p>All services of <code>EventSubscriber</code> type are collected by EventDispatcher.</p>
+<h3 id="you-probably-already-use-it">You Probably Already Use It</h3>
+<ul>
+<li>Console Commands → Console Application</li>
+<li><a href="https://symfony.com/doc/current/security/voters.html">Security Voters</a> → Access Decision Manager</li>
+</ul>
+<p>As for tags - <a href="/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/#bare-tagging-is-duplicated-information">they often promote bad practise of duplicated information</a>. Don't use it if you don't have to.</p>
+<h3 id="why-is-this-useful">Why is this Useful?</h3>
+<ul>
+<li>It goes very well with step 1.</li>
+<li><strong>It's easy to integrate into huge systems</strong>. All you need to do is add 1 line of code:</li>
+</ul>
+<pre><code class="language-yaml">services:
+    - YourSubscriber</code></pre>
+<ul>
+<li>It gives you powers of constructor injection. <strong>Your service can use any other services.</strong></li>
+<li>It's the best prevention and antidote to <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html#god-class">God classes</a>.</li>
+</ul>
+<h3 id="back-to-the-matrix">Back to the Matrix</h3>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/extendable-open-source/renderer.jpg" class="img-thumbnail"></div>
+<p>Let's say we have a service to render Matrix. It might look like this:</p>
+<pre><code class="language-php">final class MatrixRenderer()
+{
+    public function render()
+    {
+        $this-&gt;agents-&gt;render();
+        $this-&gt;environment-&gt;render();
+        $this-&gt;people-&gt;render();
+    }
+}</code></pre>
+<p>Later, one customer wants to render night clubs. Another customer wants to add weather. How to do that without modifying the code?  Like this:</p>
+<pre><code class="language-php">final class MatrixRenderer()
+{
+    /**
+     * @var LayerRendererInterface[]
+     */
+    private $layerRenderers = [];
+
+    public function addLayerRenderer(LayerRendererInterface $layerRenderer)
+    {
+        $this-&gt;layerRenderers[] = $layerRenderer;
+    }
+
+    public function render()
+    {
+        foreach ($this-&gt;layerRenderers as $layerRenderer) {
+            $layerRenderer-&gt;render();
+        }
+    }
+}</code></pre>
+<p>And decouple to services:</p>
+<pre><code class="language-yaml">services:
+    - AgentLayerRenderer
+    - EnvironmentLayerRenderer
+    - PeopleLayerRenderer
+
+    # added by customers
+    - NightClubsLayerRenderer
+    - WeatherLayerRenderer</code></pre>
+<p><em>Do you want to use collectors without pain? In case you use Symfony, Nette or Laravel, here is <a href="https://github.com/symplify/package-builder/blob/54ca56f850867b5ba9c5d96d2a00f4e2f0bb63a4/src/Adapter/Symfony/DependencyInjection/DefinitionCollector.php">PackageBuilder</a> that makes it simple.</em></p>
+<h3 id="how-do-you-make-your-packages-easy-to-extend">How do You Make your Packages Easy to Extend?</h3>
+<p>Let me know if you use any of these patterns. Or do you use something else? I'd love to hear about that!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-04-14-3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="3 Symfony and Laravel Patterns that Make Code Easy to Extend Without Modification" />
+    <meta property="og:description" content="Do you write open-source? If so, you probably get many PR and issues about adding new feature, that people miss.
+" />
+    <meta property="og:url" content="/blog/2017/04/14/3-symfony-and-laravel-patterns-that-make-code-easy-to-extends-without-modification" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="3 Symfony and Laravel Patterns that Make Code Easy to Extend Without Modification" />
+    <meta name="twitter:description" content="Do you write open-source? If so, you probably get many PR and issues about adding new feature, that people miss.
+" />

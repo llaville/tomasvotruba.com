@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why Software Articles Must be CI Tested | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 263 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why Software Articles Must be CI&nbsp;Tested</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-09-Mon">
+            
+                            Mon, Sep 16, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/09/16/why-software-articles-must-be-ci-tested/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-16-why-software-articles-must-be-ci-tested.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more.</p>
+<p><br>
+From hero to zero. Today I will show you how to <strong>keep content alive lot longer with a minimal effort.</strong></p>
+                    </div>
+                </div>
+
+                <p>Do you know <a href="https://github.com/sindresorhus/awesome">Awesome lists</a>? If not, go to check them. They collect best sources about a certain topic. When I try to learn something new, I usually start on Github looking for &quot;awesome <technology>&quot;. I recommend at least briefly to check them.</p>
+<p>The idea behind Awesome list is to have resources that:</p>
+<ul>
+<li><strong>are up-to-date with modern technologies</strong></li>
+<li><strong>are the best in the field</strong></li>
+<li><strong>are easy to learn by beginners</strong></li>
+</ul>
+<h2 id="how-quot-awesome-doctrine-quot-was-born">How &quot;Awesome Doctrine&quot; was Born</h2>
+<p>When I was working with Nette, I met <strong>Doctrine ORM</strong> thanks to <a href="https://filip-prochazka.com">Filip Procházka</a> and his great <a href="https://github.com/Kdyby">Kdyby</a> open-source boom.</p>
+<p>One day I decided to learn more about Doctrine. Documentation looked like a manual for experts rather than something I could learn from. I was also curious <strong>how people use Doctrine in real applications, how to overcome performance issues, some cool features and pro tips</strong>.</p>
+<p>I was already familiar with <a href="https://github.com/ziadoz/awesome-php">Awesome PHP</a> by <a href="https://github.com/ziadoz">ziadoz</a>, so I looked for &quot;Awesome Doctrine&quot;.</p>
+<p>0 results. Really? Why nobody made this? It's so obvious this would be useful.</p>
+<p>Ah, it's my job then. And the joyful hell started.</p>
+<h3 id="many-sources-on-many-versions">Many Sources on Many Versions</h3>
+<p>I was lucky to find many articles about Doctrine. One about Filters, others about Events or Criteria. But when I tried to use the code, it often didn't work. After digging I found out there was version 1.0, which was completely different.</p>
+<blockquote>
+<p>Tip: When you write a post about software, mention the version you're referring to – even if it only has one at the moment.</p>
+</blockquote>
+<p>So I liked the concept in article and wanted to use it, but I didn't know what is different in version 2.4. I closed it.</p>
+<p>I also read <a href="https://www.zdrojak.cz/clanky/doctrine-2-uvod-do-systemu">Czech series on Zdroják</a> written by <a href="https://www.jantichy.cz">Jan Tichy</a>. It could give me great insights, but it was about Doctrine 2-beta. I closed it.</p>
+<h3 id="what-to-put-in-the-list">What to put in the list?</h3>
+<p>I've decided to focus on sources released in that year. When articles and Doctrine version are the same - Doctrine 2.4 - it will be great source to learn from.</p>
+<p>Idea was good, <a href="https://github.com/biberlabs/awesome-doctrine">List</a> was done. I was happy until...</p>
+<h3 id="doctrine-2-5-was-out">...Doctrine 2.5 was out!</h3>
+<p>So now each of the 20 sources on the list got a bit deprecated.</p>
+<p>Oh, so that's why nobody made it in the first place :).</p>
+<p>Now I also understand why many programmers hate new versions of software and want to stick with version they already know. It makes sense in such conditions.</p>
+<h2 id="quot-awesome-symfony-quot">&quot;Awesome Symfony&quot;</h2>
+<p>Before I realized it makes no sense to make a list of sources, because next year I could drop most of them, I make <a href="https://github.com/Pehapkari/awesome-symfony-education">Awesome list for Symfony</a>.</p>
+<p>New Symfony version is released every single year, so the list is even more outdated than Doctrine.</p>
+<p><strong>So what this leads to?</strong></p>
+<h2 id="running-in-circles">Running in Circles</h2>
+<p>If I get back to the <strong>useful source</strong> idea from the beginning.</p>
+<ul>
+<li><strong>are up-to-date with modern technology</strong></li>
+<li><strong>are the best in the field</strong></li>
+<li><strong>are easy to learn by beginners</strong></li>
+</ul>
+<p>To make this happen, I would have to create &quot;Awesome * List&quot; every year.
+To make that happen, each article would have to be checked for compatibility with each new version and updated if needed.</p>
+<p>That would mean around 50 articles on Doctrine every year. <strong>And all this work just to keep status quo</strong>. In big communities like Symfony and Laravel, this happens, but I still consider it too much wasted work (constructive ideas coming bellow).</p>
+<p>So sources are useful upon their release but become more and more outdated every year. Writing article in such environment would be as useless as writing 100% test coverage for Christmas campaign microsite.</p>
+<p>Thus, motivation to write software article is getting low, even when software is being released. - I call this <em>Know How Sharing Lag</em>.</p>
+<h2 id="this-sounds-like-legacy-code">This Sounds like Legacy Code</h2>
+<p>Let's say we have application with legacy code. It brings me money and I want to keep it alive and growing as long as possible.</p>
+<p>...</p>
+<p>Mm, I should write tests and start refactoring?</p>
+<p>Could this be possible to integrate into a blog or website?</p>
+<h3 id="dream-big">Dream Big</h3>
+<p>It would have to be:</p>
+<ul>
+<li><strong>integrated in blog</strong>, because another external source would deprecate - thanks Statie</li>
+<li><strong>composer supported</strong> - thanks Github Pages and Travis</li>
+<li><strong>open-source hosted</strong>, so the author won't burn out on yearly fixes - thanks Github Pages</li>
+<li><strong>CI supported</strong> - thanks Travis</li>
+<li><strong>tested daily</strong> - thanks Travis Cron Jobs (Beta)</li>
+</ul>
+<p>This idea was created in late 2015 with no solution ahead. I want to thank <a href="https://twitter.com/enumag">Jáchym Toušek</a> for consulting this idea and making <a href="https://github.com/enumag/enumag.cz/commit/3efc82717b9965bb19a2609e4caddc0c5467552d">the first prototype</a>.</p>
+<p>And that's why and how <em>tested articles</em> were born.</p>
+<p><br></p>
+<p><strong>How does tested article look like?</strong> <a href="https://github.com/pehapkari/pehapkari.cz/commit/85b69950b32c39b9e972582720a23a18a1adc4be">See this commit</a>. It will last for years, will work on Symfony 4, 5, 6...</p>
+<p><strong>Feel free to send one.</strong> We'll make sure it will make it into 2018 and beyond.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-16-why-software-articles-must-be-ci-tested.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why Software Articles Must be CI Tested" />
+    <meta property="og:description" content="I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more.
+
+
+From hero to zero. Today I will show you how to **keep content alive lot longer with a minimal effort.**
+" />
+    <meta property="og:url" content="/blog/2019/09/16/why-software-articles-must-be-ci-tested" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why Software Articles Must be CI Tested" />
+    <meta name="twitter:description" content="I know many great articles that go right to the point. I use their code examples and they work. But when I recommend these articles to people I mentor, I realize the articles are already 2 years old and their code samples probably do not work any more.
+
+
+From hero to zero. Today I will show you how to **keep content alive lot longer with a minimal effort.**
+" />

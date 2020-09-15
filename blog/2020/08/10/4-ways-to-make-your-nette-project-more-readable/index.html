@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>4 Ways to Make Your Nette Project More Readable | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 273 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>4&nbsp;Ways to Make Your&nbsp;Nette&nbsp;Project More&nbsp;Readable</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-08-Mon">
+            
+                            Mon, Aug 10
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-10-4-ways-to-make-your-nette-project-more-readable.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>You can <a href="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/">switch PHP framework you use in a month</a>. Yet, <strong>80 % of work lays before the migration</strong> itself, is to take unreliable PHP code structures and <strong>make <a href="/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/">it readable</a> for developers</strong>.
+<br><br>
+What belongs to these 80 % when it comes to Nette-specific code?</p>
+                    </div>
+                </div>
+
+                <p>Each framework has its documentation. The developers take it and test it in practice, how good the examples stand in real life. Sometimes <strong>the practical experience goes against the documentation primary choice</strong>, like using <a href="/blog/2019/03/04/how-to-turn-laravel-from-static-to-dependency-injection-in-one-day/">dependency injection in Laravel</a>.</p>
+<p>These practical tips are golden mine, <strong>because they save the company money and developer work time in the further future</strong>.
+Do you use Nette? Today, we look at 10 such spots that will bring you code advantage and make changes more comfortable and stable.</p>
+<h2 id="1-avoid-array-access">1. Avoid Array Access</h2>
+<p>Could you guess, what type is <code>$something</code>?</p>
+<pre><code class="language-php">use Nette\Application\UI\Presenter;
+
+final class SomePresenter extends Presenter
+{
+    public function renderDefault()
+    {
+        // ...
+        $something = $this['user'];
+        $something-&gt;...?
+    }
+
+    // another 300+ lines of code
+}</code></pre>
+<p>What do you think? I'd go with <code>int</code> or <code>User</code>. It can be a form, a control, a form input... because array access in <code>Control</code> or <code>Presenter</code> is delegated to...</p>
+<img src="/post_images/2020/nette_readability_array_access.png" class="img-thumbnail">
+<p>... <code>getComponent()</code>/<code>addComponent()</code> methods.</p>
+<h3 id="how-to-make-such-code-readable">How to Make Such Code Readable?</h3>
+<p>Add PHPStan that prevent array access on objects:</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoArrayAccessOnObjectRule</code></pre>
+<p>This little rule might help us to re-introduce an essential yet straightforward coding cue:</p>
+<ul>
+<li>arrays are always arrays and <strong>behave like arrays</strong></li>
+<li>objects are always objects, and <strong>behave like objects</strong></li>
+</ul>
+<p>Okay, we probably have now over dozens of errors. But what should we do about them?</p>
+<p>Use the explicit method, that is hidden in <code>offsetGet()</code>/<code>offsetSet()</code> methods, e.g:</p>
+<pre><code class="language-diff">-$something = $this['user'];
++$something = $this-&gt;getComponent('user');</code></pre>
+<pre><code class="language-diff">-$this['user'] = $something ;
++$this-&gt;addComponent($something, 'user');</code></pre>
+<h3 id="">👍</h3>
+<h2 id="2-be-honest-about-components-you-use">2. Be Honest About Components You Use</h2>
+<p>Alright, now we know its <em>a</em> component.</p>
+<pre><code class="language-php">$something = $this-&gt;getComponent('user');
+$something-&gt;...</code></pre>
+<p>It might look natural since we're used to this syntax. Let's try to forget this habit. How readable is this approach?</p>
+<p>Let's look at an example from another well-known area, with a similar context. Would you be able to work with such entity objects?</p>
+<pre><code class="language-php">$entity = $this-&gt;getEntity('user');
+// here we have only "getId()" method, that is common to all entities
+$entity-&gt;...
+
+// forget IDE autocomplete for specific entities
+$entity-&gt;getName();</code></pre>
+<p>Honestly, <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">I don't memorize code</a>, my super-smart IDE does it for me.</p>
+<h3 id="how-to-make-such-code-readable">How to Make Such Code Readable?</h3>
+<p>Again, all we need is common sense. Nothing fancy.</p>
+<p>How can we get an exact specific entity?</p>
+<pre><code class="language-php">// 1. annotation
+/** @var User $user */
+$user = $this-&gt;getEntity('user');
+
+// 2. add custom method with return type
+$user = $this-&gt;getUser();
+
+// another way or two you can think of</code></pre>
+<img src="/post_images/2020/nette_readability_get_component.gif" class="img-thumbnail">
+<h3 id="what-are-benefits-of-typed-code">What are Benefits of Typed Code?</h3>
+<ul>
+<li>IDE automated refactoring works on specific components</li>
+<li>IDE can provide autocomplete, that is unique per component</li>
+<li>PHPStan knows the types and component methods and where they're called from</li>
+<li>Rector can refactor components with ease</li>
+<li>the most important: <strong>you know what's going on, even if you're the first day on the project</strong></li>
+</ul>
+<blockquote class="blockquote text-center">
+"So many benefits, that sounds great!<br>
+But it's a lot of work to get there."
+</blockquote>
+<p>I feel you, same here. If I were about to do it manually, I would not do it.</p>
+<p>Luckily, we <strong>lazy people have tools to work for us</strong>. Let <a href="https://github.com/rectorphp/rector">Rector</a> handle it:</p>
+<pre><code class="language-php"># rector.php
+
+use Rector\NetteCodeQuality\Rector\Assign\ArrayAccessGetControlToGetComponentMethodCallRector;
+use Rector\NetteCodeQuality\Rector\Assign\ArrayAccessSetControlToAddComponentMethodCallRector;
+use Rector\NetteCodeQuality\Rector\Assign\MakeGetComponentAssignAnnotatedRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    $services-&gt;set(MakeGetComponentAssignAnnotatedRector::class);
+    $services-&gt;set(ArrayAccessSetControlToAddComponentMethodCallRector::class);
+    $services-&gt;set(ArrayAccessGetControlToGetComponentMethodCallRector::class);
+};</code></pre>
+<p>And run Rector:</p>
+<pre><code class="language-bash">vendor/bin/rector process src</code></pre>
+<h3 id="">👍</h3>
+<h2 id="3-remove-array-access-on-form-controls">3. Remove Array Access on Form Controls</h2>
+<p>The #1 was about use in <code>Presenter</code> and <code>Control</code>, but what about <code>Form</code>?</p>
+<pre><code class="language-php">use Nette\Application\UI\Form;
+
+$form = new Form();
+$form-&gt;addText('name', 'Name');</code></pre>
+<p>Different class, same array access magic, same problem.</p>
+<h3 id="how-to-make-such-code-readable">How to Make Such Code Readable?</h3>
+<img src="/post_images/2020/nette_readability_get_form_control.gif" class="img-thumbnail">
+<p>This makes code readable in the same points above - for IDE, PHPStan, and Rector.</p>
+<p>&quot;So much work?&quot; Rector got you covered:</p>
+<pre><code class="language-php"># rector.php
+
+use Rector\NetteCodeQuality\Rector\ArrayDimFetch\ChangeControlArrayAccessToAnnotatedControlVariableRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(ChangeControlArrayAccessToAnnotatedControlVariableRector::class);
+};</code></pre>
+<p><br></p>
+<h3 id="can-we-do-better">Can We do Better?</h3>
+<p>Imagine you create a form, and somewhere in your code, an input is removed, and select box added. Where? How? Magic!</p>
+<p>So even better, <strong>modify forms only in the method they were created</strong>.</p>
+<p>Do you need a form that is just slightly different from an already existing one? Don't mutate existing, but rather:</p>
+<ul>
+<li>create <strong>a new form factory</strong></li>
+<li>decouple common <strong>abstract parent form factory</strong> class for re-use</li>
+</ul>
+<p>That way, you promote composition over inheritance in your code and respect SOLID principles.</p>
+<h2 id="4-move-latte-engine-tuning-from-presenter-control-to-lattefactory">4. Move Latte Engine tuning from Presenter/Control to LatteFactory</h2>
+<p>Latte modification in the wrong places is more common than you'd expect.</p>
+<p><br></p>
+<p>How would you add <code>setStrictTypes(true)</code> for all templates?</p>
+<pre><code class="language-php">use Nette\Application\UI\Presenter;
+
+abstract class AbstractPresenter extends Presenter
+{
+    public function beforeRender()
+    {
+        // is this the right place?
+        // signals (handle*) are actually called after
+        $this-&gt;template-&gt;getLatte()-&gt;setStrictTypes(true);
+    }
+
+    // or
+
+    public function templatePrepareFilters()
+    {
+        // is this the right place?
+        // or just for filters?
+        $this-&gt;template-&gt;getLatte()-&gt;setStrictTypes(true);
+    }
+}</code></pre>
+<p>Ou, don't forget the components. Every single component!</p>
+<pre><code class="language-php">use Nette\Application\UI\Control;
+
+abstract class AbstractControl extends Control
+{
+    // is this the right place?
+    public function __construct()
+    {
+        // template can be null here
+        $this-&gt;template-&gt;getLatte()-&gt;setStrictTypes(true);
+
+        // or
+
+        // isn't this lazy factory? what if the template object is different?
+        $this-&gt;getTemplate()-&gt;getLatte()-&gt;setStrictTypes(true);
+    }
+
+    // or
+
+    // is this the right place?
+    public function render()
+    {
+        // so now we have to call parent::render() in every child component?
+        $this-&gt;template-&gt;getLatte()-&gt;setStrictTypes(true);
+    }
+}</code></pre>
+<p>Now we have to enforce this parent control in every other control we have, and we should be fine...</p>
+<p>Until we <strong>use templates for mail</strong>. What a surprise when final invoice price was accidentally a string <code>''</code> that turned into <code>0</code>. Ups, we just got paid 0 € instead of 750 €.</p>
+<h3 id="how-to-make-such-code-readable">How to Make Such Code Readable?</h3>
+<p>Instead of trying to put down every fire our child makes in our home, we could... I don't know, take their matches?</p>
+<p>It's also known as <em>single responsibility principle</em>. There is <strong>max. 1 place to make 1 change</strong> - meet <code>LatteFactory</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Latte;
+
+use Latte\Engine;
+use Latte\Runtime\FilterInfo;
+
+final class LatteFactory
+{
+    public function create(): Engine
+    {
+        $engine = new Engine();
+        $engine-&gt;setStrictTypes(true);
+
+        return $engine;
+    }
+}</code></pre>
+<p>We have a <strong>1 place to modify</strong> <code>Latte\Engine</code>. Now we need to tell Nette to use it to create all the templates - with an extension:</p>
+<pre><code class="language-php">&lt;?php
+
+// src/DI/LatteFactoryExtension.php
+
+declare(strict_types=1);
+
+namespace App\DI;
+
+use App\Latte\LatteFactory;
+use Latte\Engine;
+use Nette\DI\CompilerExtension;
+
+final class LatteFactoryExtension extends CompilerExtension
+{
+    public function loadConfiguration(): void
+    {
+        $containerBuilder = $this-&gt;getContainerBuilder();
+
+        $containerBuilder-&gt;addDefinition('app.latteFactory')
+            -&gt;setType(LatteFactory::class);
+
+        $latteFactoryDefinition = $containerBuilder-&gt;getDefinition('latte.latteFactory');
+        $latteFactoryDefinition-&gt;setFactory(['@' . LatteFactory::class, 'create']);
+        $latteFactoryDefinition-&gt;setType(Engine::class);
+    }
+}</code></pre>
+<p>Register the extension to config, and you're ready to go:</p>
+<pre><code class="language-yaml">extensions:
+    - App\DI\LatteFactoryExtension</code></pre>
+<h3 id="change-is-the-only-constant">Change is the Only Constant</h3>
+<p>Do we need to add <strong>translator to all templates</strong>?</p>
+<p>No need to edit 3 places, just one:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ declare(strict_types=1);
+
+ namespace App\Latte;
+
+ use Latte\Engine;
+ use Latte\Runtime\FilterInfo;
++use Nette\Localization\ITranslator;
+
+ final class LatteFactory
+ {
++    private ITranslator $translator;
++
++    public function __construct(ITranslator $translator)
++    {
++        $this-&gt;translator = $translator;
++    }
+
+     public function create(): Engine
+     {
+         $engine = new Engine();
+         $engine-&gt;setStrictTypes(true);
+
++        $engine-&gt;addFilter('translate', function (FilterInfo $filterInfo, ...$args) {
++            return $this-&gt;translator-&gt;translate(...$args);
++        });
+
+         return $engine;
+     }
+ }</code></pre>
+<h3 id="">👍</h3>
+<p><br></p>
+<p>That's all for today.</p>
+<h2 id="removing-magic-makes-us-feel-safe">Removing Magic makes us Feel Safe</h2>
+<p>Just to repeat the basics. The goal of refactoring is to make code SOLID, unbreakable, and reliable source. When we have a code we understand, we feel safe.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+When we feel safe, we are more productive and make huge changes faster.<br>
+If we have to worry about every single line of code, we slowly freeze.
+</blockquote>
+<p>By 4 steps above, you've just added <strong>5 benefits to your codebase</strong>:</p>
+<ul>
+<li>IDE automated refactoring works on specific components</li>
+<li>IDE can provide autocomplete, that is unique per component</li>
+<li>PHPStan knows the types and component methods and where they're called from</li>
+<li>Rector can refactor components with ease</li>
+<li>the most important: <strong>you know what's going on, even if you're the first day on the project</strong></li>
+</ul>
+<p><br></p>
+<p>Do you have a tip on how to make Nette code even better? Is there some shortcut I don't know about?</p>
+<p>Let me know in the comments ↓. I'd love to learn a new skill that we could apply on Nette projects we upgrade.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/08/03/how-give-away-1500-eur--in-1-tweet-and-help-25-people-learn-something-new" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Give Away 1500 € in 1 Tweet and Help 25 People Learn Something New
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-10-4-ways-to-make-your-nette-project-more-readable.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="4 Ways to Make Your Nette Project More Readable" />
+    <meta property="og:description" content="You can [switch PHP framework you use in a month](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/). Yet, **80 % of work lays before the migration** itself, is to take unreliable PHP code structures and **make [it readable](/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/) for developers**.
+
+What belongs to these 80 % when it comes to Nette-specific code?
+" />
+    <meta property="og:url" content="/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="4 Ways to Make Your Nette Project More Readable" />
+    <meta name="twitter:description" content="You can [switch PHP framework you use in a month](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/). Yet, **80 % of work lays before the migration** itself, is to take unreliable PHP code structures and **make [it readable](/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/) for developers**.
+
+What belongs to these 80 % when it comes to Nette-specific code?
+" />

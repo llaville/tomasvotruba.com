@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why we Migrated from Nette to Symfony in 3 Weeks - Part 2 - Escaping Semantic Hell | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 192 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why we Migrated from Nette to Symfony in 3 Weeks - Part 2 - Escaping Semantic Hell</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-03-Thu">
+            
+                            Thu, Mar 7, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/03/07/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-2/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-07-why-we-migrated-from-nette-to-symfony-in-3-weeks-part-2.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you want to <strong>migrate your project from Nette to Symfony</strong>? In <a href="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/">part 1</a> we showed you how to get your project ready, why it's important to make team commitment and what you can automate.
+<br><br>
+Today we'll look on one of the core reasons for this migration - <strong>escaping to semantic hell</strong>.</p>
+                    </div>
+                </div>
+
+                <p><a href="https://semver.org">Semantic versioning</a> aka <em>semver</em> tells you there is a BC break between <code>nette/di</code> in version 2.5 and 3.0. That's all you need to know as a web developer.</p>
+<p>If you're an open-source developer, you'll probably learn more about semver. If you do it right, your user will be happy and never have to learn anything more 2.5 and 3.0.</p>
+<h2 id="from-nette">From Nette...</h2>
+<p>When you run <code>composer update</code> Nette project, you'll find this normal:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony2/version-hell.png" style="max-width:30em">
+<p>You can see there 3 variants:</p>
+<ul>
+<li><code>nette/utils</code> is on 2.5.3</li>
+<li><code>nette/tokenizer</code> is on 2.3.0</li>
+<li><code>nette/mail</code> is on 2.4.6</li>
+</ul>
+<p>Today, there are also some Nette packages on 3, but some not. Who cares, right?</p>
+<p>If you don't know Nette, you might think &quot;why would somebody use the different versions in their <code>composer.json</code>&quot;?</p>
+<pre><code class="language-json">{
+   "require": {
+       "nette/utils": "^2.5",
+       "nette/tokenizer": "^2.3",
+       "nette/mail": "^2.4"
+   }
+}</code></pre>
+<p>Actually, <code>composer.json</code> looks like this:</p>
+<pre><code class="language-json">{
+   "require": {
+       "nette/utils": "^2.3",
+       "nette/tokenizer": "^2.3",
+       "nette/mail": "^2.3"
+   }
+}</code></pre>
+<p>And that's a huge overhead with Nette versioning. Each package requires different versions, even v2, and 3 at the same time. If you upgrade to the newer version, the last thing you want to solve is conflicts in a package that are not yours:</p>
+<img src="/assets/images/posts/2019/nette-to-symfony2/install-fail.png">
+<h2 id="what-s-different-in-symfony">What's different in Symfony?</h2>
+<p>When you install Symfony 4.0, you know that:</p>
+<ul>
+<li><strong>all your packages</strong> are using Symfony 4.0</li>
+<li>all Symfony packages <strong>are compatible</strong> with each other</li>
+<li><strong>when you find a bug</strong>, it will be fixed in Symfony 4.0.x</li>
+<li>you can look forward to next version 4.1 in 6 months :)</li>
+</ul>
+<p>This approach is super stable since Symfony 3.4 and 2017. You can really on <a href="https://symfony.com/doc/current/contributing/code/bc.html">Symfony promise</a> it more than of stability airplanes (I'm writing this post on one, I hope this statement is true :D).</p>
+<p>Imagine you're looking for a bug across <code>symfony/console</code> 3.4, <code>symfony/dependency-injection</code> 4.1 and <code>symfony/finder</code> 4.2. Or just read the Symfony documentation in 3 different versions.</p>
+<h2 id="don-t-bother-the-user-with-bad-package-design">Don't Bother the User with Bad Package Design</h2>
+<p>Since I was raised in Nette, I used <strong>per-package tagging</strong> in my open-source projects (<em>Zenify</em>, <em>Symnedi</em> and now <em>Symplify</em>). It allowed me to release new versions when the package needed it.</p>
+<ul>
+<li>Does<code>zenify/doctrine-filters</code> has a BC break? Let's release 3.</li>
+<li>Are there no changes <code>zenify/coding-standard</code> in last 1 year? Stick it with 1.</li>
+</ul>
+<p>That's <em>nice to have</em> for the maintainer. But what about the developers who use your packages? <strong>It's extra maintenance with 0-benefits.</strong></p>
+<blockquote class="blockquote mt-5 mb-5 text-center">
+    There should be less and academic thinking in programming
+    <br>and more <strong>pragmatic common sense</strong>. We were born with it.
+</blockquote>
+<p>Maintainers should read books like <a href="https://www.amazon.com/Design-Everyday-Things-Revised-Expanded-ebook/dp/B06XCCZJ4L">The Design of Everyday Things</a>, <a href="https://www.amazon.com/Dont-Make-Think-Revisited-Usability-ebook-dp-B00HJUBRPG/dp/B00HJUBRPG">Don't Make me Think</a> and <a href="https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master-ebook-dp-B003GCTQAE/dp/B003GCTQAE">The Pragmatic Programmer</a> to understand how others see our code.</p>
+<h2 id="symfony-kiss-per-vendor-tagging">Symfony KISS = Per-Vendor Tagging</h2>
+<p>So I decided <strong>to try <a href="/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/">per-vendor tagging</a></strong> over per-package tagging. Now I have to answer questions like &quot;Why did you release a new version of your package, but no change between version 3.2.0 and 3.3.0?&quot; But I know <strong>bothering developers with semver-hell</strong> is not a better choice, so I answer patiently (with a link to this post :)).</p>
+<p>After all:</p>
+<blockquote class="blockquote text-center">
+   There are no best solutions, just trade-offs.
+</blockquote>
+<p><br></p>
+<p><strong>This was one of our reasons we switched from Nette to Symfony</strong>. Now we can upgrade all ~35 Symfony packages at once knowing they all work together.</p>
+<p><br></p>
+<p>Do you think it's impossible change for your project? Drop us a <a href="https://getrector.org">message at Rector</a>. We'll help you.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/03/04/how-to-turn-laravel-from-static-to-dependency-injection-in-one-day" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to turn Laravel from Static to Dependency Injection in one Day
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-07-why-we-migrated-from-nette-to-symfony-in-3-weeks-part-2.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why we Migrated from Nette to Symfony in 3 Weeks - Part 2 - Escaping Semantic Hell" />
+    <meta property="og:description" content="Do you want to **migrate your project from Nette to Symfony**? In [part 1](/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/) we showed you how to get your project ready, why it&#039;s important to make team commitment and what you can automate.
+
+Today we&#039;ll look on one of the core reasons for this migration - **escaping to semantic hell**.
+" />
+    <meta property="og:url" content="/blog/2019/03/07/why-we-migrated-from-nette-to-symfony-in-3-weeks-part-2" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why we Migrated from Nette to Symfony in 3 Weeks - Part 2 - Escaping Semantic Hell" />
+    <meta name="twitter:description" content="Do you want to **migrate your project from Nette to Symfony**? In [part 1](/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/) we showed you how to get your project ready, why it&#039;s important to make team commitment and what you can automate.
+
+Today we&#039;ll look on one of the core reasons for this migration - **escaping to semantic hell**.
+" />

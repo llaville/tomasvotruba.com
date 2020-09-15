@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Upgrade to Symplify 8 - From Sniffs to PHPStan Rules | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 250 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Upgrade to Symplify 8 - From Sniffs to PHPStan Rules</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-05-Mon">
+            <strike>
+                            Mon, May 4
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-04-how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated ECS YAML to PHP configuration since <strong>ECS 8</strong>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Since Symplify 7.3, you might notice a few deprecation notices in your coding standards. As Symplify 8 release is <a href="/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/">synced with Symfony cycle</a>, both will be released at the end of May.
+<br>
+<br>
+What to do with these deprecations? Why were these sniffs dropped? How to handle upgrades in 1 hour?</p>
+                    </div>
+                </div>
+
+                <p>When you run <a href="https://github.com/symplify/easy-coding-standard">ECS</a> with version 7.3+:</p>
+<pre><code class="language-bash">vendor/bin/ecs check</code></pre>
+<p>You might see such notices right before your code gets checked:</p>
+<pre><code class="language-bash">PHP Notice:  Sniff "..." is deprecated. Use "..." instead</code></pre>
+<h2 id="why-were-these-sniffs-dropped">Why were These Sniffs Dropped?</h2>
+<p>Symplify 7 used lots of sniffs based on coding standard <a href="https://www.php.net/manual/en/function.token-get-all.php">tokens</a>. In time they were made, they were as good. <a href="/blog/2018/10/25/why-ast-fixes-your-coding-standard-better-than-tokens/#shifting-the-scope">Tokens are best at spaces, abstract syntax tree is best at logical code structure</a>.</p>
+<p>E.g. <code>TraitNameSniff</code> check name of traits and makes sure the name ends with &quot;Trait&quot;:</p>
+<pre><code class="language-php">&lt;?php
+
+// hey, this should be "ProductTrait"
+trait Product
+{
+}</code></pre>
+<p>Do you see any spaces or token positions? No, it's just:</p>
+<ul>
+<li>find a trait</li>
+<li>check its name</li>
+</ul>
+<p>So writing this rule in tokens is the wrong tool chosen. Why? With tokens, you need to make sure:</p>
+<ul>
+<li>trait token is found</li>
+<li>there are no spaces after trait token</li>
+<li>detect the name</li>
+<li>for other rules, resolve its fully qualified name based on the namespace and use imports (real hell with tokens)</li>
+</ul>
+<p>But <strong>why waste time on re-inventing the wheel</strong>, when we can use a tool that handles tedious work for us?
+It's better to use <em>abstract syntax tree</em> technology, in this case <a href="https://phpstan.org">PHPStan</a>.</p>
+<p><br></p>
+<p><strong>That's why</strong> all the &quot;AST&quot; sniffs were migrated to PHPStan rules.</p>
+<h2 id="what-to-do-with-these-deprecations">What to do With These Deprecations?</h2>
+<p>So what does it mean? Remove all the rules from <code>ecs.php</code> and let go?</p>
+<p>No, <strong>all you need to do is switch to PHPStan rules</strong>. It's better working and more reliable since it works with context and not token positions. So at first, you might discover a few new reported errors here and there.</p>
+<h2 id="how-to-handle-upgrade-in-1-hour">How to Handle Upgrade in 1 hour?</h2>
+<p>There are 14 deprecated sniffs in total. Don't worry, while it might seem like a considerable number, the replacement is a matter of an hour.</p>
+<p>Have you used a full Symplify set?</p>
+<pre><code class="language-php">
+// ecs.php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Configuration\Option;use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set(Option::SETS, [SetList::SYMPLIFY]);
+};</code></pre>
+<p>Then you won't see any deprecations, because rules were removed from the config for you.
+Still, I recommend adding these rules to <code>phpstan.neon</code>.</p>
+<h2 id="1-abstract-trait-and-interface-naming-sniffs">1. Abstract, Trait and Interface Naming Sniffs</h2>
+<p>These rules were removed:</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Naming\AbstractClassNameSniff</code></del></li>
+<li><del><code>Symplify\CodingStandard\Sniffs\Naming\TraitNameSniff</code></del></li>
+<li><del><code>Symplify\CodingStandard\Sniffs\Naming\InterfaceNameSniff</code></del></li>
+</ul>
+<p>and replaced by:</p>
+<p>↓</p>
+<pre><code class="language-bash">composer require --dev slam/phpstan-extensions</code></pre>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - SlamPhpStan\ClassNotationRule</code></pre>
+<h2 id="2-cognitive-complexity">2. Cognitive Complexity</h2>
+<p>The <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/">only <del>sniff</del> rule your coding standard should have</a>... just got better.</p>
+<p>The orifinal sniffs were removed:</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\CleanCode\CognitiveComplexitySniff</code></del></li>
+<li><del><code>Symplify\CodingStandard\Sniffs\CleanCode\ClassCognitiveComplexitySniff</code></del></li>
+</ul>
+<p>and replaced by more avanced AST in form of PHPStan rules:</p>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+includes:
+    - vendor/symplify/coding-standard/packages/cognitive-complexity/config/cognitive-complexity-rules.neon
+
+# if you use default value, you can skip this section
+parameters:
+    symplify:
+        max_cognitive_complexity: 10
+        max_class_cognitive_complexity: 60</code></pre>
+<h2 id="3-make-sure-classes-used-in-param-var-and-return-exists">3. Make sure Classes used in @param, @var and @return Exists</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Commenting\AnnotationTypeExistsSniff</code></del></li>
+</ul>
+<p>Just drop it. PHPStan level 0 handles this.</p>
+<h2 id="4-forbidden-static-explicit-static">4. Forbidden Static → Explicit Static</h2>
+<p>Static functions <a href="/blog/2019/04/01/removing-static-there-and-back-again/">are best way to slowly create technical dept</a>. But sometimes it's tough to code without them.</p>
+<p>So instead of forbidding them:</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenStaticFunctionSniff</code></del></li>
+</ul>
+<p>↓</p>
+<p>Just be honest about them:</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoClassWithStaticMethodWithoutStaticNameRule</code></pre>
+<p>The same way you see a &quot;trait&quot; in a file name and know it's a trait,
+this rule makes sure that classes with static methods have &quot;static&quot; in its name.</p>
+<p>I've been using it for 4 days, and oh, what a shame I feel when I want to use a &quot;Static&quot; &quot;service&quot;. It <strong>makes me think twice both about the design and consequences</strong>.</p>
+<h2 id="5-forbidden-parent-class">5. Forbidden Parent Class</h2>
+<p>Even though it's repeated over, again and again, that composition beats inheritance, the PHP code I see is full of it.</p>
+<p>Sometimes the only way to <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/">promote so-far-the-best practise</a>, is to enforce it.</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenParentClassSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\ForbiddenParentClassRule
+
+parameters:
+    symplify:
+        forbidden_parent_classes:
+            - 'Doctrine\ORM\EntityRepository'</code></pre>
+<h2 id="6-use-custom-exceptions-over-basic-ones">6. Use Custom Exceptions over Basic Ones</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Architecture\ExplicitExceptionSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoDefaultExceptionRule</code></pre>
+<h2 id="7-prefer-one-class-over-another">7. Prefer One Class over Another</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Architecture\PreferredClassSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+parameters:
+    symplify:
+        old_to_preffered_classes:
+            DateTime: 'Nette\Utils\DateTime'
+
+rules:
+    - Symplify\CodingStandard\Rules\PreferredClassRule</code></pre>
+<h2 id="8-no-duplicated-short-classes">8. No Duplicated Short Classes</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Architecture\DuplicatedClassShortNameSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoDuplicatedShortClassNameRule</code></pre>
+<h2 id="9-use-explicit-return-over-code-amp-code-reference">9. Use explicit Return over <code>&amp;</code> Reference</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\CleanCode\ForbiddenReferenceSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoReferenceRule</code></pre>
+<h2 id="10-don-t-leave-code-dump-code-function-in-the-code">10. Don't leave <code>dump()</code> Function in the Code</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Debug\DebugFunctionCallSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\NoDebugFuncCallRule</code></pre>
+<h2 id="11-respect-naming-of-your-parents">11. Respect Naming of Your Parents</h2>
+<ul>
+<li><del><code>Symplify\CodingStandard\Sniffs\Naming\ClassNameSuffixByParentSniff</code></del></li>
+</ul>
+<p>↓</p>
+<pre><code class="language-yaml"># phpstan.neon
+rules:
+    - Symplify\CodingStandard\Rules\ClassNameRespectsParentSuffixRule
+
+parameters:
+    symplify:
+        parent_classes:
+            - Rector</code></pre>
+<p>And that's it! You've just migrated all deprecated sniffs to PHPStan rules. Upgrade to Symplify 8 will be a piece of cake for you.</p>
+<p><br></p>
+<p><a href="/blog/2020/05/11/how-to-upgrade-to-symplify-8-from-fixers-to-rector-rules/">In the next post, we'll look on the 2nd half</a> - <strong>how to migrate fixers into Rector rules</strong>.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/04/27/forget-complex-migrations-use-cleaning-lady-checklist" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Forget Complex Migrations, Use Cleaning Lady Checklist
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-04-how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Upgrade to Symplify 8 - From Sniffs to PHPStan Rules" />
+    <meta property="og:description" content="Since Symplify 7.3, you might notice a few deprecation notices in your coding standards. As Symplify 8 release is [synced with Symfony cycle](/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/), both will be released at the end of May.
+
+
+What to do with these deprecations? Why were these sniffs dropped? How to handle upgrades in 1 hour?
+" />
+    <meta property="og:url" content="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Upgrade to Symplify 8 - From Sniffs to PHPStan Rules" />
+    <meta name="twitter:description" content="Since Symplify 7.3, you might notice a few deprecation notices in your coding standards. As Symplify 8 release is [synced with Symfony cycle](/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/), both will be released at the end of May.
+
+
+What to do with these deprecations? Why were these sniffs dropped? How to handle upgrades in 1 hour?
+" />

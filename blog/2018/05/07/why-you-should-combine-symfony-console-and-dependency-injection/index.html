@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why You Should Combine Symfony Console and Dependency Injection | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 103 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why You Should Combine Symfony Console and Dependency Injection</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Mon">
+            
+                            Mon, May 7, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-07-why-you-should-combine-symfony-console-and-dependency-injection.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I saw 2 links to Symfony\Console in <a href="http://symfony.com/blog/a-week-of-symfony-592-30-april-6-may-2018">today's Week of Symfony</a> (what a time reference, huh?).
+There are plenty of such posts out there, even in Pehapkari community blog: <a href="https://pehapkari.cz/blog/2017/06/02/best-practice-for-symfony-console-in-nette">Best Practice for Symfony Console in Nette</a> or <a href="/blog/2019/08/12/standalone-symfony-console-from-scratch/">Symfony Console from the Scratch</a>.
+<br>
+But nobody seems to write about <strong>the greatest bottleneck of Console applications - static cancer</strong>. Why is that?</p>
+                    </div>
+                </div>
+
+                <h2 id="1-current-status-in-php-console-applications">1. Current Status in PHP Console Applications</h2>
+<p>Your web application has an entry point in <code>www/index.php</code>, where it loads the DI Container, gets <code>Application</code> class and calls <code>run()</code> on it (with explicit or implicit <code>Request</code>):</p>
+<pre><code class="language-php">require __DIR__ . '/vendor/autoload.php';
+
+// Kernel or Configurator
+$container = $kernel-&gt;getContainer();
+$application = $container-&gt;get(Application::class);
+$application-&gt;run(Request::createFromGlobals());</code></pre>
+<p>Console Applications (further as <em>CLI Apps</em>) have very similar entry point. Not in <code>index.php</code>, but usually in <code>bin/something</code> file.</p>
+<p>When we look at entry points of popular PHP Console Applications, like:</p>
+<p><br></p>
+<p><a href="https://github.com/squizlabs/PHP_CodeSniffer/blob/master/bin/phpcs">PHP_CodeSniffer</a></p>
+<pre><code class="language-php">$runner = new PHP_CodeSniffer\Runner();
+$runner-&gt;runPHPCS();</code></pre>
+<p><br></p>
+<p><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/php-cs-fixer">PHP CS Fixer</a></p>
+<pre><code class="language-php">$application = new PhpCsFixer\Console\Application();
+$application-&gt;run();</code></pre>
+<p><br></p>
+<p><a href="https://github.com/phpstan/phpstan/blob/master/bin/phpstan">PHPStan</a></p>
+<pre><code class="language-php">$application = new Symfony\Component\Console\Application('PHPStan');
+$application-&gt;add(new AnalyseCommand());
+$application-&gt;run();</code></pre>
+<p><br></p>
+<p>If we <strong>mimic such approach in web apps</strong>, how would our <code>www/index.php</code> look like?</p>
+<pre><code class="language-php">require __DIR__ . '/vendor/autoload.php';
+
+$application = new Application;
+$application-&gt;addController(new HomepageController);
+$application-&gt;addController(new PostController);
+$application-&gt;addController(new ContactController);
+$application-&gt;addController(new ProducController);
+// ...
+$application-&gt;run();</code></pre>
+<p>How do you feel seeing such code? I feel a bit weird and <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/">I don't get on well with static code</a>.</p>
+<p>On the other hand, if we take the web app approach to cli apps:</p>
+<pre><code class="language-php">$container = $kernel-&gt;getContainer();
+
+$application = $container-&gt;get(Application::class);
+$application-&gt;run(new ArgInput);</code></pre>
+<h3 id="why-is-that">Why is That?</h3>
+<p>I wish I knew this answer :). In my opinion and experience with building cli apps, there might be few...</p>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>
+<p>CLI apps almost always start with simple plain PHP code:</p>
+<pre><code class="language-php"># bin/turn-tabs-to-spaces.php
+
+$input = $argv[1];
+
+// 1st PSR-2 rule: replace tabs with spaces
+return str_replace('\t', ' ', $input);</code></pre>
+<p>No container, no dependency injection, sometimes not even dependencies. Just see <a href="https://gist.github.com/fabpot/3f25555dce956accd4dd">the PHP-CS-Fixer v0.00001</a>.</p>
+<p>When the proof of concepts works, the application grows.</p>
+</li>
+<li>
+<p>It's easy, quick and simple.</p>
+</li>
+<li>
+<p>Who would use container right from the start of 1 command, right?</p>
+</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>If you start a project with <code>new</code> static, it's difficult to migrate.</li>
+<li>The need of refactoring is clear much earlier before it really happens.</li>
+<li>When the application grows, new classes are added and you need to think more and more what class to pass by the constructor, which are singletons, which value objects/DTOs etc.</li>
+</ul>
+<h2 id="2-container-inceptions">2. Container Inceptions</h2>
+<p>The container is slowly appearing not as the backbone of application as in web apps, but as part of commands.</p>
+<p>E.g. <a href="https://github.com/phpstan/phpstan/blob/a991e94fca78b7fb7017a469b19834766787a04c/src/Command/AnalyseCommand.php#L152"><code>AnalyseCommand</code></a> in PHPStan:</p>
+<pre><code class="language-php">use Symfony\Component\Console\Command\Command;
+
+class AnalyseCommand extends Command
+{
+    // ...
+
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $container = $this-&gt;containerFactory-&gt;createFromConfig($input-&gt;getOption('config'));
+
+        $someService = $container-&gt;get(SomeService::class);
+        // ...
+    }
+}</code></pre>
+<p>Or in <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/0257ccae7ddcbdd5f7d51de3ae92ffac02d0e1c1/src/FixerFactory.php#L107"><code>FixerFactory</code></a> in PHP CS Fixer:</p>
+<pre><code class="language-php"># much simplified
+
+class FixerFactory
+{
+    public function registerBuiltInFixers()
+    {
+        static $fixers = [];
+
+        foreach (Finder::findAllFixerClasses() as $fixerClass) {
+            $fixers[] = new $fixerClass;
+        }
+    }
+}</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>Well, ambiguous approach to creating service-like-classes.</li>
+<li>There is an inconsistent approach to services. How do you know where to put it? Is it a service or is it a class to be created manually?</li>
+<li>Should you inject dependency manually or let container (or any higher service) handle that?</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>It's better than no container at all.</li>
+<li>It gives at least some basis for future refactoring.</li>
+<li>Very useful for collecting of minimal basic classes: like rules in PHPStan, Fixers in PHP CS Fixer or Sniffs in PHP Code Sniffer.</li>
+</ul>
+<p><br></p>
+<p><strong>Imagine a code like this in your web application</strong>:</p>
+<pre><code class="language-php">class ProductController
+{
+    /**
+     * @var Connection
+     */
+    private $connection;
+
+    public function __construct(Connection $connection)
+    {
+        $this-&gt;connection = $connectoin;
+    }
+
+    public function detail($id);
+    {
+        $productRepository = new ProductRepository($this-&gt;connection);
+        $product = $productRepository-&gt;get($id);
+
+        // ...
+    }
+}</code></pre>
+<p>How do you feel about it?</p>
+<h3 id="injection-inception-problem">Injection Inception Problem</h3>
+<p>CLI apps authors often struggle with the question: <em>When should be the container created</em>?</p>
+<ul>
+<li>In a bin file?</li>
+<li>In a <code>Command</code>?</li>
+<li>And how to get any service container outside the <code>Command</code> scope?</li>
+<li>How to share services between 2 <code>Command</code>s?</li>
+<li>How to avoid creating container in every single <code>Command</code>?</li>
+</ul>
+<p>And how to create container <strong>when user provides config with services via <code>--config</code> option</strong>?
+The complexity of this question usually leads to choice 2 or 1.</p>
+<p>I won't get into more details now, since I'll write about possible solutions in following posts.</p>
+<img src="/assets/images/posts/2018/cli-app-di/inject-inception.jpg" class="img-thumbnail">
+<p>This application cycle has these steps:</p>
+<ul>
+<li>call bin file</li>
+<li>create <code>Application</code> with <code>new</code></li>
+<li>add commands with <code>$application-&gt;add(new SomeCommand)</code></li>
+<li>run <code>Application</code></li>
+<li>in called command, there are 2 approaches
+<ul>
+<li>
+<ol>
+<li>create a container
+<ul>
+<li>load it with few services</li>
+<li>use these services in the scope of this command</li>
+</ul></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>create other classes with <code>new</code>
+<ul>
+<li>sometimes add them to the container, so they can be used later</li>
+<li>sometimes add use them in scope and re-create them again when needed</li>
+</ul></li>
+</ol>
+</li>
+</ul></li>
+</ul>
+<p>Compare it to a web application:</p>
+<ul>
+<li>call <code>www/index.php</code> file</li>
+<li>create dependency injection container</li>
+<li>get <code>Application</code> from it</li>
+<li>run it with the current request</li>
+<li>invoke controller and all other needed services in the scope of this controller</li>
+</ul>
+<h2 id="3-symfony-console-meets-symfony-dependencyinjection">3. Symfony\Console meets Symfony\DependencyInjection</h2>
+<p>Why not inspire by web apps, where Controllers are lazy and dependency injection is the first-class citizen?
+Moreover, Symfony 3.4 allows <a href="https://symfony.com/blog/new-in-symfony-3-4-lazy-commands">Lazy Commands</a>, that make application cycle more and more similar to web apps. Be careful - <strong>there are few WTFs during migration to Lazy Commands</strong>, <a href="https://blog.shopsys.com/5-5-steps-to-migrate-from-symfony-2-8-lts-to-symfony-3-4-lts-in-real-prs-50c98eb0e9f6">as Shopsys describes</a>.</p>
+<pre><code class="language-php"># bin/rector
+
+// ...
+
+$container = $kernel-&gt;getContainer();
+
+$application = $container-&gt;get(Application::class);
+$application-&gt;run();</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-times-text-danger-em-disadvantages"><em class="fas fa-fw fa-lg fa-times text-danger"></em> Disadvantages</h3>
+<ul>
+<li>You need to rethink the <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/">static <code>new</code> service approach</a>, if you're used to it.</li>
+</ul>
+<h3 id="em-class-fas-fa-fw-fa-lg-fa-check-text-success-em-advantages"><em class="fas fa-fw fa-lg fa-check text-success"></em> Advantages</h3>
+<ul>
+<li>Web apps = CLI apps, nothing extra to learn for new contributors, even though they contribute a CLI app for their first time.</li>
+<li>You can use all <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">Symfony 3.3+ super cool features</a>.</li>
+<li>It's much easier to scale architecture than with non-container apps.</li>
+<li>You can drop a lot of boilerplate code that sticks code together and simulates container, like singletons, <code>static::$vars</code> inside classes etc.</li>
+<li>You can avoid bugs caused by unexpected behavior - like object, that looks like services but is created in 2 different places and holds different variables.</li>
+</ul>
+<h2 id="how-to-migrate-from-1-to-3">How To Migrate from 1 to 3?</h2>
+<p>I wish there was Rector for that like there is <a href="/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony/">for Doctrine Repositories as Services</a>, but it is a too complex task at the moment. Maybe one day.</p>
+<p>In the meantime you can use few guides:</p>
+<ul>
+<li><a href="https://github.com/symplify/coding-standard#use-services-and-constructor-injection-over-static-method"><code>ForbiddenStaticFunctionSniff</code></a></li>
+<li><a href="https://github.com/symplify/coding-standard#use-service-and-constructor-injection-rather-than-instantiation-with-new"><code>NoClassInstantiationSniff</code></a></li>
+<li><a href="https://stackoverflow.com/questions/19321760/symfony2-how-to-access-the-service-in-a-custom-console-command/46007150#46007150">Stackoverflow: How to access the service in a custom console command?
+</a></li>
+<li><a href="https://blog.shopsys.com/5-5-steps-to-migrate-from-symfony-2-8-lts-to-symfony-3-4-lts-in-real-prs-50c98eb0e9f6">5,5 Steps to Migrate from Symfony 2.8 LTS to Symfony 3.4 LTS in Real PRs</a></li>
+</ul>
+<p><br></p>
+<p>That's what works for me in CLI apps I've been working on. Look for yourself to get real code inspiration:</p>
+<ul>
+<li><a href="https://github.com/rectorphp/rector">Rector</a>,</li>
+<li><a href="https://github.com/apigen/apigen">ApiGen</a>,</li>
+<li>and <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a>.</li>
+</ul>
+<p><br></p>
+<p><strong>Which approach do you find the best in your own practice for the long-term code?</strong></p>
+<p><br><br></p>
+<p>Happy injecting!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/05/03/how-do-you-treat-your-own-first-ai" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How Do You Treat Your Own First AI?
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-07-why-you-should-combine-symfony-console-and-dependency-injection.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why You Should Combine Symfony Console and Dependency Injection" />
+    <meta property="og:description" content="I saw 2 links to Symfony\Console in [today&#039;s Week of Symfony](http://symfony.com/blog/a-week-of-symfony-592-30-april-6-may-2018) (what a time reference, huh?).
+There are plenty of such posts out there, even in Pehapkari community blog: [Best Practice for Symfony Console in Nette](https://pehapkari.cz/blog/2017/06/02/best-practice-for-symfony-console-in-nette) or [Symfony Console from the Scratch](/blog/2019/08/12/standalone-symfony-console-from-scratch/).
+
+But nobody seems to write about **the greatest bottleneck of Console applications - static cancer**. Why is that?
+" />
+    <meta property="og:url" content="/blog/2018/05/07/why-you-should-combine-symfony-console-and-dependency-injection" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why You Should Combine Symfony Console and Dependency Injection" />
+    <meta name="twitter:description" content="I saw 2 links to Symfony\Console in [today&#039;s Week of Symfony](http://symfony.com/blog/a-week-of-symfony-592-30-april-6-may-2018) (what a time reference, huh?).
+There are plenty of such posts out there, even in Pehapkari community blog: [Best Practice for Symfony Console in Nette](https://pehapkari.cz/blog/2017/06/02/best-practice-for-symfony-console-in-nette) or [Symfony Console from the Scratch](/blog/2019/08/12/standalone-symfony-console-from-scratch/).
+
+But nobody seems to write about **the greatest bottleneck of Console applications - static cancer**. Why is that?
+" />

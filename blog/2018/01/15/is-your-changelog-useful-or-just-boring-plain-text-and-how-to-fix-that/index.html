@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 72 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-01-Mon">
+            <strike>
+                            Mon, Jan 15, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Jun, 2018
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-01-15-is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at June 2018</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with new <code>run</code> command.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you <a href="https://keepachangelog.com">keep a CHANGELOG</a>? You should! I <a href="https://github.com/symplify/symplify/blob/master/CHANGELOG.md">do</a>, because it's the main story about the open-source package.
+<br><br>
+And if you do, is it boring plain text or <strong>useful rich markdown</strong>?</p>
+                    </div>
+                </div>
+
+                <p><br></p>
+<p>This post is written in Markdown. Would you read it if it looked like this?</p>
+<div class="card">
+    <div class="card-body">
+        I wrote about monorepo before and - as ShopSyS and Google agrees - it's the best choice for longterm projects, like children or planet projects.
+        <br><br>
+        Moreover now, when Vitek showed me awesome tool called Tomono, that can merge git history from multiple repositories...
+    </div>
+</div>
+<p>Or this one:</p>
+<div class="card">
+    <div class="card-body">
+I <a href="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/">wrote about monorepo before</a> and - as <a href="https://blog.shopsys.com/how-to-maintain-multiple-git-repositories-with-ease-61a5e17152e0">ShopSys</a> and <a href="https://cacm.acm.org/magazines/2016/7/204032-why-google-stores-billions-of-lines-of-code-in-a-single-repository/fulltext">Google agrees</a>) - <strong>it's the best choice for longterm projects</strong>, like children or planet projects.
+    <br><br>
+    Moreover now, when <a href="https://github.com/vitek-rostislav">Vitek</a> showed me awesome tool called <a href="https://github.com/unravelin/tomono">Tomono</a><a>, that can <strong>merge git history from multiple repositories</strong>...
+    </a></div>
+</div>
+<p><br></p>
+<h2 id="what-is-sad-about">What is Sad about..</h2>
+<h3 id="missing-references">...Missing References?</h3>
+<p>Imagine you'll read my post first <em>plain text</em> version. While reading it, you might think:</p>
+<ul>
+<li>What is this monorepo? Isn't that <em>monolith</em> - an antipattern?</li>
+<li>I didn't know Google is using monorepo?</li>
+<li>Is that true name or made-up one?</li>
+</ul>
+<p>You could read answer to all those questions if I'd only provide links - but <strong>you can't, because there are no links</strong>. You'd have to go to comments, ask them, wait for answers... So you'll probably end up closing my blog and never come again.</p>
+<h3 id="plain-text-code-changelog-md-code">...Plain Text <code>CHANGELOG.md</code>?</h3>
+<p>It takes maintainer <strong>a lot of effort</strong> to <a href="https://keepachangelog.com">keep a changelog</a>, keep it updated, with every version and every new pull-request, refer issues, pull-request, @author references...</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    "Too many cooks spoil the broth."
+</blockquote>
+<p>No surprise that most <code>CHANGELOG.md</code> files look like this:</p>
+<pre><code class="language-markdown">## v3.2.0 - 2018-01-18
+
+### Changed
+
+- #560 Added `PhpdocVarWithoutNameFixer` to `docblock.neon` level, thanks to @carusogabriel
+- #578 Use `@doesNotPerformAssertions` in tests, thanks to @carusogabriel</code></pre>
+<p>Does your <code>CHANGELOG.md</code> look like this too? Is it just dump of <a href="https://github.com/symplify/symplify/issues?q=is%3Apr+is%3Aclosed">pull-requests</a> combined with <a href="https://github.com/symplify/symplify/releases">releases</a>?</p>
+<h2 id="why-do-we-look-to-changelog">Why do we Look to Changelog?</h2>
+<p>To find an answer:</p>
+<ul>
+<li>What has changed in new version?</li>
+<li>If it was <code>@deprecated</code>, what is the replacement?</li>
+<li><strong>Most often when it broke our code</strong> and we're angry: what are the reasons for this change?</li>
+<li>How did it work before?</li>
+<li>Was there some issue?</li>
+<li>Who is that active person behind all pull-requests for this release?</li>
+</ul>
+<p>I've asked all these questions when I was investigating bug in packages I used.</p>
+<p>Often, release descriptions are not so detailed. In that case it is <strong>really helpful to have comparison to previous version</strong>, e.g. <a href="https://github.com/symplify/symplify/compare/v3.1.0...v3.2.0">3.1 to 3.2</a>.</p>
+<p>But all of this requires time. A time that maintainer usually puts to new features or resolving bugs.</p>
+<p>When I added <a href="https://github.com/symplify/symplify/blob/master/CHANGELOG.md"><code>CHANGELOG.md</code> to Symplify</a> and moved all notes from <a href="https://github.com/symplify/symplify/releases">Github Releases</a> there, I was in the same situation. Do I create new features or rather play and cuddle with my <code>CHANGELOG.md</code>?</p>
+<h2 id="can-t-let-go-automate">Can't let go? Automate!</h2>
+<p>I wanted both. Why? Because I was used to Github Released that work like I needed:</p>
+<pre><code class="language-markdown">## v3.2.0 - 2018-01-18
+
+### Changed
+
+- [#560](https://github.com/symplify/symplify/pull/560) Added `PhpdocVarWithoutNameFixer` to `docblock.yml` level,
+   thanks to [@carusogabriel](https://github.com/carusogabriel)
+- [#578](https://github.com/symplify/symplify/pull/578) Use `@doesNotPerformAssertions` in tests,
+   thanks to [@carusogabriel](https://github.com/carusogabriel)</code></pre>
+<p>I've closed myself to coffee house for 3 hours and I've came up with solution!</p>
+<p><strong>A <a href="https://github.com/Symplify/ChangelogLinker">Changelog Linker</a> was born</strong>.</p>
+<img src="/assets/images/posts/2018/changelog/links.png" class="img-thumbnail">
+<h2 id="3-steps-to-add-links-to-your-code-changelog-md-code">3 Steps To Add Links To Your <code>CHANGELOG.md</code></h2>
+<h3 id="1-install">1. Install</h3>
+<pre><code class="language-bash">composer require symplify/changelog-linker --dev</code></pre>
+<h3 id="2-run-it">2. Run it</h3>
+<pre><code class="language-bash">vendor/bin/changelog-linker run</code></pre>
+<p>It will complete links to:</p>
+<ul>
+<li>
+<p><strong>PRs and issues</strong></p>
+<pre><code class="language-markdown">[#1](https://github.com/symplify/symplify/pull/1) - fix everything</code></pre>
+</li>
+<li>
+<p><strong>Version Diffs</strong></p>
+<pre><code class="language-markdown"># [v2.0.0](https://github.com/symplify/symplify/compare/v1.5.0...v2.0.0)</code></pre>
+</li>
+<li>
+<p><strong>Users</strong></p>
+<pre><code class="language-markdown">Thanks to [@SpacePossum](https://github.com/SpacePossum)</code></pre>
+</li>
+</ul>
+<h3 id="3-commit-and-push">3. Commit and Push</h3>
+<pre><code class="language-bash">git add .
+git commit -m "CHANGELOG: add links to PRs, issues, version diffs and user names"
+git push origin master</code></pre>
+<p>That's it!</p>
+<p><br></p>
+<p>I'm sorry I didn't follow this rule from <a href="http://phppackagechecklist.com/#1,2,3,4,5,6,7,8,9,10,11,12,13,14">PHP Package Checklist</a> and used Github Releases instead. But <strong>now I have no more excuses</strong>.</p>
+<p>I hope you to...</p>
+<p><a href="htts://keepachangelog.com"></p>
+<img src="/assets/images/posts/2018/changelog/keep-a-changelog.jpg" class="img-thumbnail">
+<p></a></p>
+<p>Huge thanks to @olivierlacan for keepachangelog.com! It helped me a lot.</p>
+<p><em>Oh, sorry...</em></p>
+<p><strong>Huge thanks to <a href="https://github.com/olivierlacan">@olivierlacan</a></strong> for <a href="https://keepachangelog.com">keepachangelog.com</a>!</p>
+<p><br></p>
+<p>Happy lazy linking!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Clean and Decoupled Controllers, Commands and Event Subscribers Once and for All with Delegator Pattern
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-01-15-is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That" />
+    <meta property="og:description" content="Do you [keep a CHANGELOG](https://keepachangelog.com)? You should! I [do](https://github.com/symplify/symplify/blob/master/CHANGELOG.md), because it&#039;s the main story about the open-source package.
+
+And if you do, is it boring plain text or **useful rich markdown**?
+" />
+    <meta property="og:url" content="/blog/2018/01/15/is-your-changelog-useful-or-just-boring-plain-text-and-how-to-fix-that" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Is Your CHANGELOG Useful or Just Boring Plain Text? And How to Fix That" />
+    <meta name="twitter:description" content="Do you [keep a CHANGELOG](https://keepachangelog.com)? You should! I [do](https://github.com/symplify/symplify/blob/master/CHANGELOG.md), because it&#039;s the main story about the open-source package.
+
+And if you do, is it boring plain text or **useful rich markdown**?
+" />

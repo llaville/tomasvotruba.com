@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>The most Effective Test I found in 7 years of Testing | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 268 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>The most Effective Test I found in 7 years of Testing</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-07-Mon">
+            
+                            Mon, Jul 13
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/07/13/the-most-effetive-test-i-found-in-7-years-of-testing/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-13-the-most-effetive-test-i-found-in-7-years-of-testing.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you test your projects with automated tests? If not, would you like to start?
+Do you work with application, integration, functional, unit, and Selenium layers and drive you crazy? Do you spend more time writing tests than the actual code behind them?
+<br><br>
+I want my <strong>tests to be simple, effective, and fun to write and maintain</strong>. Today, we look at one approach used by <a href="https://github.com/php/php-src">PHP itself</a>, <code>nikic/php-parser</code>. It's so good I'm surprised not everyone is using it.</p>
+                    </div>
+                </div>
+
+                <h2 id="the-bigger-the-scope-the-greater-the-teacher">The Bigger the Scope, the Greater the Teacher</h2>
+<p>You can spend a year building house of your dreams. You already live in a flat, so you have a place to sleep. <strong>There is no pressure</strong>. You go there every weekend, add a window here and there, add doors, prepare holes in walls for electric heating cables... good 2-4 years.</p>
+<p>How would the situation change if you'd build houses as a developer (the building one)? Your job is to build 100 flats per year. You can't fool around with the color of the walls inside each room. <strong>You have to be effective.</strong></p>
+<p><br></p>
+<p>The first case of building one house for a year - you only work on 1 PHP project at once. It's only <strong>natural to try-out all the testing layers</strong> you can Google. There are a couple of tests that test the product checkout process, a couple of integration tests to check the component is rendered correctly, <a href="/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests/">mocking</a> to &quot;decouple&quot; one part from another.</p>
+<p>Every month I work with ~5 private projects, and I maintain <a href="https://packagist.org/profile/?page=3">35 open-sources packages</a>. I used to have very complicated tests for all possible application parts, but that turned out to take more time to maintain to develop, and it <strong>slowed down my productivity brutally the more tests I had</strong>.</p>
+<p><br></p>
+<h2 id="how-do-php-core-test-cases-look-like">How do PHP-core test cases Look Like?</h2>
+<p>Let's look at the PHP test <a href="https://github.com/php/php-src/blob/master/tests/basic/001.phpt">with name 001</a>.
+Give it 60 seconds:</p>
+<pre><code class="language-bash">--TEST--
+Trivial "Hello World" test
+--FILE--
+&lt;?php echo "Hello World"?&gt;
+--EXPECT--
+Hello World</code></pre>
+<p>Do you need a PHP-core developer to explain the whole testing process? You don't; you get it.</p>
+<p>When we call:</p>
+<pre><code class="language-php">&lt;?php echo "Hello World"?&gt;</code></pre>
+<p>We get the output:</p>
+<pre><code class="language-bash">Hello World</code></pre>
+<p>The 1st line is just a description, useful for a more complicated case.</p>
+<h2 id="testing-at-its-best">Testing at its Best</h2>
+<ul>
+<li>you <strong>don't need a package maintainer to explain you what the test does</strong></li>
+<li>you <strong>don't have to read a book about testing</strong> to be able to contribute</li>
+<li>you can edit it, and you can extend it</li>
+<li>you can learn with growing complexity by yourself</li>
+</ul>
+<p>It's like a smartphone or door handle in testing.</p>
+<p>This kind of testing gives you confidence, and that's by far the most important feeling that <a href="/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/">builds senior code bases</a>.</p>
+<h2 id="domain-driven-testing">Domain Driven Testing</h2>
+<p>You're probably thinking, &quot;but how do I apply this to my unique startup that does not compare strings&quot;? Of course, there is a place for the complex test that checks your checkout process work. The goal <strong>is not to narrow all your tests to 1 size</strong> to fit em all.</p>
+<p>The goal is to find what startup is different from other projects. Is your specialty to build e-commerce websites, or is it a recommendation of the next best product? Is it an instant delivery of warm food or a reliable video conference for massive numbers of users?</p>
+<h2 id="find-your-domain">Find Your Domain</h2>
+<p><strong>Find your domain</strong>, because in this domain will be placed 80 % of your tests. If you pick the right domain and make these tests simple, effective, and fun to write and maintain, your developers will enjoy writing them, and your code will naturally grow.</p>
+<p><br></p>
+<p>Let's look at the projects you know:</p>
+<ul>
+<li>PHP
+<ul>
+<li><strong>main domain</strong>: running PHP input code with correct output to the user</li>
+<li>side domain: validation of input, syntax check, informative errors</li>
+</ul></li>
+<li>php-parser
+<ul>
+<li><strong>main domain</strong>: parsing PHP input code to desired node objects</li>
+<li>side domain: printing nodes back, comments handling</li>
+</ul></li>
+<li>Rector
+<ul>
+<li><strong>main domain</strong>: refactoring input code to the desired change</li>
+<li>side domain: working with docblocks and types, format-preserving</li>
+</ul></li>
+</ul>
+<h2 id="code-time">Code Time</h2>
+<p>Enough theory, let's do the practice.</p>
+<p>We have a fixture file with your domain, <code>/fixture/first_try.php</code>:</p>
+<pre><code class="language-bash">input
+-----
+expected output</code></pre>
+<p>Then we need to run Test Case:</p>
+<pre><code class="language-php">&lt;?php
+
+use PHPUnit\Framework\TestCase;
+
+final class FirstTryTest extends TestCase
+{
+    public function test(): void
+    {
+        $fixtureContent = file_get_contents(__DIR__ . '/fixture/first_try.php');
+        [$input, $expectedOutput] = explode("\n-----\n", $fixtureContent);
+
+        // test your main domain service
+        $output = $this-&gt;processInputInYourDomain($input);
+
+        $this-&gt;assertSame($expectedOutput, $output);
+    }
+}</code></pre>
+<p>And that's it :) See <a href="https://3v4l.org/sEudR">3v4l.org code sample</a>.</p>
+<p><br></p>
+<h2 id="few-tips-before-start">Few Tips before Start</h2>
+<ul>
+<li>it's all at one place - no file jumping and looking for the right file</li>
+</ul>
+<pre><code class="language-diff">-/tests/fixture/before/input_string.php
+-/tests/fixture/after/some_string_print.php
++/tests/fixture/change_string.php</code></pre>
+<ul>
+<li>the file name is the description</li>
+<li><strong>it scales</strong> - you can build a test that combines multiple problems at once, and still get the same input/output format</li>
+<li>you can also <strong>combine formats</strong> in one fixture, e.g., for <a href="https://github.com/migrify/migrify/blob/master/packages/config-transformer/packages/format-switcher/tests/Converter/ConfigFormatConverter/FixtureYamlToPhp/normal/some.yaml">migration of Symfony configs from YAML to PHP</a>.</li>
+</ul>
+<p><br></p>
+<h2 id="what-if-output-changes">What If Output Changes?</h2>
+<p>&quot;But what happens when we add a new property to the output? Do we have to change all the files manually? That's crazy.&quot;</p>
+<p>It would be crazy. I tried to update 60 files in php-parser when I only added typed properties... oh, that was too much work. At file 50, I figured out there is an automated way exactly my case. We will look at how we can <strong>turn these tests into snapshot tests that update themselves</strong> <a href="/blog/2020/07/20/how-to-update-hundreds-of-test-fixtures-with-single-phpunit-run/">in the next post</a>.</p>
+<p><br></p>
+<p>PS.: Do you want to automate part with loading and splitting fixture? Checkout <a href="https://github.com/symplify/easy-testing">symplify/easy-testing</a> package.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/07/06/cleaning-lady-notes-from-class-mess-to-psr4-step-by-step-with-confidence" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Cleaning Lady Notes: From Class Mess to PSR-4 Step by Step With Confidence
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-13-the-most-effetive-test-i-found-in-7-years-of-testing.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="The most Effective Test I found in 7 years of Testing" />
+    <meta property="og:description" content="Do you test your projects with automated tests? If not, would you like to start?
+Do you work with application, integration, functional, unit, and Selenium layers and drive you crazy? Do you spend more time writing tests than the actual code behind them?
+
+I want my **tests to be simple, effective, and fun to write and maintain**. Today, we look at one approach used by [PHP itself](https://github.com/php/php-src), `nikic/php-parser`. It&#039;s so good I&#039;m surprised not everyone is using it.
+" />
+    <meta property="og:url" content="/blog/2020/07/13/the-most-effetive-test-i-found-in-7-years-of-testing" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="The most Effective Test I found in 7 years of Testing" />
+    <meta name="twitter:description" content="Do you test your projects with automated tests? If not, would you like to start?
+Do you work with application, integration, functional, unit, and Selenium layers and drive you crazy? Do you spend more time writing tests than the actual code behind them?
+
+I want my **tests to be simple, effective, and fun to write and maintain**. Today, we look at one approach used by [PHP itself](https://github.com/php/php-src), `nikic/php-parser`. It&#039;s so good I&#039;m surprised not everyone is using it.
+" />

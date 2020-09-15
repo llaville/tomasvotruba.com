@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 224 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-11-Mon">
+            
+                            Mon, Nov 4, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/11/04/still-on-phpunit-4-come-to-phpunit-8-together-in-a-day/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-11-04-still-on-phpunit-4-come-to-phpunit-8-together-in-a-day.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Last month I was on <a href="https://twitter.com/akrabat/status/1181998973588037632">PHPSW meetup</a> in Bristol UK with Rector talk. To be honest, <a href="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/">Nette to Symfony migration under 80 hours</a> was not a big deal there.
+<br><br>
+To my surprise, <strong>upgrading PHPUnit tests was</strong>. So I was thinking, let's take it from the floor in one go, from PHPUnit 4 to the latest PHPUnit 8.</p>
+                    </div>
+                </div>
+
+                <img src="/assets/images/posts/2019/phpunit/tweet.png" class="mt-4 mb-4">
+<h2 id="1-planning">1. Planning</h2>
+<p>Before we dive into the upgrading of our tests, we need to <strong>look at minimal PHP version</strong> required by each PHPUnit.
+The <a href="https://github.com/sebastianbergmann/phpunit/wiki/Development-and-Release-Process">PHPUnit release process</a> states, <strong>that each new PHPUnit major version requires a newer minor PHP version</strong>.</p>
+<p>What does that mean?</p>
+<table class="table table-bordered table-responsive"><thead class="thead-inverse"><tr><th>PHPUnit</th>
+            <th>Required PHP version</th>
+            <th>Relase Year</th>
+        </tr></thead><tr><td>PHPUnit 4</td>
+        <td>PHP 5.3-5.6</td>
+        <td>2015</td>
+    </tr><tr><td>PHPUnit 5</td>
+        <td>PHP 5.6-7.4</td>
+        <td>2016</td>
+    </tr><tr><td>PHPUnit 6</td>
+        <td>PHP 7.0-7.4</td>
+        <td>2017</td>
+    </tr><tr><td>PHPUnit 7</td>
+        <td>PHP 7.1-7.4</td>
+        <td>2018</td>
+    </tr><tr><td>PHPUnit 8</td>
+        <td>PHP 7.2-7.4</td>
+        <td>2019</td>
+    </tr></table>
+<p>We need to plan and combine the PHP upgrade.</p>
+<p>This is <strong>the full path</strong> we'll go through:</p>
+<ul>
+<li>upgrade PHP 5.3 → 5.6</li>
+<li>upgrade PHPUnit 4 → 5</li>
+<li>upgrade PHP 5.6 → 7.0</li>
+<li>upgrade PHPUnit 5 → 6</li>
+<li>upgrade PHP 7.0 → 7.1</li>
+<li>upgrade PHPUnit 6 → 7</li>
+<li>upgrade PHP 7.1 → 7.2</li>
+<li>upgrade PHPUnit 7 → 8</li>
+</ul>
+<p><em>Note: To keep this post simple, we'll focus on PHPUnit upgrade only here. But it's possible you'll need to use Rector for PHP upgrades between PHPUnit upgrade steps too.</em></p>
+<h2 id="2-single-version-upgrade-1-pull-request">2. Single Version Upgrade = 1 pull-request</h2>
+<p>Do you enjoy <em>the rush</em> of changing a thousand files at once? It drives to do even more and more changes.</p>
+<p>The same thing happens with upgrading code - we upgrade PHP and tests passes, great! Let's do upgrade PHPUnit. Oh, maybe we could refactor this method so it's more readable. Oh, now this other method looks silly, let's clean that up too...</p>
+<img src="/assets/images/posts/2019/phpunit/explode.jpg" class="img-thumbnail">
+<p><span class="text-danger">
+<strong>STOP!</strong>
+</span></p>
+<p>This is the easiest way <strong>to get stuck</strong> in broken tests, with dug up pieces of code all over the project, overheat our brain in <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/">huge cognitive complexity</a> and <del>give up</del> rage quit the upgrade saying &quot;it's hard as they say&quot;.</p>
+<h3 id="the-golden-rule-of-successful-upgrade">The Golden Rule of Successful Upgrade</h3>
+<ul>
+<li>one minor version at a time</li>
+<li>one pull-request at a time</li>
+<li>tested, our CI passes</li>
+<li><strong>only after the PR is merged, we go to next minor version</strong></li>
+</ul>
+<p>Unless you're upgrading 10 test files, of course. But in the rest of the case, this approach would save me many failed attempts in the paths. That's why <strong>planning is the most important step of all</strong> for huge upgrade operations.</p>
+<h2 id="3-phpunit-4-to-5">3. PHPUnit 4 to 5</h2>
+<h3 id="from-code-getmock-code-to-code-getmockbuilder-code">From <code>getMock()</code> to <code>getMockBuilder()</code></h3>
+<pre><code class="language-diff"> &lt;?php
+
+ final class MyTest extends PHPUnit_Framework_TestCase
+ {
+     public function test()
+     {
+-        $someClassMock = $this-&gt;getMock('SomeClass');
++        $someClassMock = $this-&gt;getMockBuilder('SomeClass')-&gt;getMock();
+     }
+ }</code></pre>
+<p><br></p>
+<p>These changes can be delegated to Rector:</p>
+<pre><code class="language-bash">composer require phpunit/phpunit "^5.0" --dev
+vendor/bin/rector process tests --set phpunit50</code></pre>
+<h2 id="4-phpunit-5-to-6">4. PHPUnit 5 to 6</h2>
+<p>This is the release where <strong>PHPUnit got namespaces</strong>, yay! Well, yay for the project, nay for the upgrades.</p>
+<h3 id="from-underscore-to-slash">From Underscore to Slash</h3>
+<p>Although there is a lot of underscore &lt;=&gt; slash aliases for a smoother upgrade, it will be removed in the future PHPUnit version, so we better deal with it right now.</p>
+<p>First, we need to replace all:</p>
+<pre><code class="language-diff">-PHPUnit_Framework_TestCase
++\PHPUnit\Framework\TestCase # mind the pre-slash "\"</code></pre>
+<p>Without pre-slash, your code might fail.</p>
+<p><a class="btn btn-primary" href="https://3v4l.org/5Sjjh">
+See 3v4l.org to understand why
+</a></p>
+<p><br></p>
+<p>Second, replace the rest of the <code>PHPUnit_*</code> classes with a namespace. Listeners, test suites, exceptions... etc.
+This is hell for us human, luckily easy-pick for Rector.</p>
+<h3 id="add-code-doesnotperformassertions-code-to-test-with-no-assertion">Add <code>doesNotPerformAssertions</code> to test With no Assertion</h3>
+<pre><code class="language-diff">+    /**
++     * @doesNotPerformAssertions
++     */
+     public function testNoError()
+     {
+         new SomeObject(25);
+     }</code></pre>
+<h3 id="code-setexpectedexception-code-to-code-expectexception-code"><code>setExpectedException()</code> to <code>expectException()</code></h3>
+<p>And not only that! Also, split arguments to own method:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class MyTest extends \PHPUnit\Framework\TestCase
+ {
+     public function test()
+     {
+-        $this-&gt;setExpectedException('SomeException', $message, 101);
++        $this-&gt;expectException('SomeException');
++        $this-&gt;expectExceptionMessage($message);
++        $this-&gt;expectExceptionCode(101);
+     }
+ }</code></pre>
+<p>Also <code>setExpectedExceptionRegExp()</code> was removed.</p>
+<h3 id="code-expectedexception-code-to-code-expectexception-code"><code>@expectedException</code> to <code>expectException()</code></h3>
+<p>These changes are a real challenge for simple human attention:</p>
+<pre><code class="language-diff">-expectedException
++expectException</code></pre>
+<p>Mind the missing &quot;ed&quot;.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class MyTest extends \PHPUnit\Framework\TestCase
+ {
+-    /**
+-     * @expectedException SomeException
+-     */
+     public function test()
+     {
++        $this-&gt;expectException('SomeException');
+     }
+ }</code></pre>
+<p><br></p>
+<p>These changes can be delegated to Rector:</p>
+<pre><code class="language-bash">composer require phpunit/phpunit "^6.0" --dev
+vendor/bin/rector process tests --set phpunit60</code></pre>
+<h2 id="5-phpunit-6-to-7">5. PHPUnit 6 to 7</h2>
+<h3 id="remove-quot-test-quot-prefix-on-data-providers">Remove &quot;test&quot; prefix on Data Providers</h3>
+<p>I have no idea how tests and data provider methods were detected before this:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class WithTestAnnotation extends \PHPUnit\Framework\TestCase
+ {
+     /**
+-     * @dataProvider testProvideDataForWithATestAnnotation()
++     * @dataProvider provideDataForWithATestAnnotation()
+      */
+     public function test()
+     {
+         // ...
+     }
+
+-    public function testProvideDataForWithATestAnnotation()
++    public function provideDataForWithATestAnnotation()
+     {
+         return ['123'];
+     }
+ }</code></pre>
+<h3 id="rename-code-scenario-code-annotation-to-code-test-code">Rename <code>@scenario</code> annotation to <code>@test</code></h3>
+<pre><code class="language-diff"> &lt;?php
+
+ class WithTestAnnotation extends \PHPUnit\Framework\TestCase
+ {
+     /**
+-     * @scenario
++     * @test
+      */
+     public function test()
+     {
+         // ...
+     }
+ }</code></pre>
+<h3 id="change-code-withconsecutive-code-arguments-to-iterable">Change <code>withConsecutive()</code> Arguments to Iterable</h3>
+<p>This rather small change can cause a huge headache. It's <a href="https://github.com/sebastianbergmann/phpunit/commit/72098d80f0cfc06c7e0652d331602685ce5b4b51">a fix of silent false positive</a>.</p>
+<p>How would you fix the following code, if you know that the argument of <code>withConsecutive()</code> must be iterable (array, iterator...)?</p>
+<pre><code class="language-php">&lt;?php
+
+class SomeClass
+{
+    public function run($one, $two)
+    {
+    }
+}
+
+class SomeTestCase extends \PHPUnit\Framework\TestCase
+{
+    public function test()
+    {
+        $someClassMock = $this-&gt;createMock(SomeClass::class);
+        $someClassMock
+            -&gt;expects($this-&gt;exactly(2))
+            -&gt;method('run')
+            -&gt;withConsecutive(1, 2, 3, 5);
+    }
+}</code></pre>
+<p>Like this?</p>
+<pre><code class="language-diff">--&gt;withConsecutive(1, 2, 3, 5);
++-&gt;withConsecutive([1, 2, 3, 5]);</code></pre>
+<p>Well, the tests would pass it, but it would be another silent positive. Look at <code>SomeClass::run()</code> method. How many arguments does it have?</p>
+<p>Two. So we need to create array chunks of size 2.</p>
+<pre><code class="language-diff">--&gt;withConsecutive(1, 2, 3, 5);
++-&gt;withConsecutive([1, 2], [3, 5]);</code></pre>
+<p><br></p>
+<p>These changes can be delegated to Rector:</p>
+<pre><code class="language-bash">composer require phpunit/phpunit "^7.0" --dev
+vendor/bin/rector process tests --set phpunit70
+vendor/bin/rector process tests --set phpunit75</code></pre>
+<h2 id="6-phpunit-7-to-8">6. PHPUnit 7 to 8</h2>
+<h3 id="ignore-cache-file">Ignore Cache File</h3>
+<p>The <a href="https://github.com/sebastianbergmann/phpunit/pull/3147">optional caching of test results</a> added in PHPUnit 7.3 is not enabled by default. We need to add the cache file to <code>.gitignore</code>:</p>
+<pre><code class="language-txt"># .gitignore
+.phpunit.result.cache</code></pre>
+<h3 id="remove-type-code-dataname-code-in-code-phpunit-framework-testcase-code-constructor-override">Remove type <code>$dataName</code> in <code>PHPUnit\Framework\TestCase</code> Constructor Override</h3>
+<pre><code class="language-diff"> &lt;?php
+
+ abstract class MyAbstractTestCase extends \PHPUnit\Framework\TestCase
+ {
+-    public function __construct(?string $name = null, array $data = [], string $dataName = '')
++    public function __construct(?string $name = null, array $data = [], $dataName = '')
+     {
+     }
+ }</code></pre>
+<h3 id="replace-code-assertcontains-code-with-specific-code-assertstringcontainsstring-code-method">Replace <code>assertContains()</code> with Specific <code>assertStringContainsString()</code> Method</h3>
+<pre><code class="language-diff"> &lt;?php
+
+ final class SomeTest extends \PHPUnit\Framework\TestCase
+ {
+     public function test()
+     {
+-        $this-&gt;assertContains('foo', 'foo bar');
++        $this-&gt;assertStringContainsString('foo', 'foo bar');
+
+-        $this-&gt;assertNotContains('foo', 'foo bar');
++        $this-&gt;assertStringNotContainsString('foo', 'foo bar');
+     }
+ }</code></pre>
+<h3 id="replace-code-assertinternaltype-code-with-specific-methods">Replace <code>assertInternalType()</code> with Specific Methods</h3>
+<p>This change <a href="https://github.com/sebastianbergmann/phpunit/commit/a406c85c51edd76ace29119179d8c21f590c939e">is huge</a>.</p>
+<p><strong>2 methods were removed, 22 methods are added.</strong></p>
+<pre><code class="language-diff"> &lt;?php
+
+ final class SomeTest extends \PHPUnit\Framework\TestCase
+ {
+     public function test()
+     {
+-        $this-&gt;assertInternalType('string', $value);
++        $this-&gt;assertIsString($value);
+     }
+ }</code></pre>
+<h3 id="change-code-assertequals-code-method-parameters-to-new-specific-methods">Change <code>assertEquals()</code> method Parameters to new Specific Methods</h3>
+<pre><code class="language-diff"> final class SomeTest extends \PHPUnit\Framework\TestCase
+ {
+     public function test()
+     {
+         $value = 'value';
+-        $this-&gt;assertEquals('string', $value, 'message', 5.0);
++        $this-&gt;assertEqualsWithDelta('string', $value, 5.0, 'message');
+
+-        $this-&gt;assertEquals('string', $value, 'message', 0.0, 20);
++        $this-&gt;assertEquals('string', $value, 'message', 0.0);
+
+-        $this-&gt;assertEquals('string', $value, 'message', 0.0, 10, true);
++        $this-&gt;assertEqualsCanonicalizing('string', $value, 'message');
+
+-        $this-&gt;assertEquals('string', $value, 'message', 0.0, 10, false, true);
++        $this-&gt;assertEqualsIgnoringCase('string', $value, 'message');
+     }
+ }</code></pre>
+<h3 id="last-code-code-is-now-namespaced">Last <code>_</code> is now Namespaced</h3>
+<p>This removes the last piece of back-compatible underscore class:</p>
+<pre><code class="language-diff">-PHPUnit_Framework_MockObject_MockObject
++PHPUnit\Framework\MockObject\MockObject</code></pre>
+<h3 id="replace-code-assertarraysubset-code-with">Replace <code>assertArraySubset()</code> with</h3>
+<p>This method was removed <a href="https://github.com/sebastianbergmann/phpunit/issues/3494">because of its vague behavior</a>.
+The proposed solution is <a href="https://github.com/rdohms/phpunit-arraysubset-asserts">rdohms/phpunit-arraysubset-asserts</a> polyfill.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ namespace Acme\Tests;
+
++use DMS\PHPUnitExtensions\ArraySubset\Assert;
+
+ final class AssertTest extends \PHPUnit\Framework\TestCase
+ {
+     public function testPreviouslyStaticCall(): void
+     {
+-        $this-&gt;assertArraySubset(['bar' =&gt; 0], ['bar' =&gt; '0'], true);
++        Assert::assertArraySubset(['bar' =&gt; 0], ['bar' =&gt; '0'], true);
+     }
+ }</code></pre>
+<p>To use this package and upgrade to it, run:</p>
+<pre><code class="language-bash">composer require --dev dms/phpunit-arraysubset-asserts
+vendor/bin/rector process tests --set phpunit80-dms</code></pre>
+<h3 id="add-code-void-code-to-code-phpunit-framework-testcase-code-methods">Add <code>void</code> to <code>PHPUnit\Framework\TestCase</code> Methods</h3>
+<p>This one hits 2 common methods we often use:</p>
+<pre><code class="language-diff">-setUp()
++setUp(): void</code></pre>
+<pre><code class="language-diff">-tearDown()
++tearDown(): void</code></pre>
+<p>Also less common ones:</p>
+<ul>
+<li><code>setUpBeforeClass()</code></li>
+<li><code>assertPreConditions()</code></li>
+<li><code>assertPostConditions()</code></li>
+<li><code>tearDownAfterClass()</code></li>
+<li><code>onNotSuccessfulTest()</code></li>
+</ul>
+<p><br></p>
+<p><strong>You need to run Rector before upgrading</strong> to PHPUnit 7. Otherwise, it will cause a fatal error.</p>
+<p><a class="btn btn-primary" href="https://3v4l.org/1bD6H">
+See 3v4l.org to know why
+</a></p>
+<p><br></p>
+<pre><code class="language-bash">vendor/bin/rector process tests --set phpunit80
+composer require phpunit/phpunit "^8.0" --dev</code></pre>
+<p><br></p>
+<p>In the end, you should see at least PHPUnit 8.5+:</p>
+<pre><code class="language-bash">vendor/bin/phpunit --version
+$ PHPUnit 8.5.15 by Sebastian Bergmann and contributors.</code></pre>
+<p>That's it! Congrats!</p>
+<p><br></p>
+<p><strong>Did you find a change that we missed here?</strong> Share it in comments, so we can make this upgrade path complete and smooth for all future readers. Thank you for the whole PHP community!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/10/28/all-you-always-wanted-to-know-about-monorepo-but-were-afraid-to-ask" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    All You Always Wanted to Know About Monorepo But Were Afraid To Ask
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-11-04-still-on-phpunit-4-come-to-phpunit-8-together-in-a-day.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day" />
+    <meta property="og:description" content="Last month I was on [PHPSW meetup](https://twitter.com/akrabat/status/1181998973588037632) in Bristol UK with Rector talk. To be honest, [Nette to Symfony migration under 80 hours](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/) was not a big deal there.
+
+To my surprise, **upgrading PHPUnit tests was**. So I was thinking, let&#039;s take it from the floor in one go, from PHPUnit 4 to the latest PHPUnit 8.
+" />
+    <meta property="og:url" content="/blog/2019/11/04/still-on-phpunit-4-come-to-phpunit-8-together-in-a-day" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day" />
+    <meta name="twitter:description" content="Last month I was on [PHPSW meetup](https://twitter.com/akrabat/status/1181998973588037632) in Bristol UK with Rector talk. To be honest, [Nette to Symfony migration under 80 hours](/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/) was not a big deal there.
+
+To my surprise, **upgrading PHPUnit tests was**. So I was thinking, let&#039;s take it from the floor in one go, from PHPUnit 4 to the latest PHPUnit 8.
+" />

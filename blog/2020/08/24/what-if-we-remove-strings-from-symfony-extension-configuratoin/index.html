@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>What if We Remove Strings from Symfony Extension Configuration | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 275 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>What if We Remove Strings from Symfony Extension Configuration</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-08-Mon">
+            
+                            Mon, Aug 24
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/08/24/what-if-we-remove-strings-from-symfony-extension-configuratoin/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-24-what-if-we-remove-strings-from-symfony-extension-configuratoin.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>You can tell I'm a <a href="/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/">huge fan PHP configs</a>. To be honest, I don't care; I'm just extremely lazy.
+<br><br>
+Yet, my laziness got me itching when I see <strong>configuration of extensions</strong>.</p>
+                    </div>
+                </div>
+
+                <p>I like the service configuration provided by Symfony. Typo-proof, everything is autocompleted by IDE, hard to put the wrong argument or make a typo.</p>
+<pre><code class="language-php">use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    $services-&gt;defaults()
+        -&gt;autowire()
+        -&gt;autoconfigure()
+        -&gt;public();
+
+    $services-&gt;set(SomeService::class)
+        -&gt;args(['some', 'value']);
+};</code></pre>
+<p>This config is a joy to use in IDE. Only the values that can change, like class name or arg value, are strings. <strong>Everything else is API of the modeling tool</strong>, here <code>ContainerConfigurator</code> from Symfony. This code is a state of Art.</p>
+<p><br></p>
+<p>But that's not everything we have in our configs. Let's look at a common extension you can found in <code>config/packages/doctrine.php</code> in your Symfony project:</p>
+<pre><code class="language-php">use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator-&gt;extension('break', [
+        'dbal' =&gt; [
+            'host' =&gt; '%env(DATABASE_HOST)%',
+            'user' =&gt; '%env(DATABASE_USER)%',
+            'password' =&gt; '%env(DATABASE_PASS)%',
+        ],
+    ]);
+};</code></pre>
+<p>How do you like this?</p>
+<p>I'll share you secret deep from my traumatized mind - this is what I see:</p>
+<pre><code class="language-php">use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator-&gt;extension('error', [
+        'bug' =&gt; [
+            'typo' =&gt; ' _missing',
+            ' problem ' =&gt; 'sorry_renamed',
+            'forgotten' =&gt; 'FALSE POSITIVE',
+        ],
+    ]);
+};</code></pre>
+<blockquote class="blockquote text-center">
+    "Anything that can go wrong, will go wrong.<br>
+    In the worst possible order. When you least expect it."
+</blockquote>
+<p><br></p>
+<h2 id="how-can-we-make-extension-as-good-as-service-registration">How can we make Extension as Good as Service Registration?</h2>
+<p>If we look at <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/DependencyInjection/Loader/Configurator/ContainerConfigurator.php"><code>ContainerConfigurator</code></a>, it inherits from abstract class <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/DependencyInjection/Loader/Configurator/AbstractConfigurator.php"><code>AbstractConfigurator</code></a>.</p>
+<p>What if we use per-extension Configurator... e.g. <code>DoctrineConfigurator</code>?</p>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;user('%env(DATABASE_USER)%')
+        -&gt;password('%env(DATABASE_PASS)%');
+};</code></pre>
+<p>Slightly less space fo bug... Still, I managed to split one there. It can cause a &quot;connection to database rejected&quot; error.</p>
+<h2 id="environment-variables-for-everyone">Environment Variables for Everyone</h2>
+<p>Have you spotted it?</p>
+<pre><code class="language-diff"> return static function (DoctrineConfigurator $doctrineConfigurator): void {
+     $doctrineConfigurator-&gt;dbal()
+         -&gt;user('%env(DATABASE_USER)%')
+-        -&gt;password('%env(DATABASE_PASS)%');
++        -&gt;password('%env(DATABASE_PASSWORD)%');
+};</code></pre>
+<ul>
+<li>How could we prevent this?</li>
+<li>How can one know the conventions of database env values without studying them?</li>
+<li>What are other ENV values for the database we can use?</li>
+</ul>
+<p><a href="https://github.com/JanMikes">Jan Mikes</a> shared with me an interesting idea that <strong>removes this problem</strong>:</p>
+<pre><code class="language-php">use DoctrineEnvs;
+
+return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;user('%env(' . DoctrineEnvs::DATABASE_PASSWORD . ')%')
+        -&gt;password('%env(' . DoctrineEnvs::DATABASE_PASSWORD . ')%');
+};</code></pre>
+<p><br></p>
+<p>That seems like too much clutter... can we make it simpler and safes?</p>
+<pre><code class="language-php">use DoctrineEnvParams;
+
+return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;user(DoctrineEnvParams::DATABASE_PASSWORD)
+        -&gt;password(DoctrineEnvParams::DATABASE_PASSWORD);
+};</code></pre>
+<p><br></p>
+<p>In what cases is this the most useful?</p>
+<p><br></p>
+<p>Common key for the &quot;database name&quot; is never the same across database platforms and language integration. Imagine the saved hours and lifes on Docker/Doctrine/CI typos:</p>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;database('%env(DATABASE_NAME)%');
+        // or...?
+        -&gt;database('%env(DATABASE_DBNAME)%');
+        // or...?
+        -&gt;database('%env(DATABASE_DATABASE)%');
+        // or...?
+        -&gt;database('%env(DB_NAME)%');
+};</code></pre>
+<p>Just don't care and use IDE autocomplete:</p>
+<pre><code class="language-php">use DoctrineEnvParams;
+
+return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;database(DoctrineEnvParams::DATABASE_NAME);
+};</code></pre>
+<h2 id="what-are-benefits-over-array-configuration">What are Benefits over Array configuration?</h2>
+<ul>
+<li><strong>the parameter is validated by standard PHP</strong> - if you put database name with <code>int</code>, the PHP throws an exception right on that line</li>
+</ul>
+<h3 id="focus-on-config-without-jumping-elsewhere">Focus on Config without Jumping Elsewhere</h3>
+<ul>
+<li>the IDE autocompletes method names - <strong>no need to look into configuration</strong>, what can be used - you can stay focused on your code</li>
+<li>the IDE autocompletes ENV names - <strong>no need to look into configs or extension on Github</strong> - you can stay focused on your code</li>
+</ul>
+<h3 id="narrow-context">Narrow Context</h3>
+<ul>
+<li>context-aware autocomplete - when you type <code>dbal()</code> or <code>orm()</code> you only get methods, that are relevant in that context</li>
+</ul>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;... // dbal specific methods
+
+    $doctrineConfigurator-&gt;orm()
+        -&gt;... // orm specific methods
+};</code></pre>
+<ul>
+<li>we can also go to a more narrow scope, like single <code>connection()</code></li>
+</ul>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;conntection()
+            -&gt;... // only connection specific methods
+};</code></pre>
+<p>The <code>DoctrineConfigurator</code> with specific <code>methods()</code> and <code>Constant::KEYS</code> is one way to get rid of all string possible.</p>
+<h2 id="what-about-value-objects">What about Value Objects?</h2>
+<p>With PHP 8.0 to be released in 11/2020 will come <a href="https://stitcher.io/blog/php-8-named-arguments">named arguments</a>. With them, the IDE autocomplete becomes more powerful. If we combine it along with <code>__construct</code> validation in value objects, we have another solid way to add parameters:</p>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;connection(new DbalConnection(
+            DoctrineEnvParams::DATABASE_USER,
+            DoctrineEnvParams::DATABASE_PASSWORD,
+            DoctrineEnvParams::DATABASE_NAME
+        ));
+};</code></pre>
+<p>Compared to method() autocomplete, we can also see <strong>what arguments are required</strong> and which optional:</p>
+<pre><code class="language-php">// using PHP 8.0 syntax with constructor promotion
+
+final class DbalConnection
+{
+    public function __construct(
+        private string $user,
+        private string $password,
+        private string $database,
+        private ?string $version = null
+    ) {
+        // ...
+    }
+}</code></pre>
+<h2 id="instant-feedback-loop">Instant Feedback Loop</h2>
+<p>If we get rid of strings that can go wrong, we've made a big shift <a href="/blog/2020/03/02/we-do-not-need-senior-developers-we-need-senior-code-bases/">to senior codebase</a>.</p>
+<p>Another huge benefit for programmers <strong>is focus - along with <a href="/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/">instant feedback loop</a></strong>.</p>
+<blockquote class="blockquote text-center">
+    "If something goes wrong, I want to know it the moment it went wrong"
+</blockquote>
+<ul>
+<li>
+<p>If we put the wrong password to the database, the project works on the localhost server, the tests are passing, and CI is green, our feedback loop is slow, and we have to speed it up.</p>
+</li>
+<li>
+<p>If the project crashes on the localhost server and tests are failing, our feedback look is fast.</p>
+</li>
+</ul>
+<p><br></p>
+<p><strong>How is instant feedback loop related to value objects and require arguments?</strong> Good question!</p>
+<p>If we put user and password but forget the database name, the application will crash <strong>when</strong> it's connected:</p>
+<pre><code class="language-php">use DoctrineEnvParams;
+
+return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;user(DoctrineEnvParams::DATABASE_USER)
+        -&gt;password(DoctrineEnvParams::DATABASE_PASSWORD);
+};</code></pre>
+<p>That's very late!</p>
+<p>With value objects, we'll get the &quot;missing 3rd argument&quot; error:</p>
+<pre><code class="language-php">return static function (DoctrineConfigurator $doctrineConfigurator): void {
+    $doctrineConfigurator-&gt;dbal()
+        -&gt;connection(new DbalConnection(
+            DoctrineEnvParams::DATABASE_USER,
+            DoctrineEnvParams::DATABASE_PASSWORD
+            // boom :(
+        ));
+};</code></pre>
+<p><strong>That's fast feedback loop!</strong></p>
+<p><br></p>
+<p>These were few ideas, how to <strong>get rid of strings</strong> in <code>/config</code> directory, so we can instead focus on something we love - algorithms, coding, and maybe a coffee cup!</p>
+<p><br></p>
+<p>I bet you can't come up with a better way to do this... share in comments to prove me wrong ;)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/08/17/how-to-get-rid-of-magic-static-and-chaos-from-latte-filters" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Get Rid of Magic, Static and Chaos from Latte Filters
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-24-what-if-we-remove-strings-from-symfony-extension-configuratoin.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="What if We Remove Strings from Symfony Extension Configuration" />
+    <meta property="og:description" content="You can tell I&#039;m a [huge fan PHP configs](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/). To be honest, I don&#039;t care; I&#039;m just extremely lazy.
+
+Yet, my laziness got me itching when I see **configuration of extensions**.
+" />
+    <meta property="og:url" content="/blog/2020/08/24/what-if-we-remove-strings-from-symfony-extension-configuratoin" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="What if We Remove Strings from Symfony Extension Configuration" />
+    <meta name="twitter:description" content="You can tell I&#039;m a [huge fan PHP configs](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/). To be honest, I don&#039;t care; I&#039;m just extremely lazy.
+
+Yet, my laziness got me itching when I see **configuration of extensions**.
+" />

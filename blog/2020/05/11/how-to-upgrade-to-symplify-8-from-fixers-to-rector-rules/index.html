@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Upgrade to Symplify 8 - From Fixers to Rector Rules | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 251 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Upgrade to Symplify 8 - From Fixers to Rector Rules</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-05-Mon">
+            <strike>
+                            Mon, May 11
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/05/11/how-to-upgrade-to-symplify-8-from-fixers-to-rector-rules/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-11-how-to-upgrade-to-symplify-8-from-fixers-to-rector-rules.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector/ECS YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symplify 8 is going to be released in the 2nd half of May. But as in Symfony, you can get ready for future version today.
+<br><br>
+<a href="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/">In the previous post we upgraded Coding Standard from Sniffs to PHPStan</a>. Today we finish with 2nd half - <strong>from Fixers to Rector rules</strong>.</p>
+                    </div>
+                </div>
+
+                <p>When you run <a href="https://github.com/symplify/easy-coding-standard">ECS</a> with version 7.3+:</p>
+<pre><code class="language-bash">vendor/bin/ecs check</code></pre>
+<p>You might see such notices right before your code gets checked:</p>
+<pre><code class="language-bash">PHP Notice:  Fixer "..." is deprecated. Use "..." instead</code></pre>
+<h2 id="why-were-these-fixer-dropped">Why were These Fixer Dropped?</h2>
+<p>You'll find answer to this question <a href="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/">in previous post</a>. To extend answer specifically for this post: Fixer and Rector do the same job - <strong>they change code based on specific recipe</strong>.</p>
+<h3 id="what-is-the-difference">What is the Difference?</h3>
+<ul>
+<li>Fixer works with <a href="https://www.php.net/manual/en/function.token-get-all.php">tokens</a> → which is <strong>great for spaces and <code>{}()</code> positions</strong> etc.,</li>
+<li>Rector works with abstract syntax tree → <strong>great for refactoring, method/property position changes</strong>, rename across the code base, etc.</li>
+</ul>
+<p>Now we know <em>why</em>. Let's look <em>how</em> to deal with that.</p>
+<h2 id="what-to-do-with-these-deprecations">What to do With These Deprecations?</h2>
+<p>So what does it mean? Remove all the rules from <code>ecs.php</code> and let go?</p>
+<p>No, <strong>all you need to do is switch to Rector rules</strong>. It's better working and more reliable since it works with context and not token positions. So at first, you might see new changes in your code.</p>
+<h2 id="how-to-handle-upgrade-in-30-minutes">How to Handle Upgrade in 30 minutes?</h2>
+<p>There are dozen deprecated fixers in total. Let's take it one by one.</p>
+<p>First - if you don't have Rector, install it:</p>
+<pre><code class="language-bash">composer require rector/rector --dev</code></pre>
+<h2 id="1-no-empty-doc-block">1. No Empty Doc Block</h2>
+<p>The <code>RemoveEmptyDocBlockFixer</code> rule basically copied behavior of native <code>NoEmptyPhpdocFixer</code>, so just it instead:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ // ecs.php
+
+ declare(strict_types=1);
+
+ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+ return static function (ContainerConfigurator $containerConfigurator): void {
+     $services = $containerConfigurator-&gt;services();
+-    $services-&gt;set(Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer::class);
++    $services-&gt;set(PhpCsFixer\Fixer\Phpdoc\NoEmptyPhpdocFixer::class);
+ };</code></pre>
+<h2 id="2-preg-delimiter-character">2. Preg Delimiter Character</h2>
+<p>The <code>PregDelimiterFixer</code> was checking consistent preg delimiter, in this case <code>#</code>:</p>
+<pre><code class="language-diff"> class SomeClass
+ {
+     public function run()
+     {
+-        preg_match('~value~', $value);
++        preg_match('#value#', $value);
+     }
+ }</code></pre>
+<p>Instead of <del><code>PhpCsFixer\Fixer\ControlStructure\PregDelimiterFixer</code></del> fixer:</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\CodingStyle\Rector\FuncCall\ConsistentPregDelimiterRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(ConsistentPregDelimiterRector::class)
+        // default
+        -&gt;arg('delimiter', '#');
+};</code></pre>
+<h2 id="3-required-must-be-followed-by-absolute-path">3. Required Must be followed by Absolute Path</h2>
+<pre><code class="language-diff"> class SomeClass
+ {
+     public function run()
+     {
+-        require 'autoload.php';
++        require __DIR__ . '/autoload.php';
+     }
+ }</code></pre>
+<p>Instead of <del><code>PhpCsFixer\Fixer\ControlStructure\RequireFollowedByAbsolutePathFixer</code></del> fixer,</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\CodingStyle\Rector\Include_\FollowRequireByDirRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(FollowRequireByDirRector::class);
+};</code></pre>
+<h2 id="4-match-exception-variable-name-to-its-type">4. Match Exception variable name to its Type</h2>
+<pre><code class="language-diff"> class SomeClass
+ {
+     public function run()
+     {
+         try {
+             // ...
+-        } catch (SomeException $typoException) {
+-            $typoException-&gt;getMessage();
++        } catch (SomeException $someException) {
++            $someException-&gt;getMessage();
+         }
+     }
+ }</code></pre>
+<p>Instead of <del><code>PhpCsFixer\Fixer\Naming\CatchExceptionNameMatchingTypeFixer</code></del> Fixer:</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(CatchExceptionNameMatchingTypeRector::class);
+};</code></pre>
+<h2 id="5-match-property-and-variable-to-its-type">5. Match Property and Variable to its Type</h2>
+<pre><code class="language-diff"> class SomeClass
+ {
+     /**
+      * @var EntityManager
+      */
+-    private $eventManager;
++    private $entityManager;
+-    public function __construct(EntityManager $eventManager)
++    public function __construct(EntityManager $entityManager)
+     {
+-        $this-&gt;eventManager = $eventManager;
++        $this-&gt;entityManager = $entityManager;
+     }
+ }</code></pre>
+<p>Instead of <del><code>Symplify\CodingStandard\Fixer\Naming\PropertyNameMatchingTypeFixer</code></del> Fixer</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(RenamePropertyToMatchTypeRector::class);
+};</code></pre>
+<h2 id="6-set-default-values-to-bool-and-array-type-to-prevent-undefined-value">6. Set Default Values to bool and array Type to Prevent Undefined Value</h2>
+<pre><code class="language-diff"> class SomeClass
+ {
+     /**
+      * @var bool
+      */
+-    private $isDisabled;
++    private $isDisabled = false;
+
+     /**
+      * @var int[]
+      */
+-    private $values;
++    private $values = [];
+
+     public function isEmpty()
+     {
+         return $this-&gt;values === [];
+     }
+ }</code></pre>
+<p>Instead of:</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Fixer\Property\BoolPropertyDefaultValueFixer</code></del></li>
+<li><del><code>Symplify\CodingStandard\Fixer\Property\ArrayPropertyDefaultValueFixer</code></del></li>
+</ul>
+<p>↓</p>
+<p>use Rector rules:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector;
+use Rector\SOLID\Rector\Property\AddFalseDefaultToBoolPropertyRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(AddFalseDefaultToBoolPropertyRector::class);
+    $services-&gt;set(AddArrayDefaultToArrayPropertyRector::class);
+};</code></pre>
+<h2 id="7-use-code-class-code-over-strings-names">7. Use <code>::class</code> over Strings Names</h2>
+<p>This feature is here since PHP 5.5, and it's a massive help for static analysis and instant migrations.</p>
+<pre><code class="language-diff"> class AnotherClass
+ {
+ }
+
+ class SomeClass
+ {
+     public function run()
+     {
+-        return 'AnotherClass';
++        return \AnotherClass::class;
+     }
+ }</code></pre>
+<p>Instead of <del><code>Symplify\CodingStandard\Fixer\Php\ClassStringToClassConstantFixer</code></del> Fixer:</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Php55\Rector\String_\StringClassNameToClassConstantRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(StringClassNameToClassConstantRector::class);
+};</code></pre>
+<h2 id="8-order-property-by-complexity-private-methods-by-use">8. Order Property by Complexity, Private Methods by Use</h2>
+<p>How do you order your methods? Random?</p>
+<p><strong>Be sure to read <a href="/blog/2018/11/01/how-teach-your-team-private-method-sorting-in-3-mins/">How to Teach Your Team Private Method Sorting in 3 mins</a>.</strong></p>
+<p>Instead of:</p>
+<ul>
+<li><del><code>Symplify\CodingStandard\Fixer\Order\PrivateMethodOrderByUseFixer</code></del></li>
+<li><del><code>Symplify\CodingStandard\Fixer\Order\PropertyOrderByComplexityFixer</code></del></li>
+</ul>
+<p>↓</p>
+<p>use Rector rules:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Order\Rector\Class_\OrderPrivateMethodsByUseRector;
+use Rector\Order\Rector\Class_\OrderPropertyByComplexityRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(OrderPrivateMethodsByUseRector::class);
+    $services-&gt;set(OrderPropertyByComplexityRector::class);
+};</code></pre>
+<h2 id="9-specific-order-by-parent-contract">9. Specific Order By Parent Contract</h2>
+<p>Do you implement one interface over and over? Do you have dozens of such classes and want their public methods to have a specific order?</p>
+<pre><code class="language-diff"> final class SomeFixer implements FixerInterface
+ {
+-    public function isCandidate()
++    public function getName()
+     {
+     }
+
+-    public function getName()
++    public function isCandidate()
+     {
+         // ...
+     }
+ }</code></pre>
+<p>Instead of <del><code>Symplify\CodingStandard\Fixer\Order\MethodOrderByTypeFixer</code></del> Fixer:</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Order\Rector\Class_\OrderPublicInterfaceMethodRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(OrderPublicInterfaceMethodRector::class)
+        -&gt;call('configure', [[
+            OrderPublicInterfaceMethodRector::METHOD_ORDER_BY_INTERFACES =&gt; [
+                'FixerInterface' =&gt; [
+                    'getName',
+                    'isCandidate',
+                ]
+            ]
+        ]]);
+};</code></pre>
+<h2 id="10-make-classes-code-final-code-if-you-can">10. Make Classes <code>final</code>, if You Can</h2>
+<p>This will be the biggest added value, as tokens have no idea if your class is extended by another class.</p>
+<p>Rector knows that, so be ready for more solid code after you run it.</p>
+<p>Instead of <del><code>Symplify\CodingStandard\Fixer\Solid\FinalInterfaceFixer</code></del> Fixer:</p>
+<p>↓</p>
+<p>use Rector rule:</p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\SOLID\Rector\Class_\FinalizeClassesWithoutChildrenRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(FinalizeClassesWithoutChildrenRector::class);
+};</code></pre>
+<p><br></p>
+<p>And that's it. Now you're ready!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Upgrade to Symplify 8 - From Sniffs to PHPStan Rules
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-11-how-to-upgrade-to-symplify-8-from-fixers-to-rector-rules.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Upgrade to Symplify 8 - From Fixers to Rector Rules" />
+    <meta property="og:description" content="Symplify 8 is going to be released in the 2nd half of May. But as in Symfony, you can get ready for future version today.
+
+[In the previous post we upgraded Coding Standard from Sniffs to PHPStan](/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/). Today we finish with 2nd half - **from Fixers to Rector rules**.
+" />
+    <meta property="og:url" content="/blog/2020/05/11/how-to-upgrade-to-symplify-8-from-fixers-to-rector-rules" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Upgrade to Symplify 8 - From Fixers to Rector Rules" />
+    <meta name="twitter:description" content="Symplify 8 is going to be released in the 2nd half of May. But as in Symfony, you can get ready for future version today.
+
+[In the previous post we upgraded Coding Standard from Sniffs to PHPStan](/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/). Today we finish with 2nd half - **from Fixers to Rector rules**.
+" />

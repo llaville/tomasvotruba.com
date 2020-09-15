@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Is Your Code Readable By Humans? Cognitive Complexity Tells You | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 107 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Is Your Code Readable By Humans? Cognitive Complexity Tells You</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Mon">
+            <strike>
+                            Mon, May 21, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated May, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-21-is-your-code-readable-by-humans-cognitive-complexity-tells-you.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at May 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>EasyCodingStandard 8</strong>, with shift from <a href="/blog/2020/05/04/how-to-upgrade-to-symplify-8-from-sniffs-to-phpstan-rules/">Sniffs to PHPStan rules</a>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Cyclomatic complexity is a static analysis measure of how difficult is code to test.
+<strong>Cognitive complexity</strong> tells us, how difficult code is to understand by a reader.
+<br>
+<br>
+Today, we'll see why is the later better and how to check it in your code with a Sniff.</p>
+                    </div>
+                </div>
+
+                <h2 id="what-is-cognitive-complexity">What is Cognitive Complexity?</h2>
+<p><em>Tomáš Horváth</em> referenced me to <a href="https://blog.sonarsource.com/cognitive-complexity-because-testability-understandability">Cognitive Complexity, Because Testability != Understandability</a> under the <a href="https://pehapkari.cz/blog/2018/04/04/cyklomaticka-komplexita">Cyclomatic Complexity</a> post. Thank you Tomas.</p>
+<p>The most important source about <em>Cognitive Complexity</em> is <a href="https://www.sonarsource.com/docs/CognitiveComplexity.pdf">a 21-page long PDF</a>. Instead of explaining in words (you can read that in the PDF), <strong>here are 2 examples that speak more than a thousand words</strong>:</p>
+<p><br></p>
+<h3 id="example-a">Example A</h3>
+<p>Cyclomatic Complexity: 4</p>
+<pre><code class="language-php">function getWords($number) {    // +1
+    switch ($number) {
+      case 1:                   // +1
+        return "one";
+      case 2:                   // +1
+        return "a couple";
+      default:                  // +1
+        return "lots";
+    }
+}</code></pre>
+<p><strong>vs. Cognitive Complexity: 1</strong></p>
+<pre><code class="language-php">function getWords($number) {
+    switch ($number) {          // +1
+      case 1:
+        return "one";
+      case 2:
+        return "a couple";
+      default:
+        return "lots";
+    }
+}</code></pre>
+<h3 id="example-b">Example B</h3>
+<p>Cyclomatic Complexity: 4</p>
+<pre><code class="language-php">function sumOfPrimes($max) {            // +1
+    $total = 0;
+    for ($i = 1; $i &lt; $max; ++$i) {     // +1
+        for ($j = 2; $j &lt; $i; ++$j) {   // +1
+            if ($i % $j === 0) {        // +1
+                continue 2;
+            }
+        }
+
+        $total += $i;
+    }
+
+    return $total;
+}</code></pre>
+<p><strong>vs. Cognitive Complexity: 7</strong></p>
+<pre><code class="language-php">function sumOfPrimes($max) {
+    $total = 0;
+    for ($i = 1; $i &lt; $max; ++$i) {     // +1
+        for ($j = 2; $j &lt; $i; ++$j) {   // +2
+            if ($i % $j === 0) {        // +3
+                continue 2;             // +1
+            }
+        }
+
+        $total += $i;
+    }
+
+    return $total;
+}</code></pre>
+<p>If I should put it in own words, the <em>cognitive complexity</em> is <strong>how difficult is to understand
+a function and all its possible paths</strong>.</p>
+<ul>
+<li>
+<p>Example A: <strong>there is a <code>switch()</code> and based on <code>$number</code> returns a specific value.</strong> Even if there are 50 <code>case:</code>, the story is still the same.</p>
+</li>
+<li>
+<p>Example B: <strong>there are 3 <code>for</code>s, with nesting and one continue to non-self level</strong>.</p>
+</li>
+</ul>
+<h2 id="automation-over-information">Automation Over Information</h2>
+<p>This all is nice to know information. The one that you might find interesting, remember it for few days and then forget it and never meet it again. But I'm too lazy to <em>learn to just forget</em>, so I <em>learn to automate</em>. This is place <a href="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/">to write a Sniff</a>.</p>
+<p>It took me 5 days to understand academic writings in the PDF, to convert Java and Python examples to PHP and reverse-engineer the algorithm to compute cognitive complexity to match results in the PDF. <strong>The most difficult was to change the cyclomatic complexity approach I used for last 4 years to a human one</strong>.</p>
+<p>Today, I'm happy to show you the first version of <code>CognitiveComplexitySniff</code>.</p>
+<h2 id="3-steps-to-check-cognitive-complexity-of-your-code">3 Steps to Check Cognitive Complexity of Your Code</h2>
+<p><strong>1. Install Symplify\CodingStandard</strong></p>
+<pre><code class="language-bash">composer require symplify/coding-standard symplify/easy-coding-standard --dev</code></pre>
+<p><strong>2. Create <code>phpstan.neon</code></strong></p>
+<pre><code class="language-yaml"># phpstan.neon
+includes:
+    - vendor/symplify/coding-standard/packages/cognitive-complexity/config/cognitive-complexity-rules.neon
+
+parameters:
+    symplify:
+        max_cognitive_complexity: 8 # default
+        max_class_cognitive_complexity: 50 # default</code></pre>
+<p><strong>3. Run it</strong></p>
+<pre><code class="language-bash">vendor/bin/phpstan analyse src</code></pre>
+<h2 id="refactor-to-lower-cognitive-complexity-in-examples">Refactor to Lower Cognitive Complexity in Examples</h2>
+<p><a href="https://github.com/symplify/symplify/pull/823/files" class="btn btn-dark btn-sm">
+<em class="fab fa-github fa-fw"></em>
+See pull-request
+</a></p>
+<p>Saying &quot;refactoring this&quot; is very simple, but actual work and teaching others is a very challenging task. To make this a bit easier for you, I've extracted few refactorings I made in Symplify thanks to this Sniff.</p>
+<h3 id="1-refactoring-to-shorter-condition">1. Refactoring to Shorter Condition</h3>
+<pre><code class="language-diff">index 83ca0da5..125f7c7f 100644
+--- a/packages/TokenRunner/src/Wrapper/FixerWrapper/DocBlockWrapper.php
++++ b/packages/TokenRunner/src/Wrapper/FixerWrapper/DocBlockWrapper.php
+@@ -160,17 +160,9 @@ final class DocBlockWrapper
+         }
+
+         if ($typeNode instanceof IdentifierTypeNode) {
+-            if ($typeNode-&gt;name === 'array') {
+-                return true;
+-            }
+-
+-            return false;
+-        }
+-
+-        if ($typeNode instanceof ArrayTypeNode) {
+-            return true;
++            return $typeNode-&gt;name === 'array';
+         }
+
+-        return false;
++        return $typeNode instanceof ArrayTypeNode;
+     }
+ }</code></pre>
+<h3 id="2-refactoring-with-method-extraction">2. Refactoring with Method Extraction</h3>
+<pre><code class="language-diff">--- a/packages/CodingStandard/src/Fixer/Commenting/RemoveEmptyDocBlockFixer.php
++++ b/packages/CodingStandard/src/Fixer/Commenting/RemoveEmptyDocBlockFixer.php
+@@ -48,16 +48,7 @@ final class RemoveEmptyDocBlockFixer extends AbstractFixer
+     protected function applyFix(SplFileInfo $file, Tokens $tokens): void
+     {
+         for ($index = count($tokens); $index &gt; 0; --$index) {
+-            if (! isset($tokens[$index])) {
+-                continue;
+-            }
+-
+-            $token = $tokens[$index];
+-            if (! $token-&gt;isGivenKind(T_DOC_COMMENT)) {
+-                continue;
+-            }
+-
+-            if (! preg_match('#^/\*\*[\s\*]*\*/$#', $token-&gt;getContent())) {
++            if ($this-&gt;shouldSkip($tokens, $index)) {
+                 continue;
+             }
+
+@@ -77,4 +68,18 @@ final class RemoveEmptyDocBlockFixer extends AbstractFixer
+             }
+         }
+     }
++
++    private function shouldSkip(Tokens $tokens, int $index): bool
++    {
++        if (! isset($tokens[$index])) {
++            return true;
++        }
++
++        $token = $tokens[$index];
++        if (! $token-&gt;isGivenKind(T_DOC_COMMENT)) {
++            return true;
++        }
++
++        return (bool) ! preg_match('#^/\*\*[\s\*]*\*/$#', $token-&gt;getContent());
++    }
+ }</code></pre>
+<h3 id="3-refactoring-to-responsible-method">3. Refactoring to Responsible Method</h3>
+<pre><code class="language-diff">diff --git a/packages/CodingStandard/src/Fixer/Import/ImportNamespacedNameFixer.php b/packages/CodingStandard/src/Fixer/Import/ImportNamespacedNameFixer.php
+index 1d532ca58..8aa7981cb 100644
+--- a/packages/CodingStandard/src/Fixer/Import/ImportNamespacedNameFixer.php
++++ b/packages/CodingStandard/src/Fixer/Import/ImportNamespacedNameFixer.php
+@@ -148,10 +148,6 @@ public function fix(SplFileInfo $file, Tokens $tokens): void
+             }
+
+             if ($token-&gt;isGivenKind(T_DOC_COMMENT)) {
+-                if (! $this-&gt;configuration[self::INCLUDE_DOC_BLOCKS_OPTION]) {
+-                    continue;
+-                }
+-
+                 $this-&gt;processDocCommentToken($index, $tokens);
+                 continue;
+             }
+@@ -274,6 +270,10 @@ private function processStringToken(Token $token, int $index, Tokens $tokens): v
+
+     private function processDocCommentToken(int $index, Tokens $tokens): void
+     {
++        if (! $this-&gt;configuration[self::INCLUDE_DOC_BLOCKS_OPTION]) {
++            return;
++        }
++
+         $phpDocInfo = $this-&gt;phpDocInfoFactory-&gt;createFrom($tokens[$index]-&gt;getContent());
+         $phpDocNode = $phpDocInfo-&gt;getPhpDocNode();</code></pre>
+<p><br><br></p>
+<p>Happy Code Reading!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/05/17/how-to-test-private-services-in-symfony" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Test Private Services in Symfony
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-21-is-your-code-readable-by-humans-cognitive-complexity-tells-you.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Is Your Code Readable By Humans? Cognitive Complexity Tells You" />
+    <meta property="og:description" content="Cyclomatic complexity is a static analysis measure of how difficult is code to test.
+**Cognitive complexity** tells us, how difficult code is to understand by a reader.
+
+
+Today, we&#039;ll see why is the later better and how to check it in your code with a Sniff.
+" />
+    <meta property="og:url" content="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Is Your Code Readable By Humans? Cognitive Complexity Tells You" />
+    <meta name="twitter:description" content="Cyclomatic complexity is a static analysis measure of how difficult is code to test.
+**Cognitive complexity** tells us, how difficult code is to understand by a reader.
+
+
+Today, we&#039;ll see why is the later better and how to check it in your code with a Sniff.
+" />

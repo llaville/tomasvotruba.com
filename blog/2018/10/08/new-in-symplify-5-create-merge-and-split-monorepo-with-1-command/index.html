@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 5: Create, Merge and Split Monorepo with 1 Command | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 143 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>New in Symplify 5: Create, Merge and Split Monorepo with 1 Command</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-10-Mon">
+            
+                            Mon, Oct 8, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/10/08/new-in-symplify-5-create-merge-and-split-monorepo-with-1-command/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-08-new-in-symplify-5-create-merge-and-split-monorepo-with-1-command.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you want to create, validate and manage your monorepo like a pro? There is no science behind it, just a few routine steps that you need to repeat.
+<br><br>
+And now there is a <strong>tool that will handle these steps for you</strong>.</p>
+                    </div>
+                </div>
+
+                <p>This package was initially released in Symplify 4.5, but it took some time to test in practice, remove WTFs and be sure it contains all people need.</p>
+<p>Now there are 7 commands in total, but today we'll focus <strong>on the 4 most important ones</strong>.</p>
+<p>First, install this package to an empty repository:</p>
+<pre><code class="language-bash">composer require symplify/monorepo-builder --dev</code></pre>
+<h2 id="1-create-your-monorepo">1. Create Your Monorepo</h2>
+<p>You'll run this command <strong>just once</strong> to create a monorepo in the empty repository.</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder init</code></pre>
+<p>It will prepare basic monorepo structure with 2 packages:</p>
+<pre><code class="language-bash">/packages
+    /first-package
+        /src
+        composer.json
+    /second-package
+        /src
+        composer.json
+composer.json
+monorepo-builder.yml # basic configuration</code></pre>
+<p>Use <code>composer.json</code> as you know it for most sections. But to manage <strong><code>require</code>, <code>require-dev</code>, <code>autoload</code> and <code>autoload-dev</code></strong> sections use only <code>/packages/first-package/composer.json</code>, <code>/packages/second-package/composer.json</code> like they were standalone packages.</p>
+<p>Extra - mostly-dev - dependencies are managed by <code>monorepo-builder.yml</code>.</p>
+<p>Is that unclear to you? Don't worry, you'll see how it works in <code>merge</code> command below.</p>
+<h2 id="2-validate-it">2. Validate it</h2>
+<p>This command will tell you if your dependency versions are the same in every packages' <code>composer.json</code> and in root <code>composer.json</code>.</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder validate</code></pre>
+<img src="/assets/images/posts/2018/symplify-5-monorepo-builder/validate.png" class="img-thumbnail">
+<p>You don't have to run this command manually since it's included in the next one.</p>
+<h2 id="3-merge-code-composer-json-code">3. Merge <code>composer.json</code></h2>
+<pre><code class="language-bash">vendor/bin/monorepo-builder merge</code></pre>
+<p>Here you'll understand the magic from <code>init</code> command. With <code>merge</code> command, the Monorepo Builder will join all packages' <code>composer.json</code> - after validation of course.</p>
+<p>And what about extra dependencies like PHPUnit, coding standards and static analysis?</p>
+<pre><code class="language-yaml"># monorepo-builder.yml
+parameters:
+    # for "merge" command
+    data_to_append:
+        require-dev:
+            phpunit/phpunit: '^7.3'</code></pre>
+<p>That's what <code>data_to_append</code> section is for. These packages and versions will be added to <code>composer.json</code>.</p>
+<p><em>Btw, all packages are nicely sorted by name so you always find them quickly.</em></p>
+<h2 id="4-split-it-to-multiple-repositories">4. Split It to Multiple Repositories</h2>
+<p>Let's do the split! Wait, do you even want to split packages into separate repositories? If so:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder split</code></pre>
+<p>It's all prepared in config:</p>
+<pre><code class="language-yaml">parameters:
+    # for "split" command
+    directories_to_repositories:
+        packages/first-package: 'git@github.com:your-monorepo/first-package.git'
+        packages/secnod-package: 'git@github.com:your-monorepo/second-package.git'
+</code></pre>
+<p>This step is optional. Most people use only <code>init</code> and <code>merge</code> command at the start.</p>
+<h3 id="do-you-want-to-know-more">Do you Want to Know More?</h3>
+<p>Discover other commands:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder</code></pre>
+<p>and read <a href="https://github.com/symplify/monorepobuilder"><code>README</code></a> for detail usage and tricks.</p>
+<p><br></p>
+<p>Happy monorapping!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    7 Tips to Write Exceptions Everyone Will Love
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-08-new-in-symplify-5-create-merge-and-split-monorepo-with-1-command.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 5: Create, Merge and Split Monorepo with 1 Command" />
+    <meta property="og:description" content="Do you want to create, validate and manage your monorepo like a pro? There is no science behind it, just a few routine steps that you need to repeat.
+
+And now there is a **tool that will handle these steps for you**.
+" />
+    <meta property="og:url" content="/blog/2018/10/08/new-in-symplify-5-create-merge-and-split-monorepo-with-1-command" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 5: Create, Merge and Split Monorepo with 1 Command" />
+    <meta name="twitter:description" content="Do you want to create, validate and manage your monorepo like a pro? There is no science behind it, just a few routine steps that you need to repeat.
+
+And now there is a **tool that will handle these steps for you**.
+" />

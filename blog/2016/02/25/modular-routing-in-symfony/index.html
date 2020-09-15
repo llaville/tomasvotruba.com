@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Modular Routing in Symfony | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 5 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Modular Routing in Symfony</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2016-02-Thu">
+            
+                            Thu, Feb 25, 2016
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2016/02/25/modular-routing-in-symfony/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-02-25-modular-routing-in-symfony.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at June 2017</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>I have deprecated this package, because of <a href="https://github.com/symplify/symplify/issues/181">feedback that it is not useful</a> and low download rates (under 2 000 in 2 years).</p>
+<p>You can use <strong>annotation routing</strong> in combination with <strong><a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#4-use-psr-4-based-service-autodiscovery-and-registration">PSR-4 controller autodiscovery</a></strong> since <strong>Symfony 3.3</strong> and with <a href="https://github.com/symfony/symfony/pull/23044">routing annotation loader enabled by default</a> since <strong>Symfony 3.4</strong>.</p>
+<p>This package is still available <a href="https://github.com/DeprecatedPackages/SymfonyModularRouting">here for inspiration</a> though.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Modular routing in Symfony is bounded to <code>routing.yml</code>. Adding few lines for each new module can create large mess. Can we make it bit simpler? Sure we do and I will show you how.</p>
+                    </div>
+                </div>
+
+                <p>Let's say you have fairly standalone module or package and you want to add its routes as simple as:</p>
+<pre><code class="language-php">// app/AppKernel.php
+
+final class AppKernel extends Kernel
+{
+    public function registerBundles(): array
+    {
+        $bundles = [
+            new App\MeetupModule\AppMeetupModuleBundle(),
+            // ...
+        ];
+    }
+}</code></pre>
+<h2 id="so-what-you-can-do">So, what you can do?</h2>
+<ul>
+<li>add your routes manually to <code>routing.yml</code> - <strong>requires routing.yml modification</strong></li>
+<li>implement <a href="https://symfony.com/doc/current/cookbook/routing/custom_route_loader.html">custom Route Loader</a> - <strong>requires routing.yml modification</strong></li>
+<li>use <a href="https://github.com/symfony-cmf/RoutingBundle">Symfony CMF RoutingBundle</a> and hook to <a href="https://symfony.com/doc/current/cmf/components/routing/chain.html">ChainRouter</a> - <strong>requires lots of reading and programming</strong></li>
+</ul>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2016/modular-router/mess.jpg" alt="Wow, so many options!"><br><em>Wow, so many options!</em>
+</div>
+<p><br></p>
+<p>As <a href="https://twitter.com/matthiasnoback">Matthias Noback</a> <a href="http://php-and-symfony.matthiasnoback.nl/2012/01/symfony2-dynamically-add-routes">wrote 4 years ago</a>, in Symfony 1 you could use <code>routing.load_configuration</code> event to do this, but it was removed in Symfony 2. As a replacement, Matthias suggests creating custom Route Loader. It's the best solution so far I used before.</p>
+<p>But I'm older and more lazy now so I tried to find a simpler way.</p>
+<blockquote>
+<p>Warning!<br>
+If you prefer <strong>YAML, XML or PHP definition, good news - continue</strong>.<br>
+In case you use <code>@Route</code> annotation, following solution won't help you.</p>
+</blockquote>
+<h2 id="load-your-routes-in-1-method">Load your routes in 1 method</h2>
+<p>Routes are usually in form of a simple array with <code>url</code> → <code>controller</code> records.</p>
+<p><strong>What if loading of this simple array could be done via simple service? Something as simple as:</strong></p>
+<pre><code class="language-php">use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
+
+public function getRouteCollection(): RouteCollection
+{
+    return $this-&gt;loadRouteCollectionFromFile(__DIR__ . '/routes.yml');
+
+    // OR xml
+    return $this-&gt;loadRouteCollectionFromFile(__DIR__ . '/routes.xml');
+
+    // OR even multiple files
+    return $this-&gt;loadRouteCollectionFromFiles([
+        __DIR__ . '/front_routes.yml',
+        __DIR__ . '/admin_routes.yml'
+    ]);
+
+    // OR pure PHP with some tweaks
+    $routeCollection = new RouteCollection();
+    $routeCollection-&gt;add('my_route', new Route('/hello'));
+
+    return $routeCollection;
+}</code></pre>
+<h2 id="load-your-routes-in-modular-way-in-4-steps">Load your routes in modular way in 4 steps</h2>
+<p>All those options above are available in Symfony, thanks to <a href="https://github.com/Symplify/ModularRouting">Symplify\ModularRouting package</a>.</p>
+<p>Let's try it together.</p>
+<h3 id="1-install-package">1. Install package</h3>
+<pre><code class="language-bash">composer require symplify/modular-routing</code></pre>
+<h3 id="2-register-bundles">2. Register bundles</h3>
+<pre><code class="language-php">// app/AppKernel.php
+final class AppKernel extends Kernel
+{
+    public function registerBundles(): array
+    {
+        return [
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            new Symplify\ModularRouting\SymplifyModularRoutingBundle(),
+            // ...
+        ];
+    }
+}</code></pre>
+<h3 id="3-create-services-to-load-your-yaml-file">3. Create services to load your YAML file</h3>
+<pre><code class="language-php">// src/SomeBundle/Routing/SomeRouteCollectionProvider.php
+namespace SomeBundle\Routing;
+
+use Symfony\Component\Routing\RouteCollection;
+use Symplify\ModularRouting\Routing\AbstractRouteCollectionProvider;
+
+final class SomeRouteCollectionProvider extends AbstractRouteCollectionProvider
+{
+    public function getRouteCollection(): RouteCollection
+    {
+        # routes.yml is the file, where all your routes are located
+        return $this-&gt;loadRouteCollectionFromFile(__DIR__ . '/routes.yml');
+    }
+}</code></pre>
+<h3 id="4-register-it-as-a-service-to-your-module">4. Register it as a service to your module</h3>
+<pre><code class="language-yaml"># src/SomeBundle/Resources/config/services.yml
+services:
+    SomeBundle\Routing\SomeRouteCollectionProvider: ~</code></pre>
+<p>And that's it! Now all routes are loaded along with your bundle registration.</p>
+<p>For further use, <strong>just check <a href="https://github.com/Symplify/ModularRouting">Readme for Symplify/ModularRouting</a></strong>.</p>
+<p><br></p>
+<div class="text-center">
+    <img src="/assets/images/posts/2016/modular-router/you-are-king.jpg"></div>
+<p><br></p>
+<h2 id="what-have-you-learned-today">What have you learned today?</h2>
+<ul>
+<li>that registering routes usually requires using <code>app/routing/routing.yml</code> - unfortunately :(</li>
+<li>that routes is basically array of <code>url</code> → <code>controller</code> records</li>
+<li><strong>that you can load them per module via service with <a href="https://github.com/Symplify/ModularRouting">Symplify/ModularRouting</a></strong></li>
+</ul>
+<p>If you have some questions or tips for how to make loading of routes simpler, just let me know below.</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                    </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-02-25-modular-routing-in-symfony.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Modular Routing in Symfony" />
+    <meta property="og:description" content="Modular routing in Symfony is bounded to `routing.yml`. Adding few lines for each new module can create large mess. Can we make it bit simpler? Sure we do and I will show you how." />
+    <meta property="og:url" content="/blog/2016/02/25/modular-routing-in-symfony" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Modular Routing in Symfony" />
+    <meta name="twitter:description" content="Modular routing in Symfony is bounded to `routing.yml`. Adding few lines for each new module can create large mess. Can we make it bit simpler? Sure we do and I will show you how." />

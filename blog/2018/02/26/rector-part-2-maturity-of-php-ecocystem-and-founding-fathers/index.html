@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 78 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-02-Mon">
+            
+                            Mon, Feb 26, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-02-26-rector-part-2-maturity-of-php-ecocystem-and-founding-fathers.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>What it took for Rector to be born?
+<br><br>
+Paradigm shift, ecosystem maturity, need for speed to solve common problems community has. <strong>And a great team you share <a href="https://austinkleon.com/show-your-work">your work with</a> that feedbacks and reflects.</strong></p>
+                    </div>
+                </div>
+
+                <p><em>Read also:</em></p>
+<ul>
+<li><a href="/blog/2018/02/19/rector-part-1-what-and-how/">Part 1 - What and How</a></li>
+<li><a href="/blog/2018/03/05/rector-part-3-why-instant-upgrades/">Part 3 - Why Instant Upgrades</a></li>
+</ul>
+<p><br></p>
+<p>It's not that PHP projects didn't need to be updated until 2017. I surely could delegate hundreds of <em>upgrade-hours</em> for my whole career. So <strong>why Now?</strong></p>
+<h2 id="em-codemods-em-as-standard"><em>Codemods</em> as Standard</h2>
+<p><em>Codemod</em> is a tool that modifies your code. And you're ok with it.</p>
+<p><strong>Many years ago <a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a> was born</strong> by <a href="https://gregsherwood.blogspot.cz/search/label/PHP_CodeSniffer">Greg Sherwood</a> from Australia. Guess how long ago? <a href="https://gregsherwood.blogspot.cz/2006/12/if-not-test-first-then-test-really-soon.html">In 2006</a>! Tool that checks your coding standard, tabs and spaces, brackets and quotes. First of it's kind to be mainstream in PHP community.</p>
+<p><strong>It was followed by <a href="https://github.com/friendsofphp/php-cs-fixer">PHP CS Fixer</a></strong> with <a href="http://fabien.potencier.org/php-cs-fixer-finally-reaches-version-1-0.html">it's first release in 2014</a> by <a href="http://fabien.potencier.org">Fabien Potencier</a>. Did you know the first script <a href="https://gist.github.com/fabpot/3f25555dce956accd4dd">had only 106 lines</a>?</p>
+<p>I use daily both of these tools, <a href="/blog/2017/05/03/combine-power-of-php-code-sniffer-and-php-cs-fixer-in-3-lines/">they're both awesome and work best together</a>. Both of them fix the code for you, so you can sleep or have a coffee instead.</p>
+<p>It took 12 years and 2 tools with over 4000 stars on Github to get here.</p>
+<h2 id="is-php-ready-for-ast">Is PHP Ready for AST?</h2>
+<p>A few years ago <a href="https://nikic.github.io">Nikita Popov</a> started an ambitious project <a href="https://github.com/nikic/PHP-Parser">nikic/PHP-Parser</a>. PHP-Parser parses PHP code to AST. If you're new to Abstract Syntax Tree (AST), check <a href="/blog/2017/11/06/wow-to-change-php-code-with-abstract-syntax-tree/">this post that describes 2 big changes in PHP ecosystem</a> thanks to AST.</p>
+<h3 id="both-read-amp-write">Both Read &amp; Write?</h3>
+<p>PHP_CodeSniffer was read only, which is great for letting you know what is wrong, but not much for getting a coffee instead. So fixing part was added.</p>
+<p>Same was for PHP-Parser. It can read a code and allow it analysis.
+That's what <a href="https://ondrej.mirtes.cz">Ondřej Mirtes</a> uses in <a href="/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/">PHPStan</a> - context aware PHP analysis (&quot;this variable is of this type&quot;).</p>
+<p>Again useful, but what about that coffee? It won't make itself.</p>
+<p><strong>I must say, this is breaking point for Rector</strong>. Without this, Rector would be just annoying tool telling you what is wrong and what you should do (and we had enough control already, right?). Super fortunately, <a href="https://github.com/nikic/PHP-Parser/blob/master/doc/component/Pretty_printing.markdown#formatting-preserving-pretty-printing">write feature was added and released in 2018</a> with php-parser 4.</p>
+<p><em>Did you know?</em> That Fabien wanted to use PHP-Parser for PHP CS Fixer in <a href="https://github.com/nikic/PHP-Parser/issues/41">2012</a>, but could not, because the writing part was missing? <em>Patience makes perfect</em> - 6 years later it's there.</p>
+<h3 id="coding-standard-tool-that-makes-code-nice-and-shiny">Coding Standard + Tool that makes Code Nice and Shiny</h3>
+<p>PHP AST can be saved, but it still needed a bit polishing:</p>
+<pre><code class="language-diff"> namespace App;
+
+ use Symfony\Component\HttpFoundation\DeprecatedRequest;
+
+ class Controller
+ {
+-    public function actionIndex(): DeprecatedRequest
++    public function actionIndex(): \Symfony\Component\HttpFoundation\NewRequest
+     {
+     }
+ }</code></pre>
+<p>There was no tool that could do this for you, until <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a> + <a href="https://github.com/symplify/coding-standard"><code>Symplify\CodingStandard</code></a>.</p>
+<p>With that combination, just run <code>vendor/bin/ecs</code> with <a href="https://github.com/symplify/coding-standard#types-should-not-be-referenced-via-a-fullypartially-qualified-name-but-via-a-use-statement">proper setup</a> to fix that:</p>
+<pre><code class="language-diff"> namespace App;
+
++use Symfony\Component\HttpFoundation\NewRequest;
+-use Symfony\Component\HttpFoundation\DeprecatedRequest;
+
+ class Controller
+ {
+-    public function actionIndex(): \Symfony\Component\HttpFoundation\NewRequest
++    public function actionIndex(): NewRequest
+     {
+     }
+ }</code></pre>
+<h2 id="founding-fathers-of-rector">Founding Fathers of Rector</h2>
+<p>That's how <a href="https://github.com/rectorphp/rector">Rector</a> was born one part after another. At least the ideas.</p>
+<p>It's not only about writing code. It's about discussing the idea, finding the right API that not only me but others would understand right away, it's about using other tools. It's about talking with people who already made AST tools, ask for advices and find possible pitfalls. It's about reporting issues and talking with people who maintain  projects you depend on.</p>
+<h3 id="fdd-friendship-driven-development">FDD = Friendship-Driven Development</h3>
+<p>I don't work for at any company so development of Rector doesn't solve my personal issues. That's how most project is born, like PHPStan to check Slevomat's code. That means I needed other motivation - when my frustration of wasted thousands human-hours was not enough.</p>
+<ul>
+<li>
+<p><strong>Here I'd like to thank <a href="http://petrvacha.com">Petr Vácha</a></strong> for cowork weekend in Brno with in summer 2017, where it all started - in those times named as <em>Refactor</em>. You've been great friend for years and courage in times, when I needed it the most.</p>
+</li>
+<li>
+<p><strong>And <a href="https://davidgrudl.com">David Grudl</a></strong>, who gave me the motivation to dig deep and &quot;just try it&quot; when I felt desperate and useless always with lightness of Zen master.</p>
+</li>
+<li>
+<p><strong>And also <a href="http://nikic.github.com">Nikita Popov</a></strong>, who patiently answered, taught me and fixed all my issues on <code>nikic/php-parser</code>.</p>
+</li>
+</ul>
+<p>Without you, I would not make it here today.</p>
+<p><br><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/02/19/rector-part-1-what-and-how" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Rector: Part 1 - What and How
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-02-26-rector-part-2-maturity-of-php-ecocystem-and-founding-fathers.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers" />
+    <meta property="og:description" content="What it took for Rector to be born?
+
+Paradigm shift, ecosystem maturity, need for speed to solve common problems community has. **And a great team you share [your work with](https://austinkleon.com/show-your-work) that feedbacks and reflects.**
+" />
+    <meta property="og:url" content="/blog/2018/02/26/rector-part-2-maturity-of-php-ecocystem-and-founding-fathers" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Rector: Part 2 - Maturity of PHP Ecosystem and Founding Fathers" />
+    <meta name="twitter:description" content="What it took for Rector to be born?
+
+Paradigm shift, ecosystem maturity, need for speed to solve common problems community has. **And a great team you share [your work with](https://austinkleon.com/show-your-work) that feedbacks and reflects.**
+" />

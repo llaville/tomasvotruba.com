@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Mock Final Classes in PHPUnit | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 198 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Mock Final Classes in PHPUnit</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-03-Thu">
+            
+                            Thu, Mar 28, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/03/28/how-to-mock-final-classes-in-phpunit/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fas fa-fw fa-check-circle"></em>
+            Tested
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-28-how-to-mock-final-classes-in-phpunit.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you prefer composition over inheritance? Yes, that's great. Why aren't your classes <code>final</code> then? Oh, you have tests and you mock your classes. <strong>But why is that a problem?</strong></p>
+                    </div>
+                </div>
+
+                <p>Since I started using <em><code>final</code> first</em> <a href="/blog/2019/01/24/how-to-kill-parents/">I got rid of many problems</a>. Most programmers I meet already know about the benefits of not having 6 classes extended in a row and that <code>final</code> remove this issue.</p>
+<p>But many of those programmers are skilled and they write tests.</p>
+<h2 id="how-would-you-mock-this-class">How Would You Mock this Class?</h2>
+<p>...so it returns <code>20</code> on <code>getNumber()</code> instead:</p>
+<pre><code class="language-php">&lt;?php
+
+final class FinalClass
+{
+    public function getNumber(): int
+    {
+        return 10;
+    }
+}</code></pre>
+<p>We have few options out in the wild:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/33095281/1348344">You can use <code>uopz</code> extension</a> <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li><a href="https://gist.github.com/DragonBe/24761f350984c35b73966809dd439135">You can use reflection</a> <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+</ul>
+<p>or...</p>
+<h2 id="extract-an-interface">Extract an Interface</h2>
+<pre><code class="language-diff"> &lt;?php
+
+-final class FinalClass
++final class FinalClass implements FinalClassInterface
+ {
+     public function getNumber(): int
+     {
+         return 10;
+     }
+ }
++
++interface FinalClassInterface
++{
++    public function getNumber(): int;
++}</code></pre>
+<p>Then use the interface instead of the class in your test:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ use PHPUnit\Framework\TestCase;
+
+ final class FinalClassTest extends TestCase
+ {
+     public function testSuccess(): void
+     {
+-        $finalClassMock = $this-&gt;createMock(FinalClass::class);
++        $finalClassMock = $this-&gt;createMock(FinalClassInterface::class);
+         // ... it works! but at what cost...
+     }
+ }</code></pre>
+<p>This will work, but creates <strong>huge debt you'll have to pay later</strong> (usually at a time you would rather skip):</p>
+<ul>
+<li>for every new <code>public</code> method in the class, you have to update the interface</li>
+<li>&quot;interface everything&quot; approach will shift the meaning of interface from &quot;something to be implemented for a reason&quot; to &quot;anything you want to test&quot;</li>
+<li>do you have 100 classes? you have 200 PHP files now, you're welcome!</li>
+</ul>
+<p>This is obviously annoying maintenance and it will lead you to one of 2 bad paths:</p>
+<ul>
+<li><strong>don't use <code>final</code></strong> at all</li>
+<li>or <strong>do not test</strong></li>
+</ul>
+<p><em class="fas fa-fw fa-2x fa-times text-danger fa-lg"></em></p>
+<h2 id="by-pass-finals">By Pass Finals!</h2>
+<p>Nette packages also missed <code>final</code> in the code, so people could mock it. Until David came with <a href="https://github.com/dg/bypass-finals">Bypass Finals</a> package. Some people think it's only for Nette\Tester, but I happily <strong>use it in PHPUnit universe</strong> as well.</p>
+<p>We just install it:</p>
+<pre><code class="language-bash">composer require dg/bypass-finals --dev</code></pre>
+<p>And enable:</p>
+<pre><code class="language-php">DG\BypassFinals::enable();</code></pre>
+<p><em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+<div class="alert alert-sm alert-warning mt-5 mb-5" role="alert">
+    Do you want to know, <strong>how BypassFinals works?</strong> Read author's <a href="https://phpfashion.com/how-to-mock-final-classes">blog post</a> or check <a href="https://github.com/dg/bypass-finals/blob/8f0f7ab7a17a6b5c188dde1cf5edc6ceb06c70c1/src/BypassFinals.php#L217">this line on Github</a>.
+    <br>
+    I don't know much, but I think it loads file via stream and removes the <code>T_FINAL</code> token.
+</div>
+<p>Hm, where should be put it?</p>
+<h3 id="1-code-bootstrap-php-code-file">1. <code>bootstrap.php</code> File?</h3>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+DG\BypassFinals::enable();</code></pre>
+<p>Update path in <code>phpunit.xml</code>:</p>
+<pre><code class="language-diff"> &lt;phpunit
+-    bootstrap="vendor/autoload.php"
++    bootstrap="tests/bootstrap.php"
+ &gt;</code></pre>
+<p>Let's run the tests:</p>
+<pre><code class="language-bash">vendor/bin/phpunit
+
+...
+
+There were 19 warnings:
+
+1) SomeClassTest::testSomeMethod
+Class "SomeClass" is declared "final" and cannot be mocked.</code></pre>
+<p>Hm, most mocks work, but there are still some errors.</p>
+<p><em class="fas fa-fw fa-2x fa-times text-danger fa-lg"></em></p>
+<h3 id="2-code-setup-code-method">2. <code>setUp()</code> Method?</h3>
+<p>Let's put it into <code>setUp()</code> method. It seems like a good idea for these operations:</p>
+<pre><code class="language-diff"> &lt;?php
+
++use DG\BypassFinals;
+ use PHPUnit\Framework\TestCase;
+
+ final class FinalClassTest extends TestCase
+ {
++    public function setUp()
++    {
++        BypassFinals::enable();
++    }
+
+     public function testFailInside(): void
+     {
+         $this-&gt;createMock(FinalClass::class);
+     }
+ }</code></pre>
+<p>And run tests again:</p>
+<pre><code class="language-bash">vendor/bin/phpunit
+
+...
+
+There were 7 warnings:
+
+1) AnotherClassTest::testSomeMethod
+Class "AnotherClass" is declared "final" and cannot be mocked.</code></pre>
+<p>Damn you, black magic! We're getting there, but there are still mocks in the <code>setUp()</code> method, and we've also added work to our future self - for every new test case, we <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">have to remember</a> to add <code>BypassFinals::enable();</code> manually.</p>
+<p><em class="fas fa-fw fa-2x fa-times text-danger fa-lg"></em></p>
+<p><br>
+<br></p>
+<p>Why it doesn't work. I was angry and frustrated. Honestly, I wanted to give up now and just pick &quot;interface everything&quot; or &quot;final nothing&quot; quick solution.  I think <strong>that resolutions in emotions are not a good idea...</strong> so I take a deep breath, pause and go to a toilet to get some fresh air.</p>
+<p><br></p>
+<p>Suddenly... I remember that... PHPUnit has some Listeners, right? What if we could use that?</p>
+<h3 id="3-own-testlistener">3. Own TestListener?</h3>
+<p>Let's try all the methods of <code>TestListener</code>, enable bypass in each of them by trial-error and see what happens:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+use DG\BypassFinals;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestListener;
+use PHPUnit\Framework\TestSuite;
+use PHPUnit\Framework\Warning;
+
+final class BypassFinalListener implements TestListener
+{
+    public function addError(Test $test, \Throwable $t, float $time): void
+    {
+    }
+
+    public function addWarning(Test $test, Warning $e, float $time): void
+    {
+    }
+
+    public function addFailure(Test $test, AssertionFailedError $e, float $time): void
+    {
+    }
+
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+    {
+    }
+
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+    {
+    }
+
+    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
+    {
+    }
+
+    public function startTestSuite(TestSuite $suite): void
+    {
+    }
+
+    public function endTestSuite(TestSuite $suite): void
+    {
+    }
+
+    public function startTest(Test $test): void
+    {
+        BypassFinals::enable();
+    }
+
+    public function endTest(Test $test, float $time): void
+    {
+    }
+}</code></pre>
+<p>In the end, it was just one method.</p>
+<p>Then register listener it in <code>phpunit.xml</code>:</p>
+<pre><code class="language-xml">&lt;phpunit bootstrap="vendor/autoload.php"&gt;
+    &lt;listeners&gt;
+        &lt;listener class="Listener\BypassFinalListener"/&gt;
+    &lt;/listeners&gt;
+&lt;/phpunit&gt;</code></pre>
+<p>And run tests again:</p>
+<pre><code class="language-bash">vendor/bin/phpunit
+
+...
+
+Success!</code></pre>
+<p>Great! <strong>All our objects can be final and tests can mock them</strong>.</p>
+<p>Is it a good enough solution? Yes, <strong>it works and it's a single place of origin</strong> - use it, close this post and your code will thank you in 2 years later.</p>
+<p><em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+<p><br></p>
+<p>Are you a <strong>curious hacker that is never satisfied with his or her solution</strong>? Let's take it one step further.</p>
+<p>What do you think about the Listener class? There is <strong>10+ methods</strong> and <strong>only one is used</strong>. It's very hard to read. To add more fire to the fuel, <code>TestListener</code> class is <a href="https://github.com/sebastianbergmann/phpunit/issues/3388">deprecated since PHPUnit 8</a> and will be <a href="https://github.com/sebastianbergmann/phpunit/issues/3389">removed in PHPUnit 9</a>. Don't worry, <a href="https://github.com/rectorphp/rector/pull/1270">Rector already covers the migration path</a>.</p>
+<p>After bit of Googling on PHPUnit Github and documentation I found something called <em>hooks</em>!</p>
+<h3 id="4-single-hook">4. Single Hook</h3>
+<p>You can read about them in the <a href="https://phpunit.readthedocs.io/en/8.0/extending-phpunit.html#extending-the-testrunner">PHPUnit documentation</a>, but in short: they're the same as the listener, just <strong>with 1 event</strong>.</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+use DG\BypassFinals;
+use PHPUnit\Runner\BeforeTestHook;
+
+final class BypassFinalHook implements BeforeTestHook
+{
+    public function executeBeforeTest(string $test): void
+    {
+        BypassFinals::enable();
+    }
+}</code></pre>
+<p>And again, register it in <code>phpunit.xml</code>:</p>
+<pre><code class="language-xml">&lt;phpunit bootstrap="vendor/autoload.php"&gt;
+    &lt;extensions&gt;
+        &lt;extension class="Hook\BypassFinalHook"/&gt;
+    &lt;/extensions&gt;
+&lt;/phpunit&gt;</code></pre>
+<p>The final test, run all tests:</p>
+<pre><code class="language-bash">vendor/bin/phpunit
+
+...
+
+Success!</code></pre>
+<p><em class="fas fa-fw fa-2x fa-check text-success"></em>
+<em class="fas fa-fw fa-2x fa-check text-success"></em>
+<em class="fas fa-fw fa-2x fa-check text-success"></em></p>
+<h3 id="before">Before</h3>
+<ul>
+<li>we had to use interface for mocks</li>
+<li>or we had to remove <code>final</code></li>
+<li>we had to pick between inheritance hell or poor tests</li>
+</ul>
+<h3 id="after">After</h3>
+<ul>
+<li>A <strong>single solution, in single class</strong></li>
+<li>we use PHPUnit feature directly, no weird bending code</li>
+<li>we can <strong>mock anything</strong></li>
+<li><strong>we can <code>final</code> anything</strong></li>
+</ul>
+<p><br></p>
+<p>Finally :)</p>
+<p><br></p>
+<p>Do you want to see solutions 2, 3 and 4 tested in real PHPUnit code? <a href="https://github.com/TomasVotruba/tomasvotruba.com/tree/master/tests/Posts/Year2019/FinalMock">They're here on Github</a></p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/03/25/how-to-instantly-migrate-nette-tester-to-phpunit" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Instantly Migrate Nette\Tester to PHPUnit
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-03-28-how-to-mock-final-classes-in-phpunit.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Mock Final Classes in PHPUnit" />
+    <meta property="og:description" content="Do you prefer composition over inheritance? Yes, that&#039;s great. Why aren&#039;t your classes `final` then? Oh, you have tests and you mock your classes. **But why is that a problem?**
+" />
+    <meta property="og:url" content="/blog/2019/03/28/how-to-mock-final-classes-in-phpunit" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Mock Final Classes in PHPUnit" />
+    <meta name="twitter:description" content="Do you prefer composition over inheritance? Yes, that&#039;s great. Why aren&#039;t your classes `final` then? Oh, you have tests and you mock your classes. **But why is that a problem?**
+" />

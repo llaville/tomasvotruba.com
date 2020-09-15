@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>7 Tips to Write Exceptions Everyone Will Love | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 141 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>7 Tips to Write Exceptions Everyone Will Love</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-09-Mon">
+            <strike>
+                            Mon, Sep 17, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fas fa-fw fa-check-circle"></em>
+            Tested
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-09-17-7-tips-to-write-exceptions-everyone-will-love.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><code>InvalidArgumentException</code>, <code>FileNotFoundException</code>, <code>InternalException</code>.
+<br><br>
+Have you ever had that feeling, that <strong>you've seen that exception before and you know what it means and how to solve?</strong> What if that would be clear even for those who see it for the first time? It would save yours and their time.
+<br><br>
+Exceptions are not just error state. <strong>Exceptions are the new documentation</strong>.</p>
+                    </div>
+                </div>
+
+                <p>I wrote a <a href="/blog/2018/02/12/sleep-shorter-to-get-62-percent-smarter/">50-page thesis about polyphasic sleep</a>. My opponent told me, that there is a missing part about uncontrolled intervening values. The part in pages 34-36 he probably skipped. Today we have too much going on <strong>we have to scan</strong>. Anything longer than 140 chars is exhausting. Moreover for us programmers, who dance among tsunami of information coming every hour as they code and investigate code of others.</p>
+<h3 id="do-you-find-this-quot-circle-of-code-quot-familiar">Do you Find this &quot;Circle of Code&quot; Familiar?</h3>
+<ol>
+<li>you open the application</li>
+<li>you code and code, life is great!</li>
+<li>suddenly, it's broken by <code>InvalidStateException</code> exception (<a href="https://github.com/thecodingmachine/safe#the-problem">if we're lucky</a>)</li>
+<li>you open exception in IDE to find out more... nothing</li>
+<li>you open the documentation to find out more... nothing</li>
+<li>you Google and StackOverflow to find out more... nothing</li>
+<li>you close the application frustrated, have a ☕ or social joint to restore your will to overcome shit code</li>
+</ol>
+<p><strong>What if you could stay between 1, 2 and 3 much more often?</strong></p>
+<p><br></p>
+<p>When people used EasyCodingStandard for their first time, they experienced many WTFs. After 30&nbsp;minutes they gave up saying &quot;coding standards are hard&quot;. When I asked them to show me how they used it, <strong>it took me 3 minutes to solve</strong>. Why? Because I made it? Well maybe. But also because <strong>exceptions were so lousy, that nobody knew how to solve them</strong> and that's wrong. Shame on me.</p>
+<h2 id="1-make-exception-names-for-humans">1. Make Exception Names for Humans</h2>
+<p>Not machines but people read exceptions. Well, machines read it to but they just log it - humans have to make code work again.</p>
+<blockquote class="blockquote">
+    <em>InvalidStateException</em>
+</blockquote>
+<p>WTF? Could you be more clear?</p>
+<blockquote class="blockquote">
+     <em>ConfigurationFileNotFoundException</em>
+</blockquote>
+<p>A-ha, I create <code>ecs.php</code> and it works!</p>
+<p><strong>+10 % happier programmer</strong></p>
+<p>Do you need help with this? There is <a href="https://github.com/symplify/coding-standard#use-explicit-and-informative-exception-names-over-generic-ones">Sniff</a> that makes sure no exception is generic.</p>
+<h2 id="2-use-quot-around-quot-statements">2. Use &quot; around&quot; Statements</h2>
+<blockquote class="blockquote">
+     <em>Filter class  VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd was not found</em>
+</blockquote>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set('filters', [
+        ' VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd'
+    ]);
+};</code></pre>
+<p>The class <strong>exists</strong> and it <strong>is</strong> autoloaded:</p>
+<pre><code class="language-php">require_once __DIR__ . '/vendor/autolaod.php'
+
+var_dump(class_exists(
+    VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd::class
+));
+// "true"</code></pre>
+<p>So what is wrong?</p>
+<p><br></p>
+<p><em>5 minutes later...</em></p>
+<pre><code class="language-diff"> &lt;?php
+
+ declare(strict_types=1);
+
+ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+ return static function (ContainerConfigurator $containerConfigurator): void {
+     $parameters = $containerConfigurator-&gt;parameters();
+     $parameters-&gt;set('filters', [
+-        ' VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd'
++        'VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd'
+     ]);
+ };</code></pre>
+<p>Ah, there was a space, a single small space!</p>
+<p>You probably noticed it, because there are 3 lines of code and they get all your attention. In reality, there are 80 lines of code, 5 files opened in your IDE/brain and your colleague is asking you for wise advice, so your chances to spot this are much lower.</p>
+<p><strong>How to prevent this from happening ever again to anyone in the world?</strong></p>
+<blockquote class="blockquote">
+     <em>Filter class  VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd was not found</em>
+</blockquote>
+<p><em>Filter class &quot; VeryLongNamespace\InNestedNamespace\WithMissingClassInTheEnd&quot; was not found</em></p>
+<p><strong>Use quotes around every argument:</strong></p>
+<pre><code class="language-php">throw new FilterClassNotFoundException(sprintf(
+    'Filter class "%s" was not found',
+    $filterClass
+));</code></pre>
+<p><strong>+20 % happier programmer</strong></p>
+<h2 id="3-what-exactly-is-wrong">3. What Exactly is Wrong?</h2>
+<blockquote class="blockquote">
+     <em>main parameter is invalid</em>
+</blockquote>
+<pre><code class="language-php">throw new InvalidParameterException(sprintf(
+    '%s parameter is invalid.',
+    $parameterName
+));</code></pre>
+<p>What parameter?</p>
+<blockquote class="blockquote">
+     <em>"main" parameter is invalid</em>
+</blockquote>
+<pre><code class="language-diff"> throw new InvalidParameterException(sprintf(
+-    '%s parameter is invalid.',
++    '"%s" parameter is invalid.',
+     $parameterName
+));</code></pre>
+<p>Aha! Where do I find it? In the &quot;parameters&quot; section?</p>
+<blockquote class="blockquote">
+     <em>Parameter in "parameters &gt; page_name &gt; main" is invalid</em>
+</blockquote>
+<pre><code class="language-php">throw new InvalidParameterException(sprintf(
+    'Parameter in "parameters &gt; page_name &gt; %s" is invalid.',
+    $parameterName
+));</code></pre>
+<p>Aha, now I know where to find it, thanks!</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set('page_name', [
+        'main' =&gt; []
+    ]);
+};</code></pre>
+<p><strong>+20 % happier programmer</strong></p>
+<h2 id="4-what-is-the-wrong-value">4. What is The Wrong Value?</h2>
+<blockquote class="blockquote">
+     <em>Parameter in "parameters &gt; page_name &gt; main" is invalid</em>
+</blockquote>
+<p>We already know <em>where</em> it is, but <strong>what value it actually has</strong>?</p>
+<blockquote class="blockquote">
+     <em>Parameter value "false" in "parameters &gt; page_name &gt; main" is invalid</em>
+</blockquote>
+<p>I see, so &quot;main&quot; parameter can't have <code>false</code> value. What it <strong>can have</strong> then?</p>
+<blockquote class="blockquote">
+     <em>Parameter value "false" in "parameters &gt; page_name &gt; main" is invalid. It must be a string</em>
+</blockquote>
+<pre><code class="language-php">if (is_array($value)) {
+    $value = 'array';
+} elseif (is_bool($value)) {
+    $value = ($value === true) ? 'true' : 'false';
+}
+
+throw new InvalidParameterException(sprintf(
+    'Parameter value "%s" in "parameters &gt; page_name &gt; %s" is invalid. It must be a string.',
+    $value,
+    $parameterName
+));</code></pre>
+<p><strong>+15 % happier programmer</strong></p>
+<p>Tip: You can use <a href="https://github.com/nette/tracy">Tracy</a> to delegate the value dumping.</p>
+<h2 id="5-what-file-exactly-is-broken">5. What File Exactly is Broken?</h2>
+<blockquote class="blockquote">
+     <em>Invalid file</em>
+</blockquote>
+<p>In EasyCodingStandard, PHP_CodeSniffer, PHP CS Fixer, Rector or PHPStan there is always work with files. Is there some error with the file? Show it!</p>
+<blockquote class="blockquote">
+     <em>File /var/www/tomasvotruba.com/packages/src/TweetPublisher.php not found</em>
+</blockquote>
+<p>Oh, sorry:</p>
+<blockquote class="blockquote">
+     <em>File "/var/www/tomasvotruba.com/packages/src/TweetPublisher.php" not found</em>
+</blockquote>
+<p><strong>Absolute paths can be really long</strong> in Docker, CI or in the non-basic install. We don't need irrelevant information - every character counts!</p>
+<p>How can we make it a bit more familiar to the user? Show the <strong>relative path</strong>:</p>
+<blockquote class="blockquote">
+     <em>File "packages/src/TweetPublisher.php" not found</em>
+</blockquote>
+<p><strong>How to do this nice and lazy in PHP?</strong></p>
+<pre><code class="language-php">// "$filePath" can be absolute or relative; we don't care, it only must exists
+$fileInfo = new SplFileInfo($filePath);
+
+// remove absolute path start to cwd (current working directory)
+$relativePath = substr($fileInfo-&gt;getRealPath(), strlen(getcwd()) + 1);
+
+throw new FileProcessingException(sprintf(
+    'File "%s" not found',
+    $relativePath
+));</code></pre>
+<p><strong>+20 % happier programmer</strong></p>
+<h2 id="6-what-options-do-i-have">6. What Options do I have?</h2>
+<pre><code class="language-bash">vendor/bin/ecs check src --set laravel</code></pre>
+<blockquote class="blockquote">
+     <em>"Laravel" level was not found</em>
+</blockquote>
+<ul>
+<li>Is incorrectly loaded?</li>
+<li>Should I register it somehow?</li>
+<li>Where do I find these levels so I know what are available?</li>
+</ul>
+<p><a href="https://www.amazon.com/Dont-Make-Think-Revisited-Usability-ebook-dp-B00HJUBRPG/dp/B00HJUBRPG">Don't make the programmer think</a>!</p>
+<blockquote class="blockquote">
+     <em>Level "laravel" was not found. Pick one of: "array", "clean-code", "comments", "common", "control-structures", "docblock", "namespaces", "php70", "php71", "phpunit", "psr12", "psr2", "spaces", "strict", "symfony", "symfony-risky", "symplify"</em>
+</blockquote>
+<p>That's better!</p>
+<p>If there is the limited or reasonable amount of options, don't be shy. Show them!</p>
+<pre><code class="language-php">$allLevels = $this-&gt;findAllLevelsInDirectory($configDirectory);
+
+throw new LevelNotFoundException(sprintf(
+    'Level "%s" was not found. Pick one of: "%s"',
+    $levelName,
+    implode('", "', $allLevels)
+));</code></pre>
+<p>This code is real! It's from <a href="https://github.com/symplify/symplify/blob/aad50fba97046f70416cce4d7c5b094c16bf770d/packages/PackageBuilder/src/Configuration/LevelFileFinder.php#L61-L70">Symplify\PackageBuilder code</a>.</p>
+<p><strong>+40 % happier programmer</strong></p>
+<h2 id="7-link-what-you-can-t-fit-140-chars">7. Link what You can't Fit 140 Chars</h2>
+<p>Sometimes you might find yourself writing a poem instead of an exception:</p>
+<pre><code class="language-php">throw new ConfigurationFileNotFound(
+    'Class not found. Configure autoload, you can use either `parameters &gt; autoload_files`' .
+    'or `parameters &gt; autoload_directories`. Be careful to use paths relative to the file you are using.'
+);</code></pre>
+<p>Who would read that? Except for the author of course.</p>
+<p>To make it shorted and readable, we end up with a lousy statement like:</p>
+<pre><code class="language-php">throw new ConfigurationFileNotFound('Class not found. Configure autoload first.');</code></pre>
+<p>10 Tweets = 1 post, so just link it!</p>
+<pre><code class="language-php">throw new ConfigurationFileNotFound(
+    'Class not found. Configure autoload: https://github.com/rectorphp/rector/blob/master/README.md'
+);</code></pre>
+<p>A bit more perfect? <strong>Use headline anchor</strong>:</p>
+<pre><code class="language-php">throw new ConfigurationFileNotFound(
+    'Class not found. Configure autoload: https://github.com/rectorphp/rector/blob/master/README.md#extra-autoloading'
+);</code></pre>
+<p>Here is one pitfall - end of lines and line breaks in CLI. You might end up with this error message:</p>
+<pre><code class="language-bash">https://github.com/rectorphp/rector/blob/
+master/README.md#extra-autoloading</code></pre>
+<p>Where only <code>https://github.com/rectorphp/rector/blob/</code> is a link. Invalid link.</p>
+<p>How to save this?</p>
+<pre><code class="language-php">throw new ConfigurationFileNotFound(
+    'Class not found. Configure autoload:' .
+    PHP_EOL .
+    'https://github.com/rectorphp/rector/blob/master/README.md#extra-autoloading'
+);</code></pre>
+<p>Kaboom!</p>
+<p><strong>+30 % happier programmer</strong></p>
+<p><br></p>
+<p>And in these 7 steps, you just made any programmer using your code 125 % happier!</p>
+<p><strong>What are your the most favorite exceptions?</strong></p>
+<p><br></p>
+<p>Happy throwing!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/09/13/your-brain-is-your-garden" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Your Brain is Your Garden
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-09-17-7-tips-to-write-exceptions-everyone-will-love.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="7 Tips to Write Exceptions Everyone Will Love" />
+    <meta property="og:description" content="`InvalidArgumentException`, `FileNotFoundException`, `InternalException`.
+
+Have you ever had that feeling, that **you&#039;ve seen that exception before and you know what it means and how to solve?** What if that would be clear even for those who see it for the first time? It would save yours and their time.
+
+Exceptions are not just error state. **Exceptions are the new documentation**.
+" />
+    <meta property="og:url" content="/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="7 Tips to Write Exceptions Everyone Will Love" />
+    <meta name="twitter:description" content="`InvalidArgumentException`, `FileNotFoundException`, `InternalException`.
+
+Have you ever had that feeling, that **you&#039;ve seen that exception before and you know what it means and how to solve?** What if that would be clear even for those who see it for the first time? It would save yours and their time.
+
+Exceptions are not just error state. **Exceptions are the new documentation**.
+" />

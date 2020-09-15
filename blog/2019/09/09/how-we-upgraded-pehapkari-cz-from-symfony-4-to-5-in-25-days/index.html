@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 262 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-09-Mon">
+            
+                            Mon, Sep 9, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-09-how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>A month ago, Symfony 5 has been released. Upgrading of such a small web as our community website <strong>must be easy</strong>, right?
+<br>
+<br>
+Well, that's what we thought. <strong>Were we right or wrong?</strong></p>
+                    </div>
+                </div>
+
+                <p>This post is based on the real problems we faced when we upgraded our website. <strong>It is full of experience</strong> with pieces of explanation, real code snippets in diffs, painful frustration of Symfony ecosystem and bright light at the end of the tunnel.</p>
+<p><br></p>
+<p>Are you ready? Let's dive in ↓</p>
+<p><br></p>
+<h2 id="1-easy-picks">1. Easy picks</h2>
+<h3 id="twig-2-3">Twig 2 → 3</h3>
+<p>Before, you could connect <code>for</code> with <code>if</code> like this:</p>
+<pre><code class="language-twig">{% for post in posts if post.isPublic() %}
+    {{ post.title }}
+{% endfor %}</code></pre>
+<p>Now <a href="https://twig.symfony.com/doc/3.x/filters/filter.html">the <code>filter</code></a> has to be used:</p>
+<pre><code class="language-twig">{% for post in posts|filter(post =&gt; post.isPublic()) %}
+    {{ post.title }}
+{% endfor %}</code></pre>
+<p><em>Thanks <a href="https://www.reddit.com/r/PHP/comments/ef2nit/how_we_upgraded_pehapkaricz_from_symfony_4_to_5/fbzyhsl">Patrik for the tip</a></em></p>
+<h2 id="2-rector-helps-you-with-php">2. Rector Helps You with PHP</h2>
+<p>Do you want to know, what is needed for the upgrade to Symfony 5? <a href="https://github.com/symfony/symfony/blob/5.0/UPGRADE-5.0.md">Just read upgrade notes</a> in Symfony repository.</p>
+<p>For PHP stuff, use <a href="https://github.com/rectorphp/rector">Rector</a>:</p>
+<pre><code class="language-bash"># install Rector
+composer require rector/rector --dev
+
+# or in case of conflicts
+composer require rector/rector-prefixed --dev</code></pre>
+<p>Rector has minimal sets, meaning each minor version is standalone and independent.
+What does that mean? For upgrading from Symfony 4 to 5, you need to <strong>run all the minor version sets</strong>:</p>
+<pre><code class="language-bash">vendor/bin/rector process bin src packages --set symfony41</code></pre>
+<p>Verify, check that CI passes and then continue with following Symfony minor versions:</p>
+<pre><code class="language-bash">vendor/bin/rector process bin src packages --set symfony42
+vendor/bin/rector process bin src packages --set symfony43
+vendor/bin/rector process bin src packages --set symfony44
+vendor/bin/rector process bin src packages --set symfony50</code></pre>
+<h2 id="3-update-code-composer-json-code-before-code-composer-update-code">3. Update <code>composer.json</code> before <code>composer update</code></h2>
+<h3 id="easy-admin-bundle">Easy Admin Bundle</h3>
+<pre><code class="language-diff"> {
+     "require": {
+-        "alterphp/easyadmin-extension-bundle": "^2.1",
++        "alterphp/easyadmin-extension-bundle": "^3.0",
+    }
+}</code></pre>
+<h3 id="doctrine">Doctrine</h3>
+<pre><code class="language-diff"> {
+     "require": {
+-        "doctrine/cache": "^1.8",
++        "doctrine/cache": "^1.10",
+-        "doctrine/doctrine-bundle": "^1.11",
++        "doctrine/doctrine-bundle": "^2.0",
+-        "doctrine/orm": "^2.6",
++        "doctrine/orm": "^2.7",
+     }
+ }</code></pre>
+<h3 id="doctrine-behaviors">Doctrine Behaviors</h3>
+<pre><code class="language-diff"> {
+     "require": {
+-        "stof/doctrine-extensions-bundle": "^1.3",
+-        "knplabs/doctrine-behaviors": "^1.6"
++        "knplabs/doctrine-behaviors": "^2.0"
+     }
+ }</code></pre>
+<h3 id="sentry">Sentry</h3>
+<pre><code class="language-diff"> {
+     "require": {
+-        "sentry/sentry-symfony": "^3.2",
++        "sentry/sentry-symfony": "^3.4",
+     }
+ }</code></pre>
+<h3 id="twig-extensions-were-removed">Twig Extensions were Removed</h3>
+<pre><code class="language-diff"> {
+     "require": {
+-        "twig/extensions": "^1.5"
+     }
+ }</code></pre>
+<p>This might be scary at first, depends on how many of those functions have you used.</p>
+<p>Look at the <a href="https://github.com/twigphp/Twig-extensions">README on Github</a> to find out more:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/symfony5_twig_extension_readme.png" class="img-thumbnail"></div>
+<h2 id="4-symfony-packages-in-code-composer-json-code">4. Symfony Packages in <code>composer.json</code></h2>
+<p>Do you use Flex and config <code>*</code> version?</p>
+<pre><code class="language-json">{
+    "require": {
+        "symfony/console": "*",
+        "symfony/event-disptacher": "*"
+    },
+    "extra": {
+        "symfony": {
+            "require": "^4.4"
+        }
+    }
+}</code></pre>
+<p>Not sure why, but in some cases, it failed and <strong>blocked from the upgrading</strong>. <strong>I had to switch to explicit version per package, to resolve it:</strong></p>
+<pre><code class="language-diff"> {
+     "require": {
+-        "symfony/console": "*",
++        "symfony/console": "^4.4",
+-        "symfony/event-disptacher": "*"
++        "symfony/event-disptacher": "^4.4"
+-    },
++    }
+-    "extra": {
+-        "symfony": {
+-            "require": "^4.4"
+-        }
+-    }
+ }</code></pre>
+<p>Then switch to Symfony 5:</p>
+<pre><code class="language-diff">-"symfony/asset": "^4.4",
++"symfony/asset": "^5.0",
+-"symfony/console": "^4.4",
++"symfony/console": "^5.0",
+
+// etc.</code></pre>
+<p>But some packages are released out of <a href="/blog/2019/10/28/all-you-always-wanted-to-know-about-monorepo-but-were-afraid-to-ask/">monorepo cycle</a>:</p>
+<pre><code class="language-diff">-"symfony/maker-bundle": "^1.14",
++"symfony/maker-bundle": "^1.13",</code></pre>
+<p>All right, now you run...</p>
+<pre><code class="language-bash">composer update</code></pre>
+<p>...and get new packages with Symfony 5... or probably a lot of composer version conflicts.</p>
+<h3 id="symfony-packages-wtfs-in">Symfony Packages WTFs in</h3>
+<p>In Symfony 5, some packages were <strong>removed</strong>:</p>
+<pre><code class="language-diff">-"symfony/error-renderer": "^4.4",</code></pre>
+<pre><code class="language-diff">-"symfony/web-server-bundle": "^4.4",</code></pre>
+<p><br></p>
+<p>Some packages were <strong>replaced by new ones</strong>:</p>
+<pre><code class="language-diff">-"symfony/error-debug": "^4.4",
++"symfony/error-handler": "^5.0",</code></pre>
+<p><br></p>
+<p>And some package <strong>were split into more smaller ones</strong>:</p>
+<pre><code class="language-diff">-"symfony/security": "^4.4",
++"symfony/security-core": "^5.0",
++"symfony/security-http": "^5.0",
++"symfony/security-csrf": "^5.0",
++"symfony/security-guard": "^5.0",</code></pre>
+<h2 id="5-rector-ecs-and-phpstan">5. Rector, ECS, and PHPStan</h2>
+<p>These were production dependencies, but what about dev ones?
+Both have the same rules - they need to allow Symfony 5 installation.</p>
+<p>The safest way is to use <a href="https://github.com/rectorphp/rector/issues/177">prefixed versions</a>, which don't care about a Symfony version:</p>
+<pre><code class="language-diff">-"phpstan/phpstan": "^0.11",
++"phpstan/phpstan": "^0.12",
+-"rector/rector": "^0.5",
++"rector/rector-prefixed": "^0.6",</code></pre>
+<p><a href="https://github.com/symplify/easy-coding-standard">Easy Coding Standard</a>:</p>
+<pre><code class="language-diff">-"symplify/easy-coding-standard": "^0.11",
++"symplify/easy-coding-standard": "^0.12",</code></pre>
+<p><br></p>
+<p>Update your <code>composer.json</code> to include a package that you need.</p>
+<p>Then run:</p>
+<pre><code class="language-bash">composer update</code></pre>
+<p>Still conflicts?</p>
+<h2 id="6-and-the-biggest-symfony-upgrade-blocker-is">6. And The Biggest Symfony Upgrade Blocker is...</h2>
+<p>If you don't do open-source, you probably don't use the <code>git tag</code> feature. It seems that the tagging of a package is a very difficult process. Even packages with million downloads/month had the latest 15 months ago.</p>
+<h3 id="what-are-tags-for">What are Tags For?</h3>
+<p>Let's say you want to use <code>symplify/easy-coding-standard</code> that supports Symfony 5. Here is the deal:</p>
+<ul>
+<li>the latest <code>symplify/easy-coding-standard</code> version 6 doesn't support it</li>
+<li><code>symplify/easy-coding-standard</code> dev-master (~= what you see on GitHub) supports it</li>
+<li>but it's not tagged yet and composer forbids to install dev version; e.g. <a href="https://github.com/getsentry/sentry-symfony">sentry-symfony</a> at time of writing this post</li>
+<li>so you'd have to require its dev version and force composer to install it</li>
+</ul>
+<pre><code class="language-json">{
+    "require-dev": {
+        "symplify/easy-coding-standard": "dev-master"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}</code></pre>
+<ul>
+<li>it's a hackish solution, but it <em>somehow</em> works</li>
+</ul>
+<p>Now imagine one of your package you require requires some other package, that requires another package, that doesn't allow Symfony 5 in tagged version, but in <code>master</code>. Well, you've just finished.</p>
+<p>That's why it's very important to know to tag a package regularly:</p>
+<pre><code class="language-bash">git tag v2.0.0
+git push --tags</code></pre>
+<p>That's all! Still, many packages support Symfony 5 in the master but are not tagged yet... to be true, not once for the last 2 years. Why? <strong>The human factor</strong>, maintainers are afraid of negative feedback, of back-compatibility breaks, lack of test coverage takes their confidence, etc.</p>
+<h2 id="tagging-cancer-of-php-ecosystem">Tagging Cancer of PHP Ecosystem</h2>
+<p>These packages block Symfony 5 upgrade for months:</p>
+<ul>
+<li><a href="https://github.com/stof/StofDoctrineExtensionsBundle/releases">stof/gedmo extension</a> (last release in 2017)</li>
+<li><a href="https://github.com/KnpLabs/DoctrineBehaviors/releases">knplabs/doctrine-behaviors</a> (last stable release in 2018)</li>
+<li><a href="https://github.com/Behat/Transliterator/releases">behat/transliterator</a> (last release in 2017) - this <a href="https://github.com/Behat/Transliterator/pull/29#issuecomment-567873541">comment sums it up very nicely</a></li>
+</ul>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/symfony5_nice_comment.png"></div>
+<h3 id="united-we-stand">United We Stand</h3>
+<p>This will be resolved in the future by an open-source monorepo approach, but we're not there yet.</p>
+<p>In the meantime, please <strong>complain at issues</strong>, ask for help and <strong>offer to become maintainer</strong> until it changes (or until somebody forks it and tags the fork).</p>
+<p>One good example for all - I complained and offered help at <code>knplabs/doctrine-behaviors</code>, got maintainer rights in 3 hours and <a href="https://github.com/KnpLabs/DoctrineBehaviors/pulse/monthly">made + merged 30 pull-request in the last month</a>.</p>
+<p>You see, it works :)</p>
+<h2 id="7-still-conflicts">7. Still Conflicts?</h2>
+<p>Ok, so you have the right version of packages, everything is stable and allows Symfony 5. Yet still, the composer says &quot;conflicts, cannot install x/y&quot;.</p>
+<p>To my surprise, the composer is very bad at solving complex conflicts. Composer <strong>reports false positive and blocks your install</strong>, because of installing packages in <code>/vendor</code> or overly strict <code>composer.lock</code>. I spent 30-60 minutes trying to figure out what the heck is conflicting on every Symfony training I had in the last 2 months. Now I'm able to do it in 3 minutes.</p>
+<p><strong>How?</strong></p>
+<ul>
+<li>remove <code>/vendor</code></li>
+<li>remove <code>composer.lock</code></li>
+<li>run <code>composer update</code></li>
+</ul>
+<p>It works so well I do it more often than resolving conflicts manually.</p>
+<h2 id="8-cleanup-code-bundles-php-code">8. Cleanup <code>bundles.php</code></h2>
+<ul>
+<li>Doctrine Cache was only <a href="https://github.com/doctrine/DoctrineCacheBundle/releases/tag/1.4.0">released for Symfony 4.4 and is not supported for any further version</a>.</li>
+</ul>
+<pre><code class="language-diff"> return [
+-    Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle::class =&gt; ['all' =&gt; true],
+ ];</code></pre>
+<p>Switch the dead gedmo/stof doctrine extensions for the maintained <a href="https://github.com/KnpLabs/DoctrineBehaviors">KnpLabs/DoctrineBehaviors</a>. I'll write a standalone post about this migration, once a stable version is out (check me, pls :)).</p>
+<pre><code class="language-diff"> return [
+-    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class =&gt; ['all' =&gt; true],
+ ];</code></pre>
+<p>We also had some troubles with Switfmailer Bundle:</p>
+<pre><code class="language-diff"> return [
+-    Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class =&gt; ['all' =&gt; true],
+ ]</code></pre>
+<p>The <a href="https://symfony.com/blog/new-in-symfony-4-3-mailer-component">Mailer component</a> will take over Swiftmailer in the future, so this is just a start.</p>
+<h2 id="9-clear-code-config-packages-code">9. Clear <code>config/packages</code></h2>
+<pre><code class="language-diff"> # config/packages/framework.yaml
+ framework:
+     ...
+-    templating:
+-        engines: ["twig"]</code></pre>
+<p>Don't forget to remove all extension configs. In our case it was:</p>
+<pre><code class="language-diff">-config/packages/stof_doctrine_extensions.yaml
+-config/packages/swiftmailer.yaml
+-config/packages/dev/swiftmailer.yaml
+-config/packages/test/swiftmailer.yaml
+-config/packages/twig_extensions.yaml
+-config/routes/dev/twig.yaml</code></pre>
+<p>Small update of the EasyAdmin bundle:</p>
+<pre><code class="language-diff"> # config/routes/easy_admin.yaml
+ easy_admin_bundle:
+-    resource: '@EasyAdminBundle/Controller/AdminController.php'
++    resource: '@EasyAdminBundle/Controller/EasyAdminController.php'</code></pre>
+<blockquote class="blockquote text-center">
+    And that's all folks!<br>
+    Got any questions?
+</blockquote>
+<div class="text-center">
+    All the know-how is taken from practical pull-request, that was under strict Travis control:
+
+    <br><img src="/assets/images/posts/2019/symfony5_pr.png" class="img-thumbnail"><br>
+
+    Feel free to explore it, ask, read comments or share your problems.
+    <br><a href="https://github.com/pehapkari/pehapkari.cz/pull/243/files" class="btn btn-dark mb-5 mt-3">
+        <em class="fab fa-github"></em>
+         
+        Check the PR on Github
+    </a>
+</div>
+<p><br></p>
+<h2 id="have-we-missed-something">Have we Missed Something?</h2>
+<p>Of course, we did! Every application has a different set of <em>blocking</em> dependencies and different sets of used Symfony features that might have changed.</p>
+<p>Share your issues in comments or edit this post on Github to make list complete!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-09-how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days" />
+    <meta property="og:description" content="A month ago, Symfony 5 has been released. Upgrading of such a small web as our community website **must be easy**, right?
+
+
+Well, that&#039;s what we thought. **Were we right or wrong?**
+" />
+    <meta property="og:url" content="/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How we Upgraded Pehapkari.cz from Symfony 4 to 5 in 25 days" />
+    <meta name="twitter:description" content="A month ago, Symfony 5 has been released. Upgrading of such a small web as our community website **must be easy**, right?
+
+
+Well, that&#039;s what we thought. **Were we right or wrong?**
+" />

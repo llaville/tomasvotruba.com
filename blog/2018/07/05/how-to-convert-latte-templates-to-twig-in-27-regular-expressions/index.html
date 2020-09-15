@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Convert Latte Templates to Twig in 27 Regular Expressions | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 120 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Convert Latte Templates to Twig in 27 Regular Expressions</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-07-Thu">
+            <strike>
+                            Thu, Jul 5, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Mar, 2019
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/07/05/how-to-convert-latte-templates-to-twig-in-27-regular-expressions/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-07-05-how-to-convert-latte-templates-to-twig-in-27-regular-expressions.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at March 2019</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Do you want to convert your code from Latte to TWIG?<br>
+Go to <strong><a href="https://github.com/symplify/lattetotwigconverter">Latte To Twig Converter package</a> on Github</strong>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Statie - a tool for generating static open-sourced website like this blog or <a href="https://github.com/pehapkari/pehapkari.cz">Pehapkari.cz</a> - runs on YAML and Symfony DI Container. That way it's easy to understand by the PHP community worldwide.
+<br><br>
+But there are some pitfalls left. Like templates - being Latte the only one is a pity. Twig is often requested feature and one of the last big reasons not to use Statie.
+<br><br>
+Well, <strong>it was</strong>. Statie now supports <a href="https://github.com/symplify/symplify/pull/892">Twig</a>.
+<br><br>
+<strong>Are you a Twig fan? As a side effect, I made 27 regular expression to handle 80 % of the Latte to Twig migration for you.</strong></p>
+                    </div>
+                </div>
+
+                <img src="/assets/images/posts/2018/latte-twig/latte.png" class="mt-5 ml-5">
+<img src="/assets/images/posts/2018/latte-twig/twig.jpg">
+<p>This regex saga started as an experiment on this site. I tested the Twig support in Statie here. This web had ~20 files in Latte and I needed them to be in Twig, so I know the Twig support works with all the edge cases I use on daily basis.</p>
+<p>After the 5th change of code from <code>{$value}</code> to <code>{{ value }}</code> I started to have a weird feeling of being a robot or <a href="/blog/2018/05/03/how-do-you-treat-your-own-first-ai/">a very slow AI</a>. So I stopped to think a bit...</p>
+<blockquote class="blockquote text-center">
+    "The question you should be asking isn't, "What do I want?" or "What are my goals?" but "What would excite me?"
+    <footer class="blockquote-footer">Tim Ferriss</footer></blockquote>
+<p>And what excites me? <strong>Investing 5 hours to automate 30-minutes manual work under 10 seconds, so no-one else will have to do that ever again.</strong></p>
+<h2 id="brother-from-another-mother">Brother from Another Mother</h2>
+<p>The biggest difference between Latte, Twig, Smarty, Blade and all other templating engines is rather in the way they're written inside than in the syntax itself.</p>
+<p>See Latte code:</p>
+<pre><code class="language-html">{foreach $values as $key =&gt; $value}
+    {$value-&gt;getName()}
+
+    {if isset($value['position'])}
+        {$value['position']|noescape}
+    {else}
+        {var $noPosition = true}
+    {/if}
+{/foreach}</code></pre>
+<p>And see Twig code:</p>
+<pre><code class="language-twig">{% for key, value in values %}
+    {{ value.getName() }}
+
+    {% if value.position is defined %}
+        {{ value.position|raw }}
+    {% else %}
+        {% set noPosition = true %}
+    {% endif %}
+{% endfor %}</code></pre>
+<p>And that's how 27 regular expressions solution was born step by step.</p>
+<p><br></p>
+<p>I'm not using <code>preg_replace</code>, but rather util method <a href="https://github.com/nette/utils/blob/8eda0c33f798f7ce491715e9dae8797f191e9b00/src/Utils/Strings.php#L475"><code>Nette\Utils\String::replace()</code></a> that handles compile-time errors, run-time errors and few more tricks in a fancy way. Do you want to use it too? Just run <code>composer update nette/utils</code>.</p>
+<p><strong>Do you want to skip details and use it?</strong> Jump to <em><a href="#install-and-use-it">Install and Use It</a></em> section.</p>
+<h3 id="1-block-define-include">1. Block, Define, Include</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros#toc-blocks">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/tags/block.html">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// {block someBlock}...{/block} =&gt;
+// {% block anotherBlock %}...{% endblock %}
+$content = Strings::replace($content, '#{block (\w+)}(.*?){\/block}#s', '{% block $1 %}$2{% endblock %}');
+
+// {include "_snippets/menu.latte"} =&gt;
+// {% include "_snippets/menu.latte" %}
+$content = Strings::replace($content, '#{include ([^}]+)}#', '{% include $1 %}');
+
+// {define sth}...{/define} =&gt;
+// {% block sth %}...{% endblock %}
+$content = Strings::replace($content, '#{define (.*?)}(.*?){\/define}#s', '{% block $1 %}$2{% endblock %}');
+
+// {% include ... %} =&gt;
+// {{ block('...') }}
+$content = Strings::replace($content, '#{% include \'?(\w+)\'? %}#', '{{ block(\'$1\') }}')</code></pre>
+<p>The most useful expression here is <code>(.*?)</code>. <strong>It will capture everything until the next pattern</strong>. In this case it keeps everything between 2 tags.</p>
+<p>Also, <strong>mind the <code>#s</code> modifier</strong>. <code>(.*?)</code> matches newlines as well thanks to that. You can read more about modifiers in <a href="http://php.net/manual/en/reference.pcre.pattern.modifiers.php">PHP Documentation</a></p>
+<p>The last notable tip I learned is <code>\w</code>, that matches <code>[a-zA-Z0-9_]</code> characters - usually all you need for variable names.</p>
+<h3 id="2-capture-set">2. Capture, Set</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros#toc-variable-declaration">in</a> <a href="https://latte.nette.org/en/macros#toc-capturing-to-variables">Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/tags/set.html">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// {var $var = $anotherVar} =&gt;
+// {% set var = anotherVar %}
+$content = Strings::replace($content, '#{var \$?(.*?) = \$?(.*?)}#s', '{% set $1 = $2 %}');
+
+// {capture $var}...{/capture} =&gt;
+// {% set var %}...{% endset %}
+$content = Strings::replace($content, '#{capture \$(\w+)}(.*?){\/capture}#s', '{% set $1 %}$2{% endset %}');</code></pre>
+<p>As Twig doesn't use <code>$var</code> but just <code>var</code> as variable name, we need to get rid of the dollar <code>$</code> sign.</p>
+<p>That's what this expression does:</p>
+<pre><code class="language-bash">\$?(.*?)</code></pre>
+<p>It will capture anything, but if there is <code>$</code>, it will remove it.</p>
+<h3 id="3-comments">3. Comments</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/templates.html#comments">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+$content = Strings::replace($content, '#{\*(.*?)\*}#s', '{#$1#}');</code></pre>
+<h3 id="4-conditions-if-ifset">4. Conditions, If, Ifset</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros#toc-conditions">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/tags/if.html">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// https://regex101.com/r/XKKoUh/1/
+// {if isset($post['variable'])}...{/if} =&gt;
+// {% if $post['variable'] is defined %}...{% endif %}
+$content = Strings::replace(
+    $content,
+    '#{if isset\((.*?)\)}(.*?){\/if}#s',
+    '{% if $1 is defined %}$2{% endif %}'
+);
+
+// {ifset $post}...{/ifset} =&gt;
+// {% if $post is defined %}..{% endif %}
+$content = Strings::replace($content, '#{ifset (.*?)}(.*?){\/ifset}#s', '{% if $1 is defined %}$2{% endif %}');
+
+// {% if $post['deprecated'] =&gt;
+// {% if $post.deprecated
+// https://regex101.com/r/XKKoUh/2
+$content = Strings::replace($content, '#{% (\w+) \$([A-Za-z]+)\[\'([\A-Za-z]+)\'\]#', '{% $1 $2.$3');
+
+// {if "sth"}..{/if} =&gt;
+// {% if "sth" %}..{% endif %}
+// https://regex101.com/r/DrDSJf/1
+$content = Strings::replace($content, '#{if (.*?)}(.*?){\/if}#s', '{% if $1 %}$2{% endif %}');
+
+$content = Strings::replace($content, '#{else}#', '{% else %}');
+
+$content = Strings::replace($content, '#{elseif (.*?)}#', '{% elseif $1 %}');</code></pre>
+<p>Nothing fancy here, just another great use case for <code>(.*?)</code> group.</p>
+<h3 id="5-filters">5. Filters</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/filters">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/filters/index.html">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// {$post['updated_message']|noescape} =&gt;
+// {{ post.updated_message|noescape }}
+$content = Strings::replace($content, '#{\$([A-Za-z_-]+)\[\'([A-Za-z_-]+)\'\]\|([^}]+)}#', '{{ $1.$2|$3 }}');
+
+// | noescape =&gt;
+// | raw
+$content = Strings::replace($content, '#\|(\s+)?noescape#', '|$1raw');
+
+// {% if count($var) %} =&gt;
+// {% if $var|length) %}
+$content = Strings::replace($content, '#{% (.*?) count\(\$?(\w+)\)#', '{% $1 $2|length');</code></pre>
+<p>No surprises here.</p>
+<h3 id="6-loops-while-for-foreach">6. Loops, While, For, Foreach</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros#toc-loops">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/tags/for.html">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// {foreach $values as $key =&gt; $value}...{/foreach} =&gt;
+// {% for key, value in values %}...{% endfor %}
+$content = Strings::replace(
+    $content,
+    '#{foreach \$([()\w ]+) as \$([()\w ]+) =&gt; \$(\w+)}#',
+    '{% for $2, $3 in $1 %}'
+);
+
+// {foreach $values as $value}...{/foreach} =&gt;
+// {% for value in values %}...{% endfor %}
+$content = Strings::replace($content, '#{foreach \$([()\w ]+) as \$([()\w ]+)}#', '{% for $2 in $1 %}');
+$content = Strings::replace($content, '#{/foreach}#', '{% endfor %}');
+
+// {sep}, {/sep} =&gt; {% if loop.last == false %}, {% endif %}
+$content = Strings::replace($content, '#{sep}([^{]+){\/sep}#', '{% if loop.last == false %}$1{% endif %}');</code></pre>
+<h3 id="7-variables">7. Variables</h3>
+<ul>
+<li><a href="https://latte.nette.org/en/macros#toc-variable-printing">in Latte</a></li>
+<li><a href="https://twig.symfony.com/doc/2.x/templates.html#variables">in Twig</a></li>
+</ul>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// {$google_analytics_tracking_id} =&gt;
+// {{ google_analytics_tracking_id }}
+// {$google_analytics_tracking_id|someFilter} =&gt;
+// {{ google_analytics_tracking_id|someFilter }}
+$content = Strings::replace($content, '#{\$(\w+)(\|.*?)?}#', '{{ $1$2 }}');
+
+// {$post-&gt;getId()} =&gt;
+// {{ post.getId() }}
+$content = Strings::replace($content, '#{\$([\w]+)-&gt;([\w()]+)}#', '{{ $1.$2 }}');
+
+// {$post['relativeUrl']} =&gt;
+// {{ post.relativeUrl }}
+$content = Strings::replace($content, '#{\$([A-Za-z_-]+)\[\'([A-Za-z_-]+)\'\]}#', '{{ $1.$2 }}');
+
+// {% if $post['rectify_post_id'] is defined %} =&gt;
+// {% if post.rectify_post_id is defined %}
+$content = Strings::replace($content, '#({% \w+) \$(\w+)\[\'(\w+)\'\]#', '$1 $2.$3');</code></pre>
+<p>This was the simplest set so far. Always start with the easiest first.</p>
+<h3 id="8-suffix">8. Suffix</h3>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// ...
+
+// "_snippets/menu.latte" =&gt;
+// "_snippets/menu.twig"
+$content = Strings::replace($content, '#([A-Za-z_/"]+).latte#', '$1.twig');</code></pre>
+<h3 id="9-include-with-vars">9. Include With Vars</h3>
+<p>This is the most complex solution in the set. What it does?</p>
+<pre><code class="language-diff">-{% include "_snippets/menu.latte", "data" =&gt; $data %}
++{% include "_snippets/menu.twig" with { "data": data } %}</code></pre>
+<p>It looks pretty simple, but I could not find an easier way to work with the nested array items.</p>
+<pre><code class="language-php">use Nette\Utils\Strings;
+
+// include var:
+// {% include "_snippets/menu.latte", "data" =&gt; $data %} =&gt;
+// {% include "_snippets/menu.twig", { "data": data } %}
+// see https://twig.symfony.com/doc/2.x/functions/include.html
+// single lines
+// ref https://regex101.com/r/uDJaia/1
+$content = Strings::replace($content, '#({% include [^,]+,)([^}^:]+)(\s+%})#', function (array $match) {
+    $variables = explode(',', $match[2]);
+    $twigDataInString = ' { ';
+    $variableCount = count($variables);
+    foreach ($variables as $i =&gt; $variable) {
+        [$key, $value] = explode('=&gt;', $variable);
+        $key = trim($key);
+        $value = trim($value);
+        $value = ltrim($value, '$'); // variables do not start with
+        $twigDataInString .= $key . ': ' . $value;
+        // separator
+        if ($i &lt; $variableCount - 1) {
+            $twigDataInString .= ', ';
+        }
+    }
+    $twigDataInString .= ' }';
+
+    return $match[1] . $twigDataInString . $match[3];
+});
+
+// {% include "sth", =&gt;
+// {% include "sth" with
+$content = Strings::replace($content, '#({% include [^,{]+)(,)#', '$1 with');</code></pre>
+<p>What is here to take away? The <code>[^,{]+</code> set. It tells <em>find everything until the first <code>,</code> or <code>{</code> character</em>.
+That way we catch everything we don't really work with.</p>
+<h2 id="install-and-use-it">Install and Use It</h2>
+<pre><code class="language-bash">composer require symplify/latte-to-twig-converter:@dev --dev
+vendor/bin/latte-to-twig-converter convert app/templates</code></pre>
+<p>It will find all the <code>*.twig</code> files, look for Latte code in it and if that matches, it will convert it to Twig. That way your <code>*.latte</code> files will keep Latte as long as you don't rename them.</p>
+<p>I'd link you to <a href="http://github.com/symplify/lattetotwigconverter">README</a> now for more, but actually, there is no more, this is all the usage.</p>
+<p><br></p>
+<h3 id="how-does-this-set-work-in-real-project">How Does This Set Work in Real Project?</h3>
+<p>Just see <a href="https://github.com/TomasVotruba/tomasvotruba.com/pull/380">the PR on this website</a>
+or <a href="https://github.com/pehapkari/pehapkari.cz/pull/486">the PR to Pehapkari.cz website</a>.</p>
+<img src="/assets/images/posts/2018/latte-twig/diff.png" class="img-thumbnail">
+<h2 id="twig-to-latte-converter">Twig To Latte Converter?</h2>
+<p>Are you Latte fan and do you want to migrate to Latte? Let's do this! There <a href="https://github.com/symplify/symplify/tree/a6b7c71a90fd984d2f31c5ed28957e2927608001/packages/LatteToTwigConverter/tests/LatteToTwigConverterSource">is a test set of both engines</a>, that can help you to start.</p>
+<p>All you need to do is create the <strong>exact reverse of the match to replace rules</strong>:</p>
+<p>For example from <a href="https://github.com/symplify/symplify/blob/master/packages/LatteToTwigConverter/src/CaseConverter/ConditionCaseConverter.php"><code>Symplify\LatteToTwigConverter\CaseConverter\ConditionCaseConverter</code></a>:</p>
+<pre><code class="language-php"># Twig to Latte
+use Nette\Utils\String;
+
+$content = Strings::replace($content, '{% else %}', '#{else}#');</code></pre>
+<p>↓</p>
+<pre><code class="language-php"># Latte to Twig
+use Nette\Utils\String;
+
+$content = Strings::replace($content, '#{else}#', '{% else %}');</code></pre>
+<p><br><br></p>
+<h2 id="go-out-and-play">Go Out and Play</h2>
+<p>In the end, I'd like to encourage you to do more of such experiments. I meet many programmers over meetups all across Europe and they often don't have space - either the time in work or they won't allow themselves - to do such experiments.</p>
+<p>In my open-source experience, these experiments give you the most knowledge. Instead of choosing the first solution because <em>I don't have time and I have to deliver the value</em>, I tried 3-4, tested them and then picked the one that worked the best. It was not the first one of course, and even if it was, I'd be much more convinced the solution is right instead of just blindly believing it.</p>
+<p>I learned a lot about regular expressions, about delimiters and universal capturing groups (easter egg: seek &quot;http&quot; in the source code and you'll find all the tips I found and found useful) thanks to StackOverflow and <a href="https://regex101.com">regex101.com</a>. I also must thank Jáchym Toušek and Ondra Mirtes with PHPStan who got me more engaged in regular expressions in a useful and not-so-frustrating way.</p>
+<p><br>
+<br></p>
+<p><strong>Free your mind and experiment! It's the best way to get better every iteration.</strong></p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/07/02/cluster-more-interactive-than-book-deeper-than-post" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Cluster: More Interactive than a Book, Deeper than a Post
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-07-05-how-to-convert-latte-templates-to-twig-in-27-regular-expressions.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Convert Latte Templates to Twig in 27 Regular Expressions" />
+    <meta property="og:description" content="Statie - a tool for generating static open-sourced website like this blog or [Pehapkari.cz](https://github.com/pehapkari/pehapkari.cz) - runs on YAML and Symfony DI Container. That way it&#039;s easy to understand by the PHP community worldwide.
+
+But there are some pitfalls left. Like templates - being Latte the only one is a pity. Twig is often requested feature and one of the last big reasons not to use Statie.
+
+Well, **it was**. Statie now supports [Twig](https://github.com/symplify/symplify/pull/892).
+
+**Are you a Twig fan? As a side effect, I made 27 regular expression to handle 80 % of the Latte to Twig migration for you.**
+" />
+    <meta property="og:url" content="/blog/2018/07/05/how-to-convert-latte-templates-to-twig-in-27-regular-expressions" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Convert Latte Templates to Twig in 27 Regular Expressions" />
+    <meta name="twitter:description" content="Statie - a tool for generating static open-sourced website like this blog or [Pehapkari.cz](https://github.com/pehapkari/pehapkari.cz) - runs on YAML and Symfony DI Container. That way it&#039;s easy to understand by the PHP community worldwide.
+
+But there are some pitfalls left. Like templates - being Latte the only one is a pity. Twig is often requested feature and one of the last big reasons not to use Statie.
+
+Well, **it was**. Statie now supports [Twig](https://github.com/symplify/symplify/pull/892).
+
+**Are you a Twig fan? As a side effect, I made 27 regular expression to handle 80 % of the Latte to Twig migration for you.**
+" />

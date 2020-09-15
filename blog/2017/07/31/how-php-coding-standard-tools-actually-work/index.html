@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How PHP Coding Standard Tools Actually Work | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 48 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How PHP Coding Standard Tools Actually Work</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-07-Mon">
+            
+                            Mon, Jul 31, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/07/31/how-php-coding-standard-tools-actually-work/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-07-31-how-php-coding-standard-tools-actually-work.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you use <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP CS Fixer</a> or <a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a>? Do you know the way they work is ~80 % the same? Do you wonder how they work under the hood?
+<br><br>
+Today I will share <strong>3 main pillars of their architecture</strong>.</p>
+                    </div>
+                </div>
+
+                <p>Why should these 3 pillars be even important for you? When I understood tools behind them and their basic principals, <strong>I was able to more effective Sniffs and Fixers</strong> (<em>Checkers</em> further on) <strong>that were clear to their communities</strong>.</p>
+<h2 id="write-1-checker-save-hundreds-hours-of-work">Write 1 Checker, Save Hundreds Hours of Work</h2>
+<p>Coding Standards are my greatest passion for last couple of years. I love their efficiency: <strong>with one rule (class) you can improve thousands of lines in your code</strong> in matters of milliseconds. And not only yours if you share it in a package.</p>
+<p>With a Checker you can change <code>array()</code> to <code>[]</code>. And more then that. Coding Standard are not exclusively about spaces, tabs and brackets nowadays.</p>
+<p>You can use them to <a href="https://daniel-siepmann.de/Posts/2017/2017-03-20-phpcs-code-migration.html">refactor to newer version of your framework</a>,
+<a href="https://github.com/wimg/PHPCompatibility">upgrade your codebase to newer PHP</a> or <a href="https://github.com/kukulich/php-type-hints-convertor">add PHP 7.1 typehints to your methods</a>.</p>
+<p>That's laziness on a completely different level :)</p>
+<h2 id="so-much-for-the-hype">So Much for The Hype</h2>
+<div class="text-center">
+    <img src="https://content.artofmanliness.com/uploads/2015/08/Small-Things-Over-Time-2.jpg"></div>
+<p>A lot is possible to do with these tools and I'll write about that in the future, but today we'll start with a much <a href="/blog/2017/02/22/fast-and-easy-way-to-learn-complex-topics/">smaller step</a>: a Checker that will inform us about coding standard violation. No changes, no refactoring.</p>
+<p>To know how to build a Checker you need to understand 3 terms: <em>token</em>, <em>dispatcher</em> and <em>subscriber</em>.</p>
+<p>I'll explain them one by one.</p>
+<h2 id="1-token">1. Token</h2>
+<p>We see PHP as:</p>
+<pre><code class="language-php">&lt;?php echo "hi";</code></pre>
+<p>Coding Standard tools see it in <a href="https://php.net/manual/en/tokens.php">tokens</a>:</p>
+<pre><code class="language-php">$phpCodeInTokens = token_get_all('&lt;?php echo "hi";');
+var_dump($phpCodeInTokens);</code></pre>
+<pre><code class="language-php">array(5) {
+  [0]=&gt;
+      array(3) {
+        [0]=&gt;
+        int(379) # token id
+        [1]=&gt;
+        string(6) "&lt;?php " # token content
+        [2]=&gt;
+        int(1)
+      }
+  [1]=&gt;
+      array(3) {
+        [0]=&gt;
+        int(328) # token id
+        [1]=&gt;
+        string(4) "echo" # token content
+        [2]=&gt;
+        int(1)
+      }
+  [2]=&gt;
+      array(3) {
+        [0]=&gt;
+        int(382) # token id
+        [1]=&gt;
+        string(1) " " # token content
+        [2]=&gt;
+        int(1)
+      }
+  [3]=&gt;
+      array(3) {
+        [0]=&gt;
+        int(323) # token id
+        [1]=&gt;
+        string(4) ""hi"" # token # content
+        [2]=&gt;
+        int(1)
+  }
+  [4]=&gt;
+      string(1) ";"
+}</code></pre>
+<p>Don't worry, this is not a content we need to work with. <strong>It will be converted to arrays or objects like these</strong>:</p>
+<pre><code class="language-php">$token = [
+    'type' =&gt; 328, # token id stated by PHP, you can use also more readable constant: T_ECHO (with value 328)
+    'content' =&gt; 'echo'
+];</code></pre>
+<p>Now you know what &quot;token&quot; is.</p>
+<h2 id="2-dispatcher">2. Dispatcher</h2>
+<p>Do you know <a href="/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/">Event Dispatcher</a>?</p>
+<p>If not, it's a pattern (like <em>repository</em> or <em>factory</em>) that says: <strong>when this action happens, call all methods that listen to it</strong>, e.g. when order is finished (event), send confirmation SMS to user and send him thank-you box full of candies (subscribed methods).</p>
+<pre><code class="language-php">$dispatcher-&gt;dispatch('order_finished');</code></pre>
+<p>For Coding Standard tools <strong>it works the same</strong> but with different naming:</p>
+<ul>
+<li>Event &lt;=&gt; <em>Token</em></li>
+<li>Subscriber &lt;=&gt; <em>Checker</em></li>
+</ul>
+<p>Almost there.</p>
+<h2 id="3-subscriber">3. Subscriber</h2>
+<p>You already know that <em>subscriber</em> is a <em>Checker</em>. Checker is a class that waits for a specific token.</p>
+<p>In pseudo code:</p>
+<pre><code class="language-php">class Checker
+{
+    public function subscribeToToken()
+    {
+        return T_ECHO; // number for "echo" by PHP
+    }
+
+    public function someMethodThatWillBeCalled(array $token)
+    {
+        if ($token['content'] !== 'echo') {
+            // mallformed echo, probably "ECHO", "eCHO" etc.
+        }
+    }
+}</code></pre>
+<p>Internally Coding Standard tools <strong>dispatch all tokens found in specific file</strong>:</p>
+<pre><code class="language-php">$tokens = $this-&gt;getAllTokens(file_get_contents($file));
+foreach ($tokens as $token) {
+    $codingStandardTool-&gt;dispatch($token['type']);
+}</code></pre>
+<p>When the dispatcher gets a token with type <code>T_ECHO</code> (= <code>328</code>) it will call  <code>Checker::someMethodThatWillBeCalled()</code> method.</p>
+<p>I think now you are ready for the real code.</p>
+<h3 id="do-you-want-real-code">Do You Want Real Code?</h3>
+<p>I already wrote <a href="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/">how to write a Sniff for PHP_CodeSniffer</a> or <a href="/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/">how to write a Fixer for PHP CS Fixer</a> on this topic where I write code to solve  real life use cases.</p>
+<p>Enjoy saved time by writing a code that works for you.</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-07-31-how-php-coding-standard-tools-actually-work.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How PHP Coding Standard Tools Actually Work" />
+    <meta property="og:description" content="Do you use PHP CS Fixer or PHP_CodeSniffer? Do you know the way they work is ~80 % the same? Do you wonder how they work under the hood?
+
+Today I will share 3 main pillars of their architecture.
+" />
+    <meta property="og:url" content="/blog/2017/07/31/how-php-coding-standard-tools-actually-work" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How PHP Coding Standard Tools Actually Work" />
+    <meta name="twitter:description" content="Do you use PHP CS Fixer or PHP_CodeSniffer? Do you know the way they work is ~80 % the same? Do you wonder how they work under the hood?
+
+Today I will share 3 main pillars of their architecture.
+" />

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How we Migrated from Nette to Symfony in 3 Weeks - Part 1 | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 188 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How we Migrated from Nette to Symfony in 3 Weeks - Part 1</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-02-Thu">
+            
+                            Thu, Feb 21, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-21-how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>On the break of January/February 2019, we <strong>migrated whole <a href="https://entry.do">Entrydo</a> project from Nette to Symfony</strong>. It was API backend with no templates, but still, it wasn't as easy as I expected.
+<br><br>
+Many ☕ and 🍺 were drunk during this migration. 0 programmers were too frustrated to give up.
+<br>
+Yet, you'd laugh if you knew what took us the most time.</p>
+                    </div>
+                </div>
+
+                <p>And when I write we and 3 weeks, I mean myself and <a href="https://janmikes.cz">Jan Mikeš</a> and <strong>3 weeks of occasional codding</strong>, not full-time. In total, we <strong>spent around 30-40 hours</strong> each on this migration.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/nette-to-symfony/nette-to-symfony.png" class="img-thumbnail mt-5"></div>
+<p>How did that happen? One day I met with Honza to cowo-talk. No big topics, you know:</p>
+<blockquote class="blockquote text-center">
+"..."<br>
+"Why don't you try Symfony?"<br>
+"I don't have time to play with it. There's already pressure for new features, damn Tom!"<br>
+"I'm pretty sure it's easier than you think. Let's give it 1 week and you'll see."
+</blockquote>
+<p>And that's how it started. In this short series, we'll share our short story about nights without sleep, PHP code and Neon parsing and short-term pain of having no clue what that code does. Maybe even... happy ending?</p>
+<h2 id="1-getting-ready">1. Getting Ready 🤔</h2>
+<p>A year ago we tried to migrate from unmaintained Kdyby and Zenify packages to Contributte and other implementations. And we ended licking our burns.</p>
+<p>That's why planning the migration is much more important than the migration itself. You have to talk about resources - <strong>how much energy and time are we both willing to invest</strong>. The problem with migration (or coding in general) is that there is a chance that 80 % will be done in 2 days, but then there is this 1 bug that makes most of the database tests fail. You try and try and fail and fail... and after a week you have depression and after 2 weeks you give up and never go back.</p>
+<h2 id="2-making-a-commitment">2. Making a Commitment 💍</h2>
+<p>Also, we had to <strong>decide to give this a priority</strong>. I was planning to put up new Pehapkari.cz website with training admin and new design and Honza had to deliver the feature. We had a time span of 3 weeks, month top, to do this. Everything else is secondary.</p>
+<p>When one sleeps, the other codes. We called each other at 3 AM in the morning to talk about frustration, we shared the joy when one solved the issue. Sometimes we slept for 2 hours, then coded some more because we felt we are very close and this must be the day we finish it. In 20 cases it wasn't, <strong>but we persisted</strong>. We persisted because we decided to.</p>
+<p>If one would decide in the middle of a migration to work for a week on another project, the mutual motivation could go to garbage very quickly. No way!</p>
+<h2 id="3-automated-migration-gt-manual-changes">3. Automated Migration &gt; Manual Changes 🤖</h2>
+<p>The basic idea was to do automated instant migration. Anything manually changes on more than 1 place is a potential future black hole.</p>
+<p>We quickly discovered, it's better to use <a href="/blog/2019/02/14/why-config-coding-sucks/">PHP factories over config coding</a> and <a href="/blog/2019/01/24/how-to-kill-parents/">kill all parents we could</a> (except our own ones of course).</p>
+<h3 id="use-rector-to-php-changes">Use Rector to PHP Changes</h3>
+<p>In the start, we run <strong>Rector with generic rules with brute-force way</strong>. Don't think, just try it. That gave us more idea about the code - we started to spot places we can write in Rector rule.</p>
+<p>In the end, <a href="https://getrector.org">Rector</a> helped us with many following changes:</p>
+<ul>
+<li>
+<p>Response and Request <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>Presenter to Controller <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>RouterFactory to Controller Annotation <em class="fas fa-fw fa-lg fa-check text-success"></em> - REST Routes and Invocable Controllers included</p>
+</li>
+<li>
+<p>Kdyby/Events and Contributte/Events to Symfony/EventDispatcher <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>Kdyby/Doctrine to Doctrine/DoctrineBundle <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>Kdyby/Events to Symfony/EventDispatcher <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>Kdyby/Translation to Symfony/Translation <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+<li>
+<p>Nette DI methods to Symfony/DependendyInjection <em class="fas fa-fw fa-lg fa-check text-success"></em></p>
+</li>
+</ul>
+<p>The tricky part was to discover differences and create the bridge between both frameworks - <em>&quot;In Nette, you use this, in Symfony you'd use this.&quot;</em></p>
+<p><strong>Now it's done</strong>, so you can use them <a href="https://github.com/rectorphp/rector/blob/master/config/level/framework-migration/nette-to-symfony.yaml">in <code>nette-to-symfony</code></a> level in Rector 0.4 to migrate your code.</p>
+<p><br></p>
+<p>We didn't have to change any of these parts, because the code didn't use them:</p>
+<ul>
+<li>
+<p>Components to Controllers <em class="fas fa-fw fa-lg fa-times text-secondary"></em></p>
+</li>
+<li>
+<p>CompilerExtensions to Bundles/CompilerPasses <em class="fas fa-fw fa-lg fa-times text-secondary"></em></p>
+</li>
+</ul>
+<p>Rector can automate them when some project will need them. Maybe your project :)</p>
+<h3 id="non-php-migrations">Non-PHP Migrations</h3>
+<ul>
+<li>
+<p><a href="/blog/2019/02/11/introducing-neon-to-yaml-converter/">Neon to YAML</a> <em class="fas fa-fw fa-lg fa-check - text-success"></em> - this package was created for needs of Entrydo</p>
+</li>
+<li>
+<p><a href="/blog/2018/07/05/how-to-convert-latte-templates-to-twig-in-27-regular-expressions/">Latte to TWIG</a> <em class="fas fa-fw fa-lg fa-check - text-success"></em></p>
+</li>
+</ul>
+<h3 id="coding-standards">Coding Standards</h3>
+<p>After many many changes in the code, we didn't care about spaces, tabs or where the <code>{</code> is. That's the job of <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a>. <strong>We had to focus full attention on code structure</strong>, not to play with style.</p>
+<p>Actually, Nette uses tabs and Symfony spaces, so ECS actually helped with migration a lot too.</p>
+<h2 id="4-wtfs-everywhere">4. WTFs Everywhere! 🤦</h2>
+<p>This code worked in Nette:</p>
+<pre><code class="language-php">&lt;?php
+
+$this-&gt;translation-&gt;translate('Hi, my name is %name%', [
+    'name' =&gt; 'Tom'
+]);</code></pre>
+<p>In Nette:</p>
+<pre><code class="language-bash">Hy, my name is Tom.</code></pre>
+<p>After migration tests started to fail:</p>
+<pre><code class="language-bash">Hy, my name is %Tom%.</code></pre>
+<p>Damn! Why it's broken?</p>
+<p>In this case, we had to look to the contents of the <code>translate</code> method of the previous service. Kdyby/Translation actually automatically <a href="https://github.com/Kdyby/Translation/blob/6b0721c767a7be7f15b2fb13c529bea8536230aa/src/Translator.php#L172">wraps key name to <code>%</code></a>, while Symfony doesn't:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ $this-&gt;translation-&gt;translate('Hi, my name is %name%', [
+-    'name' =&gt; 'Tom'
++    '%name%' =&gt; 'Tom'
+ ]);</code></pre>
+<p><strong>Problem solved</strong> in 20 minutes, doh! Now it's part of Rector set, so you can actually forget this paragraph. But be ready for such issues. <strong>The hardest problems are usually behind simple differences</strong> - like extra <code>%</code>.</p>
+<p><br></p>
+<p>Luckily, Honza is xdebug expert, so he deep dives into the code to find the spots where code failed. It took him some time, but in the end, he <strong>disclosed magic and fixed all the issues we had</strong>. You can read more about that, Doctrine events and HttpRequest as a services migration in the next post.</p>
+<h2 id="there-are-no-happy-endings">There are no Happy Endings...</h2>
+<p>...or are they?</p>
+<ul>
+<li>Do you wonder how the project ended-up?</li>
+<li>How many changes the PR has?</li>
+<li>When and <em>if</em> will be the migration merged?</li>
+</ul>
+<p>The project was published in staging for 2 days. The answer to the last question is <em>Happy Valentine</em>. That's the day <strong>the Symfony application was published to production</strong>.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/02/18/how-we-automated-shopsys-packages-release-from-2-days-to-1-console-command" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How we Automated Shopsys Packages Release from 2 days to 1 Console Command
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-21-how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How we Migrated from Nette to Symfony in 3 Weeks - Part 1" />
+    <meta property="og:description" content="On the break of January/February 2019, we **migrated whole [Entrydo](https://entry.do) project from Nette to Symfony**. It was API backend with no templates, but still, it wasn&#039;t as easy as I expected.
+
+Many ☕ and 🍺 were drunk during this migration. 0 programmers were too frustrated to give up.
+
+Yet, you&#039;d laugh if you knew what took us the most time.
+" />
+    <meta property="og:url" content="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How we Migrated from Nette to Symfony in 3 Weeks - Part 1" />
+    <meta name="twitter:description" content="On the break of January/February 2019, we **migrated whole [Entrydo](https://entry.do) project from Nette to Symfony**. It was API backend with no templates, but still, it wasn&#039;t as easy as I expected.
+
+Many ☕ and 🍺 were drunk during this migration. 0 programmers were too frustrated to give up.
+
+Yet, you&#039;d laugh if you knew what took us the most time.
+" />

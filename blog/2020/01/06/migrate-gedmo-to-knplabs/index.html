@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Migrate Gedmo to KnpLabs | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 233 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Migrate Gedmo to KnpLabs</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-01-Mon">
+            
+                            Mon, Jan 6
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/01/06/migrate-gedmo-to-knplabs/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-01-06-migrate-gedmo-to-knplabs.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>With <a href="/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days/">Symfony 5 upgrade</a>, we need any <em>working</em> Doctrine behaviors.
+<br>
+Month later, we have <a href="/blog/2019/12/30/doctrine-behaviors-2-0-reloaded/#how-do-you-migrate-from-gedmo-stof-to-knplabs-doctrinebehaviors">KnpLabs\DoctrineBehaviors 2.0</a> with full Symfony 5 support.
+<br>
+<br>
+If you used older Doctrine Behaviors, you're covered with Rector migration path.
+<br>
+But what if you're using old broken Gedmo?
+<br>
+<br>
+<strong>I'll show you how you can migrate Gedmo to KnpLabs</strong>.</p>
+                    </div>
+                </div>
+
+                <p>Pick behavior your want to migrate from Gedmo to KnpLabs:</p>
+<ul>
+<li><a href="#1-migrate-timestampable">1. Timestampable</a></li>
+<li><a href="#2-migrate-sluggable">2. Sluggable</a></li>
+<li><a href="#3-migrate-tree">3. Tree</a></li>
+<li><a href="#4-migrate-translatable">4. Translatable</a></li>
+<li><a href="#5-migrate-blameable">5. Blameable</a></li>
+<li><a href="#6-migrate-loggable">6. Loggable</a></li>
+<li><a href="#7-migrate-softdeletable">7. SoftDeletable</a></li>
+</ul>
+<p><br></p>
+<p>If you <strong>use other Gedmo behavior that is not listed here</strong>, you might request or better add it to <a href="https://github.com/KnpLabs/DoctrineBehaviors">KnpLabs</a> repository via pull-request. I assure you I'll provide <a href="/blog/2019/12/30/doctrine-behaviors-2-0-reloaded/">stable maintenance support</a> for KnpLabs package. It's not that hard with CI on steroids it has now.</p>
+<p><br></p>
+<h2 id="1-migrate-timestampable">1. Migrate Timestampable</h2>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+
+/**
+ * @ORM\Entity
+ */
+class Meetup
+{
+    use TimestampableEntity;
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Replace trait with <code>Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait</code></li>
+<li>Add <code>Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface</code> interface</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\TimestampableTrait;
+use Knp\DoctrineBehaviors\Contract\Entity\TimestampableInterface;
+
+/**
+ * @ORM\Entity
+ */
+class Meetup implements TimestampableInterface
+{
+    use TimestampableTrait;
+}</code></pre>
+<h2 id="2-migrate-sluggable">2. Migrate Sluggable</h2>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * @ORM\Entity
+ */
+class Meetup
+{
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $slug;
+
+    public function getSlug(): ?string
+    {
+        return $this-&gt;slug;
+    }
+
+    public function setSlug(?string $slug): void
+    {
+        $this-&gt;slug = $slug;
+    }
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>
+<p>Add <code>Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait</code> trait</p>
+</li>
+<li>
+<p>Add <code>Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface</code> interface</p>
+</li>
+<li>
+<p>Remove <code>getSlug()</code>/<code>setSlug()</code> method that is already in trait</p>
+</li>
+<li>
+<p>Replace <code>* @Gedmo\Slug(fields={"name"})</code> with <code>getSluggableFields()</code> method that contains fields</p>
+<p>E.g., from:</p>
+<pre><code class="language-php">use Gedmo\Mapping\Annotation as Gedmo;
+
+// ...
+
+/**
+ * @Gedmo\Slug(fields={"name", "surname"})
+ */
+private $slug;</code></pre>
+<p>to</p>
+<pre><code class="language-php">
+/**
+ * @return string[]
+ */
+public function getSluggableFields(): array
+{
+    return ['name', 'surname'];
+}</code></pre>
+</li>
+</ul>
+<p><br></p>
+<p>In full code:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Sluggable\SluggableTrait;
+use Knp\DoctrineBehaviors\Contract\Entity\SluggableInterface;
+
+/**
+ * @ORM\Entity
+ */
+class Category implements SluggableInterface
+{
+    use SluggableTrait;
+
+    /**
+     * @return string[]
+     */
+    public function getSluggableFields(): array
+    {
+        return ['name'];
+    }
+}</code></pre>
+<h2 id="3-migrate-tree">3. Migrate Tree</h2>
+<p>This one will be tricky, because:</p>
+<ul>
+<li>Gedmo supports <em>nested-set</em>, <em>closure-table</em> and <em>materialized-path</em>.</li>
+<li>KnpLabs currently supports <a href="https://knplabs.com/en/blog/knp-doctrine-orm-behaviors">materialized path</a></li>
+</ul>
+<p>So if you're using anything but materialized path in Gedmo, you'll have to migrate PHP code (see below) + <strong>migrate your database data to materialized path</strong> (write your migration or Google one).</p>
+<p><br></p>
+<p>The PHP migration looks like this:</p>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * @ORM\Entity
+ * @Gedmo\Tree(type="nested")
+ */
+class Category
+{
+    /**
+     * @Gedmo\TreeLeft
+     * @ORM\Column(name="lft", type="integer")
+     * @var int
+     */
+    private $lft;
+
+    /**
+     * @Gedmo\TreeRight
+     * @ORM\Column(name="rgt", type="integer")
+     * @var int
+     */
+    private $rgt;
+
+    /**
+     * @Gedmo\TreeLevel
+     * @ORM\Column(name="lvl", type="integer")
+     * @var int
+     */
+    private $lvl;
+
+    /**
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
+     * @var Category
+     */
+    private $root;
+
+    /**
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * @var Category
+     */
+    private $parent;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @var Category[]|Collection
+     */
+    private $children;
+
+    public function getRoot(): self
+    {
+        return $this-&gt;root;
+    }
+
+    public function setParent(self $category): void
+    {
+        $this-&gt;parent = $category;
+    }
+
+    public function getParent(): self
+    {
+        return $this-&gt;parent;
+    }
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Add <code>Knp\DoctrineBehaviors\Model\Tree\TreeNodeTrait</code> trait</li>
+<li>Add <code>Knp\DoctrineBehaviors\Contract\Entity\TreeNodeInterface</code> interface</li>
+<li>Remove all tree related properties and methods, since they're in trait now</li>
+<li>Remove Gedmo annotations</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Knp\DoctrineBehaviors\Contract\Entity\TreeNodeInterface;
+use Knp\DoctrineBehaviors\Model\Tree\TreeNodeTrait;
+
+/**
+ * @ORM\Entity
+ */
+class Category implements TreeNodeInterface
+{
+    use TreeNodeTrait;
+}</code></pre>
+<h2 id="4-migrate-translatable">4. Migrate Translatable</h2>
+<h3 id="what-about-performance">What about Performance?</h3>
+<p>I recall picking the behavior package for new Lekarna.cz 6 years ago. I was young, and a quantity was more than quality to me, so I was leaning towards Gedmo since it had more downloads.</p>
+<p>But it's performance surprised me. Why? The translated item had 1:many dependency on translation table, so for every single item, it <strong>joined an X extra lines forever single translated column</strong>.</p>
+<p>So even if you use Symfony 4 and <strong>everything works well</strong> for you, <strong>consider comparing performance with KnpLabs translations</strong>. Who knows, it might get your multi-lingual application <strong>10x faster</strong>.</p>
+<p><br></p>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Translatable\Translatable;
+
+/**
+ * @ORM\Entity
+ */
+class Category implements Translatable
+{
+    /**
+     * @Gedmo\Translatable
+     * @ORM\Column(length=128)
+     */
+    private $title;
+
+    /**
+     * @Gedmo\Locale
+     */
+    private $locale;
+
+    public function setTitle($title)
+    {
+        $this-&gt;title = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this-&gt;title;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this-&gt;locale = $locale;
+    }
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Replace interface with <code>Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface</code></li>
+<li>Add <code>Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait</code></li>
+<li>Remove all translated fields and locale methods from main entity</li>
+<li>Remove Gedmo annotations</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
+use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
+
+class Category implements TranslatableInterface
+{
+    use TranslatableTrait;
+}</code></pre>
+<p>So, where is the <em>title</em> property we need to translate? Every translated property is in the new <code>&lt;entity&gt;Translation</code> class.
+This <strong>approach makes sure that the complexity of 1 item with dozens of translation stays 1:1</strong> = it's super fast!</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
+use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
+
+class CategoryTranslation implements TranslationInterface
+{
+    use TranslationTrait;
+
+    /**
+     * @ORM\Column(length=128)
+     */
+    private $title;
+}</code></pre>
+<p>In short:</p>
+<ul>
+<li><em>Translatable</em> - the primary entity you use in your code</li>
+<li><em>Translation</em> - the helper entity with translated items</li>
+</ul>
+<p>Usage stays the same:</p>
+<pre><code class="language-php">$category-&gt;getTitle();</code></pre>
+<p>That's all for the migration. Oh, you're still reading? Are you waiting for some easy solution to cover it all?</p>
+<h2 id="5-migrate-blameable">5. Migrate Blameable</h2>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Category
+{
+    /**
+     * @Gedmo\Blameable(on="create")
+     */
+    private $createdBy;
+
+    /**
+     * @Gedmo\Blameable(on="update")
+     */
+    private $updatedBy;
+
+    public function getCreatedBy()
+    {
+        return $this-&gt;createdBy;
+    }
+
+    public function getUpdatedBy()
+    {
+        return $this-&gt;updatedBy;
+    }
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Add <code>Knp\DoctrineBehaviors\Contract\Entity\BlameableInterface</code> interface</li>
+<li>Add <code>Knp\DoctrineBehaviors\Model\Blameable\BlameableTrait</code> trait</li>
+<li>Remove Gedmo annotations</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Contract\Entity\BlameableInterface;
+use Knp\DoctrineBehaviors\Model\Blameable\BlameableTrait;
+
+/**
+ * @ORM\Entity
+ */
+class Category implements BlameableInterface
+{
+    use BlameableTrait;
+}</code></pre>
+<h2 id="6-migrate-loggable">6. Migrate Loggable</h2>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @Gedmo\Loggable
+ */
+class Category
+{
+    /**
+     * @Gedmo\Versioned
+     * @ORM\Column(name="title", type="string", length=8)
+     */
+    private $title;
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Add <code>Knp\DoctrineBehaviors\Model\Loggable\LoggableTrait</code> trait</li>
+<li>Add <code>Knp\DoctrineBehaviors\Contract\Entity\LoggableInterface</code> interface</li>
+<li>Remove Gedmo annotations</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Loggable\LoggableTrait;
+use Knp\DoctrineBehaviors\Contract\Entity\LoggableInterface;
+
+/**
+ * @ORM\Entity
+ */
+class Category implements LoggableInterface
+{
+    use LoggableTrait;
+
+    /**
+     * @ORM\Column(name="title", type="string", length=8)
+     */
+    private $title;
+}</code></pre>
+<h2 id="7-migrate-softdeletable">7. Migrate SoftDeletable</h2>
+<h3 id="gedmo">Gedmo</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
+ * @ORM\Entity
+ */
+class Category
+{
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    public function getDeletedAt()
+    {
+        return $this-&gt;deletedAt;
+    }
+
+    public function setDeletedAt($deletedAt)
+    {
+        $this-&gt;deletedAt = $deletedAt;
+    }
+}</code></pre>
+<p>↓</p>
+<h3 id="knplabs">KnpLabs</h3>
+<ul>
+<li>Add <code>Knp\DoctrineBehaviors\Contract\Entity\SoftDeletableInterface</code> interface</li>
+<li>Add <code>Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletableTrait</code> trait</li>
+<li>Remove Gedmo annotations</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Knp\DoctrineBehaviors\Contract\Entity\SoftDeletableInterface;
+use Knp\DoctrineBehaviors\Model\SoftDeletable\SoftDeletableTrait;
+
+class Category implements SoftDeletableInterface
+{
+    use SoftDeletableTrait;
+}</code></pre>
+<h2 id="instant-upgrade-what-you-can">Instant Upgrade what you Can</h2>
+<p>All right, for all the behaviors listed above, there is a Rector set:</p>
+<pre><code class="language-bash">composer require rector/rector --dev
+vendor/bin/rector process src --set doctrine-gedmo-to-knplabs</code></pre>
+<p>Instant upgrades never cover the whole migration path - e.g., they lack database migrations - but they're are always <strong>saving you 80 % of boring work</strong>.</p>
+<p>If anything breaks, <a href="https://github.com/rectorphp/rector/issues/new?template=1_Bug_report.md">create and issue on Github</a> so you can enjoy fixed version soon.</p>
+<p><br></p>
+<p>Happy migration!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/12/30/doctrine-behaviors-2-0-reloaded" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Doctrine Behaviors 2.0 - Reloaded
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-01-06-migrate-gedmo-to-knplabs.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Migrate Gedmo to KnpLabs" />
+    <meta property="og:description" content="With [Symfony 5 upgrade](/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days/), we need any *working* Doctrine behaviors.
+
+Month later, we have [KnpLabs\DoctrineBehaviors 2.0](/blog/2019/12/30/doctrine-behaviors-2-0-reloaded/#how-do-you-migrate-from-gedmo-stof-to-knplabs-doctrinebehaviors) with full Symfony 5 support.
+
+
+If you used older Doctrine Behaviors, you&#039;re covered with Rector migration path.
+
+But what if you&#039;re using old broken Gedmo?
+
+
+**I&#039;ll show you how you can migrate Gedmo to KnpLabs**.
+" />
+    <meta property="og:url" content="/blog/2020/01/06/migrate-gedmo-to-knplabs" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Migrate Gedmo to KnpLabs" />
+    <meta name="twitter:description" content="With [Symfony 5 upgrade](/blog/2019/09/09/how-we-upgraded-pehapkari-cz-from-symfony-4-to-5-in-25-days/), we need any *working* Doctrine behaviors.
+
+Month later, we have [KnpLabs\DoctrineBehaviors 2.0](/blog/2019/12/30/doctrine-behaviors-2-0-reloaded/#how-do-you-migrate-from-gedmo-stof-to-knplabs-doctrinebehaviors) with full Symfony 5 support.
+
+
+If you used older Doctrine Behaviors, you&#039;re covered with Rector migration path.
+
+But what if you&#039;re using old broken Gedmo?
+
+
+**I&#039;ll show you how you can migrate Gedmo to KnpLabs**.
+" />

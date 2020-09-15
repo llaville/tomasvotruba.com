@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Hydrate Arrays to Objects via Constructor | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 248 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Hydrate Arrays to Objects via Constructor</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-04-Mon">
+            
+                            Mon, Apr 20
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/04/20/how-to-hydrate-arrays-to-objects-via-constructor/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-04-20-how-to-hydrate-arrays-to-objects-via-constructor.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>One technology evolution sparks naturally another one. When electricity became accessible to masses, a huge industry of home-electric tools became possible. Like this tool, I currently write on.
+<br><br>
+The same thing happens in software, just exponentially faster. Like tokens and AST sparked <a href="/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/">tools that change your code</a>.
+<br><br>
+Recently, I introduced <a href="/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper/">Symfony Static Dumper</a> that uses YAML to store data in your Symfony application. You where this goes... how can <strong>we turn this YAML into objects</strong>?</p>
+                    </div>
+                </div>
+
+                <p><em>Disclaimer: this post is not about array vs. object performance. If you still prefer arrays, check this <a href="https://www.slideshare.net/nikita_ppv/php-performance-trivia/31">talk by Nikita Popov</a> that changed my mind.</em></p>
+<p><br></p>
+<p>This post is about the luxury of <strong>object IDE autocompletion</strong> everywhere in your code. And how to make it happen, <strong>when all you have in the start are arrays</strong> (JSON, YAML...).</p>
+<p><br></p>
+<p>Do you work with Doctrine entities? Then you're probably used to <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/">use Repository service</a> and Entity object:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace Pehapkari\Blog\Repository;
+
+use App\Entity\Post;
+use Doctrine\Persistence\ObjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
+
+final class PostRepository
+{
+    private ObjectRepository $repository;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this-&gt;repository = $entityManager-&gt;getRepository(Post::class);
+    }
+
+    /**
+     * @return Post[]
+     */
+    public function fetchAll(): array
+    {
+        return $this-&gt;repository-&gt;fetchAll();
+    }
+}</code></pre>
+<p>Then we can <strong>use reliable objects</strong> everywhere in application, like controllers:</p>
+<pre><code class="language-php">final class BlogController
+{
+    // ...
+
+    public function __invoke(): Response
+    {
+        return $this-&gt;render('blog/post.twig', [
+            'posts' =&gt; $this-&gt;postRepository-&gt;fetchAll(),
+        ]);
+    }
+}</code></pre>
+<p>And we also have <strong>autocomplete in TWIG templates</strong> (thanks to <a href="/blog/2018/08/23/9-features-of-symfony-plugin-you-should-not-miss-in-gifs/">amazing</a> <a href="/blog/2019/01/28/2-files-that-your-symfony-application-misses">Symfony plugin</a>/):</p>
+<img src="/assets/images/posts/2020/easy_hydrator_twig.png" class="img-thumbnail">
+<h2 id="what-now-with-all-the-arrays">What now with all the Arrays?</h2>
+<p>Each local PHP community produces videos, livestreams, or talk recordings. We make such videos too, and we store <a href="https://github.com/pehapkari/pehapkari.cz/blob/master/config/_data/youtube_videos.yaml">them in YAML</a>. How can we get objects from that?</p>
+<p>Let's use the most straightforward example possible.</p>
+<h3 id="1-the-data">1. The Data</h3>
+<pre><code class="language-yaml">parameters:
+    videos:
+        -
+            title: 'How to Hydrate objects to Arrays'
+            created_at: '2020-04-20'</code></pre>
+<h3 id="2-the-value-object">2. The Value Object</h3>
+<p>In the application, we want to use an object:</p>
+<ul>
+<li>with strict and reliable types,</li>
+<li>autocompletion of methods</li>
+<li>and clear API (e.g., values of this object should no be changed).</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\ValueObject;
+
+use DateTimeInterface;
+
+final class Video
+{
+    private string $name;
+
+    private DateTimeInterface $createdAt;
+
+    public function __construct(string $name, DateTimeInterface $createdAt)
+    {
+        $this-&gt;name = $name;
+        $this-&gt;createdAt = $createdAt;
+    }
+
+    public function getName(): string
+    {
+        return $this-&gt;name;
+    }
+
+    public function getCreatedAt(): DateTimeInterface
+    {
+        return $this-&gt;createdAt;
+    }
+}</code></pre>
+<h3 id="3-the-goal">3. The Goal</h3>
+<p>We want our application to be:</p>
+<ul>
+<li>open <strong>to future database switch</strong></li>
+<li><strong>and have readable code</strong> for new developers - <a href="/blog/2020/03/09/art-of-letting-go/">less patterns is better</a></li>
+</ul>
+<p>Saying that, the code should look like <strong>1:1 to repositories</strong> we know from Doctrine:</p>
+<pre><code class="language-php">final class VideoController
+{
+    // ...
+
+    public function __invoke(): Response
+    {
+        return $this-&gt;render('video/videos.twig', [
+            'videos' =&gt; $this-&gt;videoRepository-&gt;fetchAll(),
+        ]);
+    }
+}</code></pre>
+<h2 id="yaml-json-an-array">YAML, JSON... an array?</h2>
+<p>You can hydrate input of guzzle, arrays from YAML <em>database</em>, or just local data in your PHP code.</p>
+<p>This is how we solved our use case:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Repository;
+
+use App\ValueObject\Video;
+use Symplify\EasyHydrator\ArrayToValueObjectHydrator;
+
+final class VideoRepository
+{
+
+    /**
+     * @var Video[]
+     */
+    private $videos = [];
+
+    public function __construct(
+        array $videos,
+        ArrayToValueObjectHydrator $arrayToValueObjectHydrator
+    ) {
+        $this-&gt;videos = $arrayToValueObjectHydrator-&gt;hydrateArrays($videos, Video::class);
+    }
+
+    /**
+     * @return Video[]
+     */
+    public function fetchAll(): array
+    {
+        return $this-&gt;videos;
+    }
+}</code></pre>
+<p>What is <code>Symplify\EasyHydrator\ArrayToValueObjectHydrator</code>? Its from new package <a href="https://github.com/symplify/easy-hydrator">symplify/easy-hydrator</a> that hydrates arrays to object. Easy.</p>
+<p><br></p>
+<h2 id="1-step-to-use-easy-hydrator">1 Step to Use Easy Hydrator</h2>
+<pre><code class="language-bash">composer require symplify/easy-hydrator</code></pre>
+<p>With Symfony Flex and <a href="https://github.com/symplify/symplify/blob/b41034f21c52105d9bb27160fdc189eaac140b98/packages/easy-hydrator/composer.json#L5">type in <code>composer.json</code></a>, this section became boring.</p>
+<p>Then require <code>Symplify\EasyHydrator\ArrayToValueObjectHydrator</code> in the constructor and use it anywhere.</p>
+<h2 id="4-features-of-easy-hydrator">4 Features of Easy Hydrator</h2>
+<h3 id="1-handles-code-datetime-code-and-code-int-code-retypes">1. Handles <code>DateTime</code> and <code>int</code> retypes</h3>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+final class Person
+{
+    // ...
+    public function __construct(string $name, int $age, DateTimeInterface $metAt)
+    {
+        // ...
+    }
+}
+
+$person = $this-&gt;arrayToValueObjectHydrator-&gt;hydrateArray([
+    'name' =&gt; 'Tom',
+    // will be retyped to int
+    'age' =&gt; '30',
+    // will be retyped to DateTimeInterface
+    'metAt' =&gt; '2020-02-02',
+], Person::class);</code></pre>
+<h3 id="2-php-7-4-support">2. PHP 7.4 support</h3>
+<p>Typed properties + initialized are must-have. PHP 7.4 is around for ~6 months now, and people use this feature.</p>
+<p>I also looked at <a href="https://github.com/Ocramius/GeneratedHydrator">Ocramius/GeneratedHydrator</a> and tried to use it, but it doesn't work with PHP 7.4 objects correctly.</p>
+<h3 id="3-constructor-injection-only">3. Constructor Injection Only</h3>
+<p>This package tries to be 1:1 with the rest of the clean code, so <strong>hydrated object must use constructor injection</strong>. Private property reflection magic won't work here.</p>
+<h3 id="4-easy">4. Easy</h3>
+<p>This package hydrates arrays to object via constructor. Nothing more, nothing less.
+It's for easy and clear use.</p>
+<p>I use it in 3 PHP projects now and works great. Also we could get rid of <em>fake object</em> that only autocomplete twig and stopped relying on <code>$video['title']</code> or <code>$video['name']</code> guessing all over the code. Win win :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/04/13/how-to-migrate-spaghetti-to-304-symfony-5-controllers-over-weekend" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Migrate Spaghetti to 304 Symfony 5 Controllers Over Weekend
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-04-20-how-to-hydrate-arrays-to-objects-via-constructor.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Hydrate Arrays to Objects via Constructor" />
+    <meta property="og:description" content="One technology evolution sparks naturally another one. When electricity became accessible to masses, a huge industry of home-electric tools became possible. Like this tool, I currently write on.
+
+The same thing happens in software, just exponentially faster. Like tokens and AST sparked [tools that change your code](/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/).
+
+Recently, I introduced [Symfony Static Dumper](/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper/) that uses YAML to store data in your Symfony application. You where this goes... how can **we turn this YAML into objects**?
+" />
+    <meta property="og:url" content="/blog/2020/04/20/how-to-hydrate-arrays-to-objects-via-constructor" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Hydrate Arrays to Objects via Constructor" />
+    <meta name="twitter:description" content="One technology evolution sparks naturally another one. When electricity became accessible to masses, a huge industry of home-electric tools became possible. Like this tool, I currently write on.
+
+The same thing happens in software, just exponentially faster. Like tokens and AST sparked [tools that change your code](/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/).
+
+Recently, I introduced [Symfony Static Dumper](/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper/) that uses YAML to store data in your Symfony application. You where this goes... how can **we turn this YAML into objects**?
+" />

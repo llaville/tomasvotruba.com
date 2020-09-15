@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>@inject or @required will Get You Any Services Fast | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 254 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>@inject or @required will Get You Any Services Fast</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-06-Mon">
+            
+                            Mon, Jun 1
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/06/01/inject-or-required-will-get-you-any-service-fast/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-01-inject-or-required-will-get-you-any-service-fast.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>It is official. Symfony 5.1 <a href="https://symfony.com/blog/new-in-symfony-5-1-autowire-public-typed-properties">adds property injection to public properties</a>.
+Now, <code>@inject</code> or <code>@required</code> annotation above property or setter method is the fastest way to get any dependency on any service in your Symfony or Nette project.
+<br><br>
+Use it everywhere you can... or not?</p>
+                    </div>
+                </div>
+
+                <p>This post is about one of the practices that give me work as a legacy cleaning lady. Read carefully - you can decide if your project will be the next client or you'll build reliable code that is fun to work with.</p>
+<p><br></p>
+<p>Do you <strong>like long repeated code with the same meaning over and over again</strong>?</p>
+<p><br></p>
+<p>Why write long and tedious constructors in 25 lines...</p>
+<pre><code class="language-php">&lt;?php
+
+use Twig\Environment;
+use Latte\Engine;
+
+final class TemplateFactory
+{
+    /**
+     * Symfony way
+     * @var Environment
+     */
+    private $environment;
+
+    /**
+     * Nette way
+     * @var Engine
+     */
+    private $engine;
+
+    public function __construct(Environment $environment, Engine $engine)
+    {
+        $this-&gt;environment = $environment;
+        $this-&gt;engine = $engine;
+    }
+}</code></pre>
+<p>...when you can do property injection with only <strong>17 lines</strong> and same effect:</p>
+<pre><code class="language-php">&lt;?php
+
+use Twig\Environment;
+use Latte\Engine;
+
+final class TemplateFactory
+{
+    /**
+     * @required
+     */
+    public Environment $environment;
+
+    /**
+     * @var Engine
+     * @inject
+     */
+    public $engine;
+}</code></pre>
+<p>Let me show you what you are inviting to your code by the second choice.</p>
+<h2 id="1-public-property-service-override">1. Public Property - Service Override?</h2>
+<p>At the start of the project, it's very easy to see what is right and what is wrong. But as time goes by, <strong>people will start to use everything they can to add a feature or fix the bug as fast possible</strong>. I do that all the time.</p>
+<pre><code class="language-php">&lt;?php
+
+use Twig\Environment;
+
+final class EmailSender
+{
+    /**
+     * @var TemplateFactory
+     */
+    private $templateFactory;
+
+    /**
+     * @var Environment
+     */
+    private $emailOnlyEnvironment;
+
+    public function __construct(TemplateFactory $templateFactory, Environment $emailOnlyEnvironment)
+    {
+        $this-&gt;templateFactory = $templateFactory;
+        $this-&gt;emailOnlyEnvironment;
+    }
+
+    public function sendInvoiceEmail(string $emailTo)
+    {
+        // hm... we need that custom Twig service here because it has extra macros/filters that are used only in emails
+
+        // how can we do that?
+
+        // ah, this will do
+        $this-&gt;templateFactory-&gt;engine = $this-&gt;emailOnlyEnvironment;
+
+        $template = $this-&gt;templateFactory-&gt;create();
+        // ...
+    }
+}</code></pre>
+<h3 id="would-you-accept-this-code-in-code-review">Would You Accept this Code in Code-Review?</h3>
+<ul>
+<li>What service is in the <code>$this-&gt;templateFactory-&gt;engine</code> property?</li>
+<li>How many weeks will it take to forget this <del>trick</del> hack?</li>
+<li>How many will be the <code>TemplateFactory</code> used for emails, and how many for web templates?</li>
+</ul>
+<h3 id="practise-makes-perfect">Practise Makes Perfect</h3>
+<p>Do you think this is a good practice? If so, I dare you: add such <strong>service override feature</strong> to your code and code as nothing happened. After 30 days, get back here and let me know in the comments how did your colleagues liked it.</p>
+<h2 id="2-circular-reference-for-blind-people">2. Circular Reference for Blind People?</h2>
+<p>Let's have a simple contest. Who will be first?</p>
+<p>This example is oversimplified - 2 classes are easy to debug. Recent projects I work with have 1000-2000 classes... so for real-life use case imagine this is 1000x longer example.</p>
+<pre><code class="language-php">&lt;?php
+
+use Twig\Environment;
+
+final class EmailSender
+{
+    /**
+     * @inject
+     * @var TemplateFactory
+     */
+    public $templateFactory;
+}</code></pre>
+<p>We need to send an email to admin if template engine rendering fails.</p>
+<pre><code class="language-php">&lt;?php
+
+use Twig\Environment;
+
+final class CustomEnvironment extends Environment
+{
+    /**
+     * @inject
+     * @var EmailSender
+     */
+    public $emailSender;
+
+    public function renderTemplate(string $template)
+    {
+        try {
+            // ...
+        } catch (Throwable) { // new PHP 8.0 syntax ^^
+            $this-&gt;emailSender-&gt;sendRenderFailedMessageToAdmin();
+        }
+    }
+}</code></pre>
+<h3 id="would-you-accept-this-code-in-code-review">Would You Accept this Code in Code-Review?</h3>
+<ul>
+<li>How do you know what service is where when?</li>
+<li>What could happen in the case of race-condition?</li>
+<li>What stops you from using <code>StaticMethods::everywhere()</code>?</li>
+<li>How does the dependency tree look like now?</li>
+</ul>
+<p>Some frameworks container will tell you there is circular dependency and fail with an exception. Some would let it silently slip.</p>
+<p>Either way, your code is now opened to issue, when at <strong>2 different times, there are 2 different values in one property</strong>. Similar issue to previous one, just more <em>fun</em> to debug.</p>
+<h2 id="why-we-have-code-inject-required-code-anyway-and-when-to-use-it">Why we Have <code>@inject/@required</code> anyway and When to Use it?</h2>
+<p>Nette is trying to limit this by suggestion, that <code>@inject</code> should be <a href="https://doc.nette.org/en/3.0/di-usage#toc-which-way-should-i-choose"><strong>used only in presenters</strong></a>. No surprise, that project I work with now have it in almost every dependency of every presenter.</p>
+<p>Also, it takes about 20 lines of PHP code to enable this in every service. It might still be in one of the top 5 e-commerce projects in The Czech Republic.</p>
+<p><a href="https://symfony.com/doc/current/service_container/injection_types.html#immutable-setter-injection">Symfony has similar feature</a>, but without any scope limitation, as far as I know</p>
+<p><br></p>
+<p>What can you do about it?</p>
+<p>Well, in complicated times of circular dependencies, public property override and service juggling, it helps to get back to the basics: <strong>what is the best use case for <code>@required</code>/<code>@inject</code>?</strong></p>
+<ul>
+<li>Getting a dependency? <strong>No</strong></li>
+<li><a href="https://ocramius.github.io/blog/eliminating-visual-debt">Eliminating visual dept</a>? <strong>No</strong></li>
+<li>Using the <em>my-favorite</em> framework the fullest? <strong>No</strong></li>
+</ul>
+<p>Why add such a feature, if there is no reason to use it?</p>
+<p><br></p>
+<p>The main reason for this feature is to prevent <strong>constructor injection hell</strong>.</p>
+<p>David Grudl <a href="https://phpfashion.com/di-a-predavani-zavislosti">wrote about it 8 years ago</a> (in Czech):</p>
+<pre><code class="language-php">&lt;?php
+
+class Barbar extends Foobar
+{
+   private $logger;
+
+   function __construct(HttpRequest $httpRequest, Router $router, Session $session, Logger $logger)
+   {
+      parent::__construct($httpRequest, $router, $session);
+      $this-&gt;logger = $logger;
+   }
+}</code></pre>
+<p>You can also find other <a href="https://www.rhyous.com/2016/09/27/constructor-injection-hell">sources in English</a>.</p>
+<p>But programmers don't know about constructor injection hell. Why? Simply because there <a href="https://blog.codinghorror.com/the-just-in-time-theory">was no exception in the code, when they used <code>@inject</code></a>. We just use features that were given to us by the framework.</p>
+<blockquote class="blockquote text-center">
+    "Everything which is not forbidden,
+     <br>
+     is allowed"
+</blockquote>
+<p><br></p>
+<h2 id="rule-of-thumb-abstract-parent-only">Rule of Thumb: Abstract Parent Only</h2>
+<p>Saying that the place <code>@inject</code>/<code>@required</code> is designed for is dependency in <code>abstract</code> class. But not every <code>abstract</code> class! Just those that have children with more dependencies, that would require to put <code>parent::__construct()</code> repeated in every child.</p>
+<pre><code class="language-php">&lt;?php
+
+abstract class AbstractRepository
+{
+    protected EventDispatcherInterface $eventDispatcher;
+
+    /**
+     * @required
+     */
+    public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher)
+    {
+        $this-&gt;eventDispatcher = $eventDispatcher;
+    }
+}</code></pre>
+<pre><code class="language-php">&lt;?php
+
+final class ProductRepository extends AbstractRepository
+{
+    protected ProductEntityFactory $productEntityFactory;
+
+    public function __construct(ProductEntityFactory $productEntityFactory)
+    {
+        $this-&gt;productEntityFactory = $productEntityFactory;
+        // no parent::__construct() in every repository - yay!
+    }
+}</code></pre>
+<p><em class="fas fa-fw fa-check text-success fa-lg"></em></p>
+<p><em>Note: prefer &quot;inject&quot; method over public property to lower risk of 2 bugs mentioned in the start of the post.</em></p>
+<p>That's it! And soon, hopefully, I'll be out of work.</p>
+<p><br></p>
+<p>Now, all we need is <strong>to create a PHPStan rule</strong>, that allows <code>@inject</code>/<code>@required</code> (and setter method alternatives) in <code>abstract</code> classes. Then you can forget this post and be safe for eternity.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/05/25/the-bulletproof-event-naming-for-symfony-event-dispatcher" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    The Bulletproof Event Naming For Symfony Event Dispatcher
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-01-inject-or-required-will-get-you-any-service-fast.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="@inject or @required will Get You Any Services Fast" />
+    <meta property="og:description" content="It is official. Symfony 5.1 [adds property injection to public properties](https://symfony.com/blog/new-in-symfony-5-1-autowire-public-typed-properties).
+Now, `@inject` or `@required` annotation above property or setter method is the fastest way to get any dependency on any service in your Symfony or Nette project.
+
+Use it everywhere you can... or not?
+" />
+    <meta property="og:url" content="/blog/2020/06/01/inject-or-required-will-get-you-any-service-fast" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="@inject or @required will Get You Any Services Fast" />
+    <meta name="twitter:description" content="It is official. Symfony 5.1 [adds property injection to public properties](https://symfony.com/blog/new-in-symfony-5-1-autowire-public-typed-properties).
+Now, `@inject` or `@required` annotation above property or setter method is the fastest way to get any dependency on any service in your Symfony or Nette project.
+
+Use it everywhere you can... or not?
+" />

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>5 Gotchas of the Bin File in PHP CLI Applications | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 128 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>5 Gotchas of the Bin File in PHP CLI Applications</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-08-Thu">
+            
+                            Thu, Aug 2, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/08/02/5-gotchas-of-the-bin-file-in-php-cli-applications/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-02-5-gotchas-of-the-bin-file-in-php-cli-applications.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>This post from <a href="/clusters/#master-php-cli-apps-with-symfony/">Master PHP CLI Apps with Symfony</a> cluster will focus on bin files. It's the smallest part of PHP CLI Application, so I usually start with it.
+<br><br>
+Yet, there are still a few blind paths you can struggle with. I'll drop a few extra tricks to make your bin file clean and easy to maintain.</p>
+                    </div>
+                </div>
+
+                <h2 id="what-is-the-bin-file">What is the Bin File?</h2>
+<p>The bin file is not a trash bin. It's a binary file, the entry point to your application the same way <code>www/index.php</code> is. You probably already use them:</p>
+<ul>
+<li><a href="https://github.com/symplify/symplify/blob/master/packages/EasyCodingStandard/bin/ecs">vendor/bin/ecs</a></li>
+<li><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/php-cs-fixer">vendor/bin/php-cs-fixer</a></li>
+<li><a href="https://github.com/squizlabs/PHP_CodeSniffer/blob/master/bin/phpcs">vendor/bin/phpcs</a></li>
+<li><a href="https://github.com/phpstan/phpstan/blob/master/bin/phpstan">vendor/bin/phpstan</a></li>
+</ul>
+<h2 id="1-create-it">1. Create it</h2>
+<h3 id="the-name">The Name</h3>
+<p>The bin file should be <strong>named after the application</strong>, <strong>short</strong> and <strong>easy to type</strong>.
+So when I first released EasyCodingStandard, I used <code>easy-coding-standard</code> name. It was easy to remember, but when I had a talk I often miss-typed such a long name. After a while, I moved to <code>ecs</code>.</p>
+<p>It should be also <strong>easy to remember</strong> and <strong>unique</strong>.
+Imagine that <code>php-cs-fixer</code> would be <code>phpcf</code> or <code>phpcf</code>. Since there is already <code>phpcs</code> taken, it might be trouble to remember. I think that's why the name is a little bit longer.</p>
+<h3 id="the-location">The Location</h3>
+<p>Where to put the file? Few people in the past put it in the root directory (only <code>php-cs-fixer</code> from 4 projects above have it that way). But <strong>the trend is to use <code>bin</code> directory</strong>. The same way <code>index.php</code> was moved to <code>www/index.php</code> or <code>public/index.php</code>.</p>
+<pre><code class="language-bash">bin/your-bin-file</code></pre>
+<h2 id="2-composer-autoload">2. Composer Autoload</h2>
+<p>With structure like this:</p>
+<pre><code class="language-bash">/bin/your-bind-file
+/src
+/vendor/autoload.php</code></pre>
+<p>The obvious code to add to <code>/bin/your-bind-file</code> is:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+require_once  __DIR__ . '/../vendor/autoload.php';</code></pre>
+<p>And that's it!</p>
+<p><br></p>
+<p>Not that fast. It might work for your <code>www/index.php</code> file in your application, but is <strong>that application ever installed as a dependency</strong>?</p>
+<p>How do we cover autoload for a dependency? Imagine somebody would install <code>your-vendor/your-package</code> on his application. The file structure would look like this:</p>
+<pre><code class="language-bash">/src/
+/vendor/autoload.php
+/vendor/your-vendor/your-package/bin/your-bin-file</code></pre>
+<p>Now we need to get to <code>/vendor/autoload.php</code> of that application:</p>
+<pre><code class="language-diff"> &lt;?php declare(strict_types=1);
+
+-require_once  __DIR__ . '/../vendor/autoload.php';
++require_once  __DIR__ . '/../../../../vendor/autoload.php',</code></pre>
+<p>Great, people can use our package now. But it stopped working for our local repository. We'll probably have to seek for both of them:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+$possibleAutoloadPaths = [
+    // local dev repository
+    __DIR__ . '/../vendor/autoload.php',
+    // dependency
+    __DIR__ . '/../../../../vendor/autoload.php',
+];
+
+foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
+    if (file_exists($possibleAutoloadPath)) {
+        require_once $possibleAutoloadPath;
+        break;
+    }
+}</code></pre>
+<p><strong>Comments are very important</strong> because this is very easy to get lost in. Trust me, I managed to fail a dozen times. Also, other people will appreciate it because it's WTF to see loading more than one <code>vendor/autoload.php</code>.</p>
+<p>Imagine you'd move your package to a <a href="/clusters/#monorepo-from-zero-to-hero/">monorepo structure</a>:</p>
+<pre><code class="language-diff"> $possibleAutoloadPaths = [
+-    // local dev repository
++    // after split repository
+     __DIR__ . '/../vendor/autoload.php',
+     // dependency
+     __DIR__ . '/../../../../vendor/autoload.php',
++    // monorepo
++    __DIR__ . '/../../../vendor/autoload.php',
+ ];</code></pre>
+<h3 id="exceptionally-well-done">Exceptionally Well Done</h3>
+<pre><code class="language-diff"> &lt;?php declare(strict_types=1);
+
+ $possibleAutoloadPaths = [
+     // local dev repository
+     __DIR__ . '/../vendor/autoload.php',
+     // dependency
+     __DIR__ . '/../../../../vendor/autoload.php',
+ ];
+
++$isAutoloadFound = false;
+ foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
+     if (file_exists($possibleAutoloadPath)) {
+         require_once $possibleAutoloadPath;
++        $isAutoloadFound = true;
+         break;
+     }
+ }
++
++if ($isAutoloadFound === false) {
++    throw new RuntimeException(sprintf(
++        'Unable to find "vendor/autoload.php" in "%s" paths.',
++        implode('", "', $possibleAutoloadPaths)
++    ));
++}</code></pre>
+<h2 id="3-she-bangs">3. She Bangs</h2>
+<p>Since the bin file doesn't have a <code>.php</code> suffix by convention a system doesn't know, what language it's in. What happens when we run the bin file?</p>
+<pre><code class="language-bash">bin/your-bin-file</code></pre>
+<p>↓</p>
+<pre><code class="language-bash">vendor/bin/your-bin-file: 1: vendor/bin/your-bin-file: Syntax error: "(" unexpected</code></pre>
+<p>Well, we know it's in PHP so run it with PHP:</p>
+<pre><code class="language-bash">php bin/your-bin-file</code></pre>
+<p>All works! But do we ever run this?</p>
+<pre><code class="language-php">php composer</code></pre>
+<p>No, because <strong>we're lazy and we want to type as less as possible</strong>. How do we achieve the same effect for our file?</p>
+<p>We add a <a href="https://www.youtube.com/watch?v=5ihtX86JzmA"><em>shebang</em></a> - a special line that will tell the system what interpret should be used:</p>
+<pre><code class="language-php">#!/usr/bin/env php
+&lt;?php declare(strict_types=1);
+
+// ...</code></pre>
+<p>It can be translated to:</p>
+<pre><code class="language-bash">/usr/bin/env php bin/your-bin-file</code></pre>
+<p>Try it. Does it work?</p>
+<h2 id="4-free-access-rights">4. Free Access Rights</h2>
+<p>This allows to run the bin file on other people's computer:</p>
+<pre><code class="language-php">chmod +x bin/your-bin-file</code></pre>
+<h2 id="5-the-composer-symlink">5. The Composer Symlink</h2>
+<p>If we install your package, we'll find the bin file here:</p>
+<pre><code class="language-bash">/vendor/your-vendor/your-package/bin/your-bin-file</code></pre>
+<p>But not in:</p>
+<pre><code class="language-bash">/vendor/bin/your-bin-file</code></pre>
+<p>Too bad. We're super lazy, so we want it there. How can we make it happen?</p>
+<p>The Composer has <a href="https://getcomposer.org/doc/articles/vendor-binaries.md#how-is-it-defined-">special <em>bin</em> section</a>, where we can <strong>define the symlink path for your bin file</strong>. Just add this to <code>composer.json</code> of your package:</p>
+<pre><code class="language-json">{
+    "bin": "bin/your-bin-file"
+}</code></pre>
+<p>Tada! After we install such a package, we'll find it in the right place.</p>
+<pre><code class="language-bash">/vendor/bin/your-bin-file</code></pre>
+<h2 id="final-version">Final Version</h2>
+<pre><code class="language-php">#!/usr/bin/env php
+&lt;?php declare(strict_types=1);
+
+$possibleAutoloadPaths = [
+     // local dev repository
+     __DIR__ . '/../vendor/autoload.php',
+     // dependency
+     __DIR__ . '/../../../autoload.php',
+];
+
+foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
+    if (file_exists($possibleAutoloadPath)) {
+        require_once $possibleAutoloadPath;
+        break;
+    }
+}
+
+// your PHP code to run
+
+$container = (new ContainerFactory)-&gt;create();
+$application = $container-&gt;get(Application::class);
+exit($application-&gt;run());</code></pre>
+<p>And that's it!</p>
+<p>Do you want to know more? See the <a href="/clusters/#master-php-cli-apps-with-symfony/">PHP CLI APP cluster</a>.</p>
+<p><br></p>
+<p>Happy and stress-free coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/07/30/hidden-gems-of-php-packages-nette-utils" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Hidden Gems of PHP Packages: Nette\Utils
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-02-5-gotchas-of-the-bin-file-in-php-cli-applications.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="5 Gotchas of the Bin File in PHP CLI Applications" />
+    <meta property="og:description" content="This post from [Master PHP CLI Apps with Symfony](/clusters/#master-php-cli-apps-with-symfony/) cluster will focus on bin files. It&#039;s the smallest part of PHP CLI Application, so I usually start with it.
+
+Yet, there are still a few blind paths you can struggle with. I&#039;ll drop a few extra tricks to make your bin file clean and easy to maintain.
+" />
+    <meta property="og:url" content="/blog/2018/08/02/5-gotchas-of-the-bin-file-in-php-cli-applications" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="5 Gotchas of the Bin File in PHP CLI Applications" />
+    <meta name="twitter:description" content="This post from [Master PHP CLI Apps with Symfony](/clusters/#master-php-cli-apps-with-symfony/) cluster will focus on bin files. It&#039;s the smallest part of PHP CLI Application, so I usually start with it.
+
+Yet, there are still a few blind paths you can struggle with. I&#039;ll drop a few extra tricks to make your bin file clean and easy to maintain.
+" />

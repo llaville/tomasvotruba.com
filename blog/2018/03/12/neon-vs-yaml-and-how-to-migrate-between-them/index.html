@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>NEON vs. YAML and How to Migrate Between Them | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 83 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>NEON vs. YAML and How to Migrate Between Them</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-03-Mon">
+            <strike>
+                            Mon, Mar 12, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Dec, 2018
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/#disqus_thread">X</a> comments
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fas fa-fw fa-check-circle"></em>
+            Tested
+        </li>
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-03-12-neon-vs-yaml-and-how-to-migrate-between-them.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at December 2018</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>EasyCodingStandard 5</strong>, Neon to YAML migration and <code>checkers</code> to <code>services</code> migration.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you know <code>*.neon</code> format? It's config file format created in Czech Republic by <a href="https://davidgrudl.com">David Grudl</a> (author of <a href="https://github.com/nette/nette">Nette</a>) and if you're foreigner, you might know it from or <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a> and <a href="https://github.com/phpstan/phpstan">PHPStan</a>. Even suggested as <a href="https://github.com/composer/composer/issues/3228"><code>composer.neon</code></a>.
+<br><br>
+And <code>*.yaml</code> is similar format used almost everywhere else.
+<br><br>
+<strong>You spot the suffix is different, but what about syntax differences? And which one is better?</strong></p>
+                    </div>
+                </div>
+
+                <p>None of them is perfect, they both have strong parts and weak parts. But the more I travel to abroad conferences, meetups or repositories, the more I hear <strong>nobody understand differences between them or their advantages to each other</strong>. Since I meet mainly with Symfony and Nette code, I had to investigate them a bit deeper.</p>
+<blockquote class="blockquote text-center mt-lg-5 mb-lg-5">
+    <a href="https://www.youtube.com/watch?v=3_EtIWmja-4">There are no solutions. There are only trade-offs.</a>
+    <footer class="blockquote-footer">
+        Thomas Sowell, author of A Conflict of Visions: Ideological Origins of Political Struggles
+    </footer></blockquote>
+<p>Here is a summary of what I found and how to migrate to each other. I'll write about differences and places, where syntax fail me the most.</p>
+<h2 id="how-is-syntax-differ">How is Syntax Differ?</h2>
+<p>70 % of syntax is similar:</p>
+<pre><code class="language-yaml">services:
+    Symplify\CodingStandard\Fixer\Import\ImportNamespacedNameFixer: ~</code></pre>
+<p>But what about?</p>
+<pre><code class="language-yaml">items:
+  -
+    - { key: value }</code></pre>
+<p>Of course you can Google documentation and try to understand it. But documentation is  incomplete or for older version than you use. <strong>The best way to learn it for me is</strong> with online parsers:</p>
+<ul>
+<li><a href="https://ne-on.org">ne-on.org</a></li>
+<li><a href="http://yaml-online-parser.appspot.com">yaml-online-parser.appspot.com</a></li>
+</ul>
+<p><br></p>
+<h3 id="1-tabs-vs-spaces">1. Tabs vs. Spaces</h3>
+<p><strong>Neon</strong></p>
+<p>As neon was born as free format, it allows to use both spaces and tabs.</p>
+<p><strong>Yaml</strong></p>
+<p>Only spaces are allowed. Since most of projects have coding standards, I prefer using one format in whole code.</p>
+<p><br></p>
+<h3 id="2-magic-list-combination-vs-single-type">2. Magic List Combination vs. Single Type</h3>
+<pre><code class="language-yaml">services:
+    - SomeService
+    SomeService: ~</code></pre>
+<p><strong>Neon</strong></p>
+<p>Could you guess the output? 1 item? Syntax error?</p>
+<pre><code class="language-php">array (1)
+    services =&gt; array (2)
+        0 =&gt; "SomeService" (11)
+        SomeService =&gt; "~"</code></pre>
+<p>Neon allows to combine indexed arrays and lists.
+And do you work with or create with such lists in PHP?</p>
+<p><strong>Yaml</strong></p>
+<p>Parsing would fail there, because Yaml allows only one approach:</p>
+<pre><code class="language-yaml">services:
+    - SomeService
+    - SomeService
+
+# with 2 items in array</code></pre>
+<p>or</p>
+<pre><code class="language-yaml">services:
+    SomeService: ~
+    SomeService: ~
+
+# with 1 item</code></pre>
+<p>This difference is one of the biggest WTFs, because I had to think about format and possible merge error every time I used lists... or indexed arrays... or is it arrays? Uff.</p>
+<p><br></p>
+<h3 id="3-content-on-multi-lines">3. Content on Multi-lines</h3>
+<p>I write posts in Statie, where you can use Yaml to configure per-post variables like perex:</p>
+<p><strong>Neon</strong></p>
+<pre><code class="language-yaml">perex: '''
+    This is long multiline perex,
+that takes too much space.
+'''</code></pre>
+<p>Note it can be aligned to left side.</p>
+<p><strong>Yaml</strong></p>
+<pre><code class="language-yaml">perex: |
+    This is long multiline perex,
+    that takes too much space.</code></pre>
+<p>But here it must be indented on every line.</p>
+<p><br></p>
+<h3 id="4-very-complex-syntax">4. Very Complex Syntax</h3>
+<p><strong>Neon</strong></p>
+<p>In Neon you can use <em>entities</em> and do this:</p>
+<pre><code class="language-yaml">someValue: Column(type=int, nulls=true)</code></pre>
+<p>Could you guess what it is? Parameters, arguments, service decoration?</p>
+<pre><code class="language-php">array (1)
+    someValue =&gt; Nette\Neon\Entity
+        value =&gt; "Column" (6)
+        attributes =&gt; array (2)
+            type =&gt; "int" (3)
+            nulls =&gt; true</code></pre>
+<p>Personally <strong>I prefer explicit, clear naming</strong> combined with easier scalability:</p>
+<pre><code class="language-yaml">someValue:
+    value: "Column"
+    attributes:
+        type: "int"
+        nulls: true</code></pre>
+<p><strong>Yaml</strong></p>
+<p>You can do similar shenaniganz with Yaml as well thanks to <code>Symfony\ExpressionLanguage</code></p>
+<pre><code class="language-yaml">services:
+    App\Mailer:
+        arguments: ["@=service('App\\\\Mail\\\\MailerConfiguration').getMailerMethod()"]</code></pre>
+<p>If you want to see real-life example, I <a href="/blog/2018/03/08/why-is-collector-pattern-so-awesome/#2-use-expression-language">tried it once</a>. But went quickly back because I could not remember what exactly that means and how it work.</p>
+<h2 id="how-is-the-ecosystem-support">How is the Ecosystem Support?</h2>
+<p>This is the most important question when it comes to open-source code. You can create your own natural language, that is smart, easy to learn, context aware and super fast. But what if <a href="https://en.wikipedia.org/wiki/List_of_languages_by_total_number_of_speakers">1.39 billion people speaks English already</a>?</p>
+<h3 id="phpstorm-support">PHPStorm Support</h3>
+<p><strong>Neon</strong></p>
+<p>You can install <a href="https://plugins.jetbrains.com/plugin/7060-neon-support">Neon Plugin</a>, that handles param and class autocomplete very nicely. It's enabled for every <code>*.neon</code> file by default.</p>
+<p><strong>Yaml</strong></p>
+<p>Yaml support is included in <a href="https://plugins.jetbrains.com/plugin/7219-symfony-plugin">Symfony Plugin</a>. It needs to by enabled per project. It works great, there is just one last thing I miss. It already completes services for Symfony 3.2- format:</p>
+<pre><code class="language-yaml">services:
+    some_name:
+        class: AutocompletedClass</code></pre>
+<p>But since Symfony 3.3 there is <a href="https://symfony.com/blog/new-in-symfony-3-3-simpler-service-configuration#short-syntax-for-service-configuration">short syntax for services</a>:</p>
+<pre><code class="language-yaml">services:
+    ManuallyTypedService: ~</code></pre>
+<p>And it is missing autocomplete in time being. <strong>Do you want autocomplete for this case too?</strong> <a href="https://github.com/Haehnchen/idea-php-symfony2-plugin/issues/1153">Upvote this issue</a> or send PR in Java to the plugin.</p>
+<p>Also <a href="https://github.com/phpstan/phpstan/pull/222">Github lacks of Neon support</a>.</p>
+<h2 id="who-is-the-winner">Who is the Winner?</h2>
+<p>Which one to pick? It depends on what is <strong>important to you</strong>. If you use Nette and work in Czech company and Neon is weapon of choice for you - it's ok.</p>
+<p>But what if you're <strong>making open source for the whole world</strong>?</p>
+<p><a href="https://xkcd.com/927/"></p>
+<img src="https://imgs.xkcd.com/comics/standards.png">
+<p></a></p>
+<h3 id="why-are-standards-so-important">Why are Standards so Important?</h3>
+<p>I was on a train trip in Hungary and I was thirsty. I went to classic food shop and pick first bottle <strong>with still water</strong> I saw. I wanted still water cause gas hurts me and wanted to drink a lot. And I'm drunk when it comes to water in summer.</p>
+<img src="/assets/images/posts/2018/neon-yaml/bottle-mixed.jpg" class="img-thumbnail">
+<p>At least I though I picked the right one until I opened it. In every single country I've been to so far, the <strong>blue is always still water</strong>. But not in Hungary!</p>
+<p>As <a href="http://chrisinbrnocr.blogspot.cz/2015/08/european-heat-wave.html">Chris says</a>: &quot;In Hungary the color code is reversed where blue means sparkling and red means flat.&quot; And there is even question <a href="https://www.tripadvisor.com.au/ShowTopic-g274887-i263-k7231074-Water_bottle_cap_colour_codes-Budapest_Central_Hungary.html">on Tripadvisor</a> on this topic.</p>
+<p><br></p>
+<p>For all the reasons above (thirsty-human-friendly-bottle-colors included), after looking at problem from various points of view and discussing with my Github and PHP friends, I came to conclusion that Yaml is better for me.</p>
+<h2 id="how-to-migrate-from-neon-to-yaml">How to Migrate from Neon to YAML?</h2>
+<p>But EasyCodingStandard was running on Neon that was loaded by my few classes to Symfony Kernel, so how to migrate to Yaml?</p>
+<p><strong>Imports</strong></p>
+<pre><code class="language-diff">-includes:
++imports:
+-    - packages/EasyCodingStandard/config/psr2.neon
++    - { resource: 'packages/EasyCodingStandard/config/psr2.yml' }
+
+-    - common/array.neon
+-    - common/control-structures.neon
+-    - common/docblock.neon
++    - { resource: 'common/*.yml' }</code></pre>
+<p><strong>Lists</strong></p>
+<pre><code class="language-diff"> services:
+     # class should be Abstact or Final
+-    - SlamCsFixer\FinalInternalClassFixer
++    SlamCsFixer\FinalInternalClassFixer: ~
+     ArrayFixer: ~</code></pre>
+<p><strong>Quoting parameters</strong></p>
+<pre><code class="language-diff"> parameters:
+     skip:
+         SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff:
+-            - *packages/CodingStandard/src/Sniffs/*/*Sniff.php
++            - '*packages/CodingStandard/src/Sniffs/*/*Sniff.php'</code></pre>
+<p><strong>Multi-lines</strong></p>
+<pre><code class="language-diff">-perex: '''
++perex: |
+     Do you know `*.neon` format? It's config file
+-format created in Czech Republic...
++    format created in Czech Republic...
+-'''</code></pre>
+<p>And from <code>*.yml</code> to <code>*.neon</code>? Just revert <code>-</code> and <code>+</code> :).</p>
+<p>To see what code exactly had to change:</p>
+<ul>
+<li>see <a href="https://github.com/symplify/symplify/pull/651">pull-request on Symplify\EasyCodingStandard</a></li>
+<li>or <a href="https://github.com/rectorphp/rector/pull/335">Rector with <code>Extension</code> =&gt; <code>services</code> migration</a></li>
+</ul>
+<p><br></p>
+<p>Which format do you prefer and why? Do you have some other WTF examples or migration tips? Let me know in the comments!</p>
+<p><br><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/03/15/monorepo-on-the-rise-in-php" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Monorepo on the Rise in PHP
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-03-12-neon-vs-yaml-and-how-to-migrate-between-them.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="NEON vs. YAML and How to Migrate Between Them" />
+    <meta property="og:description" content="Do you know `*.neon` format? It&#039;s config file format created in Czech Republic by [David Grudl](https://davidgrudl.com) (author of [Nette](https://github.com/nette/nette)) and if you&#039;re foreigner, you might know it from or [EasyCodingStandard](https://github.com/symplify/easy-coding-standard) and [PHPStan](https://github.com/phpstan/phpstan). Even suggested as [`composer.neon`](https://github.com/composer/composer/issues/3228).
+
+And `*.yaml` is similar format used almost everywhere else.
+
+**You spot the suffix is different, but what about syntax differences? And which one is better?**
+" />
+    <meta property="og:url" content="/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="NEON vs. YAML and How to Migrate Between Them" />
+    <meta name="twitter:description" content="Do you know `*.neon` format? It&#039;s config file format created in Czech Republic by [David Grudl](https://davidgrudl.com) (author of [Nette](https://github.com/nette/nette)) and if you&#039;re foreigner, you might know it from or [EasyCodingStandard](https://github.com/symplify/easy-coding-standard) and [PHPStan](https://github.com/phpstan/phpstan). Even suggested as [`composer.neon`](https://github.com/composer/composer/issues/3228).
+
+And `*.yaml` is similar format used almost everywhere else.
+
+**You spot the suffix is different, but what about syntax differences? And which one is better?**
+" />

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Go PHP 7.1! | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 41 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Go PHP 7.1!</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-06-Mon">
+            
+                            Mon, Jun 5, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/06/05/go-php-71/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-05-go-php-71.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>PHP frameworks start to require PHP 7.1, leading with Nette 3 and Symfony 4.
+<br><br>
+Why skip PHP 7.0 and go directly to PHP 7.1? When is the best time to join?
+What projects are already &quot;on the move&quot;?</p>
+                    </div>
+                </div>
+
+                <p><br></p>
+<blockquote class="blockquote text-center">
+    "Never believe that a few caring people can't change the world.<br>
+    For, indeed, that's all who ever have."
+    <footer class="blockquote-footer">Margaret Mead</footer></blockquote>
+<p><br></p>
+<h2 id="why-go-right-to-php-7-1">Why Go Right to PHP 7.1</h2>
+<ul>
+<li>
+<p>When you migrate your project from 5.x to PHP 7.x, <strong>there is no reason not to jump right to 7.1</strong>. You get more features (like <code>void</code> and nullable types), longer security support and with that, <strong>you will have a longer break from another upgrade</strong>. Are you lazy enough to have a year longer break? I am.</p>
+</li>
+<li>
+<p><strong>Frameworks are migrating</strong>. And let's be honest - huge frameworks are flag ships of evolution. Join them and you won't be left behind.</p>
+</li>
+<li>
+<p>It would be easier to develop open-source, if we were able to agree on one recent PHP version to support.</p>
+</li>
+</ul>
+<p>And I think you are already able to come with few more reasons of your own.</p>
+<h2 id="how-to-move-hosts">How to Move Hosts?</h2>
+<p>As in every new version of PHP, <strong>most of us still <del>depends on</del> waits for hosts to catch up</strong>. The situation was the same with PHP 5. New software version was already there, but hosts took their time. If there would be some way to move this.</p>
+<p><strong>And then, a <a href="https://www.garfieldtech.com/blog/go-php-5-go">GoPHP5</a> movement was born, to rapidly speed this up.</strong></p>
+<p>Quoting Larry:</p>
+<p>&quot;The solution a few people suggested was team work. If all PHP projects stopped supporting PHP 4 and made the jump to PHP 5 at the same time, none of them is penalized in the market for being &quot;first&quot; and web hosts will have a clear business case to upgrade their systems to PHP 5. We can then all start offering faster, cleaner, more powerful, more secure web software.</p>
+<p><strong>But how does one get all PHP projects together to agree on something like that? Actually, it's fairly simple. You ask them.</strong>&quot;</p>
+<p>Well said.</p>
+<h3 id="go-php-7-1-as-one">Go PHP 7.1 as One</h3>
+<p>I was reading a post about <a href="https://symfony.com/blog/why-will-symfony-2-0-finally-use-php-5-3">Symfony 2 min version bump 5.3</a>.
+It was a huge step in PHP development. Even if PHP 5.3 seem like an prehistoric version, many projects still uses that.</p>
+<p>We are in same situation with PHP 7.1 now. <strong>If PHP community can cooperate as one, we are able to create brighter future for ourselves</strong>.</p>
+<h2 id="when-and-who-gophp71-org">When and Who? goPHP71.org</h2>
+<p>To better coordinate min version bump, I've created <a href="https://goPHP71.org">goPHP71.org</a> in last 2 evenings.</p>
+<p>There you can see <strong>who and when is bumping min version</strong>.</p>
+<img src="/assets/images/posts/2017/go-php-71/first-version.png" class="img-thumbnail">
+<h2 id="how-can-you-help">How Can You Help?</h2>
+<ul>
+<li>Do you want to express your support for PHP 7.1?</li>
+<li>Do you want to help others to coordinate their package development?</li>
+</ul>
+<p><strong>If you answered YES at least once, add your framework or package</strong>.</p>
+<p>Website is <a href="https://github.com/tomasvotruba/goPHP71.org">hosted on Github Pages</a>, so you just <a href="https://github.com/TomasVotruba/gophp71.org/edit/master/index.html">edit <code>index.html</code></a> and send PR.</p>
+<h3 id="spread-the-word">Spread the Word</h3>
+<p>If you believe in this, share this page so we let hosts know, what we really need. <strong>It's our need to express and responsibility to take.</strong>
+We can do it! Thank you.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-05-go-php-71.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Go PHP 7.1!" />
+    <meta property="og:description" content="PHP frameworks start to require PHP 7.1, leading with Nette 3 and Symfony 4.
+
+Why skip PHP 7.0 and go directly to PHP 7.1? When is the best time to join?
+What projects are already &quot;on the move&quot;?
+" />
+    <meta property="og:url" content="/blog/2017/06/05/go-php-71" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Go PHP 7.1!" />
+    <meta name="twitter:description" content="PHP frameworks start to require PHP 7.1, leading with Nette 3 and Symfony 4.
+
+Why skip PHP 7.0 and go directly to PHP 7.1? When is the best time to join?
+What projects are already &quot;on the move&quot;?
+" />

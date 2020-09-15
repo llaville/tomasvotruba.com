@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to avoid @inject thanks to Decorator feature in Nette | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 19 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to avoid @inject thanks to Decorator feature in Nette</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2016-12-Sat">
+            
+                            Sat, Dec 24, 2016
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-12-24-how-to-avoid-inject-thanks-to-decorator-feature-in-nette.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I often find <code>@inject</code> being overused in projects I review while mentoring. They often bring less writing, but in exchange they break <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID principles</a>.
+<br><br>
+Today I will show you solution that will <strong>keep your code both small and clean</strong> - <strong>Decorator feature in Nette</strong>.</p>
+                    </div>
+                </div>
+
+                <p>As <a href="https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action">Derek Simons says</a> says...</p>
+<h2 id="start-with-quot-why-quot">...Start with &quot;Why&quot;</h2>
+<p>Why am I writing this article? I try to improve knowledge interoperability between frameworks so it <strong>is easier to understand and use each other</strong>. The goal is to discourage Nette- (or any framework-) specific things <strong>in favor of those that may be common</strong>.</p>
+<p>Today, I will try to agree on setter injection with you.</p>
+<h2 id="code-inject-code-overuse-is-spreading"><code>@Inject</code> Overuse is Spreading</h2>
+<p>This code is common to 80 % Nette applications I came across in last year:</p>
+<pre><code class="language-php">// app/Presenter/ProductPresenter.php
+
+namespace App\Presenter;
+
+final class ProductPresenter extends AbstractBasePresenter
+{
+    /**
+     * @inject
+     * @var ProductRepository
+     */
+    public $productRepository;
+}</code></pre>
+<p>Using <code>@inject</code> annotations over constructor injection is <strong>fast, short and it just works</strong>.</p>
+<p>Ok, why not use it everywhere:</p>
+<pre><code class="language-php">// app/Repository/ProductRepository.php
+
+namespace App\Repository;
+
+class ProductRepository
+{
+    /**
+     * @inject
+     * @var Doctrine
+     */
+    public $entityManager;
+}</code></pre>
+<p>and</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    -
+        class: App\Repository\ProductRepository
+        inject: on</code></pre>
+<h2 id="your-code-is-seen-as-manual-how-to-write">Your Code is Seen as Manual How to Write</h2>
+<p>Why? Because &quot;what you see is what you write&quot;. New programmer joins the teams, sees this handy <code>@inject</code> feature and uses when possible and handy.</p>
+<p>Some of you, who already talked about <code>@inject</code> method usage already there are some and only few specific places to use it.</p>
+<h2 id="where-to-only-code-inject-code">Where to only <code>@inject</code>?</h2>
+<p><strong>To prevent constructor hell</strong>. If you meet this term first time, go read <a href="https://phpfashion.com/di-a-predavani-zavislosti#toc-constructor-hell">this short explanation</a> by David Grudl.</p>
+<p>The best use case is <code>AbstractBasePresenter</code>.
+Let's say I need <code>Translator</code> service in all of my presenters.</p>
+<pre><code class="language-php">// app/Presenter/AbstractBasePresenter.php
+
+namespace App\Presenter;
+
+abstract class AbstractBasePresenter extends Nette\Application\UI\Presenter
+{
+    /**
+     * @inject
+     * @var Translator
+     */
+    public $translator;
+}</code></pre>
+<p>And I can use it in <code>ProductPresenter</code> along with constructor injection</p>
+<pre><code class="language-php">// app/Presenter/ProductPresenter.php
+
+namespace App\Presenter;
+
+final class ProductPresenter extends AbstractBasePresenter
+{
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this-&gt;productRepository = $productRepository;
+    }
+}</code></pre>
+<p>This is quite clean and easy to use, because presenters have injects <a href="https://github.com/nette/application/blob/3165d3a8dab876f4364cdcba450a33ab0182049a/src/Bridges/ApplicationDI/ApplicationExtension.php#L111-L116">enabled by default</a>.</p>
+<h2 id="level-up">Level up</h2>
+<p>But what if we have other objects that:</p>
+<ul>
+<li><strong>inherit from abstract parent</strong></li>
+<li>needs <strong>1 service available everywhere</strong></li>
+</ul>
+<p>2 common case pop to my mind:</p>
+<ul>
+<li><code>AbstractBaseRepository</code> for all our repositories</li>
+<li><code>AbstractBaseControl</code> for all our components</li>
+</ul>
+<p>Let's take the first one:</p>
+<pre><code class="language-php">// app/Repository/AbstractBaseRepository.php
+
+namespace App\Repository;
+
+use Doctrine\ORM\EntityManagerInterface;
+
+abstract class AbstractBaseRepository
+{
+    /**
+     * @var EntityManagerInterface
+     */
+    protected $entityManager;
+
+    public function setEntityManager(EntityManagerInterface $entityManager)
+    {
+        $this-&gt;entityManager = $entityManager;
+    }
+}</code></pre>
+<p>And specific repository with some dependency:</p>
+<pre><code class="language-php">// app/Repository/ProductRepository.php
+
+namespace App\Repository;
+
+use App\Model\Product\ProductSorter;
+
+final ProductRepository extends AbstractBaseRepository
+{
+    /**
+     * @var ProductSorter
+     */
+    private $productSorter;
+
+    public function __construct(ProductSorter $productSorter)
+    {
+        $this-&gt;productSorter = $productSorter;
+    }
+}</code></pre>
+<p>So our config would look like:</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    -
+        class: App\Repository\ProductRepository
+        setup:
+            - setEntityManager
+    # and for other repositories
+    -
+        class: App\Repository\UserRepository
+        setup:
+            - setEntityManager
+    -
+        class: App\Repository\CategoryRepository
+        setup:
+            - setEntityManager</code></pre>
+<h3 id="so-much-writing">SO much writing!</h3>
+<p>It is cleaner, but with so much writing? Thanks, but no, thanks. Let's go back to <code>@inject</code>...</p>
+<p>Wait! Before any premature conclusion, let's set the goal first.</p>
+<h3 id="what-is-desired-result">What is Desired Result?</h3>
+<pre><code class="language-yaml"># app/config.config.neon
+
+services:
+    - App\Repository\ProductRepository
+    - App\Repository\UserRepository
+    - App\Repository\CategoryRepository</code></pre>
+<p>That would be great, right? Is that possible in Nette while keeping the code clean?</p>
+<h2 id="decorator-extension-to-the-rescue">Decorator Extension to the Rescue</h2>
+<p>This feature is in Nette <a href="https://github.com/nette/di/commit/28fdac304b967ae43a90936069d94316ee2daca4">since 2014</a> (&lt;= the best documentation for it so far).</p>
+<p>How does it work?</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+decorator: # keyword used by Nette
+    App\Repository\AbstractBaseRepository: # 1. find every service this type
+        setup: # same setup as we use in service configuration
+            - setEntityManager # 2. call this setter injection on it
+
+    # or do you need to call "setTranslator" on every component?
+    App\Component\AbstractBaseControl:
+        setup:
+            - setTranslator</code></pre>
+<p>That's it!</p>
+<h2 id="what-have-you-learned-today">What Have You Learned Today?</h2>
+<ul>
+<li>It is easy to overuse <code>@inject</code> in places where it doesn't solve any problem</li>
+<li>The problem <code>@inject</code>/<code>inject&lt;method&gt;</code> method were born to solve is called <em>dependency hell</em></li>
+<li>If you need to <strong>decorate service of some type</strong>, use <em>Decorator Extension</em></li>
+<li>This will lead <strong>to better framework understandability and usability</strong></li>
+<li>...and world peace in time :)</li>
+</ul>
+<p>In next article, we will look at other practical use cases for Decorator Extension.</p>
+<h3 id="p-s-what-about-symfony">P.S.: What about Symfony?</h3>
+<p>Would like to see this feature in Symfony? Let me know. Maybe we can port it there.</p>
+<p>How do you use <code>@inject</code>, constructor injection or Decorator Extension? Let me know in the comments, I'm curious.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to write open-source in PHP 2: Rise value of your package with help of skeleton
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-12-24-how-to-avoid-inject-thanks-to-decorator-feature-in-nette.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to avoid @inject thanks to Decorator feature in Nette" />
+    <meta property="og:description" content="I often find `@inject` being overused in projects I review while mentoring. They often bring less writing, but in exchange they break [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)).
+
+Today I will show you solution that will **keep your code both small and clean** - **Decorator feature in Nette**.
+" />
+    <meta property="og:url" content="/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to avoid @inject thanks to Decorator feature in Nette" />
+    <meta name="twitter:description" content="I often find `@inject` being overused in projects I review while mentoring. They often bring less writing, but in exchange they break [SOLID principles](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)).
+
+Today I will show you solution that will **keep your code both small and clean** - **Decorator feature in Nette**.
+" />

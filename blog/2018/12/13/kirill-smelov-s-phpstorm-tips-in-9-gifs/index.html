@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Kirill Smelov&#039;s PHPStorm Tips in 9 Gifs | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 167 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Kirill Smelov's PHPStorm Tips in 9 Gifs</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-12-Thu">
+            
+                            Thu, Dec 13, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/12/13/kirill-smelov-s-phpstorm-tips-in-9-gifs/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-12-13-kirill-smelov-s-phpstorm-tips-in-9-gifs.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Last week we hosted <a href="https://twitter.com/wbasrs">Kirill Smelov</a> in <a href="https://www.meetup.com/friends-of-php-prague/events/256838837">Friends of PHP meetup</a> in Prague. Usually, I know most of tricks people show in PHPStorm talks or they pick too complicated cases - like SSH to Docker via PHPStorm GUI.
+<br><br>
+Kirill's talk was completely different, <strong>I could not stop taking notes</strong> about simple yet less known features of PHPStorm.
+<br><br>
+Instead of watching the 45-min talk, <strong>enjoy 9 cherry picked tips in 4,5-min gifs</strong>. I've dropped a few of my own daily habits. Enjoy!</p>
+                    </div>
+                </div>
+
+                <h2 id="1-ctor-when-you-add-a-property-via-constructor">1. Ctor - when you add a property via constructor</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/ctor.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="2-post-fix">2. Post-Fix</h2>
+<p>Do you type the same code around a variable zillion times?</p>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/postfix.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="3-forget-code-this-gt-code">3. Forget <code>$this-&gt;</code></h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/no-this.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="4-jump-to-next-use-of-method">4. Jump to Next use of Method</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/jump-to-method.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="5-save-live-template">5. Save Live Template</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/live-template.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="6-jump-to-another-method">6. Jump to Another Method</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/method-jump.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="7-copy-fqn-class-or-file-line">7. Copy FQN class or File:line</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/copy-reference.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="8-jump-to-previous-file-jump-to-previous-file">8. Jump to previous File → Jump to previous File</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/recent-files.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="9-create-a-shortcut">9. Create a shortcut</h2>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/create-shortcut.gif" class="img-thumbnail">
+<p><br><br><br></p>
+<h2 id="how-to-work-with-shortcuts">How to Work With Shortcuts?</h2>
+<p>Get inspired by watching others, but in the end - <strong>always respect your brain</strong>. Every one of you has <strong>different preferences</strong>.</p>
+<p>Let say you create a shortcut &quot;new file&quot;:</p>
+<ul>
+<li>you might like starting letter of action: <code>nf</code></li>
+<li>or 2 letters of each word: <code>nefi</code></li>
+<li>or just one letter, because you use 1 action per letter: <code>n</code></li>
+</ul>
+<h2 id="punish-vs-typo-proof">Punish vs. Typo-Proof</h2>
+<p>Also, as I love to type fast like crazy, I often make a typo or don't remember the exact 2 letters. Why punish yourself for a typo or not remembering the right combination?</p>
+<p><strong>Add a fallback:</strong></p>
+<ul>
+<li><em>rf</em> → <code>return false;</code></li>
+<li><em>refa</em> → <code>return false;</code></li>
+<li><em>ref</em> → <code>return false;</code></li>
+<li><em>reaf</em> → <code>return false;</code></li>
+</ul>
+<p>To give you an idea of my daily work, here is my current list of live templates:</p>
+<img src="/assets/images/posts/2018/phpstorm-tips-in-gifs/my-live-templates.gif" class="img-thumbnail">
+<h2 id="start-with-single-step">Start with Single Step</h2>
+<p>I took notes about 15 items during Kirill's talk. They all were very interesting and I wanted to integrate at least 5 of them the very next day. I was excited about my skills going the speed of light. I put too much on myself, then I was afraid I will fail to integrate them all. So I ended-up using just one.</p>
+<p>What could I do different? <strong>Pick just one tip</strong>. Master it and then move to another.</p>
+<p><br></p>
+<blockquote class="blockquote text-center">
+    What is the 1 tip you'll use tomorrow?
+</blockquote>
+<p>Integrate it and if you want more, you can always come back to this post.</p>
+<p><br></p>
+<p>Thanks to <a href="https://plugins.jetbrains.com/plugin/7345-presentation-assistant">Presentation Assistant</a> for the green banner that helped to make this post.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/12/10/rocket-science-behind-migration-of-docblock-types-to-php-typehints" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    The Rocket Science Behind Migration of Docblock Types to PHP Typehints
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-12-13-kirill-smelov-s-phpstorm-tips-in-9-gifs.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Kirill Smelov&#039;s PHPStorm Tips in 9 Gifs" />
+    <meta property="og:description" content="Last week we hosted [Kirill Smelov](https://twitter.com/wbasrs) in [Friends of PHP meetup](https://www.meetup.com/friends-of-php-prague/events/256838837) in Prague. Usually, I know most of tricks people show in PHPStorm talks or they pick too complicated cases - like SSH to Docker via PHPStorm GUI.
+
+Kirill&#039;s talk was completely different, **I could not stop taking notes** about simple yet less known features of PHPStorm.
+
+Instead of watching the 45-min talk, **enjoy 9 cherry picked tips in 4,5-min gifs**. I&#039;ve dropped a few of my own daily habits. Enjoy!
+" />
+    <meta property="og:url" content="/blog/2018/12/13/kirill-smelov-s-phpstorm-tips-in-9-gifs" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Kirill Smelov&#039;s PHPStorm Tips in 9 Gifs" />
+    <meta name="twitter:description" content="Last week we hosted [Kirill Smelov](https://twitter.com/wbasrs) in [Friends of PHP meetup](https://www.meetup.com/friends-of-php-prague/events/256838837) in Prague. Usually, I know most of tricks people show in PHPStorm talks or they pick too complicated cases - like SSH to Docker via PHPStorm GUI.
+
+Kirill&#039;s talk was completely different, **I could not stop taking notes** about simple yet less known features of PHPStorm.
+
+Instead of watching the 45-min talk, **enjoy 9 cherry picked tips in 4,5-min gifs**. I&#039;ve dropped a few of my own daily habits. Enjoy!
+" />

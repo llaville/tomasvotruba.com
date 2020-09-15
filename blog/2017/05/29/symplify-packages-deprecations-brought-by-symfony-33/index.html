@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Symplify packages deprecations brought by Symfony 3.3 | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 39 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Symplify packages deprecations brought by Symfony 3.3</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-05-Mon">
+            
+                            Mon, May 29, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-05-29-symplify-packages-deprecations-brought-by-symfony-33.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at December 2018</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>These packages are deprecated for ages. Time to deprecated the post.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">Symfony 3.3 brings new Dependency Injection features</a>,
+that were supplemented by few of Symplify packages in Symfony 3.2 and below.
+There is no need - as <a href="https://github.com/JanMikes">Honza Mikes</a> said - to <em>bring the wood to the forest</em>. So they were deprecated.
+<br><br>
+I will show <strong>why and what packages were deprecated and how to upgrade your app to use Symfony 3.3 instead</strong>.</p>
+                    </div>
+                </div>
+
+                <p>I will provide you some insights behind deprecations first. It was not an instant decision based on few Symfony blog posts,
+but a long process of maturing inspired by community, feedback and intuition.</p>
+<p>If you only want to see before/after changes in you application, you can <a href="#a-href-https-github-com-deprecatedpackages-defaultautowire-defaultautowire-a">skip right to the code</a>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/symplify-deprecations/pr-notes.png" class="img-thumbnail"></div>
+<h2 id="bringing-the-wood-to-the-open-source-forest">Bringing The Wood to the Open Source Forest</h2>
+<p>One of motivations to create and build open-source project is <strong>competition</strong>. You want to create better software
+than there already is, to push the society further in the development. If my project is the best, there is much less motivation to develop it.</p>
+<p>That's why it's the best to have <strong>2 elements of similar level so they push each other forward</strong>, like:
+Google &amp; Facebook, USA &amp; Russia, Symfony &amp; Laravel or PHP &amp; Javascript (in a way).</p>
+<h2 id="swallowing-my-open-source-ego">Swallowing My Open-Source Ego</h2>
+<p>When <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">Symfony 3.3 introduced new Dependency Injection features</a>,
+I realized they have 90% similar to feature I created my packages for.</p>
+<p>Internal dialog of my Ego and inner Zen master started:</p>
+<ul>
+<li>&quot;It's still not the same, I should keep them and promote them.&quot;</li>
+<li>&quot;But I can do much greater good than adding 10% value. I could focus on completely new packages that bring 100 % value.&quot;</li>
+<li>&quot;But I have created them and I have been taking care of them for a long time. People should use them.&quot;</li>
+<li>&quot;It's ok, they were good in the past, but things have changed.&quot;</li>
+<li>&quot;Ok, maybe I could ask community, what they think about it.&quot;</li>
+</ul>
+<p><strong>So I <a href="https://github.com/symplify/symplify/pull/162">asked people on Slack and Github</a></strong> what they think about it. Almost everybody (my inner Zen master included)
+agreed <strong>to drop them and let Symfony handle that</strong>.</p>
+<p>I must say, it was much easier to decide after getting such feedback. <strong>Thank you <a href="https://filip-prochazka.com">Filip Prochazka</a>,
+<a href="https://www.tomasfejfar.cz">Tomas Fejfar</a>,  <a href="https://github.com/symplify/symplify/issues/161">Stof</a>,
+<a href="https://github.com/symfony/symfony/pull/22234#issuecomment-297999703">theofidry</a>,
+<a href="https://github.com/enumag">Jachym Tousek</a>, <a href="https://github.com/JanMikes">Jan Mikes</a>
+and <a href="https://github.com/symplify/symplify/pull/162#issuecomment-299441503">Javier Eguilez</a></strong>
+for your help with this.</p>
+<h2 id="letting-package-go">Letting Package Go</h2>
+<p>I realized I could let packages go and I made these PRs:</p>
+<ul>
+<li><a href="https://github.com/symplify/symplify/pull/162#issuecomment-299441503">drop DefaultAutowire</a></li>
+<li><a href="https://github.com/symplify/symplify/pull/155">drop ServiceDefinitionDecorator, AutoServiceRegistration, ControllerAutowire and SymfonyEventDispatcher</a></li>
+</ul>
+<p>That eventually lead to:</p>
+<ul>
+<li><a href="https://github.com/symplify/symplify/pull/170">dropping EventDispatcher integration to Nette</a></li>
+</ul>
+<p>Don't worry:</p>
+<ul>
+<li><strong>all have better replacement</strong> (I will show you below)</li>
+<li><strong>you can still use them</strong> (they just won't get any updates)</li>
+</ul>
+<p>Let's look on each package now:</p>
+<h2 id="a-href-https-github-com-deprecatedpackages-defaultautowire-defaultautowire-a"><a href="https://github.com/DeprecatedPackages/DefaultAutowire">DefaultAutowire</a></h2>
+<p>This package turned on autowiring by default for most of services.</p>
+<h3 id="before">Before</h3>
+<p>All services were autowired.</p>
+<h3 id="after">After</h3>
+<p><a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#1-let-s-add-code-defaults-code">Use <code>_defaults</code> section</a>:</p>
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    _defaults:
+        autowire: true</code></pre>
+<p>All services in this config will be autowired now. You can use it in any <code>.yml</code> file.</p>
+<h2 id="a-href-https-github-com-deprecatedpackages-servicedefinitiondecorator-servicedefinitiondecorator-a"><a href="https://github.com/DeprecatedPackages/ServiceDefinitionDecorator">ServiceDefinitionDecorator</a></h2>
+<p>This package helped with service tagging and method calls by type.</p>
+<h3 id="before">Before</h3>
+<pre><code class="language-yaml"># app/config/config.yml
+decorator:
+    Symfony\Component\Console\Command\Command:
+        tags:
+            - { name: "console.command" }
+
+    AbstractEntityRepository:
+        calls:
+            - ["setEntityManager", ["@event_manager"]]</code></pre>
+<h3 id="after">After</h3>
+<p>Use <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#2-use-autoconfigure"><code>autoconfigure</code></a>
+and <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#5-use-code-instanceof-code"><code>_instanceof</code></a>
+features.</p>
+<pre><code class="language-yaml"># app/config/services.yml
+services:
+    autoconfigure: true
+
+    Symfony\Component\Console\Command\Command: ~
+
+    _instanceof:
+        AbstractEntityRepository:
+            calls:
+                - ["setEntityManager", ["@event_manager"]]</code></pre>
+<h3 id="minitip">Minitip</h3>
+<p>You can also use <code>@required</code> annotation instead of <code>_instanceof</code> in this case, as <strong><a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#comment-3306767439">shared by Kevin Bond</a></strong> - thank you Kevin!</p>
+<h2 id="a-href-https-github-com-deprecatedpackages-autoserviceregistration-autoserviceregistration-a"><a href="https://github.com/DeprecatedPackages/AutoServiceRegistration">AutoServiceRegistration</a></h2>
+<p>This package helped you to register multiple services at once with Finder.</p>
+<h3 id="before">Before</h3>
+<pre><code class="language-yaml"># app/config/config.yml
+symplify_auto_service_registration:
+    directories_to_scan:
+        - %kernel.root_dir%
+    class_suffixes_to_seek:
+        - Controller</code></pre>
+<h3 id="after">After</h3>
+<p>Use <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#4-use-psr-4-based-service-autodiscovery-and-registration">PSR-4 based service autodiscovery and registration</a>.</p>
+<pre><code class="language-yaml"># app/config/services.yml
+
+services:
+    App\: # no more manual registration of similar groups of services
+        resource: ../{Controller,Command,Subscriber}</code></pre>
+<p>Tada!</p>
+<p>And just like that, you can drop 4 of Symplify bundles and use Symfony 3.3 happily and safely ever after.</p>
+<hr />
+<p>That's all for today. In next post I will show you <strong>how to deprecate package without letting anyone behind</strong>.
+Not even your blog readers that could come across and old post about it.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-05-29-symplify-packages-deprecations-brought-by-symfony-33.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Symplify packages deprecations brought by Symfony 3.3" />
+    <meta property="og:description" content="[Symfony 3.3 brings new Dependency Injection features](/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/),
+that were supplemented by few of Symplify packages in Symfony 3.2 and below.
+There is no need - as [Honza Mikes](https://github.com/JanMikes) said - to *bring the wood to the forest*. So they were deprecated.
+
+I will show **why and what packages were deprecated and how to upgrade your app to use Symfony 3.3 instead**.
+" />
+    <meta property="og:url" content="/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Symplify packages deprecations brought by Symfony 3.3" />
+    <meta name="twitter:description" content="[Symfony 3.3 brings new Dependency Injection features](/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/),
+that were supplemented by few of Symplify packages in Symfony 3.2 and below.
+There is no need - as [Honza Mikes](https://github.com/JanMikes) said - to *bring the wood to the forest*. So they were deprecated.
+
+I will show **why and what packages were deprecated and how to upgrade your app to use Symfony 3.3 instead**.
+" />

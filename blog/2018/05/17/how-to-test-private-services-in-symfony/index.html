@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Test Private Services in Symfony | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 106 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Test Private Services in Symfony</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-05-Thu">
+            <strike>
+                            Thu, May 17, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Apr, 2019
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/05/17/how-to-test-private-services-in-symfony/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-17-how-to-test-private-services-in-symfony.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at April 2019</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>After trying all the options in this post I settled down with simple solution:
+<br>
+<strong><code>public: true</code> in all my configs.</strong>
+<br>
+<br>
+The only approach that works out of the box and requires 0-setup.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>2 versions of Symfony are affected by this dissonance between services and tests.
+<strong>Do you use Symfony 3.4 or 4.0? Do you want to test your services, but struggle to get them in a clean way?</strong>
+<br><br>
+Today we look at possible solutions.</p>
+                    </div>
+                </div>
+
+                <p>Since <a href="https://symfony.com/blog/new-in-symfony-3-4-services-are-private-by-default">Symfony 3.4 all services are private by default</a>.
+That means you can't get service by <code>$this-&gt;get(App\SomeService::class)</code> or <code>$this-&gt;container-&gt;get(App\SomeService::class)</code> anymore, but <strong>only only via constructor</strong>.</p>
+<p>That's ok until you need to test such service:</p>
+<pre><code class="language-php">use App\SomeService;
+use PHPUnit\Framework\TestCase;
+
+final class SomeServiceTest extends TestCase
+{
+    public function testSomeMethod()
+    {
+        $kernel = new AppKernel;
+        $kernel-&gt;boot();
+        $container = $kernel-&gt;getContainer();
+
+        // this line is important ↓
+        $someService = $container-&gt;get(SomeService::class);
+        // ...
+    }
+}</code></pre>
+<p>When we run the test:</p>
+<pre><code class="language-bash">vendor/bin/phpunit tests</code></pre>
+<p>This exception will stop us:</p>
+<pre><code class="language-yaml">The "App\SomeService" service or alias has been removed or inlined when the container
+was compiled. You should either make it public, or stop using the container directly
+and use dependency injection instead.</code></pre>
+<p>...<em>make it public</em>...</p>
+<p>Ok!</p>
+<pre><code class="language-diff"> # app/config/config.yml
+ services:
+     _defaults:
+         autowire: true
+
+     App\:
+         resource: ..
++
++    App\SomeService:
++        public: true</code></pre>
+<p>And run tests again:</p>
+<pre><code class="language-bash">vendor/bin/phpunit tests</code></pre>
+<p class="text-success pt-3 pb-3">
+    <em class="fas fa-fw fa-lg fa-check"></em> Voilá!
+</p>
+<h2 id="down-the-smelly-rabbit-hole">Down the Smelly Rabbit Hole</h2>
+<p>As you can see, we can load dozens of service from <code>App\</code> by 2 lines. But to test 1, we need to add 2 extra lines to config.</p>
+<pre><code class="language-diff"> # app/config/config.yml
+ services:
+     _defaults:
+         autowire: true
+
+     App\:
+         resource: ..
++
++    # for tests only
++    App\SomeService:
++        public: true
++
++    App\AnotherService:
++        public: true
++
++    App\YetAnotherService:
++        public: true</code></pre>
+<p>This is <em>one to many</em> code smell.</p>
+<p>Also, we can <strong>extract it to test config</strong> <code>tests/config/config.yml</code>, so it's easier to hide the smell.</p>
+<p>Or just <strong>make everything public</strong>, like <a href="https://github.com/symplify/symplify/commit/d0457773915fa32df08e7342d5cd0093f97850ff">I did in Symplify 6 months ago</a>:</p>
+<pre><code class="language-diff"> services:
+     _defaults:
+         autowire: true
++        # for tests only
++        public: true
+
+      App\:
+          resource: ..</code></pre>
+<p>But Symfony folks will not be happy to see this, because they need people to use private services. Why? So they learn to use constructor injection in services instead of <code>$this-&gt;get(...)</code>. So how should we do it <em>the Symfony-way</em>?</p>
+<p><strong>We're not alone asking this question</strong>. There are over <a href="https://stackoverflow.com/search?q=symfony+tests+private+services+is%3Aquestion">52 results for &quot;symfony tests private services&quot; on StackOverflow</a> at the time being:</p>
+<img src="/assets/images/posts/2018/private-services/popular.png" class="img-thumbnail">
+<p>But what saint options we have?</p>
+<h2 id="1-in-symfony-4-1-with-frameworkbundle">1. In Symfony 4.1 with FrameworkBundle</h2>
+<p>This is now fixed in
+<a href="https://symfony.com/blog/new-in-symfony-4-1-simpler-service-testing">Symfony 4.1 with Simpler service testing</a>.</p>
+<p>Do you use</p>
+<ul>
+<li><code>Symfony\Bundle\FrameworkBundle\Test\KernelTestCase</code> or</li>
+<li><code>Symfony\Bundle\FrameworkBundle\Test\WebTestCase</code></li>
+</ul>
+<p>for your tests? <strong>Just upgrade to Symfony 4.1 and you're done.</strong></p>
+<h2 id="2-in-symfony-4-1-standalone-or-symfony-3-4-4-0">2. In Symfony 4.1 Standalone or Symfony 3.4/4.0</h2>
+<p>But if you create open-source, you usually stick with last LTS, Symfony 3.4. How to solve it there?</p>
+<p>It's reasonable we want to <strong>keep all configs untouched</strong>, no matter if we're in dev or tests.</p>
+<pre><code class="language-yaml"># app/config/config.yml
+services:
+    _defaults:
+        autowire: true
+
+    App\:
+        resource: ..</code></pre>
+<p>And tests as well:</p>
+<pre><code class="language-php">use App\SomeService;
+use PHPUnit\Framework\TestCase;
+
+final class SomeServiceTest extends TestCase
+{
+    public function testSomeMethod()
+    {
+        $kernel = new AppKernel;
+        $kernel-&gt;boot();
+        $container = $kernel-&gt;getContainer();
+
+        $someService = $container-&gt;get(SomeService::class);
+        // ...
+    }
+}</code></pre>
+<p>If there would only be one place with a switch, that would make that all code smells go away and let us test. That would be awesome, right? How can we achieve that? Any ideas?</p>
+<h3 id="compiler-pass-possible-solution">Compiler Pass = Possible Solution?</h3>
+<p>Compiler pass allows us to write nice, decoupled and reusable code. After all, the solution for Symfony 4.1 is done by <a href="https://github.com/symfony/symfony/pull/26499/files#diff-ce4ed09b11d8fa531159e96df52124f3">a compiler pass</a>, that creates public 'test.service-name' aliases.</p>
+<p>Let's create one for our PHPUnit test cases:</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+final class PublicForTestsCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $containerBuilder): void
+    {
+        if (! $this-&gt;isPHPUnit()) {
+            return;
+        }
+
+        foreach ($containerBuilder-&gt;getDefinitions() as $definition) {
+            $definition-&gt;setPublic(true);
+        }
+
+        foreach ($containerBuilder-&gt;getAliases() as $definition) {
+            $definition-&gt;setPublic(true);
+        }
+    }
+
+    private function isPHPUnit(): bool
+    {
+        // there constants are defined by PHPUnit
+        return defined('PHPUNIT_COMPOSER_INSTALL') || defined('__PHPUNIT_PHAR__');
+    }
+}</code></pre>
+<p>And register it in our Kernel:</p>
+<pre><code class="language-php">&lt;?php
+
+final class AppKernel extends Kernel
+{
+    protected function build(ContainerBuilder $containerBuilder): void
+    {
+        $containerBuilder-&gt;addCompilerPass(new PublicForTestsCompilerPass());
+    }
+}</code></pre>
+<p>This removes all <code>public: true</code> lines from all your configs.</p>
+<img src="/assets/images/posts/2018/private-services/gone.png" class="img-thumbnail">
+<p class="text-success pt-3 pb-3">
+    <em class="fas fa-fw fa-lg fa-check"></em> That's it!
+</p>
+<h2 id="but-why">But Why?</h2>
+<ul>
+<li>&quot;So we can remove the <code>public: true</code> from our configs.&quot;</li>
+<li>&quot;That's a consequence, not a reason. So why?&quot;</li>
+<li>&quot;So we can get services from container in tests.&quot;</li>
+<li>&quot;That's a goal. I ask for why this way?&quot;</li>
+<li>&quot;Well, it's universal and just works.&quot;</li>
+</ul>
+<p>It is. But in 6 months of using this method <strong>I got different feedback from the PHP community</strong>:</p>
+<ul>
+<li>Why there are no public services, but we can get them from container anyway? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>Why test and dev services behave differently? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>Why I can't get the service from container in the second application as in the first one? <em class="fas fa-fw fa-lg fa-times text-danger"></em> (They <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">forgot to add</a> a compiler pass to new Kernel.)</li>
+<li>Why I have to add <code>public: true</code> for Symfony\Console\Application in bin file, but not in tests? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+</ul>
+<p><strong>People were confused 😕🤔</strong>. The trade of compiler pass feature was putting too much knowledge pressure on the programmers. <strong>The application uses constructor injection everywhere, so there is no real added value by working with term <em>public/private</em> services</strong>.</p>
+<h2 id="final-proven-practise">Final Proven Practise</h2>
+<p>In the end <strong>I removed the compiler pass and moved back to <code>public: true</code> in all configs</strong> right bellow <code>autowire: true</code>:</p>
+<pre><code class="language-diff"> services:
+     _defaults:
+         autowire: true
++        public: true</code></pre>
+<p>Thanks to that, the <strong>whole process became clear</strong>:</p>
+<ul>
+<li>We're using native Symfony syntax, you don't have to learn compiler passes <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>Configs are clear and people know what to expect <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>The location is always behind <code>autowire: true</code> → all configs have the same setup <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+</ul>
+<p><br><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/05/14/how-to-load-config-with-services-in-symfony-console" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Load --config With Services in Symfony Console
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-05-17-how-to-test-private-services-in-symfony.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Test Private Services in Symfony" />
+    <meta property="og:description" content="2 versions of Symfony are affected by this dissonance between services and tests.
+**Do you use Symfony 3.4 or 4.0? Do you want to test your services, but struggle to get them in a clean way?**
+
+Today we look at possible solutions.
+" />
+    <meta property="og:url" content="/blog/2018/05/17/how-to-test-private-services-in-symfony" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Test Private Services in Symfony" />
+    <meta name="twitter:description" content="2 versions of Symfony are affected by this dissonance between services and tests.
+**Do you use Symfony 3.4 or 4.0? Do you want to test your services, but struggle to get them in a clean way?**
+
+Today we look at possible solutions.
+" />

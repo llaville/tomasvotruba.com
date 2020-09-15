@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>14 Tips to Write PHP Code that is Hard to Maintain and Upgrade | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 162 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>14 Tips to Write PHP Code that is Hard to Maintain and Upgrade</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>8 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-11-Mon">
+            
+                            Mon, Nov 26, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/11/26/14-tips-to-write-php-code-that-is-hard-to-maintain-and-upgrade/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-26-14-tips-to-write-php-code-that-is-hard-to-maintain-and-upgrade.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Today I'll show you how to own your company. All you need to do is write code that no-one can read, is hard to refactor and creates technical debt. It's not easy, because if other programmers spot you're writing legacy code, you're busted.
+<br><br>
+If you keep a low profile of very smart architect and do it right, you'll be the only one in the company who knows what is going on and you'll have a value of gold. Learn how to be <strong>successful living vendor lock</strong>!</p>
+                    </div>
+                </div>
+
+                <h3 id="3-signs-of-living-vendor-lock-in">3 Signs of Living Vendor Lock-In</h3>
+<p><code>/vendor</code> is a directory in your project with all the packages dependencies. <a href="https://en.wikipedia.org/wiki/Vendor_lock-in">Vendor lock-in</a> is life-death dependency company on you.
+It's like having a baby - <strong>you have to take care of it for the next 18 years</strong> (at least):</p>
+<img src="/assets/images/posts/2018/vendor/free-hug.jpg" class="img-thumbnail">
+<p>How to make company code depend on you? You want to write a code that static analysis and instant upgrades are very hard to use. Where Rector could help you to turn not-so-bad-code to the modern code base in a matter of few weeks, here will fail hard and the only way out will be greenfield review.</p>
+<p><a href="http://www.osnews.com/story/19266/WTFs_m"></p>
+<img src="/assets/images/posts/2018/vendor/wtf.jpg" class="img-thumbnail">
+<p></a></p>
+<p>But not an obvious way like the right one. The company can't find out! You have to be sneaky as <em>Eliot</em> to <em>E-Corp</em>.</p>
+<p>Here are 15 examples of such <strong>code collected from existing vendor lock-in projects</strong> I reviewed:</p>
+<h2 id="1-never-use-code-final-code">1. Never use <code>final</code></h2>
+<p>Programmers want freedom, users desire options. Why setting healthy boundaries, when you can set them free:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace YourProject;
+
+class PriceCalculator
+{
+
+}</code></pre>
+<p>That way, anyone can extend your class:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class BetterPriceCalculator extends PriceCalculator
+{
+
+}</code></pre>
+<p>Also, it's <a href="https://github.com/cpliakas/git-wrapper/issues/159">needed for mocking</a> and there is no <a href="https://github.com/dg/bypass-finals">way around that</a>. There's not even <a href="https://ocramius.github.io/blog/when-to-declare-classes-final">8 reasons</a> to use <code>final</code> anywhere anytime.</p>
+<h2 id="2-use-code-protected-code-instead-of-code-private-code">2. Use <code>protected</code> instead of <code>private</code></h2>
+<p>What is opened class good for with <code>private</code> methods? You need to use <code>protected</code> method to be really opened:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class PriceCalculator
+{
+    protected function calculatePrice(Product $product)
+    {
+        // ...
+    }
+}</code></pre>
+<p>Be careful, <code>public</code> would be too obvious to anyone who ever heard that SOLID and other might find out what's your real intention.</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class BetterPriceCalculator extends PriceCalculator
+{
+    protected function calculatePrice(Product $product)
+    {
+        return 1000;
+    }
+}</code></pre>
+<h2 id="3-use-non-string-method-names">3. Use Non-String Method Names</h2>
+<p>This is tricky for real professionals - I hope you're to look smart in front of your team! If there is a way</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class PriceCalculator
+{
+    public function calculateDiscount(Product $product, string $type)
+    {
+        $methodName = 'calculate' . $type; // great job!
+
+        return $this-&gt;$methodName($product);
+    }
+}</code></pre>
+<p><code>$methodName</code> is a string - it can be anything, so freedom &amp; dynamic!</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class ProductController
+{
+    public function orderProductAction(Request $request)
+    {
+        $form = new OrderProductForm;
+        $form-&gt;afterSubmit = [$this, 'processForm']; // great job!
+
+        $form-&gt;handle($request);
+    }
+
+    public function processForm(Request $request)
+    {
+        // ...
+    }
+}
+
+class Form
+{
+    public $afterSubmit;
+
+    public function handle(Request $request)
+    {
+        // ...
+
+        call_user_func($this-&gt;afterSubmit, $request);
+    }
+}</code></pre>
+<p>Why is this so well written? Imagine we're looking at the legacy code - huge code base, 100 of places where the method is used at.
+Try to rename <code>processForm</code> to <code>processOrderProduct</code> - AST is not able to detect method name, all it sees is a string. Instant upgrade impossible and you have to do it all manually, good job!</p>
+<h2 id="4-don-t-always-use-code-psr-4-code">4. Don't Always use <code>PSR-4</code></h2>
+<p>Classes need to be autoloaded to be parsed to AST. PSR-4 section in <code>composer.json</code> solves this easily:</p>
+<pre><code class="language-json">{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}</code></pre>
+<p>Damn, now every class is easy to find and respects <code>file.php</code> → <code>Class</code> naming. <strong>How could you complicate this?</strong></p>
+<h3 id="put-more-classes-into-1-file">Put more Classes into 1 file</h3>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class FatalException extends Exception
+{
+
+}
+
+class ApplicationException extends Exception
+{
+
+}
+
+class RequestException extends Exception
+{
+
+}</code></pre>
+<p>You have 1 file instead of 3 - you saved so much disk space!</p>
+<h3 id="use-small-case-naming">Use Small Case Naming</h3>
+<pre><code class="language-bash">/app
+   /Controller
+       ProductController.php</code></pre>
+<p>↓</p>
+<pre><code class="language-bash">/app
+   /controller
+       ProductController.php</code></pre>
+<p>PSR-4 is unable to find this file, great job!</p>
+<h3 id="don-t-load-tests">Don't Load Tests</h3>
+<p>Let's say your <code>/app</code> code is loaded by PSR-4. You also have covered it with tests. If you run instant upgrades, it should actually upgrade tests too. Damn.</p>
+<p>If you have this section, drop it:</p>
+<pre><code class="language-diff">-{
+-    "autoload-dev": {
+-        "psr-4": {
+-            "App\\Tests\\": "tests"
+-        }
+-    }
+-}</code></pre>
+<p>PHPUnit uses its own autoload anyway.</p>
+<h2 id="5-use-your-own-autoloader">5. Use Your Own Autoloader</h2>
+<p>While you're at it, follow PHPUnit example. And not only PHPUnit. Have you ever wondered why there is missing <a href="https://github.com/squizlabs/PHP_CodeSniffer/blob/b53f64e10e41aa754ffa7c11999af1881e6c1780/composer.json"><code>"autoload"</code> section PHP_CodeSniffer <code>composer.json</code></a>
+Make your own autoloader - using <code>spl_autoload_register</code> or <a href="https://github.com/nette/robot-loader">nette/robot-loader</a>. That way instant upgrade tools get confused and probably won't work. Good job!</p>
+<h2 id="6-hide-your-dependencies-in-constructor">6. Hide Your Dependencies in Constructor</h2>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class PackagistApi
+{
+    public function getPackagesByOrganization(string $organization): array
+    {
+        $guzzle = new Guzzle\Client();
+        $response = $guzzle-&gt;get('https://packagist.org/packages/list.json?vendor=' . $organization);
+
+        // ...
+
+        return $packages;
+    }
+}
+
+$packagistApi = new PackagistApi;
+$shopsysPackages = $packagistApi-&gt;getPackagesByOrganization('shopsys');</code></pre>
+<p>When you send such code a to code-review, you are provoking this comment:</p>
+<ul>
+<li>&quot;<code>PackagistApi</code> hides <code>Guzzle\Client</code> dependency. Put that into constructor injection&quot;</li>
+</ul>
+<p>Busted! But there is a way <strong>to improve your chances to make this pass</strong> and still skip constructor injection:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class PackagistApi
+{
+    private $guzzle;
+
+    public function __construct()
+    {
+        $this-&gt;guzzle = new Guzzle\Client();
+    }
+
+    public function getPackagesByOrganization(string $organization): array
+    {
+        $response = $this-&gt;guzzle-&gt;get('https://packagist.org/packages/list.json?vendor=' . $organization);
+
+        // ...
+
+        return $packages;
+    }
+}</code></pre>
+<h2 id="7-put-different-kinds-of-objects-to-one-directory">7. Put Different Kinds of Objects to One Directory</h2>
+<p>Do you love DDD? Everyone loves it! Thanks to DDD you have socially accepted reason to use directory names based on categories:</p>
+<pre><code class="language-bash">/app
+    /Controller
+        ProductController.php
+    /Entity
+        Product.php
+    /Repository
+        ProductRepository.php</code></pre>
+<p>↓</p>
+<pre><code class="language-bash">/app
+    /Product
+        ProductController.php
+        Product.php
+        ProductRepository.php</code></pre>
+<p>Who needs standards! It's this nice? Now no-one can find any classes by expected directory name.</p>
+<p>As a bonus, service auto-discovery is not possible anymore:</p>
+<pre><code class="language-yaml">services:
+    App\:
+        resource: '../app'
+        exclude: '../app/{Entity}'</code></pre>
+<p>Great job!</p>
+<h2 id="8-use-annotations-to-define-magic-methods">8. Use Annotations to Define Magic Methods</h2>
+<p>Now you know how to use strings in method names from tip #3. Let's get this to the next level. I've already used this tip above:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+$guzzle = new Guzzle\Client();
+$guzzle-&gt;get('...');</code></pre>
+<p>What happens when you type <code>get</code> method? The IDE will tell you the <code>get</code> method exists. You can adapt this pattern to your code too!</p>
+<p>Then you rename it with instant upgrade tools, but it will fail. It's not a string... so what the hack?</p>
+<p>It's only <a href="https://github.com/guzzle/guzzle/blob/8db1967d92f55de1b94b175478ed16a7dfc53a90/src/Client.php#L11-L24">an annotation</a>:</p>
+<img src="/assets/images/posts/2018/vendor/magic-annotation.png" class="img-thumbnail">
+<p>You now have a reason to add <code>__call</code> integration and combine method names with many more strings. Great job!</p>
+<h2 id="9-use-traits-with-annotations-to-define-magic-methods">9. Use Traits with Annotations to Define Magic Methods</h2>
+<p>You can take this to one more level!</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class ApiCaller
+{
+   use GetMethodTrait;
+}
+
+/**
+ * @method getPackagesByOrganization($organization)
+ * @method getPackagesByCategory($category)
+ */
+trait GetMethodTrait
+{
+}</code></pre>
+<p>Goodbye automated typehints and static analysis!</p>
+<h2 id="10-don-t-use-a-different-naming-to-separate-code-interface-code-code-trait-code-from-code-class-code">10. Don't use a Different Naming to separate <code>Interface</code>, <code>Trait</code> from <code>Class</code></h2>
+<p>Oh, I actually made a mistake. Above I wrote <code>GetMethodTrait</code>, that might actually help the user and tool to guess it's a trait:</p>
+<pre><code class="language-bash">- ProductInterface
+- ProductTrait
+- Product</code></pre>
+<p>We don't want that. Let's take another cool tip from DDD and make them look the same ↓</p>
+<pre><code class="language-bash">- Product
+- Product
+- Product</code></pre>
+<p>Now no-one can use Finder to find all traits or interface. Each file has to be parsed now and that's super slow. Good job!</p>
+<h2 id="11-use-as-short-naming-as-possible">11. Use as Short Naming as Possible</h2>
+<p>Long class names are annoying to read. Just compare yourself:</p>
+<pre><code class="language-/ash">- YamlParser
+- YamlFileParser
+- LatteTemplateParser
+- LatteParser
+- XmlParser</code></pre>
+<p>This is much better ↓</p>
+<img src="/assets/images/posts/2018/vendor/omg-naming.gif" class="img-thumbnail">
+<p>It also it also increases chances to bother with manual aliasing:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+use Yaml\Parser;
+use Latte\Parser as LatteParser;
+use Xml\Parser as XmlParser;
+
+class ProductXmlFeedCrawler
+{
+
+}</code></pre>
+<p>WTF, it's so good!</p>
+<h2 id="12-don-t-use-a-different-naming-to-separate-code-abstract-code-classes">12. Don't use a Different Naming to separate <code>Abstract</code> classes</h2>
+<p>Abstract classes are also classes. Why would make that easier for a reader by stating that in a name? Have you ever seen an <code>AbstractInterface</code> or <code>AbstractTrait</code>? I did not.</p>
+<pre><code class="language-diff">-abstract class AbstractXmlCrawler
++abstract class XmlCrawler</code></pre>
+<p>Let them look into to class manually. Time well spent!</p>
+<h2 id="13-use-fluent-api-with-different-return-values">13. Use Fluent API with Different Return Values</h2>
+<p><a href="https://ocramius.github.io/blog/fluent-interfaces-are-evil">Fluent interfaces are great</a>, they save you typing the variable name all over again:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+class Definition
+{
+    private $class;
+
+    private $arguments;
+
+    public function setClass(array $class)
+    {
+        $this-&gt;class = $class;
+
+        return $this;
+    }
+
+    public function setArguments(array $arguments)
+    {
+        $this-&gt;arguments = $arguments;
+
+        return $this;
+    }
+}
+
+$definition = (new Definition)-&gt;setClass('ProductController')
+    -&gt;setArguments(['@Request']);</code></pre>
+<p>The best thing is, there are more ways to create the same object:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+$definition = new Definition;
+$definition-&gt;setClass('ProductController');
+$definition-&gt;setArguments(['@Request']);</code></pre>
+<p>How can anyone use that incorrectly now?</p>
+<h2 id="14-use-fluent-api-with-different-return-values">14. Use Fluent API with Different Return Values</h2>
+<p>Let's take fluent to the next level - make every method return different object:</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+$rootNode
+    -&gt;beforeNormalization()
+        -&gt;ifTrue(function ($v) { return !isset($v['assets']) &amp;&amp; isset($v['templating']) &amp;&amp; class_exists(Package::class); })
+        -&gt;then(function ($v) {
+            $v['assets'] = array();
+            return $v;
+        })
+    -&gt;end()
+    -&gt;children()
+        -&gt;scalarNode('secret')-&gt;end()
+        -&gt;scalarNode('http_method_override')
+            -&gt;info("Set true to enable support for the '_method' request parameter to determine the intended HTTP method on POST requests. Note: When using the HttpCache, you need to call the method in your front controller instead")
+            -&gt;defaultTrue()
+        -&gt;end()
+        -&gt;scalarNode('ide')-&gt;defaultNull()-&gt;end()
+        -&gt;booleanNode('test')-&gt;end()
+        -&gt;scalarNode('default_locale')-&gt;defaultValue('en')-&gt;end()
+        -&gt;arrayNode('trusted_hosts')
+            -&gt;beforeNormalization()-&gt;ifString()-&gt;then(function ($v) { return array($v); })-&gt;end()
+            -&gt;prototype('scalar')-&gt;end()
+        -&gt;end()
+    -&gt;end()
+;</code></pre>
+<div class="text-center pb-4">
+    <em>
+      From <a href="https://github.com/symfony/symfony/blob/0d35f97e9b9c27df0d6317e8ae09d5b963dc2916/src/Symfony/Bundle/FrameworkBundle/DependencyInjection/Configuration.php">Symfony/FrameworkBundle configuration</a>.
+    </em>
+</div>
+<p>Fluent API like this is <a href="https://github.com/phpstan/phpstan/issues/254">proven to break PHPStan and thus Rector</a>. Such code is almost impossible to upgrade instantly. The longer the fluent methods, the bigger the damage - great job!</p>
+<p><br></p>
+<p>Do you know more tips to write code that is hard to maintain and upgrade in <em>not-so-obvious</em> way? <strong>Let me know in the comment, I'll update the list with them.</strong></p>
+<p><br></p>
+<p>P.S.: If you love sarcastic posts like this, go check <a href="https://ocramius.github.io/blog/eliminating-visual-debt">Eliminating Visual Debt</a> by Marco Pivetta or <a href="/blog/2018/03/19/how-to-criticize-like-a-senior-programmer/">How to Criticize like a Senior Programmer</a>.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/11/22/how-to-test-monorepo-in-3-layers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Test Monorepo in 3 Layers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-26-14-tips-to-write-php-code-that-is-hard-to-maintain-and-upgrade.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="14 Tips to Write PHP Code that is Hard to Maintain and Upgrade" />
+    <meta property="og:description" content="Today I&#039;ll show you how to own your company. All you need to do is write code that no-one can read, is hard to refactor and creates technical debt. It&#039;s not easy, because if other programmers spot you&#039;re writing legacy code, you&#039;re busted.
+
+If you keep a low profile of very smart architect and do it right, you&#039;ll be the only one in the company who knows what is going on and you&#039;ll have a value of gold. Learn how to be **successful living vendor lock**!
+" />
+    <meta property="og:url" content="/blog/2018/11/26/14-tips-to-write-php-code-that-is-hard-to-maintain-and-upgrade" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="14 Tips to Write PHP Code that is Hard to Maintain and Upgrade" />
+    <meta name="twitter:description" content="Today I&#039;ll show you how to own your company. All you need to do is write code that no-one can read, is hard to refactor and creates technical debt. It&#039;s not easy, because if other programmers spot you&#039;re writing legacy code, you&#039;re busted.
+
+If you keep a low profile of very smart architect and do it right, you&#039;ll be the only one in the company who knows what is going on and you&#039;ll have a value of gold. Learn how to be **successful living vendor lock**!
+" />

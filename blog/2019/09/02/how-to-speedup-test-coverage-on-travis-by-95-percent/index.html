@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Speedup Test Coverage on Travis by 95 % | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 261 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Speedup Test&nbsp;Coverage on Travis by&nbsp;95&nbsp;%</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-09-Mon">
+            
+                            Mon, Sep 2, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/09/02/how-to-speedup-test-coverage-on-travis-by-95-percent/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-02-how-to-speedup-test-coverage-on-travis-by-95-percent.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>It was late in the night. He was looking at CI builds to make sure everything is ready for a morning presentation.
+<br>
+<br>
+<strong>The build took over 45 minutes</strong>. What was wrong? He was scared, took a deep breath, and looked at Travis build detail anyway.
+<br>
+<br>
+&quot;What? Code coverage? All the stress for this?&quot;
+<br>
+<strong>&quot;We should remove it,&quot;</strong> he thought, &quot;CI should give fast feedback... or is there another way?&quot;</p>
+                    </div>
+                </div>
+
+                <p>Do you find this story resembling your daily job? We had the same problem. We tolerated for 2 years, but in 2020 we looked for a better way.</p>
+<img src="/assets/images/posts/2019/faster-coverage/coverage_slow.png">
+<h2 id="status-quo-xdebug">Status Quo: Xdebug</h2>
+<p>The most common way in the open-source nowadays is Xdebug with Coveralls. <a href="http://coveralls.io">Coveralls.io</a> is an open-source, free service, that consumes your PHPUnit coverage data, and turns them into one significant number.</p>
+<p>That's how can have sexy coverage badge in your repository:</p>
+<img src="https://img.shields.io/coveralls/symplify/symplify/master.svg?style=flat-square">
+<p>How do we make it happen on Travis?</p>
+<pre><code class="language-yaml">script:
+    - vendor/bin/phpunit --coverage-clover coverage.xml</code></pre>
+<p>In the job context:</p>
+<pre><code class="language-yaml"># .travis.yml
+jobs:
+    include:
+        -
+            stage: coverage
+            php: 7.3
+            name: Test Coverage
+            script:
+                - vendor/bin/phpunit --coverage-clover coverage.xml
+                # Coveralls.io
+                - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+                - php php-coveralls.phar --verbose</code></pre>
+<h2 id="2-faster-with-phpdbg">2. Faster with phpdbg</h2>
+<p>I've learned about phpdbg from this <a href="https://kizu514.com/blog/phpdbg-is-much-faster-than-xdebug-for-code-coverage">short and clear post by KIZU 514</a>.</p>
+<p>One-line, no-install setup:</p>
+<pre><code class="language-yaml">script:
+    - phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-clover coverage.xml</code></pre>
+<p>In full job:</p>
+<pre><code class="language-yaml"># .travis.yml
+jobs:
+    include:
+        -
+            stage: coverage
+            php: 7.3
+            name: Test Coverage
+            script:
+                - phpdbg -qrr -d memory_limit=-1 vendor/bin/phpunit --coverage-clover coverage.xml
+                # Coveralls.io
+                - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+                - php php-coveralls.phar --verbose</code></pre>
+<p><strong>Mind the <code>-d memory_limit=-1</code>.</strong> The memory was exhausted very soon. We would care if this was a production code. But CI is build, run and throw away container, so allowing unlimited memory is ok.</p>
+<h2 id="3-even-faster-with-pcov">3. Even Faster with PCOV</h2>
+<p>It's better to have PHPUnit 8+, but what if <a href="/blog/2019/11/04/still-on-phpunit-4-come-to-phpunit-8-together-in-a-day/">don't have it yet</a>? You can <a href="https://kizu514.com/blog/pcov-is-better-than-phpdbg-and-xdebug-for-code-coverage">read about PCOV here</a>, we'll get right to the business.</p>
+<p>2-lines run with setup:</p>
+<pre><code class="language-yaml">script:
+    - pecl install pcov
+    - vendor/bin/phpunit --coverage-clover coverage.xml</code></pre>
+<p>In jobs context:</p>
+<pre><code class="language-yaml"># .travis.yml
+jobs:
+    include:
+        -
+            stage: coverage
+            php: 7.3
+            name: Test Coverage
+            script:
+                - pecl install pcov
+                - vendor/bin/phpunit --coverage-clover coverage.xml
+                # Coveralls.io
+                - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar
+                - php php-coveralls.phar --verbose</code></pre>
+<p><strong>PCOV took only 1,5 minutes</strong>, that's great!</p>
+<p>The coverage number changed from 77 % to 73 %. However, <a href="https://github.com/krakjoe/pcov#differences-in-reporting">PCOV provides the higher accuracy than phpdbg</a> which cannot correctly detect implicit return paths.</p>
+<h2 id="final-results">Final Results</h2>
+<ul>
+<li>Xdebug - 37 minutes, 77,5 % code coverage</li>
+<li>phpdbg - 3 minutes, 77,1 % code coverage</li>
+<li>pcov - 1,5 minutes, 73 % code coverage</li>
+</ul>
+<p>...and the winner is:</p>
+<p><br></p>
+<p><strong>PCOV</strong> 🎉</p>
+<p><br></p>
+<p>It was the fastest one, while also providing code analysis similar to the mainstream Xdebug.</p>
+<p><br></p>
+<p>But that was <em>our specific</em> codebase. Be sure to try option 2. and 3. on your code, in one PR, to see <strong>what suits you</strong>.</p>
+<h2 id="the-future">The Future?</h2>
+<p>Derrick, the Xdebug author, <a href="https://derickrethans.nl/crafty-code-coverage.html">wrote about Xdebug 2.9</a> that should speed up 22 mins build into <strong>1.2 min</strong>.</p>
+<p>It <a href="https://travis-ci.community/t/new-faster-xdebug-2-9-is-out/6372">might take some time to get it on Travis</a>, which has nov Xdebug 2.7.</p>
+<p>We'll see :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-09-02-how-to-speedup-test-coverage-on-travis-by-95-percent.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Speedup Test Coverage on Travis by 95 %" />
+    <meta property="og:description" content="It was late in the night. He was looking at CI builds to make sure everything is ready for a morning presentation.
+
+
+**The build took over 45 minutes**. What was wrong? He was scared, took a deep breath, and looked at Travis build detail anyway.
+
+
+&quot;What? Code coverage? All the stress for this?&quot;
+
+**&quot;We should remove it,&quot;** he thought, &quot;CI should give fast feedback... or is there another way?&quot;
+" />
+    <meta property="og:url" content="/blog/2019/09/02/how-to-speedup-test-coverage-on-travis-by-95-percent" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Speedup Test Coverage on Travis by 95 %" />
+    <meta name="twitter:description" content="It was late in the night. He was looking at CI builds to make sure everything is ready for a morning presentation.
+
+
+**The build took over 45 minutes**. What was wrong? He was scared, took a deep breath, and looked at Travis build detail anyway.
+
+
+&quot;What? Code coverage? All the stress for this?&quot;
+
+**&quot;We should remove it,&quot;** he thought, &quot;CI should give fast feedback... or is there another way?&quot;
+" />

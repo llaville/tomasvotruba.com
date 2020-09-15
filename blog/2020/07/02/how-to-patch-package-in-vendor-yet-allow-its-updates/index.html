@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Patch a Package in Vendor, Yet Allow its Updates | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 266 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Patch a Package in Vendor, Yet Allow its Updates</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-07-Thu">
+            
+                            Thu, Jul 2
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/07/02/how-to-patch-package-in-vendor-yet-allow-its-updates/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-02-how-to-patch-package-in-vendor-yet-allow-its-updates.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>While working with legacy code upgrades, we often need to fix a line or two in 3rd party package in <code>/vendor</code>.
+<br>
+<br>
+You can fork it, but by that, you <strong>take manual responsibility</strong> for all the package updates.
+You can copy a package locally, which is faster, but <strong>disables package updates</strong>.
+<br><br>
+Or... you can use &quot;composer patches&quot;?</p>
+                    </div>
+                </div>
+
+                <p>I'm currently working on one Nette project as <a href="/blog/2020/04/27/forget-complex-migrations-use-cleaning-lady-checklist/">a cleaning lady</a>. After making code nice &amp; shiny clean, we'll move from Nette 2.4 to Nette 3.0. During the cleaning process, we got into one delicate issue I'd love to share with you.</p>
+<p><br></p>
+<p>We used <a href="/blog/2020/06/01/inject-or-required-will-get-you-any-service-fast/">inject properties</a>:</p>
+<pre><code class="language-php">&lt;?php
+
+abstract class AbstactSomePresenter
+{
+    /**
+     * @inject
+     * @var SomeDependency
+     */
+    public $someDependency;
+}</code></pre>
+<p>But since PHP 7.4, we could drop the <code>@var</code> annotation:</p>
+<pre><code class="language-php">&lt;?php
+
+abstract class AbstactSomePresenter
+{
+    /**
+     * @inject
+     */
+    public SomeDependency $someDependency;
+}</code></pre>
+<p>But... this doesn't work in Nette 2.4. Aww.</p>
+<p><br></p>
+<p>We tried to add this feature by replacing native <code>InjectExtension</code> with our own. But native extension <strong>is statically hardcoded</strong>, so there was no way to replace it.</p>
+<p><strong>What else we can do?</strong> We looked at GitHub for a commit that added this feature somewhere between Nette 2.4 and 3.0 (with git blame GitHub feature and look at specific lines).</p>
+<p><strong>We were lucky.</strong> It was <a href="https://github.com/nette/di/commit/24df5e6af0ecf18542dc6e721112598bc648082c#diff-e7f245a9be21411c36d839ed85a17457"><strong>just 2 lines</strong></a> that added this feature!</p>
+<h2 id="how-to-change-2-lines-of-code-in-code-vendor-code">How to Change 2 Lines of code in <code>/vendor</code>?</h2>
+<p>We needed the same commit in our codebase with Nette 2.4.</p>
+<p><strong>How can we do that?</strong></p>
+<ul>
+<li>edit file in <code>/vendor/nette/di/*</code> manually</li>
+<li>fork the package at version 2.4, edit it, release it, maintain it</li>
+</ul>
+<p><em class="fas fa-fw fa-times text-danger fa-2x"></em></p>
+<p>These options are slow or will keep the code changed only on your local machine = your <code>composer install</code> would suck a long time.</p>
+<p><br></p>
+<p>Is there some automated way with all the benefits and almost zero maintenance?</p>
+<ul>
+<li><a href="https://github.com/cweagans/composer-patches">composer patches</a></li>
+</ul>
+<p><em class="fas fa-check text-success margin-auto fa-2x"></em></p>
+<h2 id="patching-for-dummies">Patching For Dummies</h2>
+<p>Idea behind <a href="https://github.com/cweagans/composer-patches">composer patches</a> is great, but the user experience with making the patch not so much. It's classic pixel coding - you have to edit the patch file the one slash or dot char. If you do it wrong, or the whole process collides with &quot;fatal error&quot;. That's why there is <a href="https://pehapkari.cz/blog/2017/01/20/jak-snadno-a-rychle-upravovat-soubory-ve-vendoru">over 10 comments under Czech post by Tomas Pilar</a>, asking about the pixel coding.</p>
+<p>I don't want developers to be frustrated over pixel coding. I want developers to play and explore their abilities to their limits.</p>
+<p>We made a Migrify package that adds UX layer <strong>that handles the tedious maintenance for you</strong>.</p>
+<h2 id="4-steps-to-generate-your-first-patch">4 Steps to Generate Your First Patch</h2>
+<h3 id="1-install-packages">1. Install Packages</h3>
+<pre><code class="language-bash">composer require cweagans/composer-patches migrify/vendor-patches --dev</code></pre>
+<h3 id="2-create-a-copy-of-code-vendor-code-file-you-want-to-change-with-code-old-code-suffix">2. Create a Copy of <code>/vendor</code> file you Want To Change with <code>*.old</code> Suffix</h3>
+<p>For example, if you edit:</p>
+<pre><code class="language-bash">vendor/nette/di/src/DI/Extensions/InjectExtension.php</code></pre>
+<p>The copied file would be:</p>
+<pre><code class="language-bash">vendor/nette/di/src/DI/Extensions/InjectExtension.php.old</code></pre>
+<h3 id="3-open-the-original-file-and-change-it">3. Open the Original file and Change it</h3>
+<pre><code class="language-diff">         if (DI\Helpers::parseAnnotation($rp, 'inject') !== null) {
+-           if ($type = DI\Helpers::parseAnnotation($rp, 'var')) {
++           if ($type = \Amateri\Reflection\Helper\StaticReflectionHelper::getPropertyType($rp)) {
++           } elseif ($type = DI\Helpers::parseAnnotation($rp, 'var')) {
+               $type = Reflection::expandClassName($type, Reflection::getPropertyDeclaringClass($rp));</code></pre>
+<p>Only <code>*.php</code> file is loaded, not the <code>*.php.old</code> one. This way, you can <strong>be sure the new code</strong> is working before you generate patches.</p>
+<h3 id="4-run-code-generate-code-command-to-create-patch-file-and-register-it">4. Run <code>generate</code> command to Create Patch File and Register it</h3>
+<pre><code class="language-bash">vendor/bin/vendor-patches generate</code></pre>
+<p>The Migrify tool will generate patch files for all files created this way in <code>/patches</code> directory:</p>
+<pre><code class="language-bash">/patches/nette-di-di-extensions-injectextension.php.patch</code></pre>
+<p>The patch path is created from the original file path, so <strong>the patch name is always unique</strong>.</p>
+<p>Also, the configuration for <code>cweagans/composer-patches</code> is added your <code>composer.json</code>:</p>
+<pre><code class="language-json">{
+    "extra": {
+        "patches": {
+            "nette/di": [
+                "patches/nette_di_di_extensions_injectextension.patch"
+            ]
+        }
+    }
+}</code></pre>
+<p>That's it!</p>
+<p><br></p>
+<p>Now all you need to do is run composer:</p>
+<pre><code class="language-bash">composer install</code></pre>
+<p>And your patches are applied to your code!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/29/how-will-programming-look-like-in-2025" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How Will Programming look like in 2025?
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-02-how-to-patch-package-in-vendor-yet-allow-its-updates.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Patch a Package in Vendor, Yet Allow its Updates" />
+    <meta property="og:description" content="While working with legacy code upgrades, we often need to fix a line or two in 3rd party package in `/vendor`.
+
+
+You can fork it, but by that, you **take manual responsibility** for all the package updates.
+You can copy a package locally, which is faster, but **disables package updates**.
+
+Or... you can use &quot;composer patches&quot;?
+" />
+    <meta property="og:url" content="/blog/2020/07/02/how-to-patch-package-in-vendor-yet-allow-its-updates" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Patch a Package in Vendor, Yet Allow its Updates" />
+    <meta name="twitter:description" content="While working with legacy code upgrades, we often need to fix a line or two in 3rd party package in `/vendor`.
+
+
+You can fork it, but by that, you **take manual responsibility** for all the package updates.
+You can copy a package locally, which is faster, but **disables package updates**.
+
+Or... you can use &quot;composer patches&quot;?
+" />

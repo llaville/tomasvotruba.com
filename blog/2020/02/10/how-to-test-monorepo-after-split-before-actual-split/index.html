@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Test Monorepo After Split Before Actual Split | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 238 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Test Monorepo After Split Before Actual Split</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-02-Mon">
+            
+                            Mon, Feb 10
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/02/10/how-to-test-monorepo-after-split-before-actual-split/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-02-10-how-to-test-monorepo-after-split-before-actual-split.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In 14 months old post <a href="/blog/2018/11/22/how-to-test-monorepo-in-3-layers/#3-after-split-testing">How to Test Monorepo in 3 Layers</a> we talked about testing monorepo in 3 layers. So you can be sure every package works as it should.
+<br>
+<br>
+3 layers are testing in a monorepo, testing package directory, and testing after a split.
+<strong>The latter takes a huge amount of time</strong>. The time we don't have to spare in 2020.
+<br>
+<br>
+<strong>How can we make it faster while keeping the test quality high?</strong></p>
+                    </div>
+                </div>
+
+                <p>Do you use Github Actions on your Github projects? Well, if you do, <strong><a href="/blog/2020/01/27/switch-travis-to-github-actions-to-reduce-stress/">it might cut your commit feedback loop</a> from 17 minutes to just 3</strong> and make you super productive by accident.</p>
+<p>We now use Github Actions on Symplify and Rector for over a month, and in January 2020, it helped us <a href="https://twitter.com/VotrubaT/status/1220126675436032005">to merge amazing 177 pull-requests</a>.</p>
+<h2 id="warning-cleaning-up-might-cause-you-to-spot-more-bottle-necks">Warning: Cleaning Up Might Cause you to Spot more Bottle Necks</h2>
+<p>That's why so few developers like to tidy up. It usually only shows worse and worse mess in the code.</p>
+<p>The worse mess in our code was the 3rd layer of monorepo testing - <strong>after split tests</strong>.</p>
+<p>We had to wait till the full monorepo is split (+ 5 minutes), and CI runs on each split package (+ 2 minutes). So instead of 3 minutes, we're now back on 10 minutes. Also, the split testing can <strong>only happen after the PR is merged into the <code>master</code> branch</strong>.</p>
+<p>Do your 1st and 2nd layer pass? All good? <strong>You have to wait till the split to find out it's not all good</strong>. Doh.</p>
+<h2 id="short-reminder-what-is-the-3rd-layer-of-monorepo-testing">Short Reminder: What is the 3rd layer of Monorepo Testing?</h2>
+<p>Let's say you run:</p>
+<pre><code class="language-bash">git clone git@github.com:symfony/console.git
+
+composer install
+# all needed dependencies are installed, symfony/* and all external in /vendor directory
+
+vendor/bin/phpunit</code></pre>
+<p>And that's all! The standard way of testing packages.</p>
+<p><strong>But</strong> with monorepo, the symfony/console is just one of directories in <a href="https://github.com/symfony/symfony">big monorepo symfony/symfony repository</a>:</p>
+<pre><code class="language-bash">symfony/src/Symfony/Component/Console
+symfony/src/Symfony/Component/EventDispatcher
+symfony/src/Symfony/Component/HttpKernel
+...</code></pre>
+<p>To run unit tests on symfony/console only, we'd have to call PHPUnit on the directory:</p>
+<pre><code class="language-bash">vendor/bin/phpunit -d symfony/src/Symfony/Component/Console</code></pre>
+<p>But there is no:</p>
+<pre><code class="language-bash">symfony/src/Symfony/Component/Console/vendor/*</code></pre>
+<p><strong>So we can't test it</strong>. That's why we have to <strong>wait after the split is done</strong> and trigger tests in a split repository - <code>symfony/console</code> the way we did at first:</p>
+<pre><code class="language-bash">git clone git@github.com:symfony/console.git
+
+# all needed dependencies are installed, symfony/* and all external
+composer install
+
+vendor/bin/phpunit</code></pre>
+<p>You can read more about it <a href="/blog/2020/02/10/how-to-test-monorepo-after-split-before-actual-split/">in original post</a>.</p>
+<p><br></p>
+<h2 id="status-quo-it-sucks-but-it-s-the-best-testing">Status Quo: It Sucks, but it's the Best Testing</h2>
+<p>3rd layer of monorepo testing sucks</p>
+<ul>
+<li>it takes + 10 minutes</li>
+<li>it doesn't test pull-requests - it's like tests without CI basically</li>
+<li>it confusing to have few tests in one repository and one repository</li>
+</ul>
+<p>It's so bad that <strong>the most monorepo projects don't have this 3rd layer</strong> - Symfony nor Laravel. And I don't blame them. I was about to drop it too because having feedback about one line of code from 2 sides with entirely different settings hurts my brain.</p>
+<p>The problem is, <strong>this 3rd layer testing is the closest to the reality of how these packages are used</strong>. So missing it will cause you headaches with bugs, so simple to find by users of your packages that you won't believe them.</p>
+<h2 id="could-it-be-possible-with-github-actions">Could it be possible with GitHub Actions?</h2>
+<p>This bottleneck got me thinking... what do we need to simulate?</p>
+<pre><code class="language-bash">git clone git@github.com:symfony/console.git
+
+# all needed dependencies are installed, symfony/* and all external
+composer install
+
+vendor/bin/phpunit</code></pre>
+<p>Just locally for every package.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    Albert Einstein always taught me:
+    <br>
+    "think in patterns, my young padawan",
+    <br>
+    so I knew there must be a way.
+</blockquote>
+<p><del>Then I suddenly knew what to do!</del></p>
+<p><br></p>
+<p>I won't lie, it took me 3-4 hours of trial and error and many toilet <em>eureka</em> visits to figure out the working model. What went wrong at first?</p>
+<ul>
+<li><strong>Symlink cannot be used</strong>, because real/relative paths are different from standard package testing</li>
+<li><strong>All packages can't run in one workflow</strong>, because it's super slow</li>
+<li><strong>We cannot use shared vendor</strong>, the dependencies are conflicting</li>
+</ul>
+<h3 id="so-what-worked">So What Worked?</h3>
+<ul>
+<li>Every package <code>composer.json</code> had to require mutually dependencies (e.g <code>symplify/easy-coding-standard</code> requires <code>symplify/package-builder</code>) with <code>*</code></li>
+<li>Every other package had to require other packages via <a href="https://getcomposer.org/doc/05-repositories.md#path">composer <em>path</em> repository</a>:</li>
+</ul>
+<img src="/assets/images/posts/split_before_split.png" class="img-thumbnail">
+<p><br></p>
+<p>There was <strong>one more pit to fall into</strong>. How many repositories we have to add here?</p>
+<pre><code class="language-diff"> {
+     "require": {
+-         "symplify/package-builder": "^7.3"
++         "symplify/package-builder": "*"
+     }
+ }</code></pre>
+<p>Just this one, right?</p>
+<pre><code class="language-diff">+"repositories": [
++        {
++            "type": "path",
++            "url": "../../packages/package-builder",
++            "options": {
++                "symlink": false
++            }
++        }
++}</code></pre>
+<p>Well, I assumed so, but this would eventually download <code>symplify/package-builder</code> with local version, *<em>but all the rest of `symplify/</em>` packages from packagist**. In the end we'll have a mess like:</p>
+<ul>
+<li><code>symplify/package-builder</code> - local <em class="fas fa-fw fa-check text-success"></em></li>
+<li><code>symplify/autowire-array-parameter</code> - from packagist before split !== different code that we use <em class="fas fa-fw fa-times text-danger"></em></li>
+</ul>
+<p>We have to <strong>add all the possible local repositories</strong>, so the package always has the local version of the code.</p>
+<h2 id="showcase-symplify-workflow">Showcase: Symplify Workflow</h2>
+<p>It makes sense, but it sounds like a lot of manual work, right? Not for long!</p>
+<p><br></p>
+<p>You know me too well, me and <em>manual work</em> don't get on very well with each other.</p>
+<p><strong>I made a command for MonorepoBuilder that does all the work above for us</strong>:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder localize-composer-paths</code></pre>
+<p>All we need to do is run it before <code>composer update</code>.</p>
+<p><br></p>
+<p>This simple idea is running split tests in 14 Symplify packages. How?</p>
+<ul>
+<li>switch to the package directory</li>
+<li>modify paths to use local path packages <strong>without</strong> symlink to prevent path false positives</li>
+<li>install dependencies</li>
+<li>run <code>vendor/bin/phpunit</code> there</li>
+</ul>
+<pre><code class="language-yaml"># .github/workflows/after_split_testing.yaml
+name: After Split Testing
+
+jobs:
+    after_split_testing:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v2
+            -   uses: shivammathur/setup-php@v1
+                with:
+                    php-version: 7.4
+                    coverage: none
+
+            -   run: |
+                    composer install --no-progress
+
+                    # this is the magic
+                    packages/monorepo-builder/bin/monorepo-builder localize-composer-paths
+
+                    # testing one package
+                    cd packages/easy-coding-standard
+
+                    # download dependencies
+                    composer update --no-progress
+
+                    # run tests
+                    vendor/bin/phpunit</code></pre>
+<p>And that's it! <strong>1 extra new line in workflow</strong> is a worth hour of human-hours a week on one project.</p>
+<p><br></p>
+<p>See <a href="https://raw.githubusercontent.com/symplify/symplify/151b7a6be28a26fcb94252d91e4c3d061eec7617/.github/workflows/after_split_testing.yaml">full workflow</a> prevent repeating code.</p>
+<p><strong><a href="https://github.com/symplify/symplify/pull/1755">See full pull-request</a></strong>.</p>
+<p>A reminder: <strong>this all is possible thanks to super-fast Github Actions</strong> with 20 concurrent workers. On Travis with only 3 workers, this might take extra 15-25 minutes, which is utterly annoying.</p>
+<p><br></p>
+<p>Happy speed coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/02/03/how-to-run-rector-and-phpstan-on-huge-project-in-3-seconds-with-phpstorm" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to run Rector and PHPStan on Huge Project in 3 Seconds with PHPStorm
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-02-10-how-to-test-monorepo-after-split-before-actual-split.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Test Monorepo After Split Before Actual Split" />
+    <meta property="og:description" content="In 14 months old post [How to Test Monorepo in 3 Layers](/blog/2018/11/22/how-to-test-monorepo-in-3-layers/#3-after-split-testing) we talked about testing monorepo in 3 layers. So you can be sure every package works as it should.
+
+
+3 layers are testing in a monorepo, testing package directory, and testing after a split.
+**The latter takes a huge amount of time**. The time we don&#039;t have to spare in 2020.
+
+
+**How can we make it faster while keeping the test quality high?**
+" />
+    <meta property="og:url" content="/blog/2020/02/10/how-to-test-monorepo-after-split-before-actual-split" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Test Monorepo After Split Before Actual Split" />
+    <meta name="twitter:description" content="In 14 months old post [How to Test Monorepo in 3 Layers](/blog/2018/11/22/how-to-test-monorepo-in-3-layers/#3-after-split-testing) we talked about testing monorepo in 3 layers. So you can be sure every package works as it should.
+
+
+3 layers are testing in a monorepo, testing package directory, and testing after a split.
+**The latter takes a huge amount of time**. The time we don&#039;t have to spare in 2020.
+
+
+**How can we make it faster while keeping the test quality high?**
+" />

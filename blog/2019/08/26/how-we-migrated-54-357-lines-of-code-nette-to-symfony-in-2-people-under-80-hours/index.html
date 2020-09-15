@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How we Migrated 54 357-lines Application from Nette to Symfony in 2 People under 80 Hours | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 260 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How we Migrated 54 357-lines Application from Nette to Symfony in 2 People under 80 Hours</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>8 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-08-Mon">
+            <strike>
+                            Mon, Aug 26, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Jun, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-08-26-how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours.md.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at June 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <a href="http://github.com/migrify">Migrify</a> packages and local links.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>It would take us <strong>3 full-time months</strong> to rewrite this code in 2017. In February 2019, we did it <strong>in less than 3 weeks</strong> with the help of automated tools. Why and how?</p>
+                    </div>
+                </div>
+
+                <p><em>Similar post was originally published <a href="https://www.zdrojak.cz/clanky/50k-radku-z-nette-do-symfony">in Czech on Zdrojak.cz</a>, where it got colossal attention of the PHP community and hit a record of 56 comments. But when I talk about this migration with my English speaking PHP friends, it seems crazy to them, and they want to hear details - who, how, when, what exactly?</em></p>
+<p><em>This post is for you (and for you of course, if you haven't read it on Zdroják).</em></p>
+<div class="text-center">
+<img src="/assets/images/posts/2019/fw-migration/nette-to-symfony.png"></div>
+<h2 id="what-have-we-migrated">What Have We Migrated?</h2>
+<p>Backend of <a href="https://entry.do">Entry.do</a> project - API application built on controllers, routing, Kdyby integrations of Symfony, Doctrine, and a few Latte templates. The application has been running in production for the last 4 years. We migrated from Nette 2.4 to Symfony&nbsp;4.2.</p>
+<p>How big is it? If we don't count tests, migration, fixtures, etc., the application has <strong>270 PHP files</strong> in the length of <strong>54 357 lines</strong> (using <a href="https://github.com/sebastianbergmann/phploc">phploc</a>).</p>
+<p>How many unique routes does it have? 20...? 50...? <strong>151!</strong>
+Just to have an idea, the pehapkari.cz website has 35 routes.</p>
+<h2 id="why">Why?</h2>
+<p>The application used framework Nette, which worked and met the technical requirements. The primary motivation for the transcription was the dying ecosystem and the over-integration of Symfony. What does the &quot;dying ecosystem&quot; mean? Nette released just 1 minor version since July 2016, while Symfony had 6 releases during the same period.</p>
+<div class="text-center mb-4">
+    <img src="/assets/images/posts/2019/fw-migration/extensions.png"><br>
+    80% of the extensions are just glue integrations of Symfony and Doctrine
+</div>
+<div class="text-center mb-4">
+    <img src="/assets/images/posts/2019/fw-migration/nette-symfony.png"><br>
+    Nette was just Controllers, Routing and Dependency-Injection
+</div>
+<p>Why use unmaintained integrations of <a href="https://github.com/kdyby">Kdyby</a> and <a href="https://github.com/zenify">Zenify</a>, that only integrate Symfony to Nette\DI, if Symfony is already there? The last new minor version of Nette was published 3 years ago. Symfony releases a new minor version every 6 months with new features that will make your work easier.</p>
+<h2 id="how">How?</h2>
+<p>I offered <a href="https://janmikes.cz">Honza Mikes</a> deal he couldn't refuse:</p>
+<blockquote class="blockquote text-center">
+"We will give it a week, and if we get stuck, we'll give up".
+</blockquote>
+<p>On January 27th, we met with his Nette application, and on February 13th, the Symfony application went to the staging server. <strong>In less than 17 days, we finished migration</strong>, and on February 14th, we celebrated a new production application in addition to Valentine's Day.</p>
+<div class="text-center mb-4">
+<img src="/assets/images/posts/2019/fw-migration/pull-request.png" class="img-thumbnail">
+<p>The final size of migration pull-request</p>
+</div>
+<p>We talked about migration at the beginning of 2017 because the Nette ecosystem wasn't developing, and Symfony was technologically skipping it. At that time, however, the transition would last at least 80-90 days for full-time, which is insane, so we didn't go into it.</p>
+<h2 id="tool-set">Tool Set</h2>
+<p>In 2019 we already had a <strong>lot of tools to do the work for you</strong>:</p>
+<ul>
+<li>
+<p>The first is <a href="https://github.com/rectorphp/rector">Rector</a>, a tool I made that can change any code that runs at least on PHP 5.3 from pattern A to pattern B. It can instantly update the code from PHP 5.3, 5.4, 5.5, 5.6... to 7.4, Symfony from 2.8 to 4.2, Laravel from static code to constructor injection, and more. You can add your own rules tailored to migrate your specific code, that can handle anything that PHP programmer can do (A → B) in a fraction of the time.</p>
+</li>
+<li>
+<p>The second is <a href="https://github.com/migrify/neon-to-yaml">NeonToYaml</a> - as you can guess, it converts NEON syntax to YAML</p>
+</li>
+<li>
+<p>The third assistant is <a href="https://github.com/migrify/latte-to-twig">LatteToTwigConverter</a> - it migrates Latte files to TWIG syntax</p>
+</li>
+</ul>
+<p>During those <strong>17 days, we put in 80 hours of work</strong> for both of us together (= 40 hours each).</p>
+<h2 id="20-of-good-old-manual-work">20 % of Good Old Manual Work</h2>
+<p>Although we do not like it, we had to do 20 % of the migration manually.</p>
+<p>One of the first steps was to move from <a href="/blog/2019/02/14/why-config-coding-sucks/">config programming to PHP programming</a>. Both frameworks try to promote their sugar syntax for Neon or YAML. It sounds cool to new programmers to write less code. Still, it's confusing, framework-specific, can be done in plain PHP anyway, and most importantly, static analysis and instant refactoring won't deal with it.</p>
+<p>How does &quot;config programming&quot; look like?</p>
+<pre><code class="language-yaml">services:
+    - FirstService(@secondService::someMethod())</code></pre>
+<p>Or also:</p>
+<pre><code class="language-yaml">services:
+    -
+        class: 'Entrydo\Infrastructure\Payment\GoPay\NotifyUrlFactory'
+        arguments:
+            - '@http.request::getUrl()::getHostUrl()'</code></pre>
+<p>What typical PHP pattern, that is framework-agnostic and almost everyone knows, can we use?</p>
+<p>Factory!</p>
+<pre><code class="language-php">&lt;?php
+
+final class FirstServiceFactory
+{
+    /**
+     * @var SecondService
+     */
+    private $secondService;
+
+    public function __construct(SecondService $secondService)
+    {
+        $this-&gt;secondService = $secondService;
+    }
+
+    public function create()
+    {
+        return new SomeService($this-&gt;secondService);
+    }
+}</code></pre>
+<h3 id="what-did-we-gained-with-this-refactoring">What did we Gained with This Refactoring?</h3>
+<ul>
+<li>Constructor injection!</li>
+<li>Framework independence - when we migrate to another framework or pattern in 3 years, we don't have to deal with this file anymore.</li>
+<li>Static analysis works</li>
+<li>More testable code, thanks to PHP code instead of config</li>
+<li>PHPStorm refactoring works</li>
+<li>Rector works</li>
+<li>It's a clear PHP code</li>
+</ul>
+<p><br></p>
+<p>In Nette and Symfony, several things were different:</p>
+<ul>
+<li>ErrorPresenter → <a href="https://symfony.com/doc/current/event_dispatcher.html%23creating-an-event-subscriber">ExceptionSubscriber</a></li>
+<li>Use <a href="https://symfony.com/doc/current/testing.html">SymfonyTestBundle</a> for tests</li>
+<li>Moving Files to <a href="http://fabien.potencier.org/symfony4-directory-structure.html">Symfony 4 Single-Level Structure</a></li>
+<li>Exchange of services in mock tests</li>
+<li>In Nette, there is a Request/Response service, but in Symfony, it's an object</li>
+<li>Rewrite extension configs to Flex configs</li>
+</ul>
+<h2 id="80-of-work-automated">80 % of Work Automated</h2>
+<p>Automatic tools did another 80% of the pull-request you saw above. The first one was enough to write, the other one to set it up.</p>
+<h2 id="neon-to-yaml">Neon to YAML</h2>
+<p>Neon and YAML are de facto fields <a href="/blog/2018/03/12/neon-vs-yaml-and-how-to-migrate-between-them/">with minor differences in syntax</a>, but when it comes to services, each framework writes a little differently. Config with services had 316 lines in the services section. You don't want to migrate it manually, the Neon entities. Besides, just one error in related migration, and you can do it all over again.</p>
+<p>I took few hours and wrote <a href="https://github.com/migrify/neon-to-yaml">Migrify/NeonToYaml</a>. Just pass the path to the <code>*.neon</code> file, and it will convert into a beautiful <code>*.yaml</code> file.</p>
+<h2 id="php-migration">PHP Migration</h2>
+<p>Again to the factory pattern - there were several custom Response classes in the code that inherited from Nette Response and added extra logic. We could edit them manually, but it was easier to extract them into the factory method:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomePresenter
+ {
++    /**
++     * @var ResponseFactory
++     */
++    private $responseFactory;
++
++    public function __construct(ResponseFactory $responseFactory)
++    {
++        $this-&gt;responseFactory = $responseFactory;
++    }
++
+     public function someAction()
+     {
+-        return new OKResponse($response);
++        return $this-&gt;responseFactory-&gt;createJsonResponse($response);
+     }
+ }</code></pre>
+<p><a href="https://janmikes.cz">Honza</a> created new <code>NewObjectToFactoryCreateRector</code> rule that handled this.</p>
+<h2 id="what-else-was-left">What else was left?</h2>
+<ul>
+<li>Move the routing from <code>RouterFactory</code> to particular Controller actions</li>
+<li>Rename <code>Request</code> and <code>Response</code> classes + including their codes (<code>POST</code>, <code>GET</code>, <code>200</code>...)</li>
+<li>Rename classes and methods on <code>Nette\DI\Container</code>, <code>Nette\Configurator</code>, <code>Nette\Application\IPresenter</code> etc,</li>
+<li>Changing parent classes on Controllers,</li>
+<li>Renaming Controllers to <code>*Controller</code> (they use &quot;Presenter&quot; naming in Nette)</li>
+<li>Move namespaces from <code>App\Presenter</code> to <code>App\Controller</code></li>
+</ul>
+<p>The most changes were in controllers:</p>
+<pre><code class="language-diff"> &lt;?php declare (strict_types = 1);
+
+-namespace App\Presenter;
++namespace App\Controller;
+
+-use Nette\Application\AI\Presenter;
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+-use Nette\Http\Request;
++use Symfony\Component\HttpFoundation\Request;
+
+-final class SomePresenter extends Presenter
++final class SomeController extends AbstractController
+ {
+-    public static function someAction()
++    public static function someAction(Request $request)
+     {
+-        $header = $this-&gt; httpRequest-&gt; getHeader('x');
++        $header = $request-&gt; headers-&gt; get('x');
+
+-        $method = Request::POST;
++        $method = Request::METHOD_HPOST
+     }
+ }</code></pre>
+<h2 id="syntax-sugar-syntax-hell">Syntax Sugar? Syntax Hell</h2>
+<p>For a while, Kdyby\Translation screwed us with &quot;syntax sugar&quot;. In the Nette application, the listing of variables (Tom) worked for us:</p>
+<ul>
+<li>&quot;Hi, my name is Tom&quot;</li>
+</ul>
+<p>But in Symfony magically added <code>%%</code>:</p>
+<ul>
+<li>&quot;Hi, my name is% Tom%&quot;</li>
+</ul>
+<p>WTF? After 15 minutes we figured it out - Kdyby\Translation wrapped the variable name in &quot;%%&quot; for you - and fixed it:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomePresenter
+ {
+     public function someAction()
+     {
+         // Kdyby/Translation differnce to native Symfony/Translation
+         $this-&gt;translations-&gt;translate('Hi, my name is %name%', [
+-            'name' =&gt; 'Tom',
++            '%name%' =&gt; 'Tom'
+         ]);
+     }
+ }</code></pre>
+<p>Pretty cool, huh?</p>
+<h2 id="rename-event-names">Rename Event Names</h2>
+<p>We also cannot forget the rename of events from Contribute\Events to Symfony <a href="https://symfony.com/doc/current/reference/events.html%23kernel-events">KernelEvents</a>:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/fw-migration/event-rename.png"></div>
+<h2 id="from-code-routerfactory-code-to-controller-code-route-code-annotation">From <code>RouterFactory</code> to Controller <code>@Route</code> annotation</h2>
+<p>RouteFactory is <a href="https://github.com/nette/sandbox/blob/06a92123fb6a1d82de38037436ca06484afec8dc/app/Router/RouterFactory.php">single class</a> in Nette to define all routes for all controllers and their actions. In Symfony, this is quite the opposite. You define the routes directly at the Controller action. And to make matters worse, it <a href="https://symfony.com/doc/current/routing.html%23creating-routes">uses annotation</a>.</p>
+<p>What with this? Well, one option is to move one route at a time - <strong>all 151</strong>. To make it even more challenging, we had our own <code>RestRoute</code> and our own <code>RouteList</code>, including POST/GET/..., which Nette doesn't have.</p>
+<p>How does one change look like?</p>
+<pre><code class="language-diff"> &lt;?php
+
+ namespace App;
+
+ use Entrydo\RestRouteList;
+ use Entrydo\Restart;
+
+ final class RouterFactory
+ {
+-    private const PAYMENT_RESPONSE_ROUTE = '/ payment / process';
+     // 150 more!
+
+     public function create()
+     {
+         $router = new RestRouteList();
+-        $router[] = RestRoute::get(self::PAYMENT_RESPONSE_ROUTE, ProcessGPWebPayResponsePresenter::class);
+          // 150 more!
+
+          return $router;
+      }
+ }</code></pre>
+<pre><code class="language-diff"> namespace App Presenter;
+
++use Symfony\Component\Routing\Annotation\Route;
+
+ final class ProcessGPWebPayResponsePresenter
+ {
++    /**
++     * @Route(path = "/payments/gpwebpay/process-response", methods="GET"})
++     */
+     public function __invoke()
+     {
+         // ...
+     }
+ }</code></pre>
+<p>Now do this 151 times... and make rebase-proof. When we first talked about the migration in 2017, we would make all these changes manually. <strong>Too lazy to work.</strong></p>
+<p>And in 2019? For a few days, we were preparing the <code>nette-to-symfony</code> Rector set and then run it on the entire code base:</p>
+<pre><code class="language-bash">composer require rector/rector -dev
+vendor/bin/rector process app src --level nette-to-symfony</code></pre>
+<p>And it is done  :)</p>
+<p>Everything we've learned during the 17-day migration is in this set and this post. Just download Rector, and you can use the set straight away.</p>
+<p>From Valentine's Day to the nette-to-symfony set, a complete migration from Nette Tester to PHPUnit and the migration of Nette Forms to Symfony Forms and Component to Controllers have been added.</p>
+<h2 id="final-touches">Final Touches</h2>
+<p>After a lot of static content changes, the code worked, and the tests went through, but it looked messy. Spaces were missing, fully qualified class names were not imported, etc.</p>
+<p>You can use your own PHP_CodeSniffer and PHP-CS-Fixer set. We used the <a href="https://github.com/rectorphp/rector/blob/master/ecs-after-rector.php">Rector-prepared set of 7 rules</a> with <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a>:</p>
+<pre><code class="language-bash">vendor/bin/ecs check app src --config vendor/rector/rector/ecs-after-rector.php</code></pre>
+<h2 id="it-s-not-about-the-work-it-s-about-the-knowledge">It's not about the Work, It's about the Knowledge</h2>
+<p>And so we migrated a 4-years old Nette application of 54 357 lines under 80 hours to Symfony and put it into production. Most of the time took us debugging events and writing migration rules and tools. Now <strong>the same application would take us (or you) 10 hours top to migrate</strong>.</p>
+<p><br></p>
+<p>As you can see, any application can be migrated from one framework to another under a month. Dare us!</p>
+<p><br></p>
+<p>Happy migrating!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-08-26-how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours.md.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How we Migrated 54 357-lines Application from Nette to Symfony in 2 People under 80 Hours" />
+    <meta property="og:description" content="It would take us **3 full-time months** to rewrite this code in 2017. In February 2019, we did it **in less than 3 weeks** with the help of automated tools. Why and how?
+" />
+    <meta property="og:url" content="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How we Migrated 54 357-lines Application from Nette to Symfony in 2 People under 80 Hours" />
+    <meta name="twitter:description" content="It would take us **3 full-time months** to rewrite this code in 2017. In February 2019, we did it **in less than 3 weeks** with the help of automated tools. Why and how?
+" />

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Symbiotic Controller: Nette Presenter with Freedom | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 43 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Symbiotic Controller: Nette&nbsp;Presenter&nbsp;with&nbsp;Freedom</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-06-Mon">
+            
+                            Mon, Jun 19, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/06/19/symbiotic-controller-nette-presenter-with-freedom/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-19-symbiotic-controller-nette-presenter-with-freedom.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at October 2017</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>This was deprecated due to low usage of package and too complicated API. <strong>Use class that implements <code>Nette\Application\IPresenter</code> with <code>run(Request $request)</code> instead</strong>.</p>
+<p>For more, see <a href="https://github.com/symplify/symplify/issues/402">issue on Github</a>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symfony and Laravel allow decoupled controllers by default thanks to simple principle: <em>controller/presenter = callback</em>. No base class or interface is needed.</p>
+<p>People around me are already using single action presenters, but still depend on Nette. Why? Coupling of <code>IPresenter</code> in Application and Router.</p>
+<p>I think framework should help you and not limit you in a way how you write your code. <strong>Today we look how to make that happen even for Nette presenters and how to set them free</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="3-misconceptions-first">3 Misconceptions First</h2>
+<p>When I talked about <a href="https://www.facebook.com/pehapkari/videos/1285464581503349">single action or rather invokable presenters in Nette</a> on 87. Posobota meetup in Prague, <strong>people were talking about 3 missconceptions</strong>. I'd like clarify them first.</p>
+<h3 id="1-nette-needs-code-ipresenter-code">1. Nette needs <code>IPresenter</code></h3>
+<p>My first attempt decouple presenter from Nette <a href="https://github.com/nette/application/blob/0941b6b7023a43ddd0627ad5ac3ffba606709ef5/src/Application/PresenterFactory.php#L78-L79">failed on <code>PresenterFactory</code></a>:</p>
+<pre><code class="language-php">// ...
+if (!$reflection-&gt;implementsInterface(IPresenter::class)) {
+    throw new InvalidPresenterException("Cannot load presenter '$name', class '$class' is not Nette\\Application\\IPresenter implementor.");
+}</code></pre>
+<p>This took me few weeks to figure out because of coupling to latte, providers and layout autodiscovery.
+I needed to modify <code>PresenterFactory</code>, <code>Application-&gt;run()</code> and create own <code>PresneterRoute</code>.</p>
+<p><strong>So yes, when you modify few places, you can use it without <code>IPresenter</code> interface.</strong></p>
+<h3 id="2-what-about-ajax-what-about-components">2. What about ajax? What about Components?</h3>
+<p><strong>If you use ajax and components, this approach is not probably for you application</strong>.</p>
+<p>I thought it's impossible to use Nette without components as well, but <a href="https://ondrej.mirtes.cz">Ondrej Mirtes</a> from Slevomat take me out of my misery: &quot;We don't use components in Slevomat, just presenters.&quot; So feel free to ask him how they do it.</p>
+<p><strong>You'll appreciate this approach in applications, where</strong>:</p>
+<ul>
+<li>frontend is managed not by Nette ajax, but by <strong>ReactJS, Angular or any other frontend framework</strong></li>
+<li><strong>API, Rest or GraphQL</strong> is the main entry point to the application</li>
+<li>your application is growing and you want to <strong>avoid god classes like presenters with 10 actions methods</strong> in next couple of years</li>
+</ul>
+<h3 id="3-there-should-be-an-interface-for-that">3. There should be an Interface for that</h3>
+<p>Even when some people agreed with invokable/single action approach, they still missed some interface that would enforce a method. I must say <code>__invoke()</code> method seemed weird to me at first too.</p>
+<p><strong>Give <code>invoke()</code> a try, it's Fine</strong></p>
+<p>But I've learned what <a href="https://php.net/manual/en/language.oop5.magic.php#object.invoke"><code>__invoke()</code> is</a> and that <a href="https://symfony.com/doc/current/controller/service.html#invokable-controllers">Symfony</a> and <a href="https://laravel.com/docs/5.4/controllers#single-action-controllers">Laravel use</a> it for years.</p>
+<p>Also, <strong>using an interface would only create a new dependency</strong> for something that is already used in specific way. Moreover for controller which <a href="https://book.cakephp.org/2.0/en/controllers.html#controller-actions">every</a> <a href="http://www.yiiframework.com/doc-2.0/guide-structure-controllers.html#actions">framework</a> <a href="https://book.cakephp.org/3.0/en/controllers.html">bend</a> <a href="https://laravel.com/docs/5.4/controllers#defining-controllers">to</a> <a href="https://doc.nette.org/en/2.4/presenters#toc-processing-presenter-action">its</a> <a href="https://symfony.com/doc/current/best_practices/controllers.html#what-does-the-controller-look-like">own</a> needs.</p>
+<p><code>__invoke()</code> is normal method, just like <code>__constructor()</code> is normal for passing dependencies nowadays.</p>
+<h2 id="inspiration-from-symfony-community-matthias-noback-amp-kevin-dunglas">Inspiration from Symfony Community - Matthias Noback &amp; Kevin Dunglas</h2>
+<p><strong>Why Decouple Controller From Framework?</strong></p>
+<p>If you look for reasons to decouple from framework, read <a href="https://php-and-symfony.matthiasnoback.nl/tags/controller">this 3 parts series: Framework Independent Controllers</a> by <a href="https://matthiasnoback.nl">Matthias Noback</a> about independent controllers in Symfony.</p>
+<p><strong>Why are Single Action Presenters Great for Growing Projects?</strong></p>
+<p>Similar <a href="https://dunglas.fr/2016/01/dunglasactionbundle-symfony-controllers-redesigned">package and post</a> was made by Kevin Dunglas exactly 1,5 year ago. You'll find your answers there.</p>
+<p>No more questions, right to the code.</p>
+<h2 id="how-single-action-controller-looks-like">How Single Action Controller looks like?</h2>
+<p>The goal was:</p>
+<ul>
+<li><strong>don't depend on any interface or class</strong></li>
+<li>have <strong>1 public method</strong> <code>__invoke()</code></li>
+</ul>
+<p>Ideal code for Nette-agnostic presenter would look like this:</p>
+<pre><code class="language-php">namespace App\Presenter;
+
+use Symplify\SymbioticController\Adapter\Nette\Template\TemplateRenderer;
+
+final class StandalonePresenter
+{
+    /**
+     * @var TemplateRenderer
+     */
+    private $templateRenderer;
+
+    public function __construct(TemplateRenderer $templateRenderer)
+    {
+        $this-&gt;templateRenderer = $templateRenderer;
+    }
+
+    public function __invoke(): string
+    {
+        return $this-&gt;templateRenderer-&gt;renderFileWithParameters(
+            __DIR__ . '/templates/Contact.latte'
+        );
+    }
+}</code></pre>
+<p>Or if you use API and json:</p>
+<pre><code class="language-php">namespace App\Presenter;
+
+use Nette\Application\Responses\JsonResponse;
+
+final class ApiPresenter
+{
+    public function __invoke(): JsonResponse
+    {
+        return new JsonResponse('Hi!');
+    }
+}</code></pre>
+<h3 id="clickable-template-paths-as-positive-side-effect">Clickable template paths as Positive Side-Effect</h3>
+<p><code>Module:Presenter:template</code> =&gt; <code>__DIR__ . '/templates/template.latte</code></p>
+<p>Instead of using magic notation, you can go right with absolute path for templates.</p>
+<p>If this would be used by every controller and framework, there would be much lower entry barrier for front-end developers. Another new way to use your IDE the right-way:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/symbiotic-controller/presenter.gif" class="img-thumbnail"></div>
+<h2 id="and-router">And Router?</h2>
+<p>But how to register this presenter in router? Since the called action is now <em>not a method in a class</em> but <em>a class</em>, we cannot use common way to add route:</p>
+<pre><code class="language-php"># this won't work
+$routes[] = new Route('/contact', 'Contact:default');
+$routes[] = new Route('/contact', 'Contact:__invoke');</code></pre>
+<p>We need to use presenter as target:</p>
+<pre><code class="language-php">use App\Presenter\ContactPresenter;
+
+$routes[] = new Route('/contact', ContactPresenter::class);</code></pre>
+<p>But that won't work either as <code>Route</code> class requires <code>&lt;presenter&gt;:&lt;method&gt;</code> format for target.</p>
+<h3 id="presenter-route">Presenter Route</h3>
+<p>To solve this, <strong>we'll use custom Route that accepts Presenter class as argument</strong>.</p>
+<pre><code class="language-php"># app/Router/RouterFactory.php
+
+use App\Presenter\ContactPresenter;
+use Symplify\SymbioticController\Adapter\Nette\Routing;
+
+final class RouterFactory
+{
+    public function create(): RouteList
+    {
+        $routes = new RouteList;
+        $routes[] = new PresenterRoute('/contact', ContactPresenter::class);
+        $routes[] = new Route('&lt;presenter&gt;/&lt;action&gt;', 'Homepage:default');
+
+        return $routes;
+    }
+}</code></pre>
+<p>It has 2 important tasks:</p>
+<ul>
+<li><strong>it validates that class has <code>__invoke()</code> method</strong></li>
+<li>you can <strong>click right to the presenter class</strong> in your IDE</li>
+</ul>
+<h2 id="from-stringly-route-to-strongly-route">From Stringly Route to Strongly Route</h2>
+<p>Same way you can use your IDE to open the template, you can use it to open presenter target.</p>
+<p>From magic <code>Homepage:default</code> to clickable class:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/symbiotic-controller/router.gif" class="img-thumbnail"></div>
+<h2 id="3-steps-to-your-first-framework-agnostic-presenter-in-nette">3 Steps To Your First Framework Agnostic Presenter in Nette</h2>
+<h3 id="1-install-a-href-https-github-com-deprecatedpackages-symbioticcontroller-symplify-symbioticcontroller-a-package">1. Install <a href="https://github.com/DeprecatedPackages/SymbioticController">Symplify\SymbioticController</a> package</h3>
+<pre><code class="language-yaml">composer require symplify/symbiotic-controller</code></pre>
+<h3 id="2-register-needed-extensions">2. Register Needed Extensions</h3>
+<pre><code class="language-yaml"># app/config/config.neon
+
+extensions:
+    - Symplify\SymbioticController\Adapter\Nette\DI\SymbioticControllerExtension
+    - Contributte\EventDispatcher\DI\EventDispatcherExtension</code></pre>
+<h3 id="3-create-your-presenter-and-use-it">3. Create Your Presenter and Use It</h3>
+<p>That's all :)</p>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>Using framework agnostics controllers has its use cases. <strong>The best are: API, backend-mostly and fast growing applications</strong>.</li>
+<li>Don't be afraid of <code>__invoke()</code>. It is your friend, mainly for future.</li>
+<li><strong>Use Strong types over String types and forget the magic</strong>.</li>
+</ul>
+<h3 id="how-do-you-approach-using-controller-in-nette">How do YOU approach using controller (in Nette)?</h3>
+<ul>
+<li>Do you use components?</li>
+<li>Do you know why you depend on Nette?</li>
+<li>Do you try some other approach than traditional one?</li>
+</ul>
+<p>Let me know in the comments. I always like to hear different opinions.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-19-symbiotic-controller-nette-presenter-with-freedom.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Symbiotic Controller: Nette Presenter with Freedom" />
+    <meta property="og:description" content="Symfony and Laravel allow decoupled controllers by default thanks to simple principle: _controller/presenter = callback_. No base class or interface is needed.
+
+People around me are already using single action presenters, but still depend on Nette. Why? Coupling of `IPresenter` in Application and Router.
+
+I think framework should help you and not limit you in a way how you write your code. **Today we look how to make that happen even for Nette presenters and how to set them free**.
+" />
+    <meta property="og:url" content="/blog/2017/06/19/symbiotic-controller-nette-presenter-with-freedom" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Symbiotic Controller: Nette Presenter with Freedom" />
+    <meta name="twitter:description" content="Symfony and Laravel allow decoupled controllers by default thanks to simple principle: _controller/presenter = callback_. No base class or interface is needed.
+
+People around me are already using single action presenters, but still depend on Nette. Why? Coupling of `IPresenter` in Application and Router.
+
+I think framework should help you and not limit you in a way how you write your code. **Today we look how to make that happen even for Nette presenters and how to set them free**.
+" />

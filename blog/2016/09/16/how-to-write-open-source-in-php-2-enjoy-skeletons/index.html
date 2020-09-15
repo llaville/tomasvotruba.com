@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to write open-source in PHP 2: Rise value of your package with help of skeleton | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 13 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to write open-source in PHP 2: Rise value of your package with help of skeleton</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2016-09-Fri">
+            
+                            Fri, Sep 16, 2016
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-09-16-how-to-write-open-source-in-php-2-enjoy-skeletons.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>After creating a repo, we have to fill it with something useful. Our code! Of course, but we also need some <strong>metadata files</strong>.
+What are they for? Is there some prepared code we can use? What are badges for? <strong>I will answer all these questions today.</strong></p>
+                    </div>
+                </div>
+
+                <p>Other programmers who want to use your package are usually looking for <strong>long term value</strong>.
+To estimate the value they need <strong>to answer 4 important questions</strong>.</p>
+<ol>
+<li><strong>What is quality of package?</strong></li>
+<li><strong>Does it solve my issue?</strong></li>
+<li><strong>Is it trustworthy?</strong></li>
+<li><strong>How well maintained is it?</strong></li>
+</ol>
+<p>Even if you know your code is the best and the cleanest, if they don't trust you, they will never use it.</p>
+<p>I will let you think about them a little bit. We will relate with specific files to them in second part of this article.</p>
+<h2 id="use-solid-skeleton-start-solid-brand">Use solid skeleton → start solid brand</h2>
+<p>Now, the first step that can positively influence all the 4 answers is <strong>using a skeleton</strong> with prepared metadata files. Guys from <a href="https://thephpleague.com">The PHP League</a> already did the job for you and created a <a href="https://github.com/thephpleague/skeleton">skeleton</a> package.</p>
+<h2 id="how-to-get-skeleton-code-to-your-local-repository-in-4-steps">How to get skeleton code to your local repository in 4 steps</h2>
+<ol>
+<li>Go to repository on Github and click on <em>Clone or download</em></li>
+<li>Then <em>Download a ZIP</em></li>
+<li>Unzip the zip file to your local repository</li>
+<li>
+<p>And push new files to Github</p>
+<pre><code class="language-bash">git add .
+git commit -m "add metadata files"
+git push origin master</code></pre>
+</li>
+</ol>
+<h3 id="great-for-start-yet-obsolete-later">Great for start, yet obsolete later</h3>
+<p>This skeleton is great for start and to learn about metadata files.</p>
+<p>But when I create my package now, <strong>I just copy the most recent package I made</strong>, delete <code>/src</code> and <code>/tests</code>
+directories and I'm ready to roll. This is because:</p>
+<ul>
+<li>I upgrade my packages more often then some <code>skeleton</code> package</li>
+<li>and because my preferences and required code are evolving
+<ul>
+<li>e.g. A new PHP version is out, I tune my continuous integration (CI) setup etc.</li>
+</ul></li>
+</ul>
+<h2 id="what-is-the-purpose-of-these-files">What is the purpose of these files</h2>
+<p>Now we look on every directory and file and how it's related to the 4 key questions.
+Just to remind you, the end user is interested in:</p>
+<ol>
+<li>Quality - <strong>What is quality of package?</strong></li>
+<li>Usability - <strong>Does it solve my issue? Is it easy to use?</strong></li>
+<li>Trust - <strong>Is it trustworthy?</strong></li>
+<li>Maintenance - <strong>How well maintained is it?</strong></li>
+</ol>
+<h3 id="code-src-code-directory"><code>/src</code> directory</h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>all your PHP source code will go here</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li>musthave :)</li>
+</ul>
+<h3 id="code-tests-code-directory"><code>/tests</code> directory</h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>all tests for your code in <code>/src</code></li>
+<li>basically 1:1 mirror, just every file has <code>Test</code> suffix, e.g.
+<ul>
+<li><code>src/Cleaner.php</code></li>
+<li><code>tests/CleanerTest.php</code></li>
+</ul></li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Quality</strong>: tested code is perceived better quality</li>
+<li><strong>Trust</strong>: I don't have to hope that code works, <strong>I can trust the code</strong></li>
+</ul>
+<h3 id="code-gitattributes-code"><code>.gitattributes</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>here are all files that are ignored by composer (using the <code>export-ignore</code> attribute)</li>
+<li>when somebody will install your package via <code>composer require you/your-package</code>, they won't get these files downloaded to <code>/vendor</code> directory</li>
+<li>usually its metadata files and tests, because application of end user does not need them</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Usability</strong>: Since your package save some internet traffic and space on hard drives, it's a bit more usable.</li>
+</ul>
+<h3 id="code-gitignore-code"><code>.gitignore</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>here are files, that you will have locally but won't be uploaded to the remote git repository</li>
+<li>for packages ignore <code>composer.lock</code>, for applications rather not - on Stackoverflow you can find <a href="https://stackoverflow.com/questions/12896780/should-composer-lock-be-committed-to-version-control">more detailed answer</a></li>
+<li>also <code>/vendor</code> is there, as dependencies are installed by composer</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Trust</strong>: Without this I would not trust you know anything about open-source.</li>
+</ul>
+<h3 id="code-scrutinzer-yml-code"><code>.scrutinzer.yml</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>configuration for <a href="https://scrutinizer-ci.com">Scrutinizer</a> - code quality and code coverage tool</li>
+<li>to enable it, <a href="https://scrutinizer-ci.com/login">login</a> and new repository
+<ul>
+<li>I recommend you to login in via Github, since it adds hooks to your repository</li>
+</ul></li>
+<li>it would be triggered every time your commit to master or create a PR</li>
+</ul>
+<p><em>Profit</em></p>
+<div>
+    <img src="/assets/images/posts/2016/open-source/quality-and-coverage.png" alt="Code quality and coverage badges in README"><br><em>Code quality and coverage badges in README</em>
+</div>
+<p><br></p>
+<ul>
+<li><strong>Quality</strong>: Tests are fine, but with 5 % coverage, they have no added value. When you have 90% coverage, you got attention.
+Also there is code quality score from 0 to 10. It tells you about code complexity, which is the most important. <strong>Simple code is easier to maintain and debug</strong>.
+I will show you how to get 10 with bit of practise later.</li>
+</ul>
+<h3 id="code-travis-yml-code"><code>.travis.yml</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>configuration for <a href="https://travis-ci.org">Travis</a> - continuous integration tool for tests</li>
+<li>to enable it, go register there and add the repository</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Trust</strong>: Do you have test but you don't run them for every change? How can I know the code works?</li>
+</ul>
+<h3 id="code-composer-json-code"><code>composer.json</code></h3>
+<ul>
+<li>list of dependencies</li>
+<li>also configuration for <a href="https://packagist.org">Packagist</a>, where you need to add your package, so it can be installed by others</li>
+<li>to enable it, you have to:
+<ul>
+<li>go there</li>
+<li>add repository</li>
+<li>go to settings of package, <strong>Integration and services</strong> and <strong>Add Service</strong></li>
+<li>select &quot;Packagist&quot; and add your name and token from your <a href="https://packagist.org/profile">user profile</a></li>
+</ul></li>
+</ul>
+<h3 id="code-license-code"><code>LICENSE</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>license goes here</li>
+<li>it's important to have it as every country has different default approach, when this file is missing</li>
+<li><a href="https://opensource.org/licenses/MIT">MIT</a> is the easiest to understand open-source license</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Usability</strong>: With licence, I know what I can do with the code. Usually everything.</li>
+</ul>
+<h3 id="code-phpunit-xml-code"><code>phpunit.xml</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>configuration for <a href="https://phpunit.de">PHPUnit</a> - testing tool</li>
+<li>this can be used either by end user or Travis</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Usability</strong>: I can run <code>vendor/bin/phpunit</code> with no manual configuration. It makes life easy.</li>
+</ul>
+<h3 id="code-readme-code"><code>README</code></h3>
+<p><em>Meaning</em></p>
+<ul>
+<li>last but the most important - your welcome article for user</li>
+<li>THE MOST IMPORTANT FILE IN THE PACKAGE!</li>
+<li>Don't worry. We'll talk about writing a good readme later.</li>
+</ul>
+<p><em>Profit</em></p>
+<ul>
+<li><strong>Usability</strong>: If I understand the usage, I can rely to the issue I want to solve.</li>
+<li><strong>Trust</strong>: Having code quality, Travis and coverage badges helps to identify the quality of the package.</li>
+</ul>
+<p>So that are all files and their purpose.</p>
+<h2 id="no-time-fast-now-tell-your-story-with-an-image">No time! Fast! Now! → Tell your story with an image</h2>
+<p>Today people are scanning the text rather then actually reading. That's why badges are so important!</p>
+<p>Look on these 2 - what information can we get?</p>
+<img src="/assets/images/posts/2016/open-source/badge-2.png" alt="Confusing badge">
+<ul>
+<li>Test are passing - <strong>GOOD</strong></li>
+<li>There is stable tag with &quot;?&quot; coverage - <strong>CONFUSING</strong></li>
+<li>Master has 89% test coverage - <strong>GOOD</strong></li>
+<li>Last version is probably 2.5, but not sure. Do they update manually? - <strong>CONFUSING</strong></li>
+<li>Why is master promoted on first place? Should I use that? - <strong>CONFUSING</strong></li>
+</ul>
+<p><small>From <a href="https://github.com/doctrine/doctrine2/blob/master/README.md">Doctrine2 repository</a>.</small></p>
+<img src="/assets/images/posts/2016/open-source/badge-1.png" alt="Well informative badge">
+<ul>
+<li>Test are passing - <strong>GOOD</strong></li>
+<li>Code quality is 10 - <strong>GOOD</strong></li>
+<li>Code coverage 93% test coverage - <strong>GOOD</strong></li>
+<li>It has 166 downloads. Here it depends on the age of package. → Go check release date! - <strong>GOOD</strong></li>
+<li>It's tagged and has stable version. - <strong>GOOD</strong></li>
+</ul>
+<p><small>From <a href="https://github.com/Symplify/ControllerAutowire/blob/master/README.md">Symplify/ControllerAutowire repository</a>.</small></p>
+<h2 id="what-have-we-done-today">What have we done today?</h2>
+<ul>
+<li>Where to go when <strong>starting a new repository</strong>.</li>
+<li>What is <strong>the purpose meta files</strong>.</li>
+<li>How to <strong>enable online services</strong> that help us to build better code.</li>
+</ul>
+<h2 id="what-s-next">What's next?</h2>
+<ul>
+<li>We'll peek on <strong>coding standards</strong>.</li>
+<li>How do <strong>releases</strong> work a what is <strong>semantic versioning</strong>.</li>
+<li>How to <strong>pick min PHP version and package versions in composer</strong>.</li>
+</ul>
+<hr />
+<h2 id="hate-me-please">Hate me, please!</h2>
+<p>Did you came across some error or wtf? Is it boring, too long or too vague?
+Just send me a comment. I want to make this series bulletproof and as helpful as possible.</p>
+<p><strong>You will help thousands of others if you help me to fix one issue.</strong></p>
+<p>Thank you!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2016/09/09/how-to-write-open-source-in-php-1-create-a-repository" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to write open-source in PHP 1: Create a repository on Github
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2016/2016-09-16-how-to-write-open-source-in-php-2-enjoy-skeletons.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to write open-source in PHP 2: Rise value of your package with help of skeleton" />
+    <meta property="og:description" content="After creating a repo, we have to fill it with something useful. Our code! Of course, but we also need some metadata files.
+What are they for? Is there some prepared code we can use? What are badges for? I will answer all these questions today.
+" />
+    <meta property="og:url" content="/blog/2016/09/16/how-to-write-open-source-in-php-2-enjoy-skeletons" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to write open-source in PHP 2: Rise value of your package with help of skeleton" />
+    <meta name="twitter:description" content="After creating a repo, we have to fill it with something useful. Our code! Of course, but we also need some metadata files.
+What are they for? Is there some prepared code we can use? What are badges for? I will answer all these questions today.
+" />

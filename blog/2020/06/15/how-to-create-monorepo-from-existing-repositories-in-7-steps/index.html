@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to create a Monorepo from Existing Repositories in 7 Steps | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 256 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to create&nbsp;a&nbsp;Monorepo from Existing&nbsp;Repositories in 7&nbsp;Steps</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-06-Mon">
+            <strike>
+                            Mon, Jun 15
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-15-how-to-create-monorepo-from-existing-repositories-in-7-steps.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector/ECS YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>It seems like PHP companies are opening to <strong>the most comfortable way to manage multiple projects and packages at once</strong>.
+<br>
+<br>
+I've heard questions like &quot;how do we make monorepo if have like 15 repositories?&quot; <strong>3 times just last month</strong> - from the Czech Republic, Croatia, and the Netherlands.
+<br>
+<br>
+I'm so happy to see this because lazy dev = happy dev, happy dev = easy code to read.
+<br>
+So how to start a monorepo if you already have existing repositories?</p>
+                    </div>
+                </div>
+
+                <p><strong>Disclaimer</strong>: are you're into git history? Read <a href="https://www.shopsys.com/how-to-merge-15-repositories-to-1-monorepo-keep-their-git-history-and-add-project-base-as-well-6e124f3a0ab3">How to Merge 15 Repositories to 1 Monorepo, Keep their Git History and add Project-Base as Well?</a>.</p>
+<p>In practice, keeping git history before merging <strong>is not worth the invested time</strong>. Why?</p>
+<ul>
+<li>A) It takes you 4-6 weeks to figure out how <code>git</code> works in merging to different paths</li>
+<li>B) Then it takes you 1-2 weeks to balance all packages together code-wise - pull-request, that change paths anyway, move code, refactor it, merge classes, etc.</li>
+</ul>
+<p>If you want to bump your company about a massive pile of money for low gain and want it, go for A + B.</p>
+<p>I'm an honest and pragmatic developer, and my customers want to deliver features, not to play around technology sandbox, so we <strong>always take path B</strong>.</p>
+<p><br></p>
+<p>Now that's clear, let's <strong>dive in to merge practice</strong>.</p>
+<p><br>
+<br></p>
+<h2 id="what-repositories-do-you-have">What Repositories do you Have?</h2>
+<p>The right time to think about monorepo is usually around 5 repositories. The longer you wait, the more you'll add to your future developers - exponentially. Companies typically get the idea around 15 repositories - we'll work with only 2, but apply the same for whatever count.</p>
+<p>First repository: <code>lazy-company/ecoin-payments</code></p>
+<p>With following code:</p>
+<pre><code class="language-bash">/src
+/test
+composer.json
+ecs.php
+phpstan.neon
+phpunit.xml
+rector-ci.php</code></pre>
+<p>Second repository: <code>lazy-company/drone-delivery</code></p>
+<p>With following code:</p>
+<pre><code class="language-bash">/src
+/test
+composer.json
+ecs.php
+phpstan.neon
+phpunit.xml
+rector-ci.php</code></pre>
+<h2 id="1-create-a-monorepo-repository">1. Create a Monorepo repository</h2>
+<p>Go to your Gitlab or Github and create a new repository. Name it <code>lazy-company/lazy-company</code> (by convention) or <code>lazy-company/lazy-company-monorepo</code> (in case the previous is taken).</p>
+<p>Clone it locally.</p>
+<h2 id="2-copy-repositories-to-code-packages-code">2. Copy Repositories to <code>/packages</code></h2>
+<p>Don't worry, no git harakiri. Just copy paste your other repositories to <code>/packages</code> directory:</p>
+<pre><code class="language-bash">/packages
+    /ecoin-payments
+        /src
+        /test
+        composer.json
+        ecs.php
+        phpstan.neon
+        phpunit.xml
+        rector-ci.php
+    /drone-delivery
+        /src
+        /test
+        composer.json
+        ecs.php
+        phpstan.neon
+        phpunit.xml
+        rector-ci.php</code></pre>
+<p>Not bad, right?</p>
+<h2 id="3-merge-all-code-composer-json-code-to-root-one">3. Merge all <code>composer.json</code> to Root One</h2>
+<p>In the root directory, we only have the directory with all packages:</p>
+<pre><code class="language-bash">/packages</code></pre>
+<p>But where is <code>composer.json</code>? We can <del>create it manually</del> use a CLI tool that does it for us - <a href="https://github.com/symplify/monorepo-builder">MonorepoBuilder</a>.</p>
+<p>Use <a href="/blog/2019/12/02/how-to-box-symfony-app-to-phar-without-killing-yourself/">prefixed version</a> to avoid dependency conflicts with your packages.</p>
+<pre><code class="language-bash">composer require symplify/monorepo-builder-prefixed --dev</code></pre>
+<p>Now that we have <a href="/blog/2018/10/08/new-in-symplify-5-create-merge-and-split-monorepo-with-1-command/">this power-tool for working</a> with monorepo, we can do:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder merge</code></pre>
+<p>And...</p>
+<img src="/assets/images/posts/2020/monorepo_builder_merge.png" class="img-thumbnail">
+<p>Damn, what is this?</p>
+<h2 id="4-balance-external-dependencies">4. Balance External Dependencies</h2>
+<p>We have to look into <code>composer.json</code> files to find out what happened:</p>
+<pre><code class="language-json">{
+    "name": "lazy-company/ecoin-payments",
+    "require": {
+        "symfony/http-kernel": "^4.4|^5.0"
+    }
+}</code></pre>
+<p>and</p>
+<pre><code class="language-json">{
+    "name": "lazy-company/drone-delivery",
+    "require": {
+        "symfony/http-kernel": "^3.4|^4.4"
+    }
+}</code></pre>
+<p>We have 2 packages that require <strong>different versions of the same dependency</strong>. One allows Symfony 3; the other does not, but can run on Symfony 5.</p>
+<p>What version do they share?</p>
+<ul>
+<li><code>^4.4</code></li>
+</ul>
+<p>The number <strong>must be identical for all packages</strong>. One package cannot have <code>^4.3</code>, and the other <code>^4.4</code>.</p>
+<pre><code class="language-diff"> {
+     "name": "lazy-company/ecoin-payments",
+     "require": {
+-        "symfony/http-kernel": "^4.4|^5.0"
++        "symfony/http-kernel": "^4.4"
+     }
+ }</code></pre>
+<p>and:</p>
+<pre><code class="language-diff"> {
+     "name": "lazy-company/drone-delivery",
+     "require": {
+-        "symfony/http-kernel": "^3.4|^4.4"
++        "symfony/http-kernel": "^4.4"
+     }
+ }</code></pre>
+<h3 id="the-easiest-common-version-problem">The Easiest, Common Version Problem</h3>
+<p>We have to figure out <strong>the package version that would be easier to use</strong>. Sometimes the new version requires some refactoring.</p>
+<p>In current project I migrate 15 packages, that have these requirements:</p>
+<ul>
+<li>A: &quot;symfony/http-kernel&quot;: &quot;^5.0&quot;</li>
+<li>B: &quot;symfony/http-kernel&quot;: &quot;^3.4&quot;</li>
+<li>C: &quot;symfony/http-kernel&quot;: &quot;^2.8&quot;</li>
+</ul>
+<p>If we pick <code>^3.4</code>, we have to make sure the code of A and C packages will be updated or downgraded to that version. You get the idea.</p>
+<p><br></p>
+<p>When we have all versions synced, we can run the merge command:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder merge</code></pre>
+<p>Tadá!</p>
+<p>We should see something like this:</p>
+<pre><code class="language-json">{
+    "require": {
+        "symfony/http-kernel": "^4.4"
+    },
+    "require-dev": {
+        "symplify/monorepo-builder-prefixed": "^8.0"
+    },
+    "replace": {
+        "lazy-company/drone-delivery": "self.version",
+        "lazy-company/ecoin-payments": "self.version"
+    }
+}</code></pre>
+<p>Do you? Good!</p>
+<p><br></p>
+<p>What is the <code>replace</code> section? We'll use it in step 5 ↓</p>
+<h2 id="5-balance-mutual-dependencies">5. Balance Mutual Dependencies</h2>
+<p>It's standard that packages depend on each other. Drone delivery is a service a customer pays for - with bitcoins. So we need it here:</p>
+<pre><code class="language-json">{
+    "name": "lazy-company/drone-delivery",
+    "require": {
+        "symfony/http-kernel": "^4.4",
+        "lazy-company/ecoin-payments": "^2.0"
+    }
+}</code></pre>
+<p>What if 2 packages require a different version of the same package?</p>
+<ul>
+<li>A. &quot;lazy-company/ecoin-payments&quot;: &quot;^2.0&quot;</li>
+<li>B. &quot;lazy-company/ecoin-payments&quot;: &quot;^3.0&quot;</li>
+</ul>
+<p>Do we apply the same approach as in step 4? <strong>No</strong>. Instead of the most accessible common version, we'll go with <strong>the latest version</strong> - <code>^3.0</code>.</p>
+<p>These numbers also tell us what the first monorepo release version will be. It has to be a <a href="https://semver.org">major version</a> because there will be BC breaks: so ^4.0.</p>
+<p><br></p>
+<h3 id="what-about-that-code-replace-code">What about that <code>replace?</code></h3>
+<p>Here we also use the <a href="https://getcomposer.org/doc/04-schema.md#replace"><code>replace</code> composer feature</a>.</p>
+<p>If we run <code>composer install</code> in monorepo, it will install all dependencies of <code>lazy-company/drone-delivery</code>. This package needs <code>lazy-company/ecoin-payments</code> (the other package). Normally, the composer would go to Packagist and download the package to <code>/vendor</code>. But that might end-up in collision:</p>
+<pre><code class="language-bash">/packages/ecoin-payments/src # some code
+/vendor/lazy-company/ecoin-payments/src # same code?</code></pre>
+<p>The <code>replace</code> option tells the composer not to download anything because the <code>lazy-company/ecoin-payments</code> is already in <code>/packages/ecoin-payments/src</code>.</p>
+<pre><code class="language-diff"> /packages/ecoin-payments/src
+-/vendor/lazy-company/ecoin-payments/src</code></pre>
+<h2 id="6-merge-static-analysis-tools-to-run-on-root-only">6. Merge Static Analysis tools to Run on Root Only</h2>
+<p>All right, we have working <code>composer.json</code> with united versions. That was the most challenging part, so great job!</p>
+<p>No, we need to <a href="/cleaning-lady-checklist">clean configs</a> of tools that help us with daily development:</p>
+<ul>
+<li>ECS</li>
+<li>PHPStan</li>
+<li>Rector</li>
+<li>...</li>
+</ul>
+<p>Instead of many configs, paths, setups, and rules, there is only 1 source of Truth - root configs.</p>
+<pre><code class="language-diff"> /packages
+     /ecoin-payments
+         /src
+         /test
+         composer.json
+-        ecs.php
+-        phpstan.neon
+         phpunit.xml
+-        rector-ci.php
+     /drone-delivery
+         /src
+         /test
+         composer.json
+-        ecs.php
+-        phpstan.neon
+         phpunit.xml
+-        rector-ci.php
++ecs.php
++phpstan.neon
++rector-ci.php</code></pre>
+<p>This step is pretty easy... well, it depends.</p>
+<p><strong>What is the thing that can happen?</strong> One of your packages has PHPStan level 1, but all others have PHPStan 8.</p>
+<p>We can either take time and update the PHPStan level 1 to 8 or lower all to 1. I'd go with <em> drop all to 1</em> options now, and do this after creating the monorepo. If we mix too many tasks at once, we can prolong <em>build a monorepo</em> tasks for weeks.</p>
+<p><br></p>
+<p>Pro-tip: do you want to make sure all versions of all dependencies of all <code>composer.json</code> files have united version?</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder validate</code></pre>
+<h2 id="7-merge-tests-to-root-code-phpunit-xml-code">7. Merge tests to root <code>phpunit.xml</code></h2>
+<p>Very similar to step 6, just with unit tests.</p>
+<pre><code class="language-diff"> /packages
+     /ecoin-payments
+         /src
+         /test
+         composer.json
+-        phpunit.xml
+     /drone-delivery
+         /src
+         /test
+         composer.json
+-        phpunit.xml
+ ecs.php
+ phpstan.neon
+ rector-ci.php
++phpunit.xml</code></pre>
+<p>Update paths in <code>phpunit.xml</code> and prepare a common environment for all tests.</p>
+<p><br></p>
+<p>In the end, we have to be able to run:</p>
+<pre><code class="language-bash">vendor/bin/phpunit</code></pre>
+<p>And see the result of all tests.</p>
+<p>Everything else will be more complicated than it has to, will annoy us, and demotivate us from actually writing the tests. <strong>So make it easy and simple</strong>.</p>
+<p><br></p>
+<p>If you're serious about monorepo testing, read <a href="/blog/2018/11/22/how-to-test-monorepo-in-3-layers/">How to Test Monorepo in 3 Layers</a>.</p>
+<h2 id="final-touches">Final Touches</h2>
+<p>Don't forget to add <code>.gitignore</code> with <code>/vendor</code>. Then <code>git push</code> and we're finished.</p>
+<p>Congrats!</p>
+<p><br></p>
+<h2 id="where-to-go-next">Where to go next?</h2>
+<p>Be sure to read each post from <a href="/clusters/#monorepo-from-zero-to-hero/">Monorepo: From Hero to Zero</a>.</p>
+<p>Then go to your Gitlab or Github and make your <code>company/company-monorepo</code> package. It's easier when you start.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/08/drop-robot-loader-and-let-composer-deal-with-autoloading" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Drop RobotLoader and let Composer Deal with Autoloading
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-15-how-to-create-monorepo-from-existing-repositories-in-7-steps.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to create a Monorepo from Existing Repositories in 7 Steps" />
+    <meta property="og:description" content="It seems like PHP companies are opening to **the most comfortable way to manage multiple projects and packages at once**.
+
+
+I&#039;ve heard questions like &quot;how do we make monorepo if have like 15 repositories?&quot; **3 times just last month** - from the Czech Republic, Croatia, and the Netherlands.
+
+
+I&#039;m so happy to see this because lazy dev = happy dev, happy dev = easy code to read.
+
+So how to start a monorepo if you already have existing repositories?
+" />
+    <meta property="og:url" content="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to create a Monorepo from Existing Repositories in 7 Steps" />
+    <meta name="twitter:description" content="It seems like PHP companies are opening to **the most comfortable way to manage multiple projects and packages at once**.
+
+
+I&#039;ve heard questions like &quot;how do we make monorepo if have like 15 repositories?&quot; **3 times just last month** - from the Czech Republic, Croatia, and the Netherlands.
+
+
+I&#039;m so happy to see this because lazy dev = happy dev, happy dev = easy code to read.
+
+So how to start a monorepo if you already have existing repositories?
+" />

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Statie is Dead, Long live Symfony Static Dumper | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 243 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Statie is Dead, Long live Symfony Static Dumper</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-03-Mon">
+            
+                            Mon, Mar 16
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-16-statie-is-dead-long-live-symfony-static-dumper.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Last week <a href="/blog/2020/03/09/art-of-letting-go/">I wrote about how Statie turned from a feature to a burden</a> and why we had to let it go.
+<br>
+<strong>What will replace it? How do you migrate?</strong></p>
+                    </div>
+                </div>
+
+                <p>Deprecations without replacements are like nails in the coffin of your forehead while reciting a poem about the beauty of life.</p>
+<p>The <a href="github.com/tomasvotruba/friendsofphp.org">friendsofphp.org</a> and this blog <strong>still uses PHP and is deployed to GitHub pages</strong>. How is that possible without Statie?</p>
+<p>From Statie, we <strong>fluently switch to brand new package - <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a></strong>. A single command that <strong>generates HTML and CSS from your Symfony application.</strong></p>
+<p><br></p>
+<p>In short, it looks like this:</p>
+<img src="/assets/images/posts/2020/dump_static_site_demo.gif" class="img-thumbnail">
+<p><br></p>
+<h2 id="killer-features">Killer Features?</h2>
+<p>What I love the most about it, that the Symfony Static Dumper <strong>only handles the missing part - generate HTML and CSS</strong>. All the rest is up to you, your imagination. You code standard Symfony application, nothing special, nothing weird.</p>
+<p>Do you want more advantages?</p>
+<ul>
+<li>no more Javascript to run the website <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>we can use most of the Symfony Ecosystem <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>we can use database, even Doctrine <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>develop normal Symfony application, then dump the HTML + CSS on deploy <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>standard Symfony app structure <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>use <code>{{ path('contact') }}</code> in templates <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>use Symfony plugin <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>single command use <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+</ul>
+<h2 id="how-to-migrate-from-statie-to-symfony-static-site-dumper">How to Migrate from Statie to Symfony Static Site Dumper?</h2>
+<p>Do you still use Statie? Don't worry; we have a migration path for you.</p>
+<h3 id="add-symfony-packages">Add Symfony Packages</h3>
+<p>First, you need to install Symfony packages:</p>
+<pre><code class="language-bash">composer require symfony/http-foundation symfony/asset symfony/twig-bridge symfony/twig-bundle symfony/flex symplify/flex-loader symplify/autodiscovery symfony/framework-bundle symfony/dotenv doctrine/cache erusev/parsedown-extra</code></pre>
+<p>And replace the static generator:</p>
+<pre><code class="language-bash">composer require symplify/symfony-static-dumper
+composer remove symplify/statie</code></pre>
+<h3 id="setup-basic-symfony-app">Setup Basic Symfony App</h3>
+<ul>
+<li>add <a href="https://github.com/symfony/demo/blob/master/config/bootstrap.php"><code>config/bootstrap.php</code></a></li>
+<li>add <a href="https://github.com/symfony/demo/blob/master/bin/console"><code>bin/console</code></a></li>
+<li>add <a href="https://github.com/TomasVotruba/friendsofphp.org/blob/master/src/HttpKernel/FopKernel.php"><code>src/HttpKernel/YourAppKernel.php</code></a></li>
+</ul>
+<h3 id="move-code-source-code">Move <code>/source</code></h3>
+<ul>
+<li>Templates to <code>/templates</code></li>
+<li>Public content, e.g. <code>robots.txt</code> or <code>CNAME</code> to <code>/public</code></li>
+</ul>
+<h3 id="update-ci">Update CI</h3>
+<pre><code class="language-diff">-vendor/bin/statie generate source
++bin/console dump-static-site</code></pre>
+<h3 id="pages-to-controller-templates">Pages to Controller Templates</h3>
+<p><strong>Before:</strong></p>
+<pre><code class="language-twig">---
+layout: "_layouts/default.twig"
+title: "Thank You"
+id: thank_you
+commit_limit: 5
+---
+
+&lt;div class="container" id="contact"&gt;
+    &lt;h1&gt;{{ title }}&lt;/h1&gt;
+
+    &lt;p class="text-center bigger"&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<p><strong>After:</strong></p>
+<pre><code class="language-twig">{# templates/thanky_you.twig #}
+{% extends "default.twig" %}
+
+{% block content %}
+    &lt;div class="container" id="contact"&gt;
+        &lt;h1&gt;{{ title }}&lt;/h1&gt;
+
+        &lt;p class="text-center bigger"&gt;&lt;/p&gt;
+    &lt;/div&gt;
+{% endblock %}</code></pre>
+<pre><code class="language-php">// src/Controller/ThankYouController.php
+namespace YourWebsite\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+final class ThankYouController extends AbstractController
+{
+    /**
+     * @Route(path="thank-you", name="thank_you")
+     */
+    public function __invoke(): Response
+    {
+        return $this-&gt;render('thank_you.twig', [
+            'title' =&gt; 'Thank You',
+            'id' =&gt; 'thank_you',
+            'commit_limit' =&gt; 5,
+        ]);
+    }
+}</code></pre>
+<p>If you need more inspiration, look at these pull-requests:</p>
+<ul>
+<li><a href="https://github.com/TomasVotruba/tomasvotruba.com/pull/940">migration of TomasVotruba.com</a></li>
+<li><a href="https://github.com/TomasVotruba/friendsofphp.org/pull/162">migration of FriendsOfPhp.org</a> - <a href="https://github.com/TomasVotruba/friendsofphp.org/pull/169">part #2</a></li>
+</ul>
+<h2 id="how-to-set-it-up">How to Set it Up?</h2>
+<p>All the essential information is in <a href="https://github.com/symplify/symfony-static-dumper">README</a>.</p>
+<p>Install the package via composer:</p>
+<pre><code class="language-bash">composer require symplify/symfony-static-dumper</code></pre>
+<p>Register services - no Flex, no bundles, just simple config:</p>
+<pre><code class="language-yaml"># config/services.yaml
+imports:
+    - { resource: '../vendor/symplify/symfony-static-dumper/config/config.yaml' }</code></pre>
+<p>And dump static website to <code>/output</code> directory:</p>
+<pre><code class="language-bash">bin/console dump-static-website</code></pre>
+<p>To see the website, just run the local server:</p>
+<pre><code class="language-bash">php -S localhost:8001 -t output</code></pre>
+<p>That's it!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/03/09/art-of-letting-go" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Art of Letting Go
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-16-statie-is-dead-long-live-symfony-static-dumper.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Statie is Dead, Long live Symfony Static Dumper" />
+    <meta property="og:description" content="Last week [I wrote about how Statie turned from a feature to a burden](/blog/2020/03/09/art-of-letting-go/) and why we had to let it go.
+
+**What will replace it? How do you migrate?**
+" />
+    <meta property="og:url" content="/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Statie is Dead, Long live Symfony Static Dumper" />
+    <meta name="twitter:description" content="Last week [I wrote about how Statie turned from a feature to a burden](/blog/2020/03/09/art-of-letting-go/) and why we had to let it go.
+
+**What will replace it? How do you migrate?**
+" />

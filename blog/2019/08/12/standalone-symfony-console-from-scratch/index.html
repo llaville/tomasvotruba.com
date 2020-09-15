@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Standalone Symfony Console from the Scratch | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 258 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Standalone Symfony Console from the Scratch</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-08-Mon">
+            <strike>
+                            Mon, Aug 12, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Jun, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/08/12/standalone-symfony-console-from-scratch/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-08-12-standalone-symfony-console-from-scratch.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at June 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with Symfony 5.1 syntax.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symfony Console is <em>the one</em> package you will use to build a PHP CLI app. It's one of the easiest Symfony components.
+<br><br>
+Why? You <strong>only create Application class, add 1 Command class, and you are ready to go</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="when-amp-why-use-symfony-console">When &amp; Why use Symfony Console?</h2>
+<p>This package helps you to create applications like <a href="https://github.com/composer/composer">Composer</a>, <a href="https://github.com/symplify/easy-coding-standard">ECS</a>, <a href="https://github.com/rectorphp/rector">Rector</a> or <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> that generates this website.</p>
+<p>So in general, to build applications where you:</p>
+<ul>
+<li>need to <strong>access CLI</strong>,</li>
+<li>need to <strong>be fast</strong> - imports, CRON jobs, feeds or asynchronous operations</li>
+<li>and don't need any browser rendering.</li>
+</ul>
+<h2 id="2-classes-to-learn">2 Classes to Learn</h2>
+<ul>
+<li><strong>Application</strong> - This is the entry point. It contains all commands and routes arguments to them. Something like Application is in Nette or HttpKernel is in Symfony.</li>
+<li><strong> Command</strong> - Handles input data, processes them, and returns the result to the output as the Presenter or Controller does.</li>
+</ul>
+<p>1 application can have many commands.</p>
+<h2 id="what-belongs-to-command">What Belongs to Command?</h2>
+<p>Before diving into our first Command, there is an essential rule that I want to share with you. In many tutorials, you find business logic inside Commands. That is convenient in the begging, but challenging to unlearn later, building more commands.</p>
+<p>When I wrote <em>commands is something like Presenter or Controller</em>, I talked about <a href="/blog/2018/01/08/clean-and-decoupled-controllers-commands-and-event-subscribers-once-and-for-all-with-delegator-pattern/">Delegator Pattern</a>. Like Controller, <strong>it should only delegate arguments to other services and return the result to the output</strong>.</p>
+<p>This rule will help you to <strong>avoid</strong>:</p>
+<ul>
+<li>using Command to run another command</li>
+<li>using Command in the Controller</li>
+<li>using Controller in Command</li>
+</ul>
+<p>Very common, very coupled. You would never use the Controller inside another controller, right?</p>
+<p><em>Ok, now you know this. So let's create your first Command!</em></p>
+<h2 id="create-first-command-in-3-steps">Create First Command in 3 Steps</h2>
+<h3 id="1-install-via-composer">1. Install via Composer</h3>
+<pre><code class="language-bash">composer require symfony/console</code></pre>
+<h3 id="2-create-console-application">2. Create Console Application</h3>
+<p>Conventional location is <code>bin/console</code> (having <code>.php</code> suffix is also fine):</p>
+<pre><code class="language-php">#!/usr/bin/env php
+&lt;?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Create the Application
+$application = new Symfony\Component\Console\Application;
+
+// Run it
+$application-&gt;run();</code></pre>
+<p>Now we can run the app and see that it's ready:</p>
+<pre><code class="language-bash">php bin/console</code></pre>
+<p>All good? Good!</p>
+<h3 id="3-create-and-register-command">3. Create and Register Command</h3>
+<p>Let's create Command that will safely hash any password you enter.</p>
+<pre><code class="language-bash">composer require nette/security</code></pre>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+// src/Command/HashPasswordCommand.php
+
+namespace App\Command;
+
+use Nette\Security\Passwords;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+final class HashPasswordCommand extends Command
+{
+    /**
+     * In this method setup command, description, and its parameters
+     */
+    protected function configure()
+    {
+        $this-&gt;setName('hash-password');
+        $this-&gt;setDescription('Hashes provided password with BCRYPT and prints to output.');
+        $this-&gt;addArgument('password', InputArgument::REQUIRED, 'Password to be hashed.');
+    }
+
+    /**
+     * Here all logic happens
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $password = $input-&gt;getArgument('password');
+
+        $hashedPassword = Passwords::hash($password);
+
+        $output-&gt;writeln(sprintf(
+            'Your hashed password is: %s', $hashedPassword
+        ));
+
+        // return value is important when using CI, to fail the build when the command fails
+        // in case of fail: "return self::FAILURE;"
+        return self::SUCCESS;
+    }
+}</code></pre>
+<p>Configure autoloading, add the following to the <code>composer.json</code> file:</p>
+<pre><code class="language-json">{
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
+}</code></pre>
+<p>Dump the autoloader</p>
+<pre><code class="language-bash">composer dump-autoload</code></pre>
+<p>And update our <code>bin/console</code> file:</p>
+<pre><code class="language-php">#!/usr/bin/env php
+&lt;?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Create the Application
+$application = new Symfony\Component\Console\Application();
+
+// Register all Commands
+$application-&gt;add(new App\Command\HashPasswordCommand());
+
+// Run it
+$application-&gt;run();</code></pre>
+<p>Now you can run it from CLI with your password as an argument:</p>
+<pre><code class="language-bash">php bin/console hash-password heslo123
+Your hashed password is: $2y$10$NZVuDpvFbqhsBhR1AZZzX.xUHKhr5qtP1qGKjqRM4S9Xakxn1Xgy2</code></pre>
+<h2 id="you-are-one-step-further">You Are One Step Further</h2>
+<p>Now you should:</p>
+<ul>
+<li>understand that you need <strong>only 1 class to create simple Command</strong></li>
+<li>see <strong>Command like a Controller</strong> and should only delegate business logic, not contain it</li>
+<li>know how to <strong>pass argument</strong>, process it and <strong>return result to the output</strong></li>
+</ul>
+<h3 id="where-to-go-next">Where to go next?</h3>
+<p>Still hungry for knowledge? Check <a href="http://symfony.com/doc/current/components/console.html#learn-more">Symfony documentation</a> then.</p>
+<ul>
+<li>Do you need to <strong>pass more than 1 value</strong>? E.g. <code>bin/console hash-password mummy123 --cost=14</code>? Go check <a href="http://symfony.com/doc/current/console/input.html#using-command-options">Command Options</a>.</li>
+<li>Do you want to <strong>inform users about the progress of slow process</strong>? You are looking for <a href="http://symfony.com/doc/current/components/console/helpers/progressbar.html">Progress Bar Helper</a>.</li>
+<li>Do you want to use a popular and pretty Symfony output style (like PHP-CS-Fixer does)? Look at <a href="https://symfony.com/blog/new-in-symfony-2-8-console-style-guide">Console Style Guide</a>.</li>
+</ul>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-08-12-standalone-symfony-console-from-scratch.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Standalone Symfony Console from the Scratch" />
+    <meta property="og:description" content="Symfony Console is *the one* package you will use to build a PHP CLI app. It&#039;s one of the easiest Symfony components.
+
+Why? You **only create Application class, add 1 Command class, and you are ready to go**.
+" />
+    <meta property="og:url" content="/blog/2019/08/12/standalone-symfony-console-from-scratch" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Standalone Symfony Console from the Scratch" />
+    <meta name="twitter:description" content="Symfony Console is *the one* package you will use to build a PHP CLI app. It&#039;s one of the easiest Symfony components.
+
+Why? You **only create Application class, add 1 Command class, and you are ready to go**.
+" />

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Hidden Gems of PHP Packages: Nette\Utils | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 127 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Hidden Gems of PHP Packages: Nette\Utils</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-07-Mon">
+            
+                            Mon, Jul 30, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/07/30/hidden-gems-of-php-packages-nette-utils/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-07-30-hidden-gems-of-php-packages-nette-utils.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In this series, I will show you <strong>not-so-known PHP packages, that I happily use in my daily workflow</strong>. They're hard to describe in few words for their various features, but awesome and simple to use.
+<br><br>
+Today we start with <a href="https://github.com/nette/utils">Nette\Utils</a> package.</p>
+                    </div>
+                </div>
+
+                <h2 id="why-i-use-it">Why I Use it</h2>
+<ol>
+<li>
+<p>Do you know how is called the PHP function that checks the presence of a string in another string?</p>
+</li>
+<li>
+<p>Do you know what is the difference between those 3 calls?</p>
+</li>
+</ol>
+<pre><code class="language-php">$contains = strpos('content', $lookFor) === 0;</code></pre>
+<pre><code class="language-php">$contains = strpos('content', $lookFor) == 0;</code></pre>
+<pre><code class="language-php">$contains = strpos('content', $lookFor) === false;</code></pre>
+<p><strong>If you can tell the difference under 1 s</strong>, good job!</p>
+<p><br></p>
+<p>I can't. I have to think hard to remember what was that danger WTF of <a href="http://php.net/manual/en/function.strpos.php#refsect1-function.strpos-returnvalues"><code>strpos()</code> function</a>...</p>
+<img src="/assets/images/posts/2018/nette-utils/warning.png" class="img-thumbnail">
+<p>...that makes this code run into condition, even though you don't want to:</p>
+<pre><code class="language-php">$contains = strpos('content', $lookFor);
+if ($contains) {
+   // ... should I be here?
+}</code></pre>
+<ol start="3">
+<li>Do you prefer exceptions over <code>false</code>? Do you prefer exceptions over learning various errors codes in PHP native functions like <code>file_get_contents()</code> or <code>preg_replace</code>?</li>
+</ol>
+<img src="/assets/images/posts/2018/nette-utils/preg_replace.png" class="img-thumbnail">
+<ol start="4">
+<li>
+<p>Do you prefer thinking less about PHP language details and doing more effective work while being safe?</p>
+</li>
+<li>
+<p>Do you prefer PHPStan not reporting forgotten validation of <code>bool|string</code> return type?</p>
+</li>
+</ol>
+<pre><code class="language-php">if (file_exists($filePath)) {
+    // can return `false|string`
+    $fileContent = file_get_contents($filePath);
+}</code></pre>
+<p><strong>Thanks to Nette\Utils I can be lazy, safe and much faster</strong> in all these cases above and more.</p>
+<h2 id="how-to-install">How to Install</h2>
+<pre><code class="language-bash">composer require nette/utils</code></pre>
+<h2 id="how-i-use-it">How I Use it</h2>
+<p>We can look at <a href="https://doc.nette.org/en/2.4/utils">the Nette\Utils documentation</a> to find 12 classes with many methods and study their API... and leave the page overwhelmed by details and over-bored.</p>
+<p>Instead, <strong>we can look at real-life examples in Symplify code</strong>. That's much more interesting and relevant, right? When we use Github search, we see that Symplify packages use Nette\Utils package at <a href="https://github.com/search?l=&amp;q=Nette%5CUtils+repo%3Asymplify%2Fsymplify+extension%3Aphp&amp;type=Code">100+ places</a>. What are these cases?</p>
+<h2 id="code-strings-code-class"><code>Strings</code> class</h2>
+<h3 id="code-replace-code"><code>replace()</code></h3>
+<p>It accepts content, pattern to look for and replacement. This is basic building stone for packages like <a href="/blog/2018/07/05/how-to-convert-latte-templates-to-twig-in-27-regular-expressions/">LatteToTwigConverter</a>:</p>
+<pre><code class="language-php">// in Latte: {var $var = $anotherVar}
+// in Twig: {% set var = anotherVar %}
+$content = Nette\Utils\Strings::replace($content, '#{var \$?(.*?) = \$?(.*?)}#s', '{% set $1 = $2 %}');</code></pre>
+<p>It's nice that you don't have to deal with PHP native edge-cases of regular expressions. I think regulars are difficult enough to work with, so this piece comes very handy.</p>
+<h3 id="code-contains-code"><code>contains()</code></h3>
+<p>It accepts the content and the string we look for:</p>
+<pre><code class="language-php">if (Nette\Utils\Strings::contains($key, '.')) {
+    // is a code
+    $this-&gt;skippedCodes[$key] = $settings;
+} else {
+    // is a class
+    $this-&gt;skipped[$key] = $settings;
+}</code></pre>
+<h3 id="code-startswith-code"><code>startsWith()</code></h3>
+<p>How to detect a nullable type?</p>
+<pre><code class="language-php"># &lt; 1 s of thinking
+return Nette\Utils\Strings::startsWith($type, '?');</code></pre>
+<pre><code class="language-php"># &gt; 1 s of thinking
+return strpos('Content', $lookingFor) === ?;
+# or was it this one?
+return strpos('Content', $lookingFor) === strlen($lookingFor);</code></pre>
+<h3 id="code-endswith-code"><code>endsWith()</code></h3>
+<pre><code class="language-php">if (Strings::endsWith($class, 'Interface')) {
+    // is interface
+}</code></pre>
+<h2 id="code-filesystem-code-class"><code>FileSystem</code> class</h2>
+<h3 id="code-read-code"><code>read()</code></h3>
+<p>If we know the file will be there (e.g. it's convention or we just put it there), we can use <code>file_get_contents()</code>.</p>
+<pre><code class="language-php">$content = file_get_contents($accidentallyMissingFile);
+// $content is `FALSE`</code></pre>
+<p>But we find out 35 lines later in this method:</p>
+<pre><code class="language-php">private function processContent(string $content)
+{
+    // ...
+}</code></pre>
+<p>But all we see is <em>$content should be string, bool passed</em> error. Just great, isn't it?</p>
+<p>Of course, you can put <code>file_exists()</code> and <code>is_file()</code> validation everywhere and teach every programmer in your team to use them and also create a sniff, that will enforce this behavior in CI level (which nobody really does) and spend hundreds of hours on regression bugs or...</p>
+<p>...you could use helper method and make yourself useful instead:</p>
+<pre><code class="language-php">Nette\Utils\FileSystem::read($accidentallyMissingFile);</code></pre>
+<p><em class="fas fa-fw fa-check text-success fa-lg"></em> Kaboom! An Exception!</p>
+<h3 id="code-createdir-code"><code>createDir()</code></h3>
+<p>Do you want to create a directory for your cache?</p>
+<pre><code class="language-php">mkdir($cacheDiretory);</code></pre>
+<p>Oh, but what if that already exists?</p>
+<p><em class="fas fa-fw fa-times text-danger fa-lg"></em> <strong>Already exists error!</strong></p>
+<p>Ok, let's say you're lucky, your hard drive was wiped out and it doesn't exist yet.</p>
+<pre><code class="language-php">mkdir($cacheDiretory);</code></pre>
+<p>But what if the directory is <code>some/cache</code>?</p>
+<p><em class="fas fa-fw fa-times text-danger fa-lg"></em> <strong>Nested directory error!</strong></p>
+<p>Ok, but what if we don't care about these because <strong>all we need is to create a directory</strong>?</p>
+<pre><code class="language-php">Nette\Utils\FileSystem::createDir($cacheDirectory);</code></pre>
+<p><em class="fas fa-fw fa-check text-success fa-lg"></em></p>
+<h3 id="code-delete-code"><code>delete()</code></h3>
+<p>We want to delete temporary data in tests or a gallery of pictures. All we have is a <code>$source</code> variable.</p>
+<p>I admit I often have to Google the name of this function because it's super counter-intuitive to first that pops to my mind - <code>delete(file|directory)</code>.</p>
+<p>So let's try:</p>
+<pre><code class="language-php">unlink($source);</code></pre>
+<p><em class="fas fa-fw fa-times text-danger fa-lg"></em> <strong>It's a directory error.</strong></p>
+<p>Ah, let's try this then:</p>
+<pre><code class="language-php">rmdir($source);</code></pre>
+<p><em class="fas fa-fw fa-times text-danger fa-lg"></em> <strong>The directory is not empty error.</strong></p>
+<p>Doh, I already imagine some <code>glob()</code> of <code>Finder</code> madness.</p>
+<p>Or maybe <strong>we just want to delete it</strong>:</p>
+<pre><code class="language-php">Nette\Utils\FileSystem::delete($source);</code></pre>
+<p><em class="fas fa-fw fa-check text-success fa-lg"></em></p>
+<p><br></p>
+<p>Do you like it? <strong>Go and give <a href="https://github.com/nette/utils">Nette\Utils</a> a try</strong>. It's the only package I allow to use static methods and that's a lot, since <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself/">I'm very strict to them</a>.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    Do you want to play with details someone else already solved for you<br>
+    or<br><strong>build your awesome application instead</strong>?
+</blockquote>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/07/26/why-is-your-company-losing-money-by-not-open-sourcing-1-hiring" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Why is Your Company Losing Money by not Open Sourcing: 1. Hiring
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-07-30-hidden-gems-of-php-packages-nette-utils.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Hidden Gems of PHP Packages: Nette\Utils" />
+    <meta property="og:description" content="In this series, I will show you **not-so-known PHP packages, that I happily use in my daily workflow**. They&#039;re hard to describe in few words for their various features, but awesome and simple to use.
+
+Today we start with [Nette\Utils](https://github.com/nette/utils) package.
+" />
+    <meta property="og:url" content="/blog/2018/07/30/hidden-gems-of-php-packages-nette-utils" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Hidden Gems of PHP Packages: Nette\Utils" />
+    <meta name="twitter:description" content="In this series, I will show you **not-so-known PHP packages, that I happily use in my daily workflow**. They&#039;re hard to describe in few words for their various features, but awesome and simple to use.
+
+Today we start with [Nette\Utils](https://github.com/nette/utils) package.
+" />

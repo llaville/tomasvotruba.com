@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>The Bulletproof Event Naming For Symfony Event Dispatcher | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 253 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>The Bulletproof Event Naming For Symfony Event Dispatcher</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-05-Mon">
+            <strike>
+                            Mon, May 25
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated May, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/05/25/the-bulletproof-event-naming-for-symfony-event-dispatcher/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-25-the-bulletproof-event-naming-for-symfony-event-dispatcher.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at May 2020</strong>
+                        </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I wrote <a href="/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/">intro to Symfony\EventDispatcher</a> and how to use it with simple event.
+<br><br>
+But when it comes to dispatching events, you can choose from 4 different ways. Which one to choose and why? Today I will show you pros and cons of them to make it easier for you.</p>
+                    </div>
+                </div>
+
+                <h2 id="1-start-with-em-stringly-em">1. Start with <em>Stringly</em></h2>
+<p>You can start with simple <em>string named event</em>:</p>
+<pre><code class="language-php">$postEvent = new PostEvent($post);
+$this-&gt;eventDispatcher-&gt;dispatch('post_added', $postEvent);</code></pre>
+<p>Simple for start and easy to use for one place and one event.</p>
+<p>One day I started to use in more places:</p>
+<pre><code class="language-php">$postEvent = new PostEvent($post);
+$this-&gt;eventDispatcher-&gt;dispatch('post_add', $postEvent);</code></pre>
+<p>All looked good, but <strong>the subscriber didn't work</strong>. Fun time with event subscribers debugging was about to come.</p>
+<p>Hour has passed. Event subscriber was registered as a service, tagged, collected by dispatcher... but I still couldn't find the issue. So I showed it to my colleague:</p>
+<p><em>Oh, you've got &quot;post_add&quot; there, but there should be &quot;post_added&quot;.</em></p>
+<p>YAY! I copied the previous subscriber with &quot;post_added&quot; but <strong>I made a typo</strong> while dispatching event.</p>
+<p>There must be a cure for this, I wished.</p>
+<h2 id="2-group-file-with-events-names-as-constants">2. Group File with Events Names as Constants</h2>
+<p>Then I got inspired by Symfony <a href="https://github.com/symfony/symfony/blob/d203ee33954f4e0c5b39cdc6224fe4fb96cac0c3/src/Symfony/Component/Console/ConsoleEvents.php"><code>ConsoleEvents</code> class</a> that collects all events from one domain in constants.</p>
+<pre><code class="language-php">final class PostEvents
+{
+    /**
+     * This event is invoked when post is added.
+     * It is called here @see \App\Post\PostService::add().
+     * And @see \App\Events\PostAddedEvent class is passed.
+     *
+     * @var string
+     */
+    public const ON_POST_ADDED = 'post_added';
+
+    /**
+     * This event is invoked when post is published.
+     * It is called here @see \App\Post\PostService::published().
+     * And @see \App\Events\PostPublishedEvent class is passed.
+     *
+     * @var string
+     */
+    public const ON_POST_PUBLISHED = 'post_published';
+}</code></pre>
+<p>Our first example will change from <em>stringly</em> to <em>strongly</em> typed:</p>
+<pre><code class="language-php">$postAddedEvent = new PostAddedEvent($post);
+$this-&gt;eventDispatcher(PostEvents::ON_POST_ADDED, $postAddedEvent)</code></pre>
+<p>Also subscriber becomes typo-proof:</p>
+<pre><code class="language-php">final class TagPostSubscriber implements SubscriberInterface
+{
+    public static function getSubscribedEvents(): array
+    {
+        return [PostEvents::ON_POST_ADDED =&gt; 'tagPost'];
+    }
+
+    public function tagPost(PostAddedEvent $postAddedEvent): void
+    {
+        // ...
+    }
+}</code></pre>
+<h3 id="pros">Pros</h3>
+<ul>
+<li>All events are in one place.</li>
+<li>Easy to orientate for new programmer what events he or she can use.</li>
+<li>IDE helps you with constant autocompletion.</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>One class to store all events <strong>breaks <a href="https://github.com/wataridori/solid-php-example/blob/master/2-open-closed-principle.php">open-closed principle</a></strong>.
+<ul>
+<li>To add new event I have to put it here as well - human memory vulnerable.</li>
+</ul></li>
+<li>Your have to come up with <strong>long annotation description above constant</strong>:
+<ul>
+<li>where is used (one place or all),</li>
+<li>link the event class with IDE-compatible notation, e.g. <code>EventClass</code> doesn't work in PHPStorm, but <code>@see EventClass</code> does</li>
+</ul></li>
+</ul>
+<p>The more events you have the harder is this to maintain properly. With 5th event you might end up like this:</p>
+<pre><code class="language-php">final class PostEvents
+{
+    /**
+     * This event is invoked when post is published.
+     * It is called here @see \App\Post\PostService::published().
+     * And @see \App\Events\PostPublishedEvent class is passed.
+     *
+     * @var string
+     */
+    public const ON_POST_PUBLISHED = 'post_published';
+
+    // 3 more nicely annotated events...
+
+    public const ON_POST_CHANGED = 'changed';
+}</code></pre>
+<p>I wanted to respect open-closed principle, so global class was a no-go.</p>
+<p>Maybe, I could put those...</p>
+<h2 id="3-constant-names-in-particular-event-classes">3. Constant Names in Particular Event Classes</h2>
+<p>Like this:</p>
+<pre><code class="language-php">final class PostAddedEvent
+{
+    /**
+     * @var string
+     */
+    public const NAME = 'post_added';
+
+    /**
+     * @var Post
+     */
+    private $post;
+
+    public function __construct(Post $post)
+    {
+        $this-&gt;post = $post;
+    }
+}</code></pre>
+<p>Our example is now <em>strongly</em> typed and <strong>respects open-closed principle</strong>:</p>
+<pre><code class="language-php">$postAddedEvent = new PostAddedEvent($post);
+$this-&gt;eventDispatcher(PostAddedEvent::NAME, $postAddedEvent)</code></pre>
+<p>Like this!</p>
+<h3 id="pros">Pros</h3>
+<p><strong>All the above +</strong></p>
+<ul>
+<li>Easy to refactor event name.</li>
+<li>No more human error in event name typos.</li>
+</ul>
+<h3 id="cons">Cons</h3>
+<ul>
+<li>You still need a human brain computation to keep <code>constant NAME = '...'</code> unique per-class.</li>
+<li>Beautiful place for error and long nights of debugging.</li>
+</ul>
+<p><strong>Take a step back</strong>: what is my goal?</p>
+<p>I look for an identifier that is:</p>
+<ul>
+<li><strong>unique per class</strong></li>
+<li><strong>constant</strong> (in both meanings if possible)</li>
+<li><strong>IDE friendly</strong></li>
+<li><strong>coupled to Event class</strong> in any way</li>
+<li>doesn't allow me to make naming errors and typos</li>
+</ul>
+<p>Can you see it? I think you do :)</p>
+<h2 id="4-class-based-event-naming">4. Class-based Event Naming</h2>
+<pre><code class="language-php">$postAddedEvent = new PostAddedEvent($post);
+$this-&gt;eventDispatcher(PostAddedEvent::class, $postAddedEvent)</code></pre>
+<p>It could not be simpler and meets all the conditions!</p>
+<h3 id="pros">Pros</h3>
+<p>All 4 reasons above +</p>
+<ul>
+<li><strong>It's typo-proof</strong></li>
+<li>It uses PHP <strong>native <code>::class</code> support</strong>.</li>
+<li>It's addictively easy.</li>
+</ul>
+<h2 id="which-type-do-you-like">Which Type Do You Like?</h2>
+<p>This is my story for event naming evolution. But what is yours - <strong>which event naming system do you use</strong>? I'm curious and ready to be wrong, so please let me know in the comments if you like it or do it any different way.</p>
+<h3 id="taking-it-step-further">Taking it Step Further</h3>
+<p><a href="http://enumag.cz">Enumag</a> suggested such different way by removing first argument:</p>
+<pre><code class="language-php">public function dispatch(Event $event): void
+{
+    $this-&gt;eventDispatcher-&gt;dispatch(get_class($event), $event);
+}</code></pre>
+<p><strong>And exactly this is <a href="https://symfony.com/blog/new-in-symfony-4-3-simpler-event-dispatching">possible since Symfony 4.3</a></strong> (2019):</p>
+<pre><code class="language-php">$postAddedEvent = new PostAddedEvent($post);
+$this-&gt;eventDispatcher($postAddedEvent);
+
+// or in case we don't need to get changed content from the event
+
+$this-&gt;eventDispatcher-&gt;dispatch(new PostAddedEvent($post));</code></pre>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/05/18/the-future-of-pehapkari-meetups-and-trainings-you" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    The Future of Pehapkari Meetups and Training - You
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-05-25-the-bulletproof-event-naming-for-symfony-event-dispatcher.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="The Bulletproof Event Naming For Symfony Event Dispatcher" />
+    <meta property="og:description" content="I wrote [intro to Symfony\EventDispatcher](/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/) and how to use it with simple event.
+
+But when it comes to dispatching events, you can choose from 4 different ways. Which one to choose and why? Today I will show you pros and cons of them to make it easier for you.
+" />
+    <meta property="og:url" content="/blog/2020/05/25/the-bulletproof-event-naming-for-symfony-event-dispatcher" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="The Bulletproof Event Naming For Symfony Event Dispatcher" />
+    <meta name="twitter:description" content="I wrote [intro to Symfony\EventDispatcher](/blog/2019/08/05/standalone-symfony-event-dispatcher-from-the-scratch/) and how to use it with simple event.
+
+But when it comes to dispatching events, you can choose from 4 different ways. Which one to choose and why? Today I will show you pros and cons of them to make it easier for you.
+" />

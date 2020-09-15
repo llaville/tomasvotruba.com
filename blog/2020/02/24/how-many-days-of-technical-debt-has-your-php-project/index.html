@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How Many Days of Technical Debt Has your PHP Project | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 240 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How Many Days of Technical Debt Has your PHP Project</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-02-Mon">
+            
+                            Mon, Feb 24
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/02/24/how-many-days-of-technical-debt-has-your-php-project/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-02-24-how-many-days-of-technical-debt-has-your-php-project.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Every project has technical dept. But how would you measure it? With <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/">cognitive complexity</a>? The age of the framework? Any other guess?
+<br>
+<br>
+This year I've started to use CI service, which tells you the number in days. And it works pretty well... how many days Rector has? Keep on learning.</p>
+                    </div>
+                </div>
+
+                <p><a href="https://sonarcloud.io/dashboard?id=rectorphp_rector"></p>
+<img src="/assets/images/posts/2020/sonar_rector.png" class="img-thumbnail">
+<p></a></p>
+<h2 id="how-reliable-is-technical-dept-metric">How Reliable is Technical Dept Metric?</h2>
+<p>When I first analyzed Rector, <strong>top 5 worst classes had these in common</strong>:</p>
+<ul>
+<li>&quot;instanceof programming&quot;, e.g., 10-15 cases of <code>instanceof</code>, then do return some logic</li>
+<li>30-50 lines long methods within 1 class</li>
+<li>classes of length 200-500 lines</li>
+<li>pain points I knew were there, but I was afraid to do something about it</li>
+</ul>
+<p>As the first experiment, I picked a class that had <strong>5 hours and 40 minutes</strong> of technical debt, and I gradually converted it to <a href="/blog/2018/06/14/collector-pattern-for-dummies/">collector pattern</a>.</p>
+<p>Do you want to see <strong>real code</strong>? Look at <a href="https://github.com/rectorphp/rector/pull/2767/files#diff-23d92ff042a5c83870af8b8d30bbdd8d">this PR with <code>NodeTypeResolver</code> decoupling to 10 new classes</a>.</p>
+<h2 id="i-thought-removing-legacy-would-be-fun">I Thought Removing Legacy Would be Fun...</h2>
+<p>...but removing my legacy code was rather painful. I had to <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/">load huge methods</a> to my working memory, think about relations of huge monolithic class and try to split into the smallest standalone pieces.</p>
+<p><strong>After 3 hours of work, I was exhausted</strong>, but CI was passing, and the god class was gone. I pushed my work, merged the PR to the <code>master</code>, and waited for SonarCloud analysis... <strong>from 5:40 I got into 2:40</strong>. What?</p>
+<p>After all this work, only such a small improvement? Don't take me wrong; the code was much improved, I'm just used to work more effectively with Rector-wave refactoring approach... no more <a href="https://freek.dev/1518-automatically-convert-your-code-to-php-74-syntax-using-rector">from months to days</a>?</p>
+<p>This process taught me a lesson:</p>
+<blockquote class="blockquote mt-5 mb-5 text-center">
+    The legacy code will always be there. Observe it, measure it and remove it.
+    <br>
+    The later you start, the more it hurts. No matter what.
+</blockquote>
+<p>Since then, <strong>I'm adding SonarCube on every project I work on</strong>, so I know (not just <em>feel</em>):</p>
+<ul>
+<li>what is the pain point,</li>
+<li>and where should we put the effort...</li>
+</ul>
+<p>...<strong>to keep code base fit for years</strong></p>
+<p><br></p>
+<p>Do you wonder <strong>how many days you have on your back</strong>? 10, 50 or over 100? Add your first SonarCube check into the CI and share with us in comments ↓</p>
+<h2 id="how-to-add-sonarcube-to-your-github-project-in-6-steps">How to add SonarCube to your Github Project in 6 Steps?</h2>
+<p>SonarCube is free for open-source and has a 1-week trial for private projects. I tried the 1-week trial on one private project, and then I saw the debt... <strong>365</strong>, <del>hours</del> days... you have to love it :D.</p>
+<h2 id="1-add-project-on-sonarcloud">1. Add Project on SonarCloud</h2>
+<ul>
+<li><a href="https://sonarcloud.io/projects/create">Create new project</a></li>
+</ul>
+<img src="/assets/images/posts/2020/sonar_step_1.png" class="img-thumbnail">
+<h2 id="2-authorize-your-github-project">2. Authorize Your Github Project</h2>
+<img src="/assets/images/posts/2020/sonar_step_2.png" class="img-thumbnail">
+<p>Add the file and commit to <code>master</code>.</p>
+<h2 id="3-add-github-action">3. Add Github Action</h2>
+<p>We need to have a way to tell the Sonar that new code was pushed. That's what Github Actions are for.</p>
+<p>Add new workflow:</p>
+<pre><code class="language-yaml"># .github/workflows/sonarcube.yaml
+name: Sonar
+
+on: push
+
+jobs:
+    sonar_cloud:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@master
+                with:
+                    # sonar needs non-shallow clone
+                    fetch-depth: 10000
+
+            -   uses: sonarsource/sonarcloud-github-action@master
+                env:
+                    ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}</code></pre>
+<p>As you can see, there are 2 tokens to authorize.</p>
+<h3 id="how-to-get-tokens">How to get Tokens?</h3>
+<ul>
+<li><a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> → <code>ACCESS_TOKEN</code></li>
+<li><a href="https://sonarcloud.io/account/security">https://sonarcloud.io/account/security</a> → <code>SONAR_TOKEN</code></li>
+</ul>
+<h3 id="where-to-place-them">Where to place Them?</h3>
+<p>Add both tokens to your <em>secrets</em> sections in your repository: <a href="https://github.com/TomasVotruba/tomasvotruba.com/settings/secrets">https://github.com/TomasVotruba/tomasvotruba.com/settings/secrets</a></p>
+<h2 id="4-add-badge-for-quick-link-to-sonarcloud-analysis">4. Add Badge for Quick Link to SonarCloud Analysis</h2>
+<p>What is analysis good for if you can't reach it from your <code>README</code>? Be sure to add it there, so you can enter it quickly and share your excellent results with others.</p>
+<ul>
+<li>You can use the standard link: <a href="https://sonarcloud.io/dashboard?id=TomasVotruba_tomasvotruba.com">SonarCube</a></li>
+<li>But I went for <strong>fancier custom badge</strong> (where you can add your technical dept <strong>days</strong> number):</li>
+</ul>
+<pre><code class="language-markdown">[![SonarCube](https://img.shields.io/badge/SonarCube_Debt-%3C2-brightgreen.svg?style=flat-square)](https://sonarcloud.io/dashboard?id=TomasVotruba_tomasvotruba.com)</code></pre>
+<p><a href="https://sonarcloud.io/dashboard?id=TomasVotruba_tomasvotruba.com"><img src="https://img.shields.io/badge/SonarCube_Debt-%3C2-brightgreen.svg?style=flat-square" alt="SonarCube" /></a></p>
+<p>Almost done...</p>
+<h2 id="5-where-is-the-code">5. Where is the Code?</h2>
+<p>We still have to tell SonarCube where to look for the <code>src</code> code. To do this, we need to add <code>sonar-project.properties</code>.</p>
+<pre><code class="language-bash"># sonar-project.properties
+# see https://sonarcloud.io/documentation/project-administration/narrowing-the-focus/
+sonar.organization=TomasVotruba
+sonar.projectKey=tomasvotruba.com
+
+# relative paths to the source, wildcards don't work
+sonar.sources=src</code></pre>
+<p>To get <code>organization</code> and and <code>projectKey</code>, just split the key (<code>TomasVotruba_tomasvotruba.com</code>) by <code>_</code>.</p>
+<h2 id="6-remove-spam-bot">6. Remove Spam Bot</h2>
+<p><strong>Do this AFTER the first analysis of <code>master</code> branch is completed.</strong> If you do it earlier, the Github Action will not work.</p>
+<p><br></p>
+<p>There is a price for all the excellent features... you need to tolerate SonarCube <strong>spam bot on every commit</strong>.</p>
+<img src="/assets/images/posts/2020/sonar_spam.png" class="img-thumbnail">
+<p><strong>I hated it</strong> and wanted to delete all this Sonar-spam from my repositories, but there is one solution out of it.</p>
+<p>Go to <a href="https://github.com/settings/installations">Github installations</a>:</p>
+<img src="/assets/images/posts/2020/sonar_step_3.png" class="img-thumbnail">
+<p>And remove it:</p>
+<img src="/assets/images/posts/2020/sonar_step_4.png" class="img-thumbnail">
+<p>We only need it for the first contact. Instead of it, <strong>you can authorize with Github Actions</strong>.</p>
+<p><br></p>
+<p>And that should be it! (If not, let me know in comments.)</p>
+<p><a href="https://sonarcloud.io/dashboard?id=TomasVotruba_tomasvotruba.com"></p>
+<img src="/assets/images/posts/2020/sonar_final.png" class="img-thumbnail">
+<p></a></p>
+<p><br></p>
+<h2 id="trouble-shooting">Trouble Shooting</h2>
+<h3 id="quot-please-add-the-secret-github-token-to-the-github-action-for-sonarcloud-quot">&quot;Please add the secret GITHUB_TOKEN to the GitHub action for SonarCloud&quot;</h3>
+<p>If you see this message, don'T try to add <code>GITHUB_TOKEN</code> to your Secrets in GitHub repository. It won't let you.
+Instead, re-use already existing secret in your <code>.github/workflows/sonarcube.yaml</code>:</p>
+<pre><code class="language-diff"># .github/workflows/sonarcube.yaml
+# ...
+             -   uses: sonarsource/sonarcloud-github-action@master
+                 env:
+                     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
++                    GITHUB_TOKEN: ${{ secrets.SONAR_TOKEN }}</code></pre>
+<p><br></p>
+<h3 id="dual-analysis">Dual Analysis?</h3>
+<p>When CI fails for having both automatic and Github Action analysis, go to your project on SonarCube and disable it:</p>
+<img src="/assets/images/posts/2020/sonar_one_method.png" class="img-thumbnail">
+<p><br></p>
+<h3 id="quot-project-was-never-analyzed-a-regular-analysis-is-required-before-a-branch-analysis-quot">&quot;Project was never analyzed. A regular analysis is required before a branch analysis.&quot;</h3>
+<p>I tried many paths, but I'm not aware of any specific solution for this. <strong>Delete</strong> project on Sonarcloud, <strong>hide</strong> local GitHub Action workflow and <strong>star over</strong>.</p>
+<p><br></p>
+<p><strong>Now you see your weakest points and <a href="https://joshkaufman.net/how-to-fight-a-hydra">Fight the Hydra</a> with courage!</strong></p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/02/17/local-packages-3-years-later" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Local Packages 3 Years Later
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-02-24-how-many-days-of-technical-debt-has-your-php-project.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How Many Days of Technical Debt Has your PHP Project" />
+    <meta property="og:description" content="Every project has technical dept. But how would you measure it? With [cognitive complexity](/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/)? The age of the framework? Any other guess?
+
+
+This year I&#039;ve started to use CI service, which tells you the number in days. And it works pretty well... how many days Rector has? Keep on learning.
+" />
+    <meta property="og:url" content="/blog/2020/02/24/how-many-days-of-technical-debt-has-your-php-project" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How Many Days of Technical Debt Has your PHP Project" />
+    <meta name="twitter:description" content="Every project has technical dept. But how would you measure it? With [cognitive complexity](/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/)? The age of the framework? Any other guess?
+
+
+This year I&#039;ve started to use CI service, which tells you the number in days. And it works pretty well... how many days Rector has? Keep on learning.
+" />

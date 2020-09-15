@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Doctrine Entity Typed Properties With PHP 7.4 | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 244 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Doctrine Entity Typed Properties With PHP 7.4</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-03-Mon">
+            
+                            Mon, Mar 23
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/03/23/doctrine-entity-typed-properties-with-php74/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-23-doctrine-entity-typed-properties-with-php74.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Recently we've upgraded our <a href="https://pehapkari.cz">Czech PHP community website</a> to PHP 7.4. As a side effect, it broke most of our entities.
+Do you love how making language more strict reveals weak points in your code just by using it?
+<br>
+<br>
+Today we'll look at <strong>the impact of typed properties on weak points of Doctrine entities and how to solve them</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="the-collections">The Collections</h2>
+<p>In the Czech PHP community, we have skilled trainers that share their knowledge with others on training. We help them to share the knowledge by handling the tedious organization processes for them and let them enjoy the training day itself.</p>
+<p>Each trainer has many trainings, so the <code>Trainer</code> entity looks like this in PHP 7.3-:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Trainer
+{
+    /**
+     * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+     * @var Collection|Trainer[]
+     */
+    private $trainings = [];
+
+    /**
+     * @param Training[]|Collection $collection
+     */
+    public function setTrainings(array $collection): void
+    {
+        $this-&gt;trainings = $collection;
+    }
+
+    /**
+     * @return Collection|Training[]
+     */
+    public function getTrainings(): iterable
+    {
+        return $this-&gt;trainings;
+    }
+}</code></pre>
+<p>What can we say about this code?</p>
+<ul>
+<li>works in PHP 7.4</li>
+<li>provides IDE enough information about types for autocomplete</li>
+<li>makes PHPStan happy with types</li>
+<li>...broke with PHP 7.4 typed properties :)</li>
+</ul>
+<p>How do we <strong>add property types without breaking everything</strong>?</p>
+<h2 id="1-the-property">1. The Property</h2>
+<p>In PHP 7.4, <strong>the property is the king</strong> - the rest of the code has to respect the type, and it's the default value. Let's start with that.</p>
+<pre><code class="language-diff"> /**
+  * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+  * @var Collection|Trainer[]
+  */
+-private $trainings = [];
++private array $trainings = [];
++private iterable $trainings = [];
++private Collection $trainings = [];</code></pre>
+<p>What is the type here?</p>
+<ul>
+<li>1) <code>array $trainings = [];</code></li>
+<li>2) <code>iterable $trainings = [];</code></li>
+<li>3) <code>Collection $trainings = [];</code></li>
+</ul>
+<p>Pick one...</p>
+<p><br>
+<br>
+<br></p>
+<pre><code class="language-diff"> /**
+  * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+  * @var Collection|Trainer[]
+  */
+-private $trainings = [];
++private Collection $trainings = [];</code></pre>
+<p>This one worked the best (= code worked).</p>
+<p>But PHP 7.4 now complains that the <code>Collection</code> object cannot be <code>[]</code> by default.</p>
+<pre><code class="language-diff"> /**
+  * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+  * @var Collection|Trainer[]
+  */
+-private Collection $trainings = [];
++private Collection $trainings;</code></pre>
+<p>But PHP 7.4 now complains that it's <code>null</code> by default, so it has to nullable.</p>
+<blockquote class="blockquote text-center">
+If it's not enforced, nobody cares.
+</blockquote>
+<p>Here is where <em>best practices</em> become defaults. Do you know <a href="https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/best-practices.html#initialize-collections-in-the-constructor">initialize collections in the constructor</a> best practice?</p>
+<img src="/assets/images/posts/2020/typed_doctrine_properties_best_practise.png" class="img-thumbnail">
+<p>This helps to work Doctrine in more realiable way. Well, it <em>was</em>.
+Now we <strong>have to use it</strong> to make our code work:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ declare(strict_types=1);
+
+ namespace App\Entity;
+
+ use Doctrine\Common\Collections\ArrayCollection;
++use Doctrine\Common\Collections\Collection;
+ use Doctrine\ORM\Mapping as ORM;
+
+ /**
+  * @ORM\Entity
+  */
+ class Trainer
+ {
+     // ...
+
++    public function __construct()
++    {
++        $this-&gt;trainings = new ArrayCollection();
++    }
+
+     // ...
+ }</code></pre>
+<p>All right, we have correct type, it's initialized in the constructor... now a bit more polishing:</p>
+<pre><code class="language-diff"> /**
+  * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+- * @var Collection|Trainer[]
++ * @var Collection&amp;Trainer[]
+  */
+ private Collection $trainings;</code></pre>
+<p>You might also use this PHPStan format, but I'm not sure how PHPStorm handles that:</p>
+<pre><code class="language-diff"> /**
+  * @ORM\OneToMany(targetEntity="Pehapkari\Training\Entity\Training", mappedBy="trainer")
+- * @var Collection|Trainer[]
++ * @var Collection&lt;Trainer&gt;
+  */
+ private Collection $trainings;</code></pre>
+<p>And that's it. Our property is ready!</p>
+<p><br></p>
+<h2 id="2-getter-method">2. Getter Method?</h2>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+/**
+ * @return Collection|Training[]
+ */
+public function getTrainings(): iterable
+{
+    return $this-&gt;trainings;
+}</code></pre>
+<p>What about return type? Look on the property type:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ /**
+  * @return Collection|Training[]
+  */
+-public function getTrainings(): iterable
++public function getTrainings(): Collection
+ {
+     return $this-&gt;trainings;
+ }</code></pre>
+<p>Drop in a bit of polishing:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ /**
+- * @return Collection|Training[]
++ * @return Collection&amp;Training[]
+  */
+ public function getTrainings(): Collection
+ {
+     return $this-&gt;trainings;
+ }</code></pre>
+<p>And we're ready to go!</p>
+<h2 id="3-setter-method">3. Setter Method?</h2>
+<p>I bet you handle this already from the top of your head, so to compare:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ /**
+- * @param Collection|Training[] $trainings
++ * @param Collection&amp;Training[] $trainings
+  */
+-public function setTrainings(array $trainings): void
++public function setTrainings(Collection $trainings): void
+ {
+     $this-&gt;trainings = $trainings;
+ }</code></pre>
+<p><br></p>
+<p>Do you want to see real code? Look at full pull request:</p>
+<p><a href="https://github.com/pehapkari/pehapkari.cz/pull/297/files"></p>
+<img src="/assets/images/posts/2020/typed_doctrine_properties_collection.png" class="img-thumbnail">
+<p></a></p>
+<h2 id="easyadminbundle">EasyAdminBundle?</h2>
+<p>Have you tried <a href="https://github.com/EasyCorp/EasyAdminBundle">EasyAdminBundle</a> to delegate your full administration? If not, give it go.</p>
+<p><strong>It creates data grids, forms, edit/update/add/delete controllers. All this with simple and beautiful UX. All you need to do is define your entities and register then in YAML config.</strong> I love it!</p>
+<p><br></p>
+<p>Huge thanks to <a href="https://github.com/javiereguiluz">Javier Eguiluz</a>, creator and maintainer of this bundle, who also behind amazing <strong>690&nbsp;issues</strong> of <a href="https://symfony.com/blog/category/a-week-of-symfony">Weeks of Symfony</a>.</p>
+<p><br></p>
+<p>To make this all happen, the design choice is to allow every property to be nullable. Some people disagree and try to make EasyAdminBundle work with value objects. But they fail by killing the simplicity and re-inventing admin again.</p>
+<blockquote class="blockquote text-center">
+There are no best solutions, there are just trade offs.
+</blockquote>
+<p>So what does <em>every property is nullable</em> mean for PHP 7.4 typed properties?</p>
+<pre><code class="language-diff">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Training
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+-    * @var int
+     */
+-   private $id;
++   private ?int $id = null;
+
+    // ...
+}</code></pre>
+<p>Do you prefer code over text? <a href="https://github.com/pehapkari/pehapkari.cz/pull/297/files">Here is the PHP 7.4 upgrade pull-request</a>.</p>
+<h2 id="upgrade-instantly-with-rector">Upgrade Instantly with Rector</h2>
+<p>I did not do the upgrade pull-request myself (I'm way too lazy for that), <a href="https://getrector.org">Rector</a> did. Thanks to testing out Rector on Doctrine entities, its PHP 7.4 set got much more precise.</p>
+<p><strong>Do you want to see how Rector can upgrade your code?</strong></p>
+<pre><code class="language-bash">composer require rector/rector --dev
+vendor/bin/rector process src --set php74 # add "--dry-run" to check first</code></pre>
+<p>If you got any troubles, <a href="https://github.com/rectorphp/rector/issues/new/choose">let us know on GitHub</a>. That's all, folks.</p>
+<p><br></p>
+<p>Happy coding &amp; stay alive!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/03/16/statie-is-dead-long-live-symfony-static-dumper" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Statie is Dead, Long live Symfony Static Dumper
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-03-23-doctrine-entity-typed-properties-with-php74.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Doctrine Entity Typed Properties With PHP 7.4" />
+    <meta property="og:description" content="Recently we&#039;ve upgraded our [Czech PHP community website](https://pehapkari.cz) to PHP 7.4. As a side effect, it broke most of our entities.
+Do you love how making language more strict reveals weak points in your code just by using it?
+
+
+Today we&#039;ll look at **the impact of typed properties on weak points of Doctrine entities and how to solve them**.
+" />
+    <meta property="og:url" content="/blog/2020/03/23/doctrine-entity-typed-properties-with-php74" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Doctrine Entity Typed Properties With PHP 7.4" />
+    <meta name="twitter:description" content="Recently we&#039;ve upgraded our [Czech PHP community website](https://pehapkari.cz) to PHP 7.4. As a side effect, it broke most of our entities.
+Do you love how making language more strict reveals weak points in your code just by using it?
+
+
+Today we&#039;ll look at **the impact of typed properties on weak points of Doctrine entities and how to solve them**.
+" />

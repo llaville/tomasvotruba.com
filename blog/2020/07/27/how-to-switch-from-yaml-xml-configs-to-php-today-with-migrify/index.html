@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Switch from YAML/XML Configs to PHP Today with Migrify | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 271 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Switch from YAML/XML Configs to PHP Today with Migrify</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-07-Mon">
+            <strike>
+                            Mon, Jul 27
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/07/27/how-to-switch-from-yaml-xml-configs-to-php-today-with-migrify/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-27-how-to-switch-from-yaml-xml-configs-to-php-today-with-migrify.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In <a href="/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/">previous post</a>, we looked 10 reasons to switch from YAML to PHP configs. Still asking <em>why</em>? I dare you to <a href="/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/">disagree with 1 reason there</a>.
+<br><br>
+If you have 1 config file, you already are on PHP side now. Close this post and enjoy life.
+<br><br>
+But what if you have 10 or even 100 YAML/XML configs? Are you doing to close down for a weekend to switch your code base?
+<br>
+<br>
+Or maybe... <strong>5 minute job</strong>?</p>
+                    </div>
+                </div>
+
+                <h2 id="break-even-automation">Break-Even Automation</h2>
+<p>With legacy migrations, we have to handle a lot of processes that are automated. If you work on 1 project for many years, it's a matter of habit to handle it manually. But <strong>handling 3 projects a month makes you think, how to automated any repeated work</strong>. It's cheaper, faster, and more reliable. The same way the writing tests are.</p>
+<p><br></p>
+<p>We made <a href="https://github.com/migrify/config-transformer">migrify/config-transformer</a> to handle this work for us.</p>
+<img src="/assets/images/posts/2020/yaml_to_php.png" class="img-thumbnail">
+<p><br></p>
+<p><strong>Credit</strong> for inspiration first reported bugs, feature feedback, and exceptional test cases <strong>goes to <a href="https://github.com/archeoprog">archeoprog</a> and <a href="https://github.com/weaverryan">Ryan Weaver</a></strong>. Their input helped get the migrify package to high quality and covered Symfony features I didn't even know. Thank you, guys!</p>
+<p><br></p>
+<h2 id="1-install-migrify-config-transformer">1. Install migrify/config-transformer</h2>
+<pre><code class="language-bash">composer require migrify/config-transformer --dev</code></pre>
+<h2 id="2-run-code-switch-format-code-command">2. Run <code>switch-format</code> Command</h2>
+<p>This command has 2 requires options and 1 argument:</p>
+<ul>
+<li><code>--input-format</code> - the format of the config you want to convert</li>
+<li><code>--output-format</code> - desired output format (PHP is the default, YAML is also supported, useful for legacy projects with XML and but old Symfony)</li>
+<li>the argument is paths to file/s or directories you want to convert</li>
+</ul>
+<pre><code class="language-bash">vendor/bin/config-transformer switch-format --input-format yaml app/config
+vendor/bin/config-transformer switch-format --input-format xml app/config</code></pre>
+<p>Are you lazy like me? Use shortcut:</p>
+<pre><code class="language-bash">vendor/bin/config-transformer switch-format -i yaml -o php app/config
+vendor/bin/config-transformer switch-format -i xml -o php app/config</code></pre>
+<h2 id="why-am-i-putting-the-path-argument-as-the-last-one">Why am I Putting the Path Argument as the Last one?</h2>
+<p>You've noticed, the path argument is the last in the command line. That's rather confusing, right?</p>
+<pre><code class="language-bash"># conventional
+vendor/bin/config-transformer PATH switch-format -i yaml -o php
+
+# convenient
+vendor/bin/config-transformer switch-format -i yaml -o php PATH</code></pre>
+<p>Do you need to switch multiple paths in separated commits or apply them on multiple projects?
+<br>
+Re-use previous command and <strong>change the last part only</strong>.</p>
+<p>This is how my <strong>real workflow</strong> looks like: from low hanging fruit of 1 file to the main config, to all packages.
+Each followed by a separated commit, so it's easier to review and fix in case of regression.</p>
+<pre><code class="language-bash">vendor/bin/config-transformer switch-format -i yaml -o php ecs.yaml
+# commit
+
+vendor/bin/config-transformer switch-format -i yaml -o php rector.yaml
+# commit
+
+vendor/bin/config-transformer switch-format -i yaml -o php app/packages
+# commit
+
+vendor/bin/config-transformer switch-format -i yaml -o php app/config/config.yaml
+# commit</code></pre>
+<h2 id="3-upgrade-paths-to-php-in-extensions-and-kernel">3. Upgrade paths to PHP in Extensions and Kernel</h2>
+<p>The config format switch is one part; the next is to update loaders in PHP code.
+Again, it's valid to handle it manually with search &amp; replace in PHPStorm.</p>
+<pre><code class="language-diff"> use Symfony\Component\Config\FileLocator;
+ use Symfony\Component\DependencyInjection\ContainerBuilder;
+-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
++use Symfony\Component\DependencyInjection\Loader\PhplFileLoader;
+ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+
+ final class SomeExtension extends Extension
+ {
+     public function load(array $configs, ContainerBuilder $container)
+     {
+-        $loader = new YamlFileLoader($container, new FileLocator());
++        $loader = new PhplFileLoader($container, new FileLocator());
+-        $loader-&gt;load(__DIR__ . '/../Resources/config/controller.yaml');
++        $loader-&gt;load(__DIR__ . '/../Resources/config/controller.php');
+-        $loader-&gt;load(__DIR__ . '/../Resources/config/events.yaml');
++        $loader-&gt;load(__DIR__ . '/../Resources/config/events.php');
+     }
+ }</code></pre>
+<p>But in case your code is not standard and can't be bothered with correct regular expressions, Rector got you covered:</p>
+<pre><code class="language-bash">composer require rector/rector --dev</code></pre>
+<p>Setup <code>rector.php</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+use Migrify\ConfigTransformer\FormatSwitcher\ValueObject\Format;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\Symfony\Rector\Class_\ChangeFileLoaderInExtensionAndKernelRector;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(ChangeFileLoaderInExtensionAndKernelRector::class)
+        -&gt;call('configure', [[
+            ChangeFileLoaderInExtensionAndKernelRector::FROM =&gt; Format::YAML,
+            ChangeFileLoaderInExtensionAndKernelRector::TO =&gt; Format::PHP,
+        ]]);
+};</code></pre>
+<p>And let Rector handle the boring work:</p>
+<pre><code class="language-bash">vendor/bin/rector p app src</code></pre>
+<p><br></p>
+<p>And that's it!</p>
+<p>One little tool for you, one big leap for a PHP programmer-kind.</p>
+<h2 id="supported-features">Supported Features</h2>
+<ul>
+<li>imports</li>
+<li>services</li>
+<li>parameters</li>
+<li>autodiscovery</li>
+<li>instance of</li>
+<li>extensions, e.g. <code>framework</code>, <code>doctrine</code> or <code>twig</code></li>
+<li>routing</li>
+</ul>
+<h2 id="let-us-know-help-you-grow">Let Us Know, Help You Grow</h2>
+<p><strong>Is something broken? Have you found a space for improvement?</strong></p>
+<p>Create <a href="https://github.com/migrify/migrify/issues/new">an issue</a> and let us know. We'd love to hear it.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/07/20/how-to-update-hundreds-of-test-fixtures-with-single-phpunit-run" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Update Hundreds of Test Fixtures with Single PHPUnit run
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-07-27-how-to-switch-from-yaml-xml-configs-to-php-today-with-migrify.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Switch from YAML/XML Configs to PHP Today with Migrify" />
+    <meta property="og:description" content="In [previous post](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/), we looked 10 reasons to switch from YAML to PHP configs. Still asking *why*? I dare you to [disagree with 1 reason there](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/).
+
+If you have 1 config file, you already are on PHP side now. Close this post and enjoy life.
+
+But what if you have 10 or even 100 YAML/XML configs? Are you doing to close down for a weekend to switch your code base?
+
+
+Or maybe... **5 minute job**?
+" />
+    <meta property="og:url" content="/blog/2020/07/27/how-to-switch-from-yaml-xml-configs-to-php-today-with-migrify" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Switch from YAML/XML Configs to PHP Today with Migrify" />
+    <meta name="twitter:description" content="In [previous post](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/), we looked 10 reasons to switch from YAML to PHP configs. Still asking *why*? I dare you to [disagree with 1 reason there](/blog/2020/07/16/10-cool-features-you-get-after-switching-from-yaml-to-php-configs/).
+
+If you have 1 config file, you already are on PHP side now. Close this post and enjoy life.
+
+But what if you have 10 or even 100 YAML/XML configs? Are you doing to close down for a weekend to switch your code base?
+
+
+Or maybe... **5 minute job**?
+" />

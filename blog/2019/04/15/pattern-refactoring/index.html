@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Pattern Refactoring | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 203 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Pattern Refactoring</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-04-Mon">
+            
+                            Mon, Apr 15, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/04/15/pattern-refactoring/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-15-pattern-refactoring.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>In <a href="/blog/2019/04/01/removing-static-there-and-back-again/">Removing Static - There and Back Again</a> post we tried looked at anti-patterns in legacy code from a new point of view. It can be static in your code, it can be active record pattern you needed for fast bootstrapping of your idea, it can be moving from the code in controllers to command bus.
+<br>
+<br>
+<strong>They can be coupled in your code in hundreds of classes. That's a big problem, you might think, but it's only single pattern</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="use-your-personal-preferences">Use Your Personal Preferences</h2>
+<p>For pattern, refactoring is not important what I believe is the best or is considered <em>general best practice</em> (if such weak thing can even exist). I'm kicking myself in the nuts now, but I feel I have to write it.</p>
+<p>No external consultant or blog post can give you a qualified answer on what to do with a code he or she saw for a few days. I mean, they can give you tip and qualified feedback, because they saw dozens of similar code bases, but in the end, it's up to you to do the experiment and verify it on your code base.</p>
+<p>The best thing in the code is decided by the team, that works with the code every day.</p>
+<h2 id="and-for-a-time-it-was-good">And for a Time, It Was Good</h2>
+<p>Let's look at our use case inspired by the problems of the people around me. Imagine you have an active record pattern all over your code base. In 1 000 places, so it's easier to work with it:</p>
+<pre><code class="language-php">&lt;?php
+
+$product = Product::find(5);
+$product-&gt;name = 'Train Ticket';
+$product-&gt;save();</code></pre>
+<p>This pattern helped you to grow your minimal viable product, deliver features, enjoy growth and make money. It was very useful to you at a certain time in the past. The same way it was useful to live with parents when we went to school.</p>
+<p>Your company grew every year for last 5 years, with growing code bases and new modules you have more bugs with weak typing and you've <strong>decided to move</strong> to Doctrine and separate Entity and Repository.</p>
+<h2 id="let-s-refactor">Let's Refactor</h2>
+<p>The <strong>why</strong> is clear and the decision to change the codebase has been made. Now <strong>how</strong> do you refactor your 1000 places that use active record?</p>
+<p>Before answering, keep in mind, that you have to explain these options to your boss (CEO, product owner...) because he or she cares about following in this order:</p>
+<ul>
+<li><strong>How much time</strong> will it take? <em>The faster the better</em></li>
+<li><strong>How much money</strong> will it cost? <em>The cheaper the better</em></li>
+<li><strong>How big code good quality</strong> it brings? The <em>higher</em> the better</li>
+</ul>
+<p>Well, your boss will probably not ask the last question, but I've added it just for the sake of our programming perception of the relationship of code and business.</p>
+<h3 id="1-rewrite-write-the-same-code-in-clean-way">1. Rewrite = Write the Same Code in Clean Way</h3>
+<p>How could the pitch for rewrite look like?</p>
+<p>&quot;<em>The active record is coupled with everything, it's in controllers, in commands, and in services. Even if we change it in a single class, it will probably influence most of the rest code. After we rewrite adding features would be much easier, because we would not have to switch between the old and new code base. We know what we want and it would take less time in the end than any other solution.</em>&quot;</p>
+<p>Suddenly, your colleague comes. You don't like him, because he's too &quot;smart&quot;, younger and has less experience than you (he's younger, how can he have more experience, right?) and he starts to argue:</p>
+<p>&quot;<em>Rewrite from scratch is one of the things you should never do. Why? Because rewriting from scratch has a bad history of failures. Joel Spolsky, CEO, and co-founder of StackOverflow wrote <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i">Things You Should Never Do</a> in 2000.</em>&quot;</p>
+<div class="text-center mb-4">
+    <img src="https://i1.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/Pong.png?zoom=1.100000023841858&amp;w=230&amp;ssl=1"><p>
+        <em>Joel hodling a ping pong paddles in black/white</em>
+    </p>
+</div>
+<p>Imagine you're the new CEO of your company. Would you go for rewrite after hearing this?</p>
+<p>In my experience, every developer has to fuck-up one project by rewriting from scratch, to obtain this knowledge, so no article can help you if you're not there yet. Still, it's fun to <strong>read about failures of others</strong>.</p>
+<h3 id="2-gradual-refactoring-change-old-code-while-adding-new-features">2. Gradual Refactoring = Change Old Code while Adding new Features</h3>
+<p>Your ballsy colleague continues his pitch: <em>It's much better to refactor as part of our coding. Only if we need it. If there is a new feature that affects, e.g. product object, we should refactor product to repository and entity. That way we can keep delivering features, we'll always have one code base that works and we don't have to split our attention for a month or potentially years.</em></p>
+<h2 id="which-approach-is-better">Which Approach is Better?</h2>
+<p>Let's get to the questions that are in the position of CEO. The goal of the CEO is to keep the project running, make it grow in all fronts together. He or she will assess both options:</p>
+<ul>
+<li><strong>How much time</strong> will it take?</li>
+<li><strong>How much money</strong> will it cost?</li>
+<li><strong>How big code good quality</strong> it brings? <em>Pretty good</em></li>
+</ul>
+<h3 id="how-is-rewrite-doing">How is Rewrite Doing?</h3>
+<p>The CEO: <em>&quot;So we have to basically pay programmers to create the same set of features as we had before, but it will cost us 2 months of work whole team? And in the end, we'll have exactly the same set of features, but the code will be nicer for you to work with?&quot;</em></p>
+<h3 id="how-is-continuous-refactoring-doing">How is Continuous Refactoring Doing?</h3>
+<p>The CEO: <em>&quot;If I understand this correctly, you say that our application will slowly transform into a new one, we can still add features, it will only take slightly longer. In the end, it might take 12-14 months, but we'll get there? And during those 12-14 months, you'll have to work with 2 approaches in the same code-base?&quot;</em></p>
+<p><br></p>
+<p><em>&quot;Well, both solutions are expensive and slow, but I slightly prefer...&quot;</em></p>
+<h2 id="attention-disruption">Attention Disruption</h2>
+<p>We forgot one big problem that both approaches suffer from.</p>
+<p>The best way to assess code quality is <strong>to let junior to work with it and count WTFs</strong>. The less the better (WTFs, not juniors). Juniors are like kids, honest and creative by nature. They don't know what they shouldn't tell and shouldn't do, so they find solutions much quicker than most of the older people... or people that work with the code base for a very long time and suffer from conformity bias. That's why I enjoy meeting &quot;less skilled&quot; people because I can learn from them much more than from &quot;the experts&quot;.</p>
+<p>If the company growth is the main reason to refactor the code, so must expect to more PHP developers joining the project. Next new programmer coming to this code...</p>
+<pre><code class="language-php">&lt;?php
+
+// in one place
+$product = Product::find(5);
+$product-&gt;name = 'Train Ticket';
+$product-&gt;save();
+
+// in some other place
+$product = $this-&gt;productRepository-&gt;get(5);
+$product-&gt;changeName('Train Ticket');
+$this-&gt;productRepository-&gt;save($product);</code></pre>
+<p>...would be probably <strong>confused</strong>:</p>
+<ul>
+<li>Why is the other team working on the new code and we have to work with this shit-code for next year?</li>
+<li>Why there is one entity with active record and other with the classic entity?</li>
+<li>Why do you keep returning my code on code-reviews, since you there is active record all over the application?</li>
+<li>Why there are 2 ways to get an item from the database with no clear boundary when to use which?</li>
+<li>Why there is no documentation for when to use which pattern?</li>
+<li>Why we have to implement every feature twice, once in the old code and once in the new code?</li>
+<li>...</li>
+</ul>
+<p>And so on.</p>
+<p>All this leads to moving focus from <a href="/blog/2017/09/25/3-non-it-books-that-help-you-to-become-better-programmer/#deep-work-by-cal-newport">deep work</a> and actually creating features to talking about meta-programming. You talk and answer and explain, but nothing in the code changes.</p>
+<h2 id="design-code-for-understanding">Design Code for Understanding</h2>
+<p>I've started to code new Lekarna.cz in 2015 on Nette from scratch (exactly!). First 5 months I was all alone, then a new programmer joined me. He started to code in the same quality as the previous code, I didn't have to teach him almost anything. I was curious:</p>
+<ul>
+<li>&quot;Where did you learn work so well Doctrine, Nette and using patterns?&quot;</li>
+<li>&quot;I did 2 small projects on Nette without Doctrine, but I just use what's already there.&quot;</li>
+</ul>
+<p>I was so happy! Once I can write readable code, second the code doesn't depend on my expertise and I don't have to waste both our times in <em>meta-programming</em> and explaining what code should explain.</p>
+<p>The code can be designed to either confuse people or to lead them. It's a matter of thoughtful decision to make code understandable first, then it's pretty easy.</p>
+<h2 id="pattern-refactoring">Pattern Refactoring</h2>
+<p>How can we keep the attention focused, code understandable and also make CEO happy?</p>
+<ul>
+<li><strong>How much time</strong> will it take? 1 month</li>
+<li><strong>How much money</strong> will it cost? Expenses for 1 month</li>
+</ul>
+<p>Do not focus on the code or on its size - that all is now just an implementation detail. Use the code that you and your colleagues build. Go for patterns:</p>
+<ul>
+<li>How do you define <strong>active record pattern</strong>?</li>
+<li>How do you define <strong>entity</strong>?</li>
+<li>How do you define <strong>repository</strong>?</li>
+<li>What is <strong>takes step by step to change</strong> this code from active record to entity and repository?</li>
+</ul>
+<pre><code class="language-diff">-$product = Product::find(5);
++$product = $this-&gt;productRepository-&gt;get(5);
+
+-$product-&gt;name = 'Train Ticket';
++$product-&gt;changeName('Train Ticket');
+
+-$product-&gt;save();
++$this-&gt;productRepository-&gt;save($product);</code></pre>
+<ul>
+<li>What is the most efficient way to achieve it?</li>
+</ul>
+<div class="alert alert-success mt-3">
+<p>Play with these question, <strong>ask them</strong>, <strong>break limits of your colleagues</strong> and <strong>look for the cheaper and faster solution that brings you better code quality</strong> at the same time.</p>
+</div>
+<p>There are many ways already:</p>
+<ul>
+<li>pattern refactoring is already in PHPStorm, the first kick off is <a href="https://blog.jetbrains.com/phpstorm/2019/02/phpstorm-2019-1-eap-191-5109-15">Code Cleanup</a>  feature</li>
+<li>regular pattern</li>
+<li>the most advanced is AST refactoring (I spoke about it in <a href="https://blog.shopsys.com/2019-trends-in-the-world-of-php-interview-with-tomas-votruba-c70f138c92a3">this interview</a>)</li>
+</ul>
+<p><br></p>
+<p>Learn this minds set and tool kit - they will give you the power to move massive code bases with just a couple hours of preparation. <strong>Next time you'll be thinking of &quot;rewrite vs. gradual refactoring&quot;, remember pattern refactoring</strong>. There probably already is an easier way behind the corner that will make happy both your and your CEO.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/04/11/trends-of-php-frameworks-in-numbers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Is Zend Dead? Is Laravel Losing Breath? Trends of PHP Frameworks in Numbers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-15-pattern-refactoring.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Pattern Refactoring" />
+    <meta property="og:description" content="In [Removing Static - There and Back Again](/blog/2019/04/01/removing-static-there-and-back-again/) post we tried looked at anti-patterns in legacy code from a new point of view. It can be static in your code, it can be active record pattern you needed for fast bootstrapping of your idea, it can be moving from the code in controllers to command bus.
+
+
+**They can be coupled in your code in hundreds of classes. That&#039;s a big problem, you might think, but it&#039;s only single pattern**.
+" />
+    <meta property="og:url" content="/blog/2019/04/15/pattern-refactoring" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Pattern Refactoring" />
+    <meta name="twitter:description" content="In [Removing Static - There and Back Again](/blog/2019/04/01/removing-static-there-and-back-again/) post we tried looked at anti-patterns in legacy code from a new point of view. It can be static in your code, it can be active record pattern you needed for fast bootstrapping of your idea, it can be moving from the code in controllers to command bus.
+
+
+**They can be coupled in your code in hundreds of classes. That&#039;s a big problem, you might think, but it&#039;s only single pattern**.
+" />

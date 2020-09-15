@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Require Minimal Code Coverage for Github Pull-Requests with Coveralls | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 42 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Require Minimal Code Coverage for Github Pull-Requests with Coveralls</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-06-Mon">
+            
+                            Mon, Jun 12, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/06/12/how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-12-how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at December 2018</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>This approach shown as <strong>very non-practical</strong> in last 2 years. Code-coverage of X is not worth the stress.</p>
+<p>The added value of code coverage now shifted to good coding standards or static analysis.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you maintain tested open-source project? Are you sad of your code-coverage decreasing over time in wave of pull-requests? <strong>Are you tired of telling &quot;could you add tests&quot;</strong>?
+<br><br>
+I will show you how to let Travis and Coveralls do this job for you.</p>
+                    </div>
+                </div>
+
+                <h2 id="why-code-coverage-shouldn-t-be-ignored">Why Code Coverage Shouldn't be Ignored</h2>
+<p><a href="https://twitter.com/Ocramius">Marco Pivetta</a> wrote a post about <a href="https://ocramius.github.io/blog/automated-code-coverage-check-for-github-pull-requests-with-travis">automated code coverage check with PHPUnit</a> few years ago. In the post he explains <strong>how important is code coverage for code quality of open-source projects</strong>:</p>
+<blockquote>
+<p>&quot;[Code Coverage] is <strong>not an universal metric to define if our code works</strong>, and there is tons of examples of how your code can still be buggy even if every line of code was executed at least once. It should anyway not be ignored, and <strong>it is up to us to decide</strong> how hard we want to test each part of our application.&quot;</p>
+</blockquote>
+<h3 id="he-shows-setup-for-travis-ci-that-will">He shows setup for Travis CI, that will</h3>
+<ul>
+<li>generate <code>coverage.xml</code> with phpunit</li>
+<li>computed total coverage in % with PHP script</li>
+<li>check it against your minimal requirement</li>
+<li>fails CI if it is lower than that</li>
+</ul>
+<img src="/assets/images/posts/2017/coveralls/coverage-checker.png" class="img-thumbnail">
+<p>Simple setup to let computer handle &quot;please, add tests&quot; response for you.</p>
+<h2 id="quot-setup-and-forget-quot">&quot;Setup and forget&quot;</h2>
+<ul>
+<li>You <strong>move responsibility to a tool</strong>, so you don't have to check code coverage for every project of yours manually. <strong>CI looks after  it for you.</strong></li>
+<li>You don't have to explain at PRs, that &quot;tests are missing&quot;. <strong>In my experience, less people read <code>CONTRIBUTING.md</code> than red Travis CI error note</strong>.</li>
+<li>Let's be honest - do you check your coding standards manually? If so, <a href="https://github.com/symplify/easy-coding-standard">start with this</a>.</li>
+</ul>
+<h2 id="3-steps-to-automate-minimal-coverage-check-with-coveralls">3 Steps to Automate Minimal Coverage Check With Coveralls</h2>
+<p>Nowadays, <a href="http://coveralls.io">Coveralls CI</a> can handle this process completely for you.</p>
+<p>Here is how:</p>
+<h3 id="1-create-code-coveralls-yml-code">1. Create <code>.coveralls.yml</code></h3>
+<pre><code class="language-yaml">service_name: travis-ci
+coverage_clover: coverage.xml # file generated by phpunit
+json_path: coverage.json # file generated by php-coveralls</code></pre>
+<h3 id="2-send-code-coverage-xml-code-to-coveralls-in-code-travis-yml-code">2. Send <code>coverage.xml</code> to Coveralls in <code>.travis.yml</code></h3>
+<p>If you already generate coverage with <code>phpunit</code> skip to <code>after_script</code> section.</p>
+<pre><code class="language-yaml">language: php
+
+php:
+  - 7.1
+
+install:
+  - composer install
+
+script:
+  - vendor/bin/phpunit --coverage-clover coverage.xml
+
+after_script:
+  # upload coverage.xml file to Coveralls to analyze it
+  # minimal required coverage is set to 80+ %
+  - wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+  - php coveralls.phar --verbose</code></pre>
+<p><em>Performance note: This is the simplest setup with single build. If you run more builds with multiple PHP versions or ENV values, <a href="https://github.com/symplify/symplify/blob/e6ef5aeef11fc292841f204bd7ddcd2a55aace12/.travis.yml#L3-L30">you should run coverage only once</a>, because code coverage uses <code>xdebug</code> extension and thus is very slow.</em></p>
+<h3 id="3-setup-minimal-require-code-coverage-in-coveralls-io">3. Setup Minimal Require Code Coverage in Coveralls.io</h3>
+<p>Add your repository on <a href="https://coveralls.io">Coveralls.io</a>, go to &quot;Settings&quot; and find &quot;Coverage Threshold fo Failure&quot;.</p>
+<img src="/assets/images/posts/2017/coveralls/coveralls-threshold.png" class="img-thumbnail">
+<p><strong>There you can put a value you're ok with</strong>. No need to push yourself too hard.
+I personally start with coverage bit below current level.</p>
+<p>That's all setup you need. Just push your pull-request and see the result.</p>
+<h2 id="wtfs-you-might-meet">WTFs You Might Meet</h2>
+<h3 id="1-quot-i-cannot-see-coveralls-check-under-pr-quot">1. &quot;I cannot see Coveralls check under PR&quot;</h3>
+<p>Travis or Scrutinizer appear there right after you create a PR, because they're set up as services (<em>Settings → Integrations &amp; Services</em>).</p>
+<img src="/assets/images/posts/2017/coveralls/build-checks-scrutinizer.png" class="img-thumbnail">
+<p>This is not the case for Coverrals.</p>
+<img src="/assets/images/posts/2017/coveralls/report-at-first.png" class="img-thumbnail">
+<p>Don't worry, it's there. It will appear when Travis will upload <code>coverage.xml</code> to it:</p>
+<pre><code class="language-yaml">after_script:
+  # ...
+  - php coveralls.phar --verbose</code></pre>
+<img src="/assets/images/posts/2017/coveralls/report-after-ping.png" class="img-thumbnail">
+<h3 id="2-quot-there-is-no-report-about-required-limit-under-pr-quot">2. &quot;There is no Report about Required Limit under PR&quot;</h3>
+<p>As you can see above if build fails due to low coverage, Coveralls actually <strong>doesn't show the number for required minimal code coverage</strong>.</p>
+<p>This is the reason I've put a note to <code>.travis.yml</code>:</p>
+<pre><code class="language-yaml">after_script:
+  # upload coverage.xml file to Coveralls to analyze it
+  # minimal required coverage is set to 80+ %</code></pre>
+<p>And yes, <a href="https://github.com/lemurheavy/coveralls-public/issues/982">there is issue for that</a>. Feel free to upvote it or suggest a better solution.</p>
+<p>These 2 were surprises for me and took me a while to figure out. Let me know in comments below if you came across any other.</p>
+<h2 id="to-sum-up">To Sum Up</h2>
+<ul>
+<li>Coveralls can help you not only with coverage, <strong>but also with its minimal limit</strong>.</li>
+<li><strong>Use CI in cases where you can save your attention leaks</strong>. You'll have more time for your friends, family and other joys of life - like coding.</li>
+<li>Setup your repository and forget this post.</li>
+</ul>
+<p>Enjoy your day!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-06-12-how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Require Minimal Code Coverage for Github Pull-Requests with Coveralls" />
+    <meta property="og:description" content="Do you maintain tested open-source project? Are you sad of your code-coverage decreasing over time in wave of pull-requests? Are you tired of telling &quot;could you add tests&quot;?
+
+I will show you how to let Travis and Coveralls do this job for you.
+" />
+    <meta property="og:url" content="/blog/2017/06/12/how-to-require-minimal-code-coverage-for-github-pull-requests-with-coveralls" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Require Minimal Code Coverage for Github Pull-Requests with Coveralls" />
+    <meta name="twitter:description" content="Do you maintain tested open-source project? Are you sad of your code-coverage decreasing over time in wave of pull-requests? Are you tired of telling &quot;could you add tests&quot;?
+
+I will show you how to let Travis and Coveralls do this job for you.
+" />

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Get Rid of Magic, Static and Chaos from Latte Filters | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 274 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Get Rid of Magic, Static and Chaos from Latte Filters</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>9 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-08-Mon">
+            <strike>
+                            Mon, Aug 17
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Sep, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/08/17/how-to-get-rid-of-magic-static-and-chaos-from-latte-filters/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-17-how-to-get-rid-of-magic-static-and-chaos-from-latte-filters.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at September 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Added options 6 - <strong>invokable filter providers</strong>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><a href="/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable/">In the previous post</a>, we looked at how to avoid array magic and duplicates of Latte in Presenter and Components.
+<br>
+<br>
+Today we'll leverage those tips to make your code around Latte filters <strong>easy and smooth to work with</strong>.</p>
+                    </div>
+                </div>
+
+                <p>Do you have your <code>LatteFactory</code> service ready? If not, <a href="/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable#4-move-latte-engine-tuning-from-presenter-control-to-lattefactory">create it first</a>, because we'll build on it.</p>
+<p><br></p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace App\Latte;
+
+use Latte\Engine;
+use Latte\Runtime\FilterInfo;
+
+final class LatteFactory
+{
+    public function create(): Engine
+    {
+        $engine = new Engine();
+        $engine-&gt;setStrictTypes(true);
+
+        return $engine;
+    }
+}</code></pre>
+<h2 id="how-to-register-a-new-latte-filter">How to register a new Latte Filter?</h2>
+<p>This simple question can add easily add an anti-pattern to your code, that spreads like COVID and <a href="https://blog.codinghorror.com/the-broken-window-theory/">inspires developers to add more anti-patterns</a>. It's easy to <a href="/blog/2018/04/26/how-i-got-into-static-trap-and-made-fool-of-myself//">submit to static infinite loop</a>, I did it too.</p>
+<p>But let's look at practice... <strong>how to add a filter</strong>?</p>
+<p>Let's say we want to format money. The filter code is not relevant here, so we go with the simplest version possible:</p>
+<pre><code class="language-php">class SomeFilter
+{
+    public function money(int $amount): string
+    {
+        return $amount . ' €';
+    }
+}</code></pre>
+<p>We'll use it template like this:</p>
+<pre><code class="language-html">You're total invoice amount:
+&lt;strong&gt;{$amount|money}&lt;/strong&gt;
+
+Thank you</code></pre>
+<h2 id="1-register-static-magic-loader">1. Register Static Magic Loader</h2>
+<p>This used to be the best practice in 2014. Just add a class and magically delegate called filter name:</p>
+<pre><code class="language-diff"> namespace App\Latte;
+
+ use Latte\Engine;
+ use Latte\Runtime\FilterInfo;
+
+ final class LatteFactory
+ {
+     public function create(): Engine
+     {
+         $engine = new Engine();
+         $engine-&gt;setStrictTypes(true);
++        $engine-&gt;addFilter(null, SomeFilter::class . '::loader');
+
+         return $engine;
+    }
+ }</code></pre>
+<p>And add <code>loader()</code> method:</p>
+<pre><code class="language-diff"> class SomeFilter
+ {
+-    public function money(int $amount): string
++    public static function money(int $amount): string
+     {
+         return $amount . ' €';
+     }
+
++    public static function loader($arg)
++    {
++        $arg = \func_get_args();
++        $func = \array_shift($arg);
++        if (\method_exists(self::class, $func)) {
++            return \call_user_func_array([self::class, $func], $arg);
++        }
++
++         return null;
+     }
+ }</code></pre>
+<p>This is my favorite magic part:</p>
+<pre><code class="language-php">$engine-&gt;addFilter(null, SomeFilter::class . '::loader');</code></pre>
+<p>Do you have any what is happening there? I don't.</p>
+<p><br></p>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>We have to use <code>static</code> <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We can't use any service in <code>SomeFilter</code>, we have to use static only <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We violate <code>addFilter()</code> method with magic and make it harder to read, maintain and refactor <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We have one place to add filters <em class="fas fa-fw fa-check text-success "></em></li>
+</ul>
+<p><br></p>
+<p>Can we do better?</p>
+<h2 id="2-register-function-manually-with-code-addfilter-code">2. Register Function manually with <code>addFilter()</code></h2>
+<p>The <code>addFilter()</code> can be used in the way <a href="https://github.com/nette/latte/blob/82a85d31caeaf9a9d307e910a2d1476f5460cee0/src/Latte/Engine.php#L267">it's designed for</a>:</p>
+<pre><code class="language-diff"> namespace App\Latte;
+
+ use Latte\Engine;
+ use Latte\Runtime\FilterInfo;
+
+ final class LatteFactory
+ {
+     public function create(): Engine
+     {
+         $engine = new Engine();
+         $engine-&gt;setStrictTypes(true);
++        $engine-&gt;addFilter('money', function (int $amount): string {
++             return $amount . ' €';
++        });
+
+         return $engine;
+    }
+ }</code></pre>
+<p>Straight forward, transparent, and a few lines of code.</p>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>We have very little code <em class="fas fa-fw fa-check text-success"></em></li>
+<li>The framework part (Latte) is now directly bounded to our application domain - this makes code hard to refactor, decopule from framework or re-use in another context <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We break dependency inversion principle - we have to edit <code>LatteFactory</code> to add a new filter <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We made a seed for God class antipattern - soon our <code>LatteFactory</code> will have over 100 of lines with various filters <em class="fas fa-fw fa-times text-danger "></em></li>
+<li>We think it's a good idea, because of short-code-is-the-best fallacy <em class="fas fa-fw fa-times text-danger "></em></li>
+</ul>
+<p><br></p>
+<p>Can we do better?</p>
+<h2 id="3-add-filter-provider-service">3. Add Filter Provider Service?</h2>
+<p>The previous solution looks fine, if only we could get rid of coupling between framework and our code.</p>
+<pre><code class="language-diff"> namespace App\Latte;
+
+ use Latte\Engine;
+ use Latte\Runtime\FilterInfo;
+
+ final class LatteFactory
+ {
++    private FilterProvider $filterProvider;
++
++    public function __construct(FilterProvider $filterProvider)
++    {
++        $this-&gt;filterProvider = $filterProvider;
++    }
+
+     public function create(): Engine
+     {
+         $engine = new Engine();
+         $engine-&gt;setStrictTypes(true);
+
++        foreach ($this-&gt;filterProvider-&gt;provide() as $filterName =&gt; $filterCallback) {
++            $engine-&gt;addFilter($filterName, $filterCallback);
++        }
+
+         return $engine;
+    }
+ }</code></pre>
+<pre><code class="language-php">&lt;?php
+
+final class FilterProvider
+{
+    /**
+     * @return array&lt;string, callable&gt;
+     */
+    public function provide(): array
+    {
+        return [
+            'money' =&gt; function (int $amount): string {
+                return $amount . ' €';
+            }
+        ];
+    }
+}</code></pre>
+<p>The filter class is decoupled - no more hard-coded filters!</p>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>We can add a new filter without every touching <code>LatteFactory</code> <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We can use services in filters <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We <strong>only moved a seed for God class antipattern</strong> - soon our <code>FilterProvider</code> will have over 100 of lines with various filters <em class="fas fa-fw fa-times text-danger "></em></li>
+</ul>
+<p><br></p>
+<p>Can we do better?</p>
+<h2 id="4-filter-provider-contract">4. Filter Provider Contract</h2>
+<p>The ultimate solution is almost perfect. We only need to get rid of the God class completely. How can we do that?</p>
+<p>The goal is simple:</p>
+<ul>
+<li>each domain should have its filters, e.g., filters for text should have their class, filters for money should have their class, etc.</li>
+<li>we can't touch the <code>LatteEngine</code> to add a new filter, nor a new filter service</li>
+</ul>
+<p><br></p>
+<p>What if we use <a href="/blog/2018/11/12/will-autowired-arrays-finally-deprecate-tags-in-symfony-and-nette//">autowired arrays feature from Nette 3.0</a>?</p>
+<p><br></p>
+<pre><code class="language-diff"> namespace App\Latte;
+
++use App\Contract\FilterProviderInterface;
+ use Latte\Engine;
+ use Latte\Runtime\FilterInfo;
+
+ final class LatteFactory
+ {
++    private array $filterProvider;
++
++    /**
++     * @param FilterProviderInterface[] $filterProviders
++     */
++    public function __construct(array $filterProviders)
++    {
++        $this-&gt;filterProviders = $filterProviders;
++    }
+
+     public function create(): Engine
+     {
+         $engine = new Engine();
+         $engine-&gt;setStrictTypes(true);
+
++        foreach ($this-&gt;filterProviders as $filterProvider) {
++            foreach ($filterProvider-&gt;provide() as $filterName =&gt; $filterCallback) {
++                $engine-&gt;addFilter($filterName, $filterCallback);
++            }
++        }
+
+         return $engine;
+    }
+ }</code></pre>
+<pre><code class="language-php">namespace App\Contract;
+
+interface FilterProviderInterface
+{
+    /**
+     * @return array&lt;string, callable&gt;
+     */
+    public function provide();
+}</code></pre>
+<pre><code class="language-diff">+use App\Contract\FilterProviderInterface;
+
+-final class FilterProvider
++final class MoneyFilterProvider implements FilterProviderInterface
+ {
+     /**
+      * @return array&lt;string, callable&gt;
+      */
+     public function provide(): array
+     {
+         return [
+             'money' =&gt; function (int $amount): string {
+                 return $amount . ' €';
+             }
+         ];
+     }
+ }</code></pre>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>We have decoupled framework and our domain-specific filter <em class="fas fa-fw fa-check text-success"></em></li>
+<li>To add a new filters, we only need to create a new service <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We finally use dependency injection at its best - Nette handles registering filters and collecting service for us <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We <strong>add a seed for God method</strong> - soon <code>provide()</code> will be full of weird callbacks and long methods <em class="fas fa-fw fa-times text-danger "></em></li>
+</ul>
+<p><br></p>
+<p>Can we do better?</p>
+<p><br></p>
+<h2 id="5-from-callbacks-to-private-methods">5. From Callbacks to Private Methods</h2>
+<pre><code class="language-diff"> use App\Contract\FilterProviderInterface;
+
+ final class MoneyFilterProvider implements FilterProviderInterface
+ {
+     /**
+      * @return array&lt;string, callable&gt;
+      */
+     public function provide(): array
+     {
+         return [
+             'money' =&gt; function (int $amount): string {
+-                return $amount . ' €';
++                return $this-&gt;money($mount);
+             }
+         ];
+     }
+
++    private function money(int $amount): string
++    {
++        return $amount . ' €';
++    }
+ }</code></pre>
+<p>This looks like a duplicated code, right?</p>
+<p>But what if money filters grow, included timezones and logged in user country? Is <code>MoneyFilterProvider</code> the best place to handle all this logic?</p>
+<pre><code class="language-diff"> use App\Contract\FilterProviderInterface;
+
+ final class MoneyFilterProvider implements FilterProviderInterface
+ {
++    private MoneyFormatResolver $moneyFormatResolver;
++
++    public function __construct(MoneyFormatResolver $moneyFormatResolver)
++    {
++       $this-&gt;moneyFormatResolver = $moneyFormatResolver;
++    }
+
+     /**
+      * @return array&lt;string, callable&gt;
+      */
+     public function provide(): array
+     {
+         return [
+             'money' =&gt; function (int $amount): string {
+-                return $this-&gt;money($mount);
++                return $this-&gt;moneyFormatResolver-&gt;resolve($amount);
+             }
+         ];
+     }
+
+-    private function money(int $amount): string
+-    {
+-        return $amount . ' €';
+-    }
+ }</code></pre>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>We have decoupled domain logic from filters <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We can re-use the used-to-be filter logic with <code>MoneyFormatResolver</code> in other places of application <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We are motivated to use DI and decouple code clearly to new service, if it ever becomes too complex <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We are ready for any changes that come in the future <em class="fas fa-fw fa-check text-success"></em></li>
+<li><del>We think this is the best way, just because it's last <em class="fas fa-fw fa-times text-danger"></em></del> Not anymore ↓</li>
+</ul>
+<p><br></p>
+<p>My question is: can we do better...?</p>
+<hr />
+<p><strong>Update 1 month later with new option:</strong></p>
+<h2 id="6-invokable-filter-providers">6. Invokable Filter Providers</h2>
+<p>In fashion of <a href="https://symfony.com/doc/current/controller/service.html#invokable-controllers">single-action controller</a> a tip from <a href="https://twitter.com/FrantisekMasa">@FrantisekMasa</a> and <a href="https://twitter.com/dada_amater">@dada_amater</a> for similar approach in filters. It look weird, new... so I had to try it in practise to see for myself.</p>
+<pre><code class="language-php">namespace App\Contract;
+
+interface FilterProviderInterface
+{
+    public function getName(): string;
+}</code></pre>
+<p>The filter itself - 1 filter = 1 class:</p>
+<pre><code class="language-php">use App\Contract\FilterProviderInterface;
+
+final class MoneyFilterProvider implements FilterProviderInterface
+{
+    private MoneyFormatResolver $moneyFormatResolver;
+
+    public function __construct(MoneyFormatResolver $moneyFormatResolver)
+    {
+       $this-&gt;moneyFormatResolver = $moneyFormatResolver;
+    }
+
+    public function __invoke(int $amount): string
+    {
+        return $this-&gt;moneyFormatResolver-&gt;resolve($amount);
+    }
+}</code></pre>
+<p>The <code>LatteFactory</code> now acceps the whole filter as callable object:</p>
+<pre><code class="language-php">namespace App\Latte;
+
+use Latte\Engine;
+use Latte\Runtime\FilterInfo;
+
+final class LatteFactory
+{
+    /**
+     * @var FilterProviders[]
+     */
+    private array $filterProviders = [];
+
+    /**
+     * @param FilterProvider[]
+     */
+    public function __construct(array $filterProviders)
+    {
+        $this-&gt;filterProviders = $filterProviders;
+    }
+
+    public function create(): Engine
+    {
+        $engine = new Engine();
+        $engine-&gt;setStrictTypes(true);
+
+        foreach ($this-&gt;filterProviders as $filterProvider) {
+            $engine-&gt;addFilter($filterProvider-&gt;getName(), $filterProvider);
+        }
+
+        return $engine;
+    }
+}</code></pre>
+<h4 id="pros-amp-cons">Pros &amp; Cons</h4>
+<ul>
+<li>All of the advantages of previous approaches <em class="fas fa-fw fa-check text-success"></em></li>
+<li>1 class = 1 rule, this is really challenge to clutter <em class="fas fa-fw fa-check text-success"></em></li>
+<li>It's very intuitive to use  <em class="fas fa-fw fa-check text-success"></em></li>
+<li>We don't have to maintain duplicated <code>provideFilters()</code> callables with private methods <em class="fas fa-fw fa-check text-success"></em></li>
+<li>The <code>__invoke()</code> method has no contract, so we can forget to implement it <em class="fas fa-fw fa-times text-danger"></em></li>
+</ul>
+<p>We compensate this in <code>LatteFactory</code> itself:</p>
+<pre><code class="language-php">public function create(): Engine
+{
+    $engine = new Engine();
+    $engine-&gt;setStrictTypes(true);
+
+    foreach ($this-&gt;filterProviders as $filterProvider) {
+        if (! method_exists($filterProvider, '__invoke')) {
+            $message = sprintf('Add "__invoke()" method to filter provider "%s"', get_class($filterProvider));
+            throw new ShouldNotHappenException($message);
+        }
+
+        $engine-&gt;addFilter($filterProvider-&gt;getName(), $filterProvider);
+    }
+
+    return $engine;
+}</code></pre>
+<p>That's it!</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    4 Ways to Make Your Nette Project More Readable
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-08-17-how-to-get-rid-of-magic-static-and-chaos-from-latte-filters.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Get Rid of Magic, Static and Chaos from Latte Filters" />
+    <meta property="og:description" content="[In the previous post](/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable/), we looked at how to avoid array magic and duplicates of Latte in Presenter and Components.
+
+
+Today we&#039;ll leverage those tips to make your code around Latte filters **easy and smooth to work with**.
+" />
+    <meta property="og:url" content="/blog/2020/08/17/how-to-get-rid-of-magic-static-and-chaos-from-latte-filters" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Get Rid of Magic, Static and Chaos from Latte Filters" />
+    <meta name="twitter:description" content="[In the previous post](/blog/2020/08/10/4-ways-to-make-your-nette-project-more-readable/), we looked at how to avoid array magic and duplicates of Latte in Presenter and Components.
+
+
+Today we&#039;ll leverage those tips to make your code around Latte filters **easy and smooth to work with**.
+" />

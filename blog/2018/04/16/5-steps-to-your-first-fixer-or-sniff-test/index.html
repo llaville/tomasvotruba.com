@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>5 Steps to Your First Fixer or Sniff Test | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 92 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>5 Steps to Your First Fixer or Sniff Test</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Mon">
+            
+                            Mon, Apr 16, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/04/16/5-steps-to-your-first-fixer-or-sniff-test/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-16-5-steps-to-your-first-fixer-or-sniff-test.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>When <a href="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/">I wrote my first Sniff</a> 4 years ago I wanted to test it. I expected testing class, that would register sniff, provide ugly code and compare it to fixed one. So I started to explore PHP_CodeSniffer looking for such feature. Found one class, second class, warnings, errors, uff and after 10th error, I closed it.
+<br><br>
+When <a href="/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/">I wrote my first Fixer</a>, the story was a bit shorter but very similar. No wonder people don't test when the entry barrier is so huge.
+<br><br>
+<strong>Since I use both of them and I want to motivate people to write their own sniffs and fixers, I turned this barrier to just 5 short steps</strong> for both of them.</p>
+                    </div>
+                </div>
+
+                <p>Imagine you have a <code>LowerBoolConstantsFixer</code> that fixes all uppercase bool constants to lowercase ones:</p>
+<pre><code class="language-diff">-$value = TRUE;
++$value = true;</code></pre>
+<p>And nothing more. How do we take this test case to PHPUnit? That is what <a href="https://github.com/symplify/easy-coding-standardTester">ECS Tester</a> package will help us with.</p>
+<h2 id="1-install-the-package">1. Install the package</h2>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard-tester --dev</code></pre>
+<h2 id="2-create-a-config-with-checker-s-you-want-to-test">2. Create a config with checker(s) you want to test</h2>
+<pre><code class="language-yaml"># /tests/Fixer/LowerBoolConstantsFixer/config.yml
+services:
+    Your\CodingStandard\LowerBoolConstantsFixer: ~</code></pre>
+<p>(<em>Checker</em> is a group name for sniff and fixer, nothing more.)</p>
+<h2 id="3-create-a-test-case-and-provide-the-config">3. Create a Test Case and Provide the Config</h2>
+<p>Create a test case that extends <code>Symplify\EasyCodingStandardTester\Testing\AbstractCheckerTestCase</code> class.</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Your\CodingStandard\Tests\LowerBoolConstantsFixer;
+
+use Symplify\EasyCodingStandardTester\Testing\AbstractCheckerTestCase;
+
+final class LowerBoolConstantsFixerTest extends AbstractCheckerTestCase
+{
+    // ...
+}</code></pre>
+<p>And provide the config above in <code>provideConfig()</code> method.</p>
+<ul>
+<li>Try to keep this standard in every test to reduce the maintenance of the test, e.g. <code>__DIR__ . '/config.yml'</code>.</li>
+<li>You can also make configured test of the same checker, <code>__DIR__ . '/configured-config.yml'</code>.</li>
+</ul>
+<pre><code class="language-diff"> &lt;?php declare(strict_types=1);
+
+ namespace Your\CodingStandard\Tests\LowerBoolConstantsFixer;
+
+ use Symplify\EasyCodingStandardTester\Testing\AbstractCheckerTestCase;
+
+ final class LowerBoolConstantsFixerTest extends AbstractCheckerTestCase
+ {
+     // ...
+
++    protected function provideConfig(): string
++    {
++        return __DIR__ . '/config.yml';
++    }
+ }</code></pre>
+<h2 id="4-test-the-checker-behavior">4. Test The Checker Behavior</h2>
+<p>You can make use of 3 testing methods:</p>
+<ul>
+<li><code>doTestCorrectFile($correctFile)</code> - the file should not be affected by this checker</li>
+<li><code>doTestWrongToFixedFile($wrongFile, $fixedFile)</code> - classic before/after testing</li>
+<li><code>doTestWrongFile($wrongFile)</code> - <strong>only for sniff</strong> - it doesn't fix, just reports</li>
+</ul>
+<p><br></p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Your\CodingStandard\Tests\LowerBoolConstantsFixer;
+
+use Symplify\EasyCodingStandardTester\Testing\AbstractCheckerTestCase;
+
+final class LowerBoolConstantsFixerTest extends AbstractCheckerTestCase
+{
+    public function test(): void
+    {
+        $this-&gt;doTestCorrectFile(__DIR__ . '/correct/correct.php.inc');
+
+        $this-&gt;doTestWrongToFixedFile(
+            __DIR__ . '/wrong/wrong.php.inc',
+            __DIR__ . '/fixed/fixed.php.inc'
+        );
+    }
+
+    protected function provideConfig(): string
+    {
+        return __DIR__ . '/config.yml';
+    }
+}</code></pre>
+<h2 id="5-the-best-for-last-create-the-code-snippets">5. The Best For Last - Create the Code Snippets</h2>
+<p><strong>This part you enjoy the most because your job is to break the checker</strong>... well, at least verify it behaves as you want it to behave.</p>
+<p>What should it skip? Well, since <code>NULL</code> / <code>null</code> is not a bool value...</p>
+<pre><code class="language-php">// correct/correct.php.inc
+$value = NULL;
+$value = null;</code></pre>
+<p><br></p>
+<p>I guess you already know the before/after part:</p>
+<pre><code class="language-php">// wrong/wrong.php.inc
+$value = TRUE;
+$value = FALSE;</code></pre>
+<p><br></p>
+<pre><code class="language-php">// fixed/fixed.php.inc
+$value = true;
+$value = false;</code></pre>
+<p>That's it!</p>
+<p>Now you know all you need to be able to test any fixer or sniff. But if you want to know more, check <a href="https://github.com/symplify/easy-coding-standardTester">the ECS Tester README</a>.</p>
+<p><br><br></p>
+<p>Enjoy simple testing!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/04/12/the-best-5-of-256-bloghacks-book" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    The Best 5 of 256 Bloghacks Book
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-16-5-steps-to-your-first-fixer-or-sniff-test.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="5 Steps to Your First Fixer or Sniff Test" />
+    <meta property="og:description" content="When [I wrote my first Sniff](/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/) 4 years ago I wanted to test it. I expected testing class, that would register sniff, provide ugly code and compare it to fixed one. So I started to explore PHP_CodeSniffer looking for such feature. Found one class, second class, warnings, errors, uff and after 10th error, I closed it.
+
+When [I wrote my first Fixer](/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/), the story was a bit shorter but very similar. No wonder people don&#039;t test when the entry barrier is so huge.
+
+**Since I use both of them and I want to motivate people to write their own sniffs and fixers, I turned this barrier to just 5 short steps** for both of them.
+" />
+    <meta property="og:url" content="/blog/2018/04/16/5-steps-to-your-first-fixer-or-sniff-test" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="5 Steps to Your First Fixer or Sniff Test" />
+    <meta name="twitter:description" content="When [I wrote my first Sniff](/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/) 4 years ago I wanted to test it. I expected testing class, that would register sniff, provide ugly code and compare it to fixed one. So I started to explore PHP_CodeSniffer looking for such feature. Found one class, second class, warnings, errors, uff and after 10th error, I closed it.
+
+When [I wrote my first Fixer](/blog/2017/07/24/how-to-write-custom-fixer-for-php-cs-fixer-24/), the story was a bit shorter but very similar. No wonder people don&#039;t test when the entry barrier is so huge.
+
+**Since I use both of them and I want to motivate people to write their own sniffs and fixers, I turned this barrier to just 5 short steps** for both of them.
+" />

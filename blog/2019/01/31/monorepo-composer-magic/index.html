@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Monorepo Composer Magic | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 182 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Monorepo Composer Magic</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-01-Thu">
+            
+                            Thu, Jan 31, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/01/31/monorepo-composer-magic/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-01-31-monorepo-composer-magic.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symfony is by far the best source to learn about the monorepo practice. I learned most just by looking into it's <code>composer.json</code> - monorepo and package one.
+<br>
+<br>
+Today, I'd like to share secrets behind <strong>biggest WTF</strong> that monorepo composer setup has.</p>
+                    </div>
+                </div>
+
+                <p>In each Symplify, Symfony, Shopsys or Sylius package <code>composer.json</code>, you'll find:</p>
+<pre><code class="language-json">{
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}</code></pre>
+<p>&quot;So I get unstable dev dependencies to my project by installing <code>symplify/*</code>?&quot;</p>
+<p>No! These section are <em>root-only</em>. The most known is <code>require-dev</code> and also:</p>
+<img src="/assets/images/posts/2019/dev-alias/root-only.png">
+<p>When you install a package, e.g. <code>composer require symplify/easy-coding-standard --dev</code>, you won't download PHPUnit even if that package has it in <code>require-dev</code>.</p>
+<p>&quot;So why is this needed? Do these monorepo packages use unstable versions?&quot;</p>
+<p><strong>Of course not.</strong> When you install any package standalone, you'll get stable dependencies. It's not even possible to install dev dependency without explicitly saying that (e.g. <code>composer require symplify/statie:@dev</code>).</p>
+<h2 id="what-is-branch-alias-for">What is Branch Alias for?</h2>
+<p>Here comes the magical combo. Each package <code>composer.json</code> also includes:</p>
+<pre><code class="language-json">{
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.5-dev"
+        }
+    }
+}</code></pre>
+<p>Do you think it will install <code>composer require symplify/statie:5.5-dev</code>? <strong>No.</strong></p>
+<p>The rule is: when last minor version is <code>5.4</code>, the alias will be <code>+0.1</code> version (<code>5.5</code>).
+E.g. the latest released Symfony version is <code>4.2.x</code>, next one will be <code>4.3</code>, so the alias is:</p>
+<pre><code class="language-json">{
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.3-dev"
+        }
+    }
+}</code></pre>
+<p>Is that clear? Good.</p>
+<p>&quot;So what the <code>branch-alias</code> and the <code>minimum-stability</code> have in common?&quot;</p>
+<h2 id="after-split-interdependency">After-Split Interdependency</h2>
+<p>The main goal of all this magic is simple. To use <strong>the most recent mutual dependencies</strong>. E.g., I added a new feature in the monorepo that changed the code of <code>symplify/statie</code> and <code>symplify/package-builder</code>.</p>
+<p>When the monorepo is split, the dev <code>symplify/statie</code> uses the dev version of <code>symplify/package-builder</code>.</p>
+<h2 id="monorepo-release-maintenance">Monorepo Release Maintenance</h2>
+<p>Let's say we'll release next Symplify version <code>v5.4.2</code>. What we have to handle before it's tagged and released?</p>
+<h3 id="1-bump-each-interdependency-to-the-release-version">1. Bump each Interdependency to the Release Version</h3>
+<pre><code class="language-diff"> {
+     "name": "symplify/statie",
+     "require": {
+-        "symplify/package-builder": "^5.5"
++        "symplify/package-builder": "^5.4.2"
+     }
+ }</code></pre>
+<h3 id="2-tag-current-version">2. Tag Current Version</h3>
+<pre><code class="language-bash">git tag v5.4.2</code></pre>
+<h3 id="3-push-the-tag">3. Push the Tag</h3>
+<pre><code class="language-bash">git push --tags</code></pre>
+<h3 id="4-bump-the-code-branch-alias-code-if-needed">4. Bump the <code>branch-alias</code> if Needed</h3>
+<p><code>5.4.x</code> still uses <code>5.5-dev</code> as the alias, so we don't have to change anything for <code>5.4.2</code> version.</p>
+<p>In case we'll release <code>5.5</code> in the future, it would look like this:</p>
+<pre><code class="language-diff"> {
+     "extra": {
+         "branch-alias": {
+-            "dev-master": "5.5-dev"
++            "dev-master": "5.6-dev"
+         }
+     }
+ }</code></pre>
+<p>Now we can continue committing and packages will always use last committed code.</p>
+<p><br></p>
+<h2 id="quot-monorepo-is-hell-of-work-quot">&quot;Monorepo is Hell of Work&quot;</h2>
+<p>← You must be thinking right now. Well, these steps are basically <em>find and replace</em> - <strong>perfect weak spot to automate</strong>. All these 4 steps  can replace single command from <a href="https://github.com/symplify/monorepobuilder">Symplify/MonorepoBuilder</a>:</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder release v5.4.2</code></pre>
+<p>The lazy job is done :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/01/28/2-files-that-your-symfony-application-misses" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    2 Files that Your Symfony Application Misses
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-01-31-monorepo-composer-magic.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Monorepo Composer Magic" />
+    <meta property="og:description" content="Symfony is by far the best source to learn about the monorepo practice. I learned most just by looking into it&#039;s `composer.json` - monorepo and package one.
+ 
+ 
+ Today, I&#039;d like to share secrets behind **biggest WTF** that monorepo composer setup has.
+" />
+    <meta property="og:url" content="/blog/2019/01/31/monorepo-composer-magic" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Monorepo Composer Magic" />
+    <meta name="twitter:description" content="Symfony is by far the best source to learn about the monorepo practice. I learned most just by looking into it&#039;s `composer.json` - monorepo and package one.
+ 
+ 
+ Today, I&#039;d like to share secrets behind **biggest WTF** that monorepo composer setup has.
+" />

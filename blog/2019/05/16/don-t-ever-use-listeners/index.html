@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Don&#039;t Ever use Symfony Listeners | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 212 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Don't Ever use Symfony Listeners</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-05-Thu">
+            
+                            Thu, May 16, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/05/16/don-t-ever-use-listeners/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-05-16-don-t-ever-use-listeners.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Another anti-pattern that deserves more attention than it has. I often see this in Symfony projects I consult and when I ask the dev <em>why</em> did he or she choose listener over subscriber, they don't really know - &quot;it was in the Symfony documentation, you can read it there&quot;.
+<br><br>
+Not good enough. <strong>So why you should never use a listener?</strong></p>
+                    </div>
+                </div>
+
+                <p>When we look into Symfony <a href="https://symfony.com/doc/current/event_dispatcher.html">EventDispatcher documentation</a>, this is the first YAML code we see:</p>
+<pre><code class="language-yaml"># config/services.yaml
+services:
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }</code></pre>
+<p>If I'd be in the process of learning Symfony, this would be my thoughts:</p>
+<ul>
+<li>&quot;I see that this option is the first one in the official Symfony documentation&quot;</li>
+<li>&quot;Right above something called <em>Subscriber</em>&quot;</li>
+<li>&quot;I guess I should use Listeners by default then. Why? For some unknown reason that only Symfony seniors know.&quot;</li>
+</ul>
+<p>Btw, there is not even &quot;Subscriber&quot; in the main headline!</p>
+<img src="/assets/images/posts/2019/sub/listen_first.png" class="img-thumbnail">
+<p>That's how you write a manipulative text if you wanted people to never use subscribers :).</p>
+<h2 id="what-s-wrong-with-listeners">What's Wrong With Listeners?</h2>
+<ul>
+<li>Juniors will use Listeners by default (everywhere they can) <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>YAML configs will get fat with listener configuration for basically no advantage <em class="fas fa-fw fa-lg fa-times text-danger"></em>
+<ul>
+<li>Since <a href="/blog/2018/12/27/how-to-convert-all-your-symfony-service-configs-to-autodiscovery/">PSR-4 autodiscovery</a> this hurts config readability more then ever</li>
+<li>You have to remember the YAML syntax for right registration</li>
+<li>Do you know you have to tag it with <code>name</code> &amp; <code>event</code>?</li>
+<li>Will <code>_autoconfigure: true</code> help you here?</li>
+<li>What's the name of event - <code>kernel_exception</code> or <code>kernel.error</code>? Well, neither</li>
+</ul></li>
+<li>What will you do if name of Kernel event will change? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>How do you analyse it with PHPStan? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>How do you upgrade it with Rector, when Symfony will create a <a href="https://symfony.com/blog/new-in-symfony-4-3-simpler-event-dispatching">BC break</a> <a href="/blog/2020/05/25/the-bulletproof-event-naming-for-symfony-event-dispatcher/">change</a>? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+<li>What if you decide to migrate to Laravel or the <em>new best framework X</em> later? <em class="fas fa-fw fa-lg fa-times text-danger"></em></li>
+</ul>
+<p>All these problems will shoot you or your colleague in the back in the future. <strong>You've just opened doors for 6 more possible bugs and problems</strong> to come to your project #carpeyolodiem.</p>
+<p>Most of these problems are a result of config programming - <a href="/blog/2019/02/14/why-config-coding-sucks/">that just sucks</a>.</p>
+<h2 id="why-you-should-always-use-event-subscriber">Why You Should Always use Event Subscriber?</h2>
+<p>Listeners have only one valid use case - it's a 3rd party code located in your <code>/vendor</code> and someone else wants you to use it with event of your choice in config, e.g.:</p>
+<pre><code class="language-yaml"># config/services.yaml
+services:
+    Vendor\ThirdPartyProject\Listener\UseMeListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+            - { name: kernel.event_listener, event: kernel.view }</code></pre>
+<p>If it would be a subscriber, it would be very similar to this:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+use Vendor\ThirdPartyProject\Listener\UseMeListener;
+use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+final class YourListener extends UseMeListener implements EventSubscriberInterface
+{
+    public static function getSubscribedEvents()
+    {
+        return [
+            KernelEvents::EXCEPTION =&gt; ['onKernelException'],
+            KernelEvents::VIEW =&gt; ['onKernelView'],
+        ];
+    }
+}</code></pre>
+<p>What's wrong with this code? First, <code>UseMeListener</code> should be <a href="/blog/2019/01/24/how-to-kill-parents/"><code>final</code></a>, so you cannot break SOLID like this.</p>
+<p>Let's take part by part.</p>
+<h3 id="1-validated-php-over-config-typos">1. Validated PHP over Config Typos</h3>
+<pre><code class="language-php">$myEvents = [
+    KernelEvents::EXCEPTION =&gt; ['onKernelException'],
+    KernelEvents::VIEW =&gt; ['onKernelView'],
+];</code></pre>
+<ul>
+<li>
+<p>Using <code>KernelEvents::EXCEPTION</code> constant is <strong>a big win</strong>! Instead of some string a config that we cannot analyze nor refactor, we have a constant. If you create a typo like <code>KernelEvents::EXCEPTON</code>, you'll know. If you make a typo in a config? Good luck!</p>
+</li>
+<li>
+<p>How is <code>'onKernelView'</code> string made? I have no idea. It's a convention name, that is somehow resolved from tag name in the config to a protected/public? local method that is called. We don't need that magic, right Mr. Potter?</p>
+</li>
+</ul>
+<h3 id="2-explicit-services-instead-of-circular-coupled-subscriber-listener">2. Explicit Services instead of Circular-Coupled Subscriber/Listener</h3>
+<p>If someone has created a listener that you can re-use, it's an anti-pattern already.</p>
+<ul>
+<li>Would you create a controller, that someone should call in another controller?</li>
+<li>Or a command, that someone should use in their listener or controller?</li>
+</ul>
+<p>People actually do that, the <a href="https://stackoverflow.com/questions/31512200/calling-action-from-command">StackOverflow has dozens of questions like &quot;how to call command in a controller&quot; or &quot;how to controller in a command&quot;</a>.</p>
+<h3 id="3-don-t-rape-delegate">3. Don't Rape! Delegate</h3>
+<p>Command, Controller, EventSubscriber, Listener - they all should be only delegating code to a model layer service. If you need to mutually call or inherit one in another, you're creating a code smell. That's a sign that you should <strong>decouple common logic to a service</strong> and pass it via constructor to both.</p>
+<p>So instead of giving people the option to use your code wrong way, give them a service, they can call in e.g. the EventSubscriber.</p>
+<h3 id="4-let-interface-take-the-responsibility">4. Let Interface take the Responsibility</h3>
+<p>EventSubscriber has own interface, that guides you:</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+final class MyCustomEventSubscriber implements EventSubscriberInterface
+{
+    public static function getSubscribedEvents()
+    {
+    }
+}</code></pre>
+<p>There is still a bit of magic... what should be in <code>getSubscribedEvents()</code> method? Honestly, I have no idea. I don't want to <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">remember what's written in code</a>. So I'll use PHPStorm:</p>
+<img src="/assets/images/posts/2019/sub/event_names.gif" class="img-thumbnail">
+<h2 id="what-s-better-with-event-subscriber">What's Better with Event Subscriber?</h2>
+<ul>
+<li>No config coding and all the related possible bugs <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>Adding new subscribers mean 0-work in config</li>
+<li>Adding new subscribed event mean 0-work in config</li>
+<li>No option to miss-use delegators <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>Easy to statically analyse <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>Easy to instantly upgrade <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>Any Symfony BC break will be easy to discovery due to unused constant in exact line of code <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+</ul>
+<p>The trade-off worth the change</p>
+<h2 id="final-unrelated-tip-constants-over-strings">Final Unrelated Tip: Constants over Strings</h2>
+<p>If you use <code>KernelEvents::VIEW</code> constants within PHP code, you make the code also easier to debug.</p>
+<p>Where is <code>KernelEvents::VIEW</code> event actually dispatched? Just search <code>KernelEvents::VIEW</code> (or better <code>dispatch(KernelEvents::VIEW)</code>) in <code>/vendor</code> and PHPStorm will show you the exact line. If you'd look for a string, it will lead to a false source of <code>KernelEvents</code> (just a reference list of all Kernel events).</p>
+<p>Also, when the event name is changed in a constant to <code>view_event</code>, you don't mind. If you have <code>view</code> in the config, good luck!</p>
+<p>This makes using constants so fun. My rule fo a thumb is:</p>
+<blockquote class="blockquote text-center mb-4 mt-4">
+    When the same string is used at 2 different classes,
+    <br>
+    it's worth creating a constant list to make it typo-proof.
+</blockquote>
+<p>E.g. imagine you have code like:</p>
+<pre><code class="language-php"># in class A
+$configuration-&gt;setOption('resource');
+
+# in class B
+$input-&gt;getOption('resource');</code></pre>
+<p>Now you need to get resource somewhere else. Was is &quot;source&quot;, &quot;sources&quot;, &quot;resource&quot; or &quot;directory&quot;? You don't care, constant autocomplete in PHPStorm tells you:</p>
+<pre><code class="language-php"># in class A
+$configuration-&gt;setOption('resource');
+
+# in class B
+$input-&gt;getOption('resource');</code></pre>
+<img src="/assets/images/posts/2019/sub/constant.gif" class="img-thumbnail">
+<p><a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/">Don't remember what you don't need to</a>.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/05/13/hidden-gems-of-php-packages-psalm-fixing-your-code" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Hidden Gems of PHP Packages: Psalm Fixing Your Code
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-05-16-don-t-ever-use-listeners.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Don&#039;t Ever use Symfony Listeners" />
+    <meta property="og:description" content="Another anti-pattern that deserves more attention than it has. I often see this in Symfony projects I consult and when I ask the dev *why* did he or she choose listener over subscriber, they don&#039;t really know - &quot;it was in the Symfony documentation, you can read it there&quot;.
+
+Not good enough. **So why you should never use a listener?**
+" />
+    <meta property="og:url" content="/blog/2019/05/16/don-t-ever-use-listeners" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Don&#039;t Ever use Symfony Listeners" />
+    <meta name="twitter:description" content="Another anti-pattern that deserves more attention than it has. I often see this in Symfony projects I consult and when I ask the dev *why* did he or she choose listener over subscriber, they don&#039;t really know - &quot;it was in the Symfony documentation, you can read it there&quot;.
+
+Not good enough. **So why you should never use a listener?**
+" />

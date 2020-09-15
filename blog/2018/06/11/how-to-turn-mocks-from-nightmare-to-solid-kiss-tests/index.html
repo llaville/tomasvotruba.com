@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Turn Mocks from Nightmare to Solid Kiss Tests | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 113 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Turn Mocks from Nightmare to Solid Kiss Tests</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-06-Mon">
+            <strike>
+                            Mon, Jun 11, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-06-11-how-to-turn-mocks-from-nightmare-to-solid-kiss-tests.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with shift from sniffs to Rector rules, that handle these cases much better.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><a href="http://mhlavac.net">Martin Hlaváč</a> had a very nice talk about testing in <a href="http://www.bephpug.de/2018/06/05/june.html">Berlin PHP Meetup</a> last week (while I hosted with <a href="https://github.com/rectorphp/rector">Rector</a>), and one of the topic was mocking.
+<br><br>
+I often see developers fighting with this, in places they don't have to, just because this topic is so widespread all over the internet and unit tools.
+<br><br>
+Did you know there is easier and more clear way to do &quot;mocking&quot;?</p>
+                    </div>
+                </div>
+
+                <p>At the time being, there is only 1 post about <a href="http://mnapoli.fr/anonymous-classes-in-tests">anonymous classes in tests</a> (thanks to Matthieu!). Compared to that, there are many PHP tool made just for mocking: Prophecy, Mockery, PHPUnit native mocks, Mockista and so on. If you're a developer who uses one of them, knows that he needs to add proper annotations to make autocomplete work, has the PHPStom plugin that fixes bugs in this autocomplete and it works well for you, just stop reading.</p>
+<p>This post is for developers who struggle with mocking and have a feeling, that they're doing something wrong.</p>
+<p><strong>You're not. It's the mocking part</strong>. Mocks are often the bottleneck of understanding in tests. They're so easy to make, that they can overpopulate your tests... the same way units test can test every getter and setter of all your entities in 20 minutes <em>(hint: not a way to go)</em>.</p>
+<h2 id="was-it-code-willreturn-code-code-willreturnany-code-or-code-willreturnexact-code">Was it <code>willReturn()</code>, <code>willReturnAny()</code> or <code>willReturnExact()</code>?</h2>
+<p>Let's get to code. <a href="https://github.com/shopsys/shopsys/commit/b73fc8da82f7d2679f05c8aedd29f010fd5d0630#diff-f1a8f90cb34e69e324153cce909467a2R92">Real open source code</a> from one of my code-reviews that inspired me to make this post:</p>
+<pre><code class="language-php">namespace PHPUnit\Framework\TestCase;
+
+final class SomeTest extends TestCase
+{
+    public function test()
+    {
+        $heurekaCategoryFacade = $this-&gt;createHeurekaCategoryFacadeMock();
+
+        // ...
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\Shopsys\ProductFeed\HeurekaBundle\Model\HeurekaCategory\HeurekaCategoryFacade
+     */
+    private function createHeurekaCategoryFacadeMock()
+    {
+        $returnCallback = function ($categoryId) {
+            if ($categoryId === self::CATEGORY_ID_FIRST) {
+                return $this-&gt;heurekaCategory;
+            }
+            return null;
+        };
+
+        /** @var HeurekaCategoryFacade|\PHPUnit\Framework\MockObject\MockObject $heurekaCategoryFacadeMock */
+        $heurekaCategoryFacadeMock = $this-&gt;createMock(HeurekaCategoryFacade::class);
+
+        $heurekaCategoryFacadeMock
+            -&gt;method('findByCategoryId')
+            -&gt;willReturnCallback($returnCallback);
+
+        return $heurekaCategoryFacadeMock;
+    }
+}</code></pre>
+<p>The code is intentionally more complex, so we have real-life example, instead of made-up code with <code>Car</code> class and <code>open()</code> method that no-one can relate to.</p>
+<p><strong>Now answer me in 5 seconds:</strong></p>
+<ul>
+<li>What does mock do?</li>
+<li>How would you extends it to work with number 7?</li>
+</ul>
+<p>Now try to implement your idea. If you made it under another 60 seconds and your tests pass, you master mocking well and there is nothing for you to learn from this post.</p>
+<h3 id="documentation-google-and-stackoverflow-juggling">Documentation, Google and Stackoverflow Juggling</h3>
+<p>What happened to use in reality? <strong>We got stuck for at least 30 minutes on modification of methods like that</strong>. <a href="https://phpunit.readthedocs.io/en/7.1/test-doubles.html?highlight=mocking">Studying PHPUnit manual</a> and looking to StackOverflow with my favorite <a href="https://stackoverflow.com/questions/5988616/phpunit-mock-method-multiple-calls-with-different-arguments">PHPUnit mock method multiple calls with different arguments</a>.</p>
+<p>That's not what tool should do for you. <strong>Tools should work for you, not you for them.</strong></p>
+<h2 id="pure-php-code">Pure PHP Code</h2>
+<p>Let me show an alternative approach that has the same result.</p>
+<p>~ 95 % developers can read this code, even if they see PHPUnit for the first time:</p>
+<pre><code class="language-php">namespace PHPUnit\Framework\TestCase;
+
+final class SomeTest extends TestCase
+{
+    public function test()
+    {
+        $heurekaCategoryFacade = $this-&gt;createHeurekaCategoryFacade();
+
+        // ...
+    }
+
+    private function createHeurekaCategoryFacadeMock()
+    {
+        // anonymous class mock
+        return new class extends HeurekaCategoryFacade
+        {
+            public function findByCategoryId($categoryId)
+            {
+                if ($categoryId === self::CATEGORY_ID_FIRST) {
+                    return $this-&gt;heurekaCategory;
+                }
+
+                return null;
+            }
+        };
+    }
+}</code></pre>
+<p>We don't need no PHPStorm plugin, memorized methods from mock framework nor duplicated|annotations.</p>
+<p>I believe now we all made it under 5 seconds with both answers:</p>
+<pre><code class="language-diff"> namespace PHPUnit\Framework\TestCase;
+
+ final class SomeTest extends TestCase
+ {
+     public function test()
+     {
+         $heurekaCategoryFacade = $this-&gt;createHeurekaCategoryFacade();
+
+         // ...
+     }
+
+     private function createHeurekaCategoryFacade()
+     {
+         // anonymous class mock
+         return new class extends HeurekaCategoryFacade
+         {
+             public function findByCategoryId($categoryId)
+             {
+-                if ($categoryId === self::CATEGORY_ID_FIRST) {
++                if ($categoryId === self::CATEGORY_ID_FIRST || $categoryId === 7) {
+                     return $this-&gt;heurekaCategory;
+                 }
+
+                 return null;
+             }
+         };
+     }
+ }</code></pre>
+<h2 id="your-code-guides-you-just-be-open-to-listening">Your Code Guides You, Just Be Open to Listening</h2>
+<p>The code already tells us what to do next.</p>
+<p>Some people mock because they follow good practice and <strong><a href="https://ocramius.github.io/blog/when-to-declare-classes-final">make every class abstract or final</a></strong>. They don't want to deal with constructors, that would often lead to more mocking. It's great practice and super easy to put make classes final with Rector CI:</p>
+<pre><code class="language-bash">composer require rector/rector --dev</code></pre>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\SOLID\Rector\Class_\FinalizeClassesWithoutChildrenRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(FinalizeClassesWithoutChildrenRector::class);
+};</code></pre>
+<p>Yes, it's that simple, you just saved your project from most of its legacy code. But <code>final</code> classes should <strong>not be the reason to choose to mocks</strong>. Well, you can also <a href="https://phpfashion.com/how-to-mock-final-classes">hack the <code>final</code> and use mocking right away</a>, or you can go with the code flow. Dance with it!</p>
+<h2 id="solid-code-as-a-side-effect">SOLID Code as a Side Effect</h2>
+<p>You don't need to go on a mocking spree. The <em>constructor issue</em> naturally lead us to <strong>abstract an interface</strong> refactoring.</p>
+<p>We create a new interface:</p>
+<pre><code class="language-php">interface CategoryFacadeInterface
+{
+    public function findByCategoryId($categoryId);
+}</code></pre>
+<p>And use it in anonymous class:</p>
+<pre><code class="language-diff"> private function createHeurekaCategoryFacade()
+ {
+     // anonymous class mock
+-    return new class extends HeurekaCategoryFacade
++    return new class implements CategoryFacadeInterface
+     {
+         public function findByCategoryId($categoryId)
+         {
+            // ...
+         }
+     };
+ }</code></pre>
+<p>And now you respect SOLID principles - your code is:</p>
+<ul>
+<li>extendable (<em>O</em>pen-closed principle - open to extension, closed to modification)</li>
+<li>and replaceable (<em>D</em>ependency inversion principle).</li>
+</ul>
+<p>Also, your application can now use abstraction (= interface) instead of specific implementation (= class). That leads to autowiring benefits, decoupling from monolith and better service replace-ability.</p>
+<h2 id="1000x-code">1000x Code</h2>
+<p>They say <strong>your code is 10x more read than written</strong> on average. I believe it's at least 1000x in open-source. Knowing that we want our code, not to be just clear and readable, but to be</p>
+<ul>
+<li>super-readable,</li>
+<li>deterministic = with only one clear way one can understand it,</li>
+<li>with <a href="/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/">cognitive complexity</a> &lt; 8,</li>
+<li>easy to fix,</li>
+<li>easy to extend,</li>
+<li>easy to test.</li>
+</ul>
+<p><br></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/William_of_Ockham_-_Logica_1341.jpg/220px-William_of_Ockham_-_Logica_1341.jpg">
+<p>Let's close this with <a href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam's razor</a>:</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    One should select the answer that makes the fewest assumptions
+</blockquote>
+<p>Pick a solution that is understandable to the most people. No tool, posts or studying tutorials or reading books is needed. <strong>People will thank you and your code will attract more people because they'll feel confident to manage the code</strong>. Then naturally, your code will get more contributions from happy developers. Win win :)</p>
+<p><br><br></p>
+<p>Happy anonymocking!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Migrate From PHP CS Fixer to EasyCodingStandard in 6 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-06-11-how-to-turn-mocks-from-nightmare-to-solid-kiss-tests.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Turn Mocks from Nightmare to Solid Kiss Tests" />
+    <meta property="og:description" content="[Martin Hlaváč](http://mhlavac.net) had a very nice talk about testing in [Berlin PHP Meetup](http://www.bephpug.de/2018/06/05/june.html) last week (while I hosted with [Rector](https://github.com/rectorphp/rector)), and one of the topic was mocking.
+
+I often see developers fighting with this, in places they don&#039;t have to, just because this topic is so widespread all over the internet and unit tools.
+
+Did you know there is easier and more clear way to do &quot;mocking&quot;?
+" />
+    <meta property="og:url" content="/blog/2018/06/11/how-to-turn-mocks-from-nightmare-to-solid-kiss-tests" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Turn Mocks from Nightmare to Solid Kiss Tests" />
+    <meta name="twitter:description" content="[Martin Hlaváč](http://mhlavac.net) had a very nice talk about testing in [Berlin PHP Meetup](http://www.bephpug.de/2018/06/05/june.html) last week (while I hosted with [Rector](https://github.com/rectorphp/rector)), and one of the topic was mocking.
+
+I often see developers fighting with this, in places they don&#039;t have to, just because this topic is so widespread all over the internet and unit tools.
+
+Did you know there is easier and more clear way to do &quot;mocking&quot;?
+" />

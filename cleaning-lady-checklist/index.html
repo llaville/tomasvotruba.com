@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Cleaning Lady Check list | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 ">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div id="content">
+                <div class="container">
+        <h1>
+            Cleaning Lady Check list
+            <br>
+            <small>
+                What to do to make Legacy project <strong>shine & clean again</strong>
+            </small>
+        </h1>
+
+        <p>
+            These task are repeated over and over in each new project I on-board.
+        </p>
+        <p>
+            This checklist helps to see <strong class="text-danger">what needs to be done</strong> and <strong class="text-success">what is finished</strong>.
+        </p>
+
+        <br>
+
+        <div class="text-center d-flex pt-3">
+            <form class="form-inline m-auto" onsubmit="return cleaning_checklist_submit();">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="project-name">Project</label>
+                    <input type="text" class="form-control ml-3" id="project_name" placeholder="Fill your project name">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Activate</button>
+            </form>
+        </div>
+
+        <div class="row" id="cleaning_checklist">
+            <div class="col-12">
+                                    <h2 class="mb-4" id="repository">
+                        <a href="#repository">
+                            Repository
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_c44ff0836120eade5d83a5e0d747ac34" value="c44ff0836120eade5d83a5e0d747ac34">
+                            <label class="form-check-label cleaning_checklist_label" for="item_c44ff0836120eade5d83a5e0d747ac34">
+                                add .editorconfig for all files
+
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_d146637b8b59f8fae78fe63dee341289" value="d146637b8b59f8fae78fe63dee341289">
+                            <label class="form-check-label cleaning_checklist_label" for="item_d146637b8b59f8fae78fe63dee341289">
+                                apply .editorconfig indent with eclint for all files
+
+                                                                    <a href="https://stackoverflow.com/a/41655803/1348344" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_72a666b4c421de0ab61e95f100f2913e" value="72a666b4c421de0ab61e95f100f2913e">
+                            <label class="form-check-label cleaning_checklist_label" for="item_72a666b4c421de0ab61e95f100f2913e">
+                                move vendor to /vendor if somewhere else
+
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_8d299275a97f5e78bf98ac69e2fba3b7" value="8d299275a97f5e78bf98ac69e2fba3b7">
+                            <label class="form-check-label cleaning_checklist_label" for="item_8d299275a97f5e78bf98ac69e2fba3b7">
+                                apply 1-level directory approach, e.g. configs in /config
+
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/12/23/5-things-i-improve-when-i-get-to-new-repository/" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="composer-json">
+                        <a href="#composer-json">
+                            composer.json
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_ac09f8cdbdf64050752b444e9cfe1d1e" value="ac09f8cdbdf64050752b444e9cfe1d1e">
+                            <label class="form-check-label cleaning_checklist_label" for="item_ac09f8cdbdf64050752b444e9cfe1d1e">
+                                make sure php version is specified
+
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/12/16/8-steps-you-can-make-before-huge-upgrade-to-make-it-faster-cheaper-and-more-stable/#2-explicit-php-version" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_fcd4cc859124ac27f74cec42108d2bac" value="fcd4cc859124ac27f74cec42108d2bac">
+                            <label class="form-check-label cleaning_checklist_label" for="item_fcd4cc859124ac27f74cec42108d2bac">
+                                make sure &quot;classmap&quot; is converted to PSR-4
+
+                                
+                                                                    <a href="https://pehapkari.cz/blog/2017/03/02/drop-robot-loader-and-let-composer-deal-with-autoloading" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_c9060fd71ea50c2740f93c7548f60bef" value="c9060fd71ea50c2740f93c7548f60bef">
+                            <label class="form-check-label cleaning_checklist_label" for="item_c9060fd71ea50c2740f93c7548f60bef">
+                                make sure &quot;files&quot; is converted to PSR-4
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_668b82e6ccabfe28e6c54f64cafc1da5" value="668b82e6ccabfe28e6c54f64cafc1da5">
+                            <label class="form-check-label cleaning_checklist_label" for="item_668b82e6ccabfe28e6c54f64cafc1da5">
+                                add composer scripts for coding standard, PHPStan and Rector
+
+                                                                    <a href="https://blog.martinhujer.cz/have-you-tried-composer-scripts/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_4f8b7bb1c30943bc8f1b73fde81f8d5c" value="4f8b7bb1c30943bc8f1b73fde81f8d5c">
+                            <label class="form-check-label cleaning_checklist_label" for="item_4f8b7bb1c30943bc8f1b73fde81f8d5c">
+                                each composer script has --ansi option, to enable colors in CI
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_c1056b626304c2406109144787bef0dc" value="c1056b626304c2406109144787bef0dc">
+                            <label class="form-check-label cleaning_checklist_label" for="item_c1056b626304c2406109144787bef0dc">
+                                move composer scripts options (e.g. --set or --autoload) to config
+
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="class-naming">
+                        <a href="#class-naming">
+                            Class naming
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_1c7df6f0127881aca87b0c420a61dd36" value="1c7df6f0127881aca87b0c420a61dd36">
+                            <label class="form-check-label cleaning_checklist_label" for="item_1c7df6f0127881aca87b0c420a61dd36">
+                                prefix abstract classes &quot;Abstract&quot;
+
+                                                                    <a href="https://github.com/Slamdunk/phpstan-extensions" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_dac2d36533e3189abdf1cc8213c7f12b" value="dac2d36533e3189abdf1cc8213c7f12b">
+                            <label class="form-check-label cleaning_checklist_label" for="item_dac2d36533e3189abdf1cc8213c7f12b">
+                                suffix interface &quot;Interface&quot;
+
+                                                                    <a href="https://github.com/Slamdunk/phpstan-extensions" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="tests">
+                        <a href="#tests">
+                            Tests
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_cc023f73e042169f966e83c39d9263fa" value="cc023f73e042169f966e83c39d9263fa">
+                            <label class="form-check-label cleaning_checklist_label" for="item_cc023f73e042169f966e83c39d9263fa">
+                                make sure tests are in PSR-4, not in PHPUnit autoload magic format
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_e1fa42724615304a2244dd3bc059e310" value="e1fa42724615304a2244dd3bc059e310">
+                            <label class="form-check-label cleaning_checklist_label" for="item_e1fa42724615304a2244dd3bc059e310">
+                                run tests in continuous integration
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_ee66a44340407be4104930f7d51e4930" value="ee66a44340407be4104930f7d51e4930">
+                            <label class="form-check-label cleaning_checklist_label" for="item_ee66a44340407be4104930f7d51e4930">
+                                make use phpunit.xml is in the root directory
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_55f6511e8e6c3cb2b88c572a0eaebe5b" value="55f6511e8e6c3cb2b88c572a0eaebe5b">
+                            <label class="form-check-label cleaning_checklist_label" for="item_55f6511e8e6c3cb2b88c572a0eaebe5b">
+                                make sure the file structure is idential to /src
+
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="docblocks">
+                        <a href="#docblocks">
+                            Docblocks
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_aa689d877d5473086997edd3fe30286d" value="aa689d877d5473086997edd3fe30286d">
+                            <label class="form-check-label cleaning_checklist_label" for="item_aa689d877d5473086997edd3fe30286d">
+                                remove @author, @covers, @groups
+
+                                                                    <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/2.16/src/Fixer/Phpdoc/GeneralPhpdocAnnotationRemoveFixer.php" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_33deafbd12bece3174fe936bef6c8ef8" value="33deafbd12bece3174fe936bef6c8ef8">
+                            <label class="form-check-label cleaning_checklist_label" for="item_33deafbd12bece3174fe936bef6c8ef8">
+                                remove &quot;class generated ...&quot; spam
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_57921f3ba7975ac6cc0a9eb4221237eb" value="57921f3ba7975ac6cc0a9eb4221237eb">
+                            <label class="form-check-label cleaning_checklist_label" for="item_57921f3ba7975ac6cc0a9eb4221237eb">
+                                remove license spam from every file, put into LICENSE file in the root
+
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="docker">
+                        <a href="#docker">
+                            Docker
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_7601ecb3c9639a3bb63d9f8151921791" value="7601ecb3c9639a3bb63d9f8151921791">
+                            <label class="form-check-label cleaning_checklist_label" for="item_7601ecb3c9639a3bb63d9f8151921791">
+                                have Dockerfile
+
+                                                                    <a href="https://github.com/rectorphp/getrector.org/blob/master/Dockerfile" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_3549d4535cb756799265a5ec264ac826" value="3549d4535cb756799265a5ec264ac826">
+                            <label class="form-check-label cleaning_checklist_label" for="item_3549d4535cb756799265a5ec264ac826">
+                                have docker-composer.dist.yml
+
+                                                                    <a href="https://github.com/rectorphp/getrector.org/blob/master/docker-compose.dist.yml" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_bd8a111bc7e3d19a1e53a68624f0a035" value="bd8a111bc7e3d19a1e53a68624f0a035">
+                            <label class="form-check-label cleaning_checklist_label" for="item_bd8a111bc7e3d19a1e53a68624f0a035">
+                                have a docs/run_in_docker.md with manual
+
+                                                                    <a href="https://github.com/rectorphp/getrector.org#configure" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="config">
+                        <a href="#config">
+                            Config
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_d1dbfc6ef6cab631eb6d65a2af1c92c4" value="d1dbfc6ef6cab631eb6d65a2af1c92c4">
+                            <label class="form-check-label cleaning_checklist_label" for="item_d1dbfc6ef6cab631eb6d65a2af1c92c4">
+                                move configuration to .env file and load it with symfony/dotenv
+
+                                                                    <a href="https://symfony.com/doc/current/components/dotenv.html" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="spaghetti">
+                        <a href="#spaghetti">
+                            Spaghetti
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_a1e9583b1fb317af564f9ffacf9ae7ee" value="a1e9583b1fb317af564f9ffacf9ae7ee">
+                            <label class="form-check-label cleaning_checklist_label" for="item_a1e9583b1fb317af564f9ffacf9ae7ee">
+                                make sure functions are converted to Static::calls
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#functiontostaticmethodrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="coding-standard">
+                        <a href="#coding-standard">
+                            Coding Standard
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_152262bdf08c284d7ab6dbd390365ac8" value="152262bdf08c284d7ab6dbd390365ac8">
+                            <label class="form-check-label cleaning_checklist_label" for="item_152262bdf08c284d7ab6dbd390365ac8">
+                                add Easy Coding Standard
+
+                                                                    <a href="https://github.com/symplify/easy-coding-standard" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_9406c39e58f21237debef082e44de275" value="9406c39e58f21237debef082e44de275">
+                            <label class="form-check-label cleaning_checklist_label" for="item_9406c39e58f21237debef082e44de275">
+                                add coding standard as standalone CI job
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/a51551c246a2bbbbabd30ab8512df08e8fa26444/.github/workflows/ecs.yaml" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_3f5a4b74664aeca93ca0a9227974a0c4" value="3f5a4b74664aeca93ca0a9227974a0c4">
+                            <label class="form-check-label cleaning_checklist_label" for="item_3f5a4b74664aeca93ca0a9227974a0c4">
+                                migrate current PHP_CodeSniffer to ECS
+
+                                                                    <a href="https://tomasvotruba.com/blog/2018/06/04/how-to-migrate-from-php-code-sniffer-to-easy-coding-standard/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_b1a7936f8289165b7dc3397527649685" value="b1a7936f8289165b7dc3397527649685">
+                            <label class="form-check-label cleaning_checklist_label" for="item_b1a7936f8289165b7dc3397527649685">
+                                migrate current PHP CS Fixer to ECS
+
+                                                                    <a href="https://tomasvotruba.com/blog/2018/06/07/how-to-migrate-from-php-cs-fixer-to-easy-coding-standard/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_060728db3b568c81b896fed4734a9615" value="060728db3b568c81b896fed4734a9615">
+                            <label class="form-check-label cleaning_checklist_label" for="item_060728db3b568c81b896fed4734a9615">
+                                add &quot;psr12&quot; set
+
+                                                                    <a href="https://github.com/symplify/easy-coding-standard#use-prepared-checker-sets" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_2e5a07f977d24e43d89e02fe89b2de2d" value="2e5a07f977d24e43d89e02fe89b2de2d">
+                            <label class="form-check-label cleaning_checklist_label" for="item_2e5a07f977d24e43d89e02fe89b2de2d">
+                                add &quot;common&quot; sets one by one
+
+                                                                    <a href="https://github.com/symplify/easy-coding-standard/tree/master/config/set/common" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_66215630e617ecfda44cafd31db6f6c0" value="66215630e617ecfda44cafd31db6f6c0">
+                            <label class="form-check-label cleaning_checklist_label" for="item_66215630e617ecfda44cafd31db6f6c0">
+                                add &quot;php70&quot; set without StrictTypesFixer
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_1a13bdb64cac97023fe129c5482ee90b" value="1a13bdb64cac97023fe129c5482ee90b">
+                            <label class="form-check-label cleaning_checklist_label" for="item_1a13bdb64cac97023fe129c5482ee90b">
+                                add &quot;php71&quot; set
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_7267eefa47216333abac195ae53a88bc" value="7267eefa47216333abac195ae53a88bc">
+                            <label class="form-check-label cleaning_checklist_label" for="item_7267eefa47216333abac195ae53a88bc">
+                                add 120 chars line length fixer
+
+                                                                    <a href="https://tomasvotruba.com/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_66258b3cb03dd234d84c715865bc6262" value="66258b3cb03dd234d84c715865bc6262">
+                            <label class="form-check-label cleaning_checklist_label" for="item_66258b3cb03dd234d84c715865bc6262">
+                                change class string to ::class
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#stringclassnametoclassconstantrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_d695b11b06f831f7b1ce378a10a1e4c6" value="d695b11b06f831f7b1ce378a10a1e4c6">
+                            <label class="form-check-label cleaning_checklist_label" for="item_d695b11b06f831f7b1ce378a10a1e4c6">
+                                change class::method() string references to ::class
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#splitstringclassconstanttoclassconstfetchrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="phpstan">
+                        <a href="#phpstan">
+                            PHPStan
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_27679eb2a5f49b8d19c7b43b43b4d61d" value="27679eb2a5f49b8d19c7b43b43b4d61d">
+                            <label class="form-check-label cleaning_checklist_label" for="item_27679eb2a5f49b8d19c7b43b43b4d61d">
+                                add PHPStan
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_e1a1c682fc69ad6aefcb2af9ecccd9ab" value="e1a1c682fc69ad6aefcb2af9ecccd9ab">
+                            <label class="form-check-label cleaning_checklist_label" for="item_e1a1c682fc69ad6aefcb2af9ecccd9ab">
+                                add level 0
+
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_54fbe25e07fe426731215863d58f7cf3" value="54fbe25e07fe426731215863d58f7cf3">
+                            <label class="form-check-label cleaning_checklist_label" for="item_54fbe25e07fe426731215863d58f7cf3">
+                                add symplify errors formatter for escaped regexs
+
+                                                                    <a href="https://github.com/symplify/phpstan-extensions" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_a8fabbbab89109156d438c4db12685ec" value="a8fabbbab89109156d438c4db12685ec">
+                            <label class="form-check-label cleaning_checklist_label" for="item_a8fabbbab89109156d438c4db12685ec">
+                                add PHPStan as standalone CI job
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/a51551c246a2bbbbabd30ab8512df08e8fa26444/.github/workflows/phpstan.yaml" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="rector">
+                        <a href="#rector">
+                            Rector
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_ee51612dc454c6de3a014eae77f27d8d" value="ee51612dc454c6de3a014eae77f27d8d">
+                            <label class="form-check-label cleaning_checklist_label" for="item_ee51612dc454c6de3a014eae77f27d8d">
+                                add Rector
+
+                                                                    <a href="https://getrector.org/blog/2020/01/20/how-to-install-rector-despite-composer-conflicts" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_5be5031bfbcc530c05ffb4724be17096" value="5be5031bfbcc530c05ffb4724be17096">
+                            <label class="form-check-label cleaning_checklist_label" for="item_5be5031bfbcc530c05ffb4724be17096">
+                                add Rector standalone CI job
+
+                                                                    <a href="https://github.com/symplify/symplify/blob/master/.github/workflows/rector_ci.yaml" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_fb5496714647ec2311846eb9f59ea4ed" value="fb5496714647ec2311846eb9f59ea4ed">
+                            <label class="form-check-label cleaning_checklist_label" for="item_fb5496714647ec2311846eb9f59ea4ed">
+                                finalize classes without children
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/AllRectorsOverview.md#finalizeclasseswithoutchildrenrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/01/24/how-to-kill-parents/" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_48becb78d940eec4758c4330794f6599" value="48becb78d940eec4758c4330794f6599">
+                            <label class="form-check-label cleaning_checklist_label" for="item_48becb78d940eec4758c4330794f6599">
+                                complete @var types to all your properties
+
+                                                                    <a href="https://tomasvotruba.com/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_6402430ddc1f4a85ebc53672fb2ca6cb" value="6402430ddc1f4a85ebc53672fb2ca6cb">
+                            <label class="form-check-label cleaning_checklist_label" for="item_6402430ddc1f4a85ebc53672fb2ca6cb">
+                                remove dead code
+
+                                
+                                                                    <a href="https://tomasvotruba.com/blog/2019/12/09/how-to-get-rid-of-technical-debt-or-what-we-would-have-done-differently-2-years-ago/" class="btn btn-warning ml-2">Why?</a>
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_2d4a0140c6313616845eb90b86ba2212" value="2d4a0140c6313616845eb90b86ba2212">
+                            <label class="form-check-label cleaning_checklist_label" for="item_2d4a0140c6313616845eb90b86ba2212">
+                                split grouped property and constant definitions
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#splitgroupedconstantsandpropertiesrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                            <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_d2bd9b73a0cfc72d8d8f347e7dfb95fd" value="d2bd9b73a0cfc72d8d8f347e7dfb95fd">
+                            <label class="form-check-label cleaning_checklist_label" for="item_d2bd9b73a0cfc72d8d8f347e7dfb95fd">
+                                split grouped use imports definitions
+
+                                                                    <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#splitgroupeduseimportsrector" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="symfony">
+                        <a href="#symfony">
+                            Symfony
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_b910144278b5fa43e6597fb44df0b184" value="b910144278b5fa43e6597fb44df0b184">
+                            <label class="form-check-label cleaning_checklist_label" for="item_b910144278b5fa43e6597fb44df0b184">
+                                migrate configs to PSR-4 autodiscovery
+
+                                                                    <a href="https://tomasvotruba.com/blog/2018/12/27/how-to-convert-all-your-symfony-service-configs-to-autodiscovery/" class="btn btn-success ml-2">Help</a>
+                                
+                                                            </label>
+                        </div>
+                                                        <h2 class="mb-4" id="nette">
+                        <a href="#nette">
+                            Nette
+                        </a>
+                    </h2>
+
+                                                                <div class="form-check mb-4 clearfix">
+                                                        <input class="cleaning_checklist_input" type="checkbox" id="item_9eb0d1e0de208ab542f20f21117e4695" value="9eb0d1e0de208ab542f20f21117e4695">
+                            <label class="form-check-label cleaning_checklist_label" for="item_9eb0d1e0de208ab542f20f21117e4695">
+                                decouple RouterFactory to own service
+
+                                
+                                                            </label>
+                        </div>
+                                                </div>
+        </div>
+
+        <br>
+
+        <h2 id="comments">What Do You Think?</h2>
+
+        <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+    </div>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>

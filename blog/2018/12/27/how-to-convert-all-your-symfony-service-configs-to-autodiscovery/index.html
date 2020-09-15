@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How To Convert All Your Symfony Service Configs to Autodiscovery | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 171 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How To Convert All Your Symfony Service Configs to Autodiscovery</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-12-Thu">
+            <strike>
+                            Thu, Dec 27, 2018
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Apr, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/12/27/how-to-convert-all-your-symfony-service-configs-to-autodiscovery/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-12-27-how-to-convert-all-your-symfony-service-configs-to-autodiscovery.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at April 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated to Symfony 5+ syntax with <a href="https://github.com/symfony/symfony/pull/27075">per-line excludes</a>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you use Symfony autodiscovery services registration everywhere and your configs have no extra lines?
+Skip this post and rather read another one.
+<br>
+<br>
+But if <strong>you have many configs with manual service registration</strong>, tagging, and autowiring, keep reading. I'll show you how you can convert them easily be new Symplify package.</p>
+                    </div>
+                </div>
+
+                <h2 id="tl-dr">tl;dr;</h2>
+<img src="/assets/images/posts/2018/autodiscovery/demo.gif" class="img-thumbnail">
+<p><br></p>
+<p>I've been consulting a few Symfony e-commerce projects recently that all have <code>service.yml</code>. Big configs with manual service registration:</p>
+<pre><code class="language-yaml">services:
+    App\SomeService:
+        autowire: true
+
+    App\Controller\SomeController:
+        autowire: true
+
+    # 50 more lines...
+    # 20 more files similar to this one</code></pre>
+<p>I already wrote <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/">How to refactor to new Dependency Injection features in Symfony 3.3</a>, so you can read it. But you don't have to, since <strong>this conversion can be automated</strong>...</p>
+<pre><code class="language-yaml">services:
+    _defaults:
+        autowire: true
+    App\:
+        resource: /src</code></pre>
+<p>...with <a href="https://github.com/symplify/autodiscovery">Symplify\Autodiscovery</a>.</p>
+<h2 id="3-steps-to-your-minimalistic-configs">3 Steps to Your Minimalistic Configs</h2>
+<ol>
+<li>
+<p>Install the package</p>
+<pre><code class="language-bash">composer require symplify/autodiscovery</code></pre>
+</li>
+<li>
+<p>Convert Configs</p>
+<p>Run on <code>/src</code> directory:</p>
+<pre><code class="language-diff">vendor/bin/autodiscovery convert-yaml /src</code></pre>
+<p>It converts all <code>services.yml</code>, <code>config.yml</code>, <code>config.dev.yml</code> etc. configs that contain <code>services:</code> to autodiscovery format.</p>
+<p><code>*.yaml</code> included.</p>
+</li>
+<li>
+<p>See the changes:</p>
+<pre><code class="language-bash">git diff</code></pre>
+</li>
+</ol>
+<h2 id="what-can-go-wrong">What Can Go Wrong?</h2>
+<p>There are many reasons to <strong>automate this work</strong>, because <strong>there are many gotchas</strong> you have to be careful about. In each single service registration.</p>
+<h2 id="1-tags">1. Tags</h2>
+<p>Name-only system tags <strong>can be removed</strong> thanks to <code>autoconfigure</code>:</p>
+<pre><code class="language-diff"> services:
+-    first_command:
+-        class: App\Command\FirstCommand
+-        tags:
+-            - { name: 'console.command' }
+-
+-    second_command:
+-        class: App\Command\SecondCommand
+-        tags: ['console.command']
++    _defaults:
++        autoconfigure: true
++
++     App\Command\:
++         resource: '../src/Command'</code></pre>
+<p>But you have to <strong>keep</strong> <a href="https://symfony.com/doc/current/console/commands_as_services.html#lazy-loading">lazy-loaded commands</a></p>
+<pre><code class="language-yaml">services:
+    first_command:
+        class: App\Command\FirstCommand
+        tags:
+          - { name: 'console.command', command: 'first' }</code></pre>
+<p>And tags with metadata:</p>
+<pre><code class="language-yaml">services:
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.exception' }</code></pre>
+<h2 id="2-single-class-names">2. Single-class Names</h2>
+<p>Service name can be often dropped:</p>
+<pre><code class="language-diff"> services:
+-    app.controller:
+-        class: App\SomeController
++    App\SomeController: ~</code></pre>
+<p>Except for classes with no namespace:</p>
+<pre><code class="language-yaml">services:
+    Single_Class_Name:
+        class: Single_Class_Name</code></pre>
+<h2 id="3-vendor-autodiscovery">3. Vendor Autodiscovery</h2>
+<p>Configs are usually mixed of your code (<code>/app</code> or <code>/src</code>) and 3rd party code (<code>/vendor</code>):</p>
+<pre><code class="language-yaml"># old config
+services:
+    App\SomeService: ~
+    App\AnotherService: ~
+
+    Symplify\PackageBuilder\Parameter\ParameterProvider: ~
+    Symplify\PackageBuilder\FileSystem\FileGuard: ~</code></pre>
+<p>Seeing this you have to think about that. If not, you might accidentally apply autodiscovery everywhere:</p>
+<pre><code class="language-diff"> services:
+-    App\SomeService: ~
+-    App\AnotherService: ~
++    App\:
++        resource: ../src
+
+-    Symplify\PackageBuilder\Parameter\ParameterProvider: ~
+-    Symplify\PackageBuilder\FileSystem\FileGuard: ~
++    Symplify\PackageBuilder\: ~
++        resource: ../vendor/symplify/package-builder/src</code></pre>
+<p>Ops, the last case should not be converted - <strong>all 3rd party classes have to be explicit</strong> since they're handled by their own config/bundle in <code>/vendor</code>:</p>
+<pre><code class="language-yaml">services:
+    Symplify\PackageBuilder\Parameter\ParameterProvider: ~
+    Symplify\PackageBuilder\FileSystem\FileGuard: ~</code></pre>
+<h2 id="4-exclude-obviously">4. Exclude Obviously</h2>
+<p>When you try to autoload a class with a constructor, it's considered a service. But not all classes with constructors are services. Symfony doesn't know that unless you tell it, and it would fail with missing argument exception.</p>
+<pre><code class="language-diff"> services:
+     App\:
+        resource: ../src
++       exclude:
++           - ../src/Entity/*
++           - ../src/Exception/*
++           - ../src/Contract/*</code></pre>
+<p>The converter includes support for basic dirs to be excluded.</p>
+<p><br></p>
+<p><strong>Do you want minimalist configs for your application?</strong> <a href="#3-steps-to-your-minimalistic-configs">Give Autodiscovery a try</a>.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/12/24/thank-you" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Thank You
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-12-27-how-to-convert-all-your-symfony-service-configs-to-autodiscovery.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How To Convert All Your Symfony Service Configs to Autodiscovery" />
+    <meta property="og:description" content="Do you use Symfony autodiscovery services registration everywhere and your configs have no extra lines?
+Skip this post and rather read another one.
+
+
+But if **you have many configs with manual service registration**, tagging, and autowiring, keep reading. I&#039;ll show you how you can convert them easily be new Symplify package.
+" />
+    <meta property="og:url" content="/blog/2018/12/27/how-to-convert-all-your-symfony-service-configs-to-autodiscovery" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How To Convert All Your Symfony Service Configs to Autodiscovery" />
+    <meta name="twitter:description" content="Do you use Symfony autodiscovery services registration everywhere and your configs have no extra lines?
+Skip this post and rather read another one.
+
+
+But if **you have many configs with manual service registration**, tagging, and autowiring, keep reading. I&#039;ll show you how you can convert them easily be new Symplify package.
+" />

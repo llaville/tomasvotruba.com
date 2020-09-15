@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Don&#039;t Give Up Your PHP Code for Compiler Passes so Easily | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 206 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Don't Give Up Your PHP Code for Compiler Passes so Easily</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-04-Thu">
+            
+                            Thu, Apr 25, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/04/25/don-t-give-up-your-php-code-for-compiler-passes-so-easily/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-25-don-t-give-up-your-php-code-for-compiler-passes-so-easily.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Sometimes you need to achieve very simple operation - e.g. get all services of a certain type in a certain order or key name. When we start to use a PHP framework, we tend to underestimate our PHP skills and look for <em>the framework</em> way.
+<br><br>
+<strong>Who cares if we use 50 lines in 3 files PHP files and 1 YAML file instead of 1 factory in 20 lines.</strong> We're cool!</p>
+                    </div>
+                </div>
+
+                <p>This mini-series started in <a href="/blog/2019/02/14/why-config-coding-sucks/">Why Config Coding Sucks</a>. <strong>There we learned to move <del>weakly</del> un-typed strings to strict-typed PHP code</strong>. It's not only about YAML or NEON files, but about any config-like syntax in general (XML, in...).</p>
+<p>Today we move to PHP-only land, that suffers a similar problem.</p>
+<h2 id="what-we-talk-about">What We Talk About?</h2>
+<p>So we talk about <a href="https://symfony.com/doc/current/service_container/compiler_passes.html">Compiler Passes in Symfony</a>? Well, yes and no. Not only about them, but about any PHP code that moves around services in the DI container.</p>
+<ul>
+<li>in Nette it's a class that extends <a href="/blog/2017/02/15/minimalistic-way-to-create-your-first-nette-extension/"><code>CompilerExtension</code></a></li>
+<li>in Symfony it's class that implements <a href="https://github.com/symfony/symfony/blob/fba11b4dc34e7c589d8c30d5b6a090387d52e648/src/Symfony/Component/DependencyInjection/Compiler/CompilerPassInterface.php"><code>CompilerPassInterface</code></a> or extends <a href="https://github.com/symfony/symfony/blob/fba11b4dc34e7c589d8c30d5b6a090387d52e648/src/Symfony/Component/DependencyInjection/Extension/Extension.php"><code>Extension</code></a></li>
+<li>in Laravel it can be <a href="https://laravel.com/docs/master/providers">service providers</a></li>
+</ul>
+<p>They have their useful use-cases, but people tend them to use <em>as a bazooka to mouse</em>. Just look at <a href="https://stackoverflow.com/questions/54590981/symfony-4-how-to-access-the-service-from-controller-without-dependency-injectio">answers under this StackOverflow question</a>.</p>
+<p><br></p>
+<p>Let's look at an example that is not far from the reality of your work with. But still it's only an example, it could be apples in a basket instead.</p>
+<h2 id="make-price-calculation-easy-to-extend-and-maintain-without-changing-it">Make Price Calculation easy to Extend and Maintain without Changing it</h2>
+<p>Based on <a href="/mission">my experience with my clients</a>, this is the biggest problem in e-commerce projects. The ideal wishes of company owners clash with limits programmers and architecture:</p>
+<ul>
+<li>&quot;The price calculation must be ready for use&quot;</li>
+<li>&quot;I need to add different price to product B if they're in combination with product A&quot;</li>
+<li>&quot;It must be easy to maintain&quot;</li>
+<li>&quot;The business must be able to update dependency on our code&quot;</li>
+<li>&quot;We can't predict how the price will develop&quot;</li>
+</ul>
+<p><del>This not possible!</del> - How can we do it as close as possible now?</p>
+<p>Let's say the solution is fairly easy. Same as <a href="https://symfony.com/doc/current/security/voters.html">Voters are to Security</a>, we introduce 1 service <code>PriceCalculator</code> that collects all the little one <code>PriceModifierInterface</code>.</p>
+<p>How would such implementations look like in <em>framework-way</em>?</p>
+<h3 id="1-in-symfony">1. In Symfony</h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App\DependencyInjection;
+
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+final class PriceCompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $containerBuilder)
+    {
+        $priceCalculator = $containerBuilder-&gt;get(PriceCalculator::class);
+
+        foreach ($containerBuilder-&gt;findTaggedServiceIds('price_modifier') as $service =&gt; $tags) {
+            $priceCalculator-&gt;addMethodCall('add', [new Reference($service)]);
+        }
+    }
+}</code></pre>
+<p><strong>Again, we need to create some legacy code that is hard to maintain:</strong></p>
+<ul>
+<li>add tagging in extension/bundle or better type resolution <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>register this in Kernel <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>remember the tag name (<a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock">don't remember anything</a>/) <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>use the tag everywhere (YAML) <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>vendor-lock the metadata in the config (YAML) <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>people maintaining project after you leave have to learn this <em>Symfony way</em> <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+</ul>
+<p><br></p>
+<h3 id="2-in-nette">2. In Nette</h3>
+<pre><code class="language-php">&lt;?php
+
+namespace App\DI;
+
+use Nette\DI\CompilerExtension;
+
+final class PriceExtension extends CompilerExtension
+{
+    public function beforeCompile()
+    {
+        $containerBuilder = $this-&gt;getContainerBuilder();
+        $priceCalculator = $containerBuilder-&gt;get(PriceCalculator::class);
+
+        $priceModifiers = $containerBuilder-&gt;findByType(PriceModifierInterface::class);
+        foreach ($priceModifiers as $service) {
+            $priceCalculator-&gt;addSetup('add', [$service]);
+        }
+    }
+}</code></pre>
+<p><strong>Also, we create legacy code that is hard to maintain:</strong></p>
+<ul>
+<li>register extension to a config (Neon) <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>vendor-lock the metadata in the config (Neon) <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+<li>people maintaining project after you leave have to learn this <em>Nette way</em> <em class="fas fa-fw fa-times text-danger fa-lg"></em></li>
+</ul>
+<p>I need to take a break, my brain is tired just <strong>by making up this complicated and non-sense code</strong>. I mean, I used to write this code in my every project for 5 years in Symfony and Nette projects, because it was &quot;the best practice&quot; and I didn't question it, but <strong>there was always something scratching in the back of my head</strong>.</p>
+<p><br>
+<br></p>
+<h2 id="keep-simple-things-simple">Keep Simple Things Simple</h2>
+<p>Now imagine you've ended in a train crash, hit your head and forget all the frameworks you know. All you have left is actually the best you can achieve in any mastery - a <a href="https://zenhabits.net/beginner">mind of the begginer</a>.</p>
+<ul>
+<li>&quot;How would you get all services of a certain type in a certain order or key name?&quot;</li>
+</ul>
+<p>In our specific example:</p>
+<ul>
+<li>&quot;How would you get all <code>PriceModifierInterface</code> services into <code>PriceCalculator</code> sorted by priority?&quot;</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+final class PriceCalculatorFactory
+{
+    /**
+     * @var PriceModifierInterface[]
+     */
+    private $priceModifiers = [];
+
+    /**
+     * @param PriceModifierInterface[] $priceModifiers
+     */
+    public function __construct(array $priceModifiers)
+    {
+        $this-&gt;priceModifiers = $priceModifiers;
+    }
+
+    public function create(): PriceCalculator
+    {
+        $priceModifiersByPriority = [];
+        foreach ($this-&gt;priceModifiers as $priceModifier) {
+            $priority = $priceModifier-&gt;getPriority(); // this could be "getKey()" or any metadata
+            $priceModifiersByPriority[$priority] = $priceModifier;
+        }
+
+        // sort them in any way
+        ksort($priceModifiersByPriority);
+
+        return new PriceCalculator($priceModifiersByPriority);
+    }
+}</code></pre>
+<p>In some framework we have still have to add 1 config vendor-lock <em class="fas fa-fw fa-times text-danger fa-lg"></em> :</p>
+<pre><code class="language-yaml">services:
+    App\Price\PriceCalculator:
+        factory: ['@App\Price\PriceCalculatorFactory', 'create']</code></pre>
+<p>I use <a href="https://github.com/symplify/package-builder#do-not-repeat-simple-factories">compiler pass</a> for now, but if you know how to remove it, let me know.</p>
+<p>How we get <code>$priceModifiers</code> is not that important now, it's <a href="/blog/2018/11/12/will-autowired-arrays-finally-deprecate-tags-in-symfony-and-nette/">an implementation detail</a>.</p>
+<h2 id="durable-amp-readable">Durable &amp; Readable</h2>
+<p>The important thing is we got a code that:</p>
+<ul>
+<li>is <strong>strictly typed</strong> <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>we all understand it <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>will not be affected by any syntax/architecture changes in our favorite framework <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>can be checked by <strong>coding standard tools</strong> <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>can be analysed by <strong>static analysis tools</strong> <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+<li>and refactored by <strong>instant upgrade tools</strong> <em class="fas fa-fw fa-lg fa-check text-success"></em></li>
+</ul>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/04/18/symfony-4-2-is-used-2-times-more-than-symfony-3-4" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Symfony 4.2 is used Twice More than Symfony 3.4
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-25-don-t-give-up-your-php-code-for-compiler-passes-so-easily.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Don&#039;t Give Up Your PHP Code for Compiler Passes so Easily" />
+    <meta property="og:description" content="Sometimes you need to achieve very simple operation - e.g. get all services of a certain type in a certain order or key name. When we start to use a PHP framework, we tend to underestimate our PHP skills and look for *the framework* way.
+
+**Who cares if we use 50 lines in 3 files PHP files and 1 YAML file instead of 1 factory in 20 lines.** We&#039;re cool!
+" />
+    <meta property="og:url" content="/blog/2019/04/25/don-t-give-up-your-php-code-for-compiler-passes-so-easily" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Don&#039;t Give Up Your PHP Code for Compiler Passes so Easily" />
+    <meta name="twitter:description" content="Sometimes you need to achieve very simple operation - e.g. get all services of a certain type in a certain order or key name. When we start to use a PHP framework, we tend to underestimate our PHP skills and look for *the framework* way.
+
+**Who cares if we use 50 lines in 3 files PHP files and 1 YAML file instead of 1 factory in 20 lines.** We&#039;re cool!
+" />

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>From 0 Doc Types to Full Type Declaration with Dynamic Analysis | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 225 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>From 0 Doc Types to Full Type Declaration with Dynamic Analysis</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-11-Mon">
+            <strike>
+                            Mon, Nov 11, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/11/11/from-0-doc-types-to-full-type-declaration-with-dynamic-analysis/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-11-11-from-0-doc-types-to-full-type-declaration-with-dynamic-analysis.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I wrote <a href="/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/">How we Completed Thousands of Missing @var Annotations in a Day</a>. If you have at least some annotations, you can use Rector to do the dirty work.
+<br>
+<br>
+To be honest, open-source is the top 1 % code there is, but out <strong>in the wild of <del>legacy</del> established PHP companies, it's a miracle to see just one <code>string</code> type declaration</strong>.
+<br>
+<br>
+Are these projects lost? Do you have to quit them? And what if the annotations are lying?</p>
+                    </div>
+                </div>
+
+                <p>I had a great trip with a friend of mine <a href="https://github.com/DaveLiddament">Dave Liddament</a> after <a href="https://2019.phpday.it">PHP Day 2019 in Verona</a>. During Venice sightseeing in beautiful wild rain, we had a short coffee break to talk about Rector. Dave was amazed by what Rector can do for the developer, with such a few lines of YAML config.</p>
+<p>As a proper curious developer, <strong>he challenged me with series</strong> of &quot;Can it do...?&quot; or &quot;How can it...?&quot; questions.</p>
+<p><br></p>
+<p>The one we spent almost an hour on one was:</p>
+<p><strong>&quot;How can Rector help with type declarations, if there are no docblocks and no type hints?&quot;</strong></p>
+<pre><code class="language-php">&lt;?php
+
+class SomeClass
+{
+    public function run($value)
+    {
+        return $value;
+    }
+}</code></pre>
+<p>First I was cold stone and said: &quot;That's far beyond static analysis. That's a job for a human, Rector can't help here&quot;.</p>
+<p>I vividly recall I was sure was <em>this is impossible</em> (← now this line my motto pick project that is interesting enough, lol).</p>
+<p><br></p>
+<p>But David sticks with it questioning:</p>
+<ul>
+<li>&quot;If we know there is <strong>always a string coming inside and nothing else</strong>, we could do this:&quot;</li>
+</ul>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomeClass
+ {
+-    public function run($value)
++    public function run(string $value): string
+     {
+         return $value;
+     }
+ }</code></pre>
+<ul>
+<li>&quot;Well... yes, you're right.&quot;</li>
+</ul>
+<h2 id="detect-every-argument-type">Detect Every Argument Type</h2>
+<p>I started to see a very small candle at the end of the tunnel and said:</p>
+<ul>
+<li>&quot;We could do some kind of logging types that come to the method. Collect enough data and decide based on that.&quot;</li>
+</ul>
+<p>There is a similar technique for dead-code analysis - <a href="https://github.com/krakjoe/tombs">tombs</a>. But the problem is, <strong>it's not written in PHP</strong>. And if it's not written in the language we use, we are not able to extend it or fix it. That's why PHPStorm plugins written Java take so long to catch up with framework releases.</p>
+<p>We wanted to have the code just once in the whole application. If possible in the end and collect all the method calls and their arguments. We tried to use <code>register_shutdown_function</code> and <code>debug_trace</code> for it. But after some time spends hacking them, we gave up.</p>
+<p>So it will have to be good old <strong>static call under each class method</strong>, something like:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomeClass
+ {
+    public function run($value)
+    {
++       TypeCollector::collect($value, __METHOD__, 0);
+        return $value;
+    }
+ }</code></pre>
+<h2 id="what-about-performance">What about Performance?</h2>
+<p><code>file_put_contents()</code> takes <a href="https://www.php.net/manual/en/function.file-put-contents.php#105421">~10 ms for 10 000 writes</a> writes, so writing in filesystem might work.</p>
+<p>Still, it's safer to use <strong>feature toggles</strong> or direct <strong>small fraction of traffic</strong> to a standalone server with these static methods.</p>
+<h2 id="how-long-should-we-collect-data">How Long Should we Collect Data?</h2>
+<p>This needs to be tested in the wild. It depends on many factors, for a blogging platform, it can be a week of data.
+For a payment system, a month would be better, maybe more to be sure.</p>
+<p>Also, the same way we collect data first <strong>with feature toggle/traffic fraction</strong>, we can test added types after they're added to the code.</p>
+<h2 id="the-simple-idea">The Simple Idea</h2>
+<p>To make the idea more solid, we looked for the edge cases:</p>
+<ul>
+<li>&quot;Wait, so we just collect types and then analyze them?&quot;</li>
+<li>&quot;Yes, if there are 10 000 calls for the method and it gets a string in 100 % cases, it's a <code>string</code>.&quot;</li>
+<li>&quot;But, if 5 % of them is null... it will be nullable <code>?string</code>&quot;</li>
+<li>&quot;Exactly, and if it's 5 different types, there is nothing we can do.&quot;</li>
+<li>&quot;I see, but the point is to complete everything that can be completed, based on data and experience instead of docblock that can contain anything.&quot;</li>
+</ul>
+<p>The idea is pretty clear, right?</p>
+<h2 id="how-can-we-bring-it-to-all-php-developers-in-need">How can we bring it to all PHP developers in Need?</h2>
+<p>It all seemed like a nice brain exercise for our brains... but we looked for <strong>practical appliance that would help every PHP developer in the world</strong>.</p>
+<p>To automate this process fully, we came with 4 automated steps:</p>
+<ul>
+<li>
+<ol>
+<li>Add type collector to all public class and trait methods</li>
+</ol>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomeClass
+ {
+    public function run($value)
+    {
++       TypeCollector::collect($value, __METHOD__, 0);
+        return $value;
+    }
+ }</code></pre>
+</li>
+<li>
+<ol start="2">
+<li>Collect data for a 1-4 weeks</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Complete collected types that can be added</li>
+</ol>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomeClass
+ {
+-    public function run($value)
++    public function run(string $value)
+     {
+         TypeCollector::collect($value, __METHOD__, 0);
+         return $value;
+     }
+ }</code></pre>
+</li>
+<li>
+<ol start="4">
+<li>Remove type collector</li>
+</ol>
+<pre><code class="language-diff"> &lt;?php
+
+ class SomeClass
+ {
+     public function run(string $value)
+     {
+-        TypeCollector::collect($value, __METHOD__, 0);
+         return $value;
+     }
+ }</code></pre>
+</li>
+</ul>
+<p>This was May 2019 and it was just an idea. Now, 6 months later, I'm proud to say this <strong>4-step process is now possible</strong>.
+I've  <a href="https://github.com/rectorphp/rector/pull/2264/files">merged the PR into Rector</a> just a few minutes ago.</p>
+<p>↓</p>
+<h3 id="step-1-add-type-collector">Step 1 - Add Type Collector</h3>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\DynamicTypeAnalysis\Rector\ClassMethod\DecorateMethodWithArgumentTypeProbeRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(DecorateMethodWithArgumentTypeProbeRector::class);
+};</code></pre>
+<pre><code class="language-bash">vendor/bin/rector process src</code></pre>
+<h3 id="step-2-wait-for-it">Step 2 - Wait for it...</h3>
+<h3 id="step-3-complete-collected-types">Step 3 - Complete Collected Types</h3>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\DynamicTypeAnalysis\Rector\ClassMethod\AddArgumentTypeWithProbeDataRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(AddArgumentTypeWithProbeDataRector::class);
+};</code></pre>
+<pre><code class="language-bash">vendor/bin/rector process src</code></pre>
+<h3 id="step-4-remove-type-collector">Step 4 - Remove Type Collector</h3>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\DynamicTypeAnalysis\Rector\StaticCall\RemoveArgumentTypeProbeRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(RemoveArgumentTypeProbeRector::class);
+};</code></pre>
+<pre><code class="language-bash">vendor/bin/rector process src</code></pre>
+<p><br></p>
+<h2 id="it-s-not-perfect-but-done">It's not Perfect, But Done</h2>
+<p>In all means, it's not perfect. There is still missing support for arrays, nested arrays, type co/ntra/variance, return types, union types, etc. <strong>But it's ready to be tested and prototype works</strong> (at least that's what unit tests say).</p>
+<p>Now it's up to you. Make your code-base filled with real data it already uses. No guessing, no hoping, <strong>just science fully-automated</strong>.</p>
+<p><br></p>
+<p>Last but not least, thank you <a href="https://github.com/DaveLiddament">Dave</a> for a great afternoon and sorry it took me so long to publish this.</p>
+<p><br></p>
+<p>Happy lazy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/11/04/still-on-phpunit-4-come-to-phpunit-8-together-in-a-day" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-11-11-from-0-doc-types-to-full-type-declaration-with-dynamic-analysis.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="From 0 Doc Types to Full Type Declaration with Dynamic Analysis" />
+    <meta property="og:description" content="I wrote [How we Completed Thousands of Missing @var Annotations in a Day](/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/). If you have at least some annotations, you can use Rector to do the dirty work.
+
+
+To be honest, open-source is the top 1 % code there is, but out **in the wild of ~~legacy~~ established PHP companies, it&#039;s a miracle to see just one `string` type declaration**.
+
+
+Are these projects lost? Do you have to quit them? And what if the annotations are lying?
+" />
+    <meta property="og:url" content="/blog/2019/11/11/from-0-doc-types-to-full-type-declaration-with-dynamic-analysis" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="From 0 Doc Types to Full Type Declaration with Dynamic Analysis" />
+    <meta name="twitter:description" content="I wrote [How we Completed Thousands of Missing @var Annotations in a Day](/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/). If you have at least some annotations, you can use Rector to do the dirty work.
+
+
+To be honest, open-source is the top 1 % code there is, but out **in the wild of ~~legacy~~ established PHP companies, it&#039;s a miracle to see just one `string` type declaration**.
+
+
+Are these projects lost? Do you have to quit them? And what if the annotations are lying?
+" />

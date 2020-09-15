@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Migrate Spaghetti to 304 Symfony 5 Controllers Over Weekend | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 247 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Migrate Spaghetti to 304&nbsp;Symfony 5 Controllers Over Weekend</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-04-Mon">
+            
+                            Mon, Apr 13
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/04/13/how-to-migrate-spaghetti-to-304-symfony-5-controllers-over-weekend/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-04-13-how-to-migrate-spaghetti-to-304-symfony-5-controllers-over-weekend.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>During Easter weekend, usually, people take a break and have a rest. Instead, we used these 4 days of <em>holiday</em> to migrate the 304-controller application. At least that was the goal on Friday.
+<br><br>
+Me in my colleague in the migrated project accepted the challenge. We got into many minds and code-traps. We'd like to share this experience with you and <strong>inspire those who are still stuck on non-MVC code</strong> and think it might take weeks or even months to switch to a framework.</p>
+                    </div>
+                </div>
+
+                <h2 id="what-is-the-goal">What is the Goal?</h2>
+<p><em class="fas fa-fw mt-4 fa-times text-danger"></em> <strong>We didn't want a  hybrid</strong> with static dependency injection container, legacy controller, request separation for new website and for old website. It only creates more legacy code than in the beginning.</p>
+<p><em class="fas fa-fw mt-4 fa-star-half text-warning"></em> <strong>We were ok with</strong> keeping original business logic code untouched. We will handle spaghetti decoupling to Controller and Twig in the next phase. This was just a 1st step of many.</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We wanted</strong> to be able to use Symfony dependency injection, Twig templates, Controller rendering, Symfony Security, Events, Repository, connection to database, <code>.env</code>, Flex, Bundles, YAML configs, <a href="/blog/2020/02/17/local-packages-3-years-later/">local packages</a>.</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We wanted automate</strong> everything that is possible to automate.</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We wanted to run</strong> on Symfony 5.0 and PHP 7.4.</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We wanted to write</strong> any future code as if in any other Symfony application without going back.</p>
+<p><br></p>
+<p>Well, we wanted a full-stack framework, as you can find in <a href="https://github.com/symfony/demo">symfony/demo</a>.</p>
+<p>Isn't that too much for one weekend? 😂</p>
+<blockquote class="blockquote text-center">
+"Only those who attempt the absurd can achieve the impossible."
+
+<footer class="blockquote-footer">Albert Einstein</footer></blockquote>
+<p>Honestly, I'm just <strong><a href="https://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful">freaking lazy</a></strong> to do work for a longer time than a few days (in a row).</p>
+<h2 id="the-application-in-the-start">The Application in The Start</h2>
+<p>So how does the application look like?</p>
+<p><a href="https://symfony.com/doc/current/controller.html">Symfony documentation describes</a> <strong>a controller</strong> as <em>a PHP function you create that reads information from the Request object and creates and returns a Response object</em>. In our case, the &quot;Request object&quot; was an entry URL, &quot;Response object&quot; was spaghetti rendered as <code>echo "string";</code>.</p>
+<p>Saying that the application had:</p>
+<ul>
+<li>304 &quot;controllers&quot;</li>
+<li>templating done directly in the file with inlined PHP in HTML</li>
+<li>base <em>layout</em> done with <code>include "header.php";</code></li>
+<li>2 good old HTML frames, one for the menu - the other for the rest of application</li>
+</ul>
+<p><br></p>
+<p>Typical <em>controller</em> looked like this:</p>
+<pre><code class="language-php">&lt;?php
+// contact.php
+
+include 'header.php';
+
+$content = get_data_from_database();
+
+// 500 lines of spaghetti code
+
+echo $content;</code></pre>
+<h2 id="first-make-a-plan">First: Make a Plan</h2>
+<p>The migration pull-request itself is just <strong>half of the work</strong>. First, we had to have <a href="/blog/2019/12/16/8-steps-you-can-make-before-huge-upgrade-to-make-it-faster-cheaper-and-more-stable/">coding standards, PSR-4 autoloading, PHPStan on level 8</a> etc. When I say PHPStan on level 8, we skipped those errors with 50+ cases.</p>
+<p>The next half is <a href="/blog/2019/08/26/how-we-migrated-54-357-lines-of-code-nette-to-symfony-in-2-people-under-80-hours/">to have a full team on board</a> and have <strong>a clear plan</strong>.</p>
+<h2 id="php-template-in-symfony-5">PHP Template in Symfony 5?</h2>
+<p>We had a goal, so what's the plan? First, we wanted to switch PHP + HTML to controllers. Maybe we could use something like <a href="https://symfony.com/doc/4.4/templating/PHP.html">PHP templates</a> + render them with a controller?</p>
+<p>The idea is great, except <strong>PHP templates were deprecated</strong> in Symfony 4 and <strong>removed</strong> in Symfony 5:</p>
+<img src="/assets/images/posts/2020/symfonize_php_template_nope.png" class="img-thumbnail mt-3 mb-3">
+<h2 id="raw-symfony-application">Raw Symfony Application</h2>
+<p>Hm, so what now? If it too huge, take something smaller. First, we need to actually have a Symfony project:</p>
+<ul>
+<li>
+<p>remove <code>vendor</code></p>
+</li>
+<li>
+<p>remove <code>composer.lock</code></p>
+</li>
+<li>
+<p>install Symfony dependencies:</p>
+</li>
+</ul>
+<pre><code class="language-bash">composer require symfony/asset symfony/cache symfony/console symfony/dotenv \
+    symfony/flex symfony/framework-bundle symfony/http-foundation symfony/http-kernel \
+    symfony/twig-bridge symfony/twig-bundle symplify/auto-bind-parameter \
+    symplify/autodiscovery symplify/autowire-array-parameter symplify/flex-loader \
+    symplify/package-builder twig/twig doctrine/cache symfony/security-core \
+    symfony/security-bundle symfony/security-csrf doctrine/orm doctrine/doctrine-bundle \
+    doctrine/annotations doctrine/common doctrine/dbal symfony/error-handler symfony/form</code></pre>
+<ul>
+<li>don't forget <code>dev</code> too:</li>
+</ul>
+<pre><code class="language-bash">composer require --dev symfony/maker-bundle symfony/web-profiler-bundle</code></pre>
+<p>Few fixes of bundles installation that Flex missed, adding database credential to <code>.env.local</code> file to login into the database, and we're ready to continue <strong>with an uplifted spirit of success</strong>.</p>
+<img src="/assets/images/posts/2020/symfonize_raw_run.png" class="img-thumbnail mt-3 mb-3">
+<p>Soon to be <strong>demolished again by new problems</strong> we never faced before... Let's look at the controllers.</p>
+<p><br></p>
+<p>We wanted to use <a href="https://github.com/rectorphp/rector">Rector</a> to convert all the files to classic Symfony controllers.</p>
+<p>The simple rule is: <code>&lt;filename&gt;.php</code></p>
+<ul>
+<li>route name: <code>filename</code></li>
+<li>route path: <code>filename</code></li>
+</ul>
+<h2 id="what-will-be-inside-controller">What Will Be Inside Controller?</h2>
+<p>Just simply copy-paste the spaghetti code first, maybe that will be enough:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+final class ContactController extends AbstractController
+{
+    /**
+     * @Route(path="contact", name="contact")
+     */
+    public function __invoke(): Response
+    {
+        $content = get_data_from_database();
+        // 500 lines of spaghetti code
+
+        // this won't work, we need to return Response object :/
+        echo $content;
+    }
+}</code></pre>
+<p>If the content would be echoed <strong>just once</strong>, we could use:</p>
+<pre><code class="language-php">$content = get_data_from_database();
+// 500 lines of spaghetti code
+
+return new \Symfony\Component\HttpFoundation\Response($content);</code></pre>
+<p>But there is <code>echo</code> all over the place - like <strong>50 times in those 500 lines of spaghetti code</strong>.</p>
+<p><br></p>
+<p>Then we remembered, there are <code>ob_*</code> functions <strong>that collect echoed content, but don't show it</strong>. If we wrap the spaghetti and get content with <code>ob_get_contents()</code> in the end, it might work.</p>
+<pre><code class="language-php">ob_start();
+
+// 500 lines of spaghetti code
+
+$content = (string) ob_get_contents();
+ob_end_clean();
+return new \Symfony\Component\HttpFoundation\Response($content);</code></pre>
+<p><br></p>
+<p>4 hours of writing a Rector rule for the migration and voilá - we had <strong>304 new Symfony controllers</strong>:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+final class ContactController extends AbstractController
+{
+    /**
+     * @Route(path="contact", name="contact")
+     */
+    public function __invoke(): Response
+    {
+        ob_start();
+
+        $content = get_data_from_database();
+        // 500 lines of spaghetti code
+
+        $content = (string) ob_get_contents();
+        ob_end_clean();
+        return new Response($content);
+    }
+}</code></pre>
+<p>That wasn't that hard. Let's run the website to enjoy the fruits of Eden:</p>
+<img src="/assets/images/posts/2020/symfonize_first_crash.png" class="img-thumbnail mt-3 mb-3">
+<p>Hm, maybe we should <strong>update all the links from <code>contact.php</code> to <code>contact</code> routes</strong> in every PHP file too. Also, all 304 links to all controller we just converted.</p>
+<h2 id="how-to-get-base-template-into-templates">How to get Base Template into Templates?</h2>
+<p>Now when you entered <code>https://localhost:8000/contact</code>, you saw the raw page. From cool Symfony controller, but still a raw page. <strong>We wanted to use Twig templates</strong>, so we could enjoy filters, helpers, global variables, assets, etc.</p>
+<p><br></p>
+<p>This was our goal:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+final class ContactController extends AbstractController
+{
+    /**
+     * @Route(path="contact", name="contact")
+     */
+    public function __invoke(): Response
+    {
+        return $this-&gt;render('controller/contact.twig');
+    }
+}</code></pre>
+<p>In the end, that <code>__invoke</code> method is actually in every controller <strong>in this exact format</strong>. But we still <strong>miss one piece of the puzzle</strong>.</p>
+<p>We also wanted to use normal <code>base.twig</code>, as we're used to in every MVC project:</p>
+<pre><code class="language-twig">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+      {# some assets #}
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;div class="row"&gt;
+         &lt;div class="col-4"&gt;
+            {% include "_snippet/menu.twig" %}
+         &lt;/div&gt;
+         &lt;div class="col-8"&gt;
+              {% block main %}
+              {% endblock %}
+           &lt;/div&gt;
+       &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>What's inside the <code>controller/contact.twig</code>?</p>
+<pre><code class="language-twig">{% extends "base.twig" %}
+
+{% block main %}
+    PHP? Spaghetti? Magic?
+{% endblock %}</code></pre>
+<p>How would <strong>you solve it</strong>? If you find a better way, let us know in the comments.</p>
+<p><strong>Remember</strong>: no PHP in Twig templates and no going back to Symfony 4.</p>
+<p><br>
+<br>
+<br></p>
+<p>We came up with this trick:</p>
+<pre><code class="language-twig">{% extends "base.twig" %}
+
+{% block main %}
+    {{ render(controller('App\\Controller\\ContractController::content')) }}
+{% endblock %}</code></pre>
+<p>In each controller there will be not only the <code>__invoke()</code> method, but also the <code>content</code> method:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+final class ContactController extends AbstractController
+{
+    /**
+     * @Route(path="contact", name="contact")
+     */
+    public function __invoke(): Response
+    {
+        return $this-&gt;render('controller/contact.twig');
+    }
+
+    /**
+     * @Route(path="contact_content", name="contact_content")
+     */
+    public function content(): Response
+    {
+        ob_start();
+
+        $content = get_data_from_database();
+        // 500 lines of spaghetti code
+
+        $content = (string) ob_get_contents();
+        ob_end_clean();
+        return new Response($content);
+    }
+}</code></pre>
+<p>With this approach, we have all we wanted:</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We can</strong> use Symfony dependency injection, Twig templates, Controller rendering, Symfony Security, Events, Repository, connection to database, <code>.env</code>, Flex, Bundles, YAML configs, <a href="/blog/2020/02/17/local-packages-3-years-later/">local packages</a>.</p>
+<p><em class="fas fa-fw mt-4 fa-check text-success"></em> <strong>We can to write</strong> any future code as if in any other Symfony application without going back.</p>
+<p><br></p>
+<p>To add chery on top, we added Symfony login:</p>
+<img src="/assets/images/posts/2020/symfonize_logged_in.png" class="img-thumbnail mt-3 mb-3">
+<p>And that's it!</p>
+<h3 id="blind-paths-to-avoid">Blind Paths to Avoid</h3>
+<ul>
+<li>don't go to Symfony 5.1-dev, stay with <strong>stable Symfony 5.0</strong> - the install of dev packages is very slow both on CI and locally</li>
+<li>don't go to Symfony 4 just to use PHP templates; it's just postponing the problem + adding more legacy code</li>
+<li>don't rush to PHP 7.4 before migration is finished, for the migration start <strong>PHP 7.2</strong> is good enough (ECS and Rector need it as minimal version)</li>
+</ul>
+<h3 id="caveats">Caveats</h3>
+<ul>
+<li>do <a href="/blog/2019/12/16/8-steps-you-can-make-before-huge-upgrade-to-make-it-faster-cheaper-and-more-stable/">8 Steps You Can Make Before Huge Upgrade to Make it Faster, Cheaper and More Stable</a> first</li>
+<li><strong>have a strict deadline</strong> - our original plan was the end of May, but when Easter came, we couldn't resist</li>
+<li><strong>don't fall in the bait of manual refactoring</strong> of that one thing in the code you don't like - <strong>stay focused on the migration</strong> and improve code when the 1st step is finished and merged</li>
+<li><strong>have a buddy</strong>, that helps you psychically when you're stuck - without a friend, this might turn into a nightmare of being stuck in circles; even only talking about the problem helps - it's better if it's somebody outside your normal work (consultant, old collegaue), so they're not stuck in your legacy project mindset</li>
+<li><strong>be ok with broken code</strong> for a while, it's normal even with small changes</li>
+<li>don't deploy code to the production, merge the PR as soon as possible, but test the application on a separate server at least for a week</li>
+</ul>
+<h2 id="the-final-plan">The Final Plan</h2>
+<ul>
+<li>install Symfony dependencies</li>
+<li>add <code>bin/console</code>, <code>src/AppKernel.php</code> and <code>public/index.php</code> files</li>
+<li>run base Symfony homepage</li>
+<li>add credentials to <code>.env.local</code> and login to database</li>
+<li>prepare migration rule to Symfony controllers and let Rector
+<ul>
+<li>migrate controllers</li>
+<li>create <code>*</code> templates</li>
+<li>create <code>*_content.twig</code> templates</li>
+</ul></li>
+<li>let Rector dump changed files into <code>old_controller_files.json</code></li>
+<li>load data from <code>old_controller_files.json</code> and
+<ul>
+<li>use <code>preg_replace</code> in all files to replace <code>contact.php</code> to <code>contact</code>, files names to routes</li>
+<li>delete old files</li>
+</ul></li>
+<li>delete <code>old_controller_files.json</code></li>
+</ul>
+<p><br></p>
+<p>We made many mistakes, took many blind paths, so you don't have to (you can take new blind paths), but in the end, we made it from Friday till Monday - <strong>in 4 days</strong>:</p>
+<img src="/assets/images/posts/2020/symfonize_merged.png" class="img-thumbnail mt-3 mb-3">
+<p><strong>Are you still on a legacy project?</strong> What's your excuse that prevents your change for better?</p>
+<p>If you have more questions, e.g., technical ones about the automated parts, let us know in the comments. We'll try to answer as best as we can.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/04/06/how-to-find-dead-symfony-routes" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Find Dead Symfony Routes
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-04-13-how-to-migrate-spaghetti-to-304-symfony-5-controllers-over-weekend.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Migrate Spaghetti to 304 Symfony 5 Controllers Over Weekend" />
+    <meta property="og:description" content="During Easter weekend, usually, people take a break and have a rest. Instead, we used these 4 days of *holiday* to migrate the 304-controller application. At least that was the goal on Friday.
+
+Me in my colleague in the migrated project accepted the challenge. We got into many minds and code-traps. We&#039;d like to share this experience with you and **inspire those who are still stuck on non-MVC code** and think it might take weeks or even months to switch to a framework.
+" />
+    <meta property="og:url" content="/blog/2020/04/13/how-to-migrate-spaghetti-to-304-symfony-5-controllers-over-weekend" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Migrate Spaghetti to 304 Symfony 5 Controllers Over Weekend" />
+    <meta name="twitter:description" content="During Easter weekend, usually, people take a break and have a rest. Instead, we used these 4 days of *holiday* to migrate the 304-controller application. At least that was the goal on Friday.
+
+Me in my colleague in the migrated project accepted the challenge. We got into many minds and code-traps. We&#039;d like to share this experience with you and **inspire those who are still stuck on non-MVC code** and think it might take weeks or even months to switch to a framework.
+" />

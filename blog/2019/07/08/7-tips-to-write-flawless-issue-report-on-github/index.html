@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>7 Tips to Write Flawless Issue Reports on Github | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 217 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>7 Tips to Write Flawless Issue Reports on Github</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-07-Mon">
+            <strike>
+                            Mon, Jul 8, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/07/08/7-tips-to-write-flawless-issue-report-on-github/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-08-7-tips-to-write-flawless-issue-report-on-github.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Reporting issue is important for both you and the maintainer of the project. It can be a private issue in your local Gitlab repository, but open-source issues on Github have a much higher volume (obviously).
+<br><br>
+Do you want to be clear to the maintainer, be understood and resolve your issue quickly?
+Here is how to write.</p>
+                    </div>
+                </div>
+
+                <p><strong>Issue report is like any other text</strong> - it can be a piece of text you read and take nothing from or it can fun and rich for the information you really need, for e.g. a job advertisement. You can see:</p>
+<ul>
+<li>boring job ad with a description of the company and how revolutionary their idea about selling mushroom is</li>
+<li>or an ad, that tells you how you can full-fill your full potential, using PHP 7.4, Symfony 4.4, with ready-made Docker tested on 10 new developers with a focus on the mutual friendship between business and clean code</li>
+</ul>
+<h2 id="why-do-you-need-to-write-better-issues">Why Do You Need to Write Better Issues?</h2>
+<p>Do you think better issues is extra work on your side just to make maintainer happier? No!
+<strong>You profit from it</strong>.</p>
+<h3 id="what-do-you-gain-by-flawless-issue-report">What Do You Gain by Flawless Issue Report?</h3>
+<ul>
+<li>no further questions from the maintainers, just &quot;thanks&quot; → <strong>more free time (attention) for you</strong>, no need to think about the answers and reading their text</li>
+<li>higher chance of fixing of your issue → <strong>you can enjoy the fix in 1-2 days</strong>, without waiting - unclear issues can take over 6 months to resolve, even if it's just missing '=' in the output</li>
+<li>the maintainer will like you more because you're clear for them → <strong>your issues will get higher priority</strong> the longer and the better your write them</li>
+<li>feature requests → after creating a streak of closed issues, <strong>your feature requests will be more likely accepted</strong></li>
+</ul>
+<h3 id="where-should-you-apply-it">Where Should You Apply it?</h3>
+<p>Writing issue like this takes extra attention, thought and energy. It takes a few weeks to get used to it. <strong>So should you write flawless issues in every Github repository you work with?</strong> It would probably drain your energy and burn-out into falling back to just poor issue reports.</p>
+<p>Personally, I'd <strong>focus only on few repositories that matter to me and that I plan to use in the future</strong>. The top 3 from top of my head right now would be Symfony, PHP Parser and EasyAdminBundle.</p>
+<p>That way you won't burn out writing 10 issues mind-full issues to 10 different projects in a week and projects you love and use daily will grow in time - <em>win-win</em>.</p>
+<p><br></p>
+<p>Now you know <em>why</em> and <em>where</em>. I think you're ready for creating the very first <em>flawless issue</em>™:</p>
+<img src="/assets/images/posts/2019/issues/new_issue.png" class="img-thumbnail">
+<p>(The examples will be related to Rector, as I work with it the most lately).</p>
+<h2 id="1-add-project-version">1. Add Project Version</h2>
+<p>The version of the used project is very important. Maybe you use LTS version, maybe it's legacy already, maybe it's experimental version and it's expected to break. You don't care about this, but it will give maintainer the context of your issue.</p>
+<p><q>I use Rector v0.5.7</q></p>
+<p>How do you find this information quickly?</p>
+<pre><code class="language-bash">composer show rector/rector | grep version
+&gt; versions : * v0.5.7</code></pre>
+<h3 id="even-better">Even Better</h3>
+<p>This one is nice to have if you're into bleeding edge technologies:</p>
+<p><q>I use Rector v0.5.7, and it's still broken on <code>dev-master</code></q></p>
+<p>Test <code>dev-master</code> as well. Maybe this issue was reported before 2 days and is already fixed on <code>master</code>?
+You don't have to read all the past issues - it's a waste of time (maybe there was just PR, or maybe just commit right to the <code>master</code>), just try it:</p>
+<pre><code class="language-diff"> {
+     "require": {
+-        "rector/rector": "^0.5.7"
++        "rector/rector": "dev-master"
+     },
++    "minimum-stability": "dev",
++    "prefer-stable": true
+ }</code></pre>
+<pre><code class="language-bash">composer update</code></pre>
+<pre><code class="language-bash">// retry your command</code></pre>
+<h2 id="2-what-happened-clear-exact-and-right-to-the-point">2. What Happened - Clear, Exact and Right To the Point</h2>
+<ul>
+<li><strike>&quot;I was trying to run on Rector on our codebase and it broke in hundreds of cases.&quot;</strike></li>
+<li><strike>&quot;When I run Rector, it skips all the old PHP code that it should upgrade.&quot;</strike></li>
+</ul>
+<p>These reports have exactly 0 added information. By creating an &quot;issue&quot;, you've already told the maintainer it's broken.</p>
+<p>What should you go for instead? Remove the ambiguous:</p>
+<ul>
+<li>&quot;Put the red apple to the 3rd shelf from the bottom.&quot;</li>
+<li>&quot;Let's meet on Tuesday 3rd July at 17:00 on Vltavska square, here is the address http://...&quot;</li>
+</ul>
+<p>In an issue:</p>
+<p><q>I run Rector on [this-code] and I got [this-exception] with [this-exception-message]</q></p>
+<h2 id="3-code-over-text">3. Code over Text</h2>
+<ul>
+<li><strike>...our files</strike></li>
+<li><strike>...our code-base</strike></li>
+<li><strike>...1 PHP file with Factory with Guzzle that contains the connection to Twitter API</strike></li>
+</ul>
+<p>These reports could be replaced by black-box style &quot;...on something unknown&quot;. 0-value.</p>
+<ul>
+<li><q>On this code</q></li>
+</ul>
+<pre><code class="language-php">&lt;?php
+
+use Guzzle\Client;
+
+final class GuzzleFactory
+{
+     public function create()
+     {
+         return new Client([
+             'key' =&gt; 'some_key'
+         ]);
+     }
+}</code></pre>
+<h2 id="4-highlight-what-you-can">4. Highlight What You Can</h2>
+<p>Why do we use IDE? Why do traffic lights have colors? What does <span class="text-danger">red</span> in PHPUnit mean?</p>
+<p><strong>Colors gives us meta-information</strong>, that is processed by other parts of the brain then reading is. That way we understand element with colors faster and easier:</p>
+<pre><code class="language-php">echo "1" . 5 + 0x15;</code></pre>
+<p>vs.</p>
+<p>echo &quot;1&quot; . 5 + 0x15;</p>
+<p>I'm not a dog so I fancy the 1st one.</p>
+<p><br></p>
+<p>In the most of Github issues you'll use <code>php</code> and <code>diff</code> syntax highligh:</p>
+<p><span markdown=0></p>
+<pre><code class="language-php">echo "Hi";</code></pre>
+<p></span></p>
+<p><span markdown=0></p>
+<pre><code class="language-diff">-expected
++reality</code></pre>
+<p></span></p>
+<h2 id="4-the-smaller-the-better">4. The Smaller the Better</h2>
+<p>&quot;What? I thought the more information you'll have, the easier is to fix it.&quot; This tip is counter-intuitive. The information is not about quantity, but quality.</p>
+<p>The issue report should contain:</p>
+<ul>
+<li><strong>all the relevant information</strong></li>
+<li><strong>0 of the irrelevant information</strong></li>
+</ul>
+<p>At first, it might be hard to figure out what's relevant for the maintainer of that particular project, but based on their feedback you can see it.</p>
+<p>Let's look at the code of the previous example - this one has all the relevant information:</p>
+<pre><code class="language-php">&lt;?php
+
+use Guzzle\Client;
+
+final class GuzzleFactory
+{
+     public function create()
+     {
+         return new Client([
+             'key' =&gt; 'some_key'
+         ]);
+     }
+}</code></pre>
+<p>This one has duplicated of irrelevant information:</p>
+<pre><code class="language-php">&lt;?php
+
+use Guzzle\Client;
+
+final class GuzzleFactory
+{
+     public function create()
+     {
+         return new Client([
+             'key' =&gt; 'some_key',
+             'another_key' =&gt; 'some_key',
+         ]);
+     }
+}
+
+final class FacebookFactory
+{
+     public function create()
+     {
+         return new FacebookClient([
+             'key' =&gt; 'some_key',
+             'another_key' =&gt; 'some_key',
+         ]);
+     }
+}
+
+final class TwitterFactory
+{
+   public function create()
+   {
+       return new TwitterClient([
+           'key' =&gt; 'some_key',
+           'another_key' =&gt; 'some_key',
+       ]);
+   }
+}</code></pre>
+<p>If all the code snippets produce the &quot;Factory return type cannot be resolved&quot; error, use just the first one.</p>
+<p>(Hi <em>Honza</em> :D)</p>
+<h2 id="5-what-did-you-do">5. What Did you Do?</h2>
+<p>Now the maintainer knows:</p>
+<ul>
+<li>what do you use</li>
+<li>what is the code causing it</li>
+<li>what is the error message</li>
+</ul>
+<p><em class="fas fa-fw fa-lg fa-check text-success"></em> Great job! If all the issues were reported like this, the productivity in open-source will sky-rocket (and I mean &quot;Elon Musk&quot; sky-rocket).</p>
+<p>The 1st questions that will pop-up in the maintainer's head are &quot;How did you do that?&quot;</p>
+<ul>
+<li>Did you run it from command line?</li>
+<li>What exact command have you used?</li>
+<li>Did you use Docker?</li>
+<li>Do you use custom <code>rector.php</code> config? What's inside?</li>
+<li>Is the error still there with no config?</li>
+</ul>
+<p>Again, think of <em>4. The smaller the better</em> tip while copy-pasting the <code>config</code>.</p>
+<ul>
+<li>Which of those 400 lines in the config are responsible for this error?</li>
+<li>What combinations of rules and parameters are causing the error?</li>
+</ul>
+<p><q>I installed Rector as dev dependency to composer and run:</q></p>
+<pre><code class="language-bash">vendor/bin/rector process src/SomeFile.php --config rector.php --dry-run --set symfony43</code></pre>
+<p>Perfect!</p>
+<h2 id="6-what-do-you-want">6. What do You Want?</h2>
+<p>Now the maintainer has all the information about your code, your steps that lead to it and the configuration that caused it.</p>
+<p>But <strong>what do you want</strong>?</p>
+<ul>
+<li>Do you expect the code to throw a better exception?</li>
+<li>Are you ok with the behavior, just not sure if it's expected?</li>
+<li>Do you want it to work a certain way?</li>
+</ul>
+<p>Here is the <code>diff</code> syntax becomes very useful:</p>
+<pre><code class="language-diff">&lt;?php
+
+-echo 1 + 5; // real
++echo 6; // expected</code></pre>
+<p>Having comments is really great. Why?</p>
+<pre><code class="language-diff">&lt;?php
+
+-echo $value + $value2;
++echo $value+$value2;</code></pre>
+<p>Which one is preferred?</p>
+<h2 id="7-1-issue-1-issue">7. 1 Issue = 1 Issue</h2>
+<p>Last but not least, <strong>1 issue report should talk about 1 issue</strong>. Imagine you go for a trip and you talk to your friend how to get there:</p>
+<p>New issue - <em> traveling</em>:</p>
+<ul>
+<li>Let's take a train</li>
+<li>We could take a bus, it's 50 € cheaper</li>
+<li>But I'm not sure what to pack</li>
+<li>Do you have a tent?</li>
+<li>Ok, we'll take a bus</li>
+</ul>
+<p><em>issue is closed</em></p>
+<ul>
+<li>What are we gonna eat guys?</li>
+<li>We could eat wursts all the time!</li>
+</ul>
+<p><br></p>
+<p>Do you have 3 different (see tip #4 again) problems with your code? Create 3 different issues. Don't be afraid, you're not complaining too much.</p>
+<p><strong>It's better to have 3 separated issue</strong>, that one is easy-pick, 2nd is a question and 3rd need a test case, that all these at once.</p>
+<p><br></p>
+<p>Now go out, try, fail and learn :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/07/01/5-workflow-tips-every-php-developer-should-know" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    5 Workflow Tips every PHP Developer Should Know
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-08-7-tips-to-write-flawless-issue-report-on-github.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="7 Tips to Write Flawless Issue Reports on Github" />
+    <meta property="og:description" content="Reporting issue is important for both you and the maintainer of the project. It can be a private issue in your local Gitlab repository, but open-source issues on Github have a much higher volume (obviously).
+
+Do you want to be clear to the maintainer, be understood and resolve your issue quickly?
+Here is how to write.
+" />
+    <meta property="og:url" content="/blog/2019/07/08/7-tips-to-write-flawless-issue-report-on-github" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="7 Tips to Write Flawless Issue Reports on Github" />
+    <meta name="twitter:description" content="Reporting issue is important for both you and the maintainer of the project. It can be a private issue in your local Gitlab repository, but open-source issues on Github have a much higher volume (obviously).
+
+Do you want to be clear to the maintainer, be understood and resolve your issue quickly?
+Here is how to write.
+" />

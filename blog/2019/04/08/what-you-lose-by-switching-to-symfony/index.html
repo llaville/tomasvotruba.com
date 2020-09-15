@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>What You Lose by Switching to Symfony | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 201 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>What You Lose by Switching to Symfony</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-04-Mon">
+            
+                            Mon, Apr 8, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/04/08/what-you-lose-by-switching-to-symfony/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-08-what-you-lose-by-switching-to-symfony.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Switching one framework for another is nowadays getting easier and easier. What you could do for months only on your private projects, where income and delivering features are not important, is now an option for big websites with millions of lines of code. What seems like a divorce and switching a partner, is now as simple as changing your shoes from work to jogging ones.
+<br>
+<br>
+&quot;Ok, we get it, it's simple. But why, what is the gain?&quot;</p>
+                    </div>
+                </div>
+
+                <p>I'm not writing this post because I use Symfony in my projects and love the community around it. I write this because in the last 2 weeks people around me asked me for help with Rector:</p>
+<ul>
+<li>from Laravel to Symfony</li>
+<li>from Lumen to Symfony</li>
+<li><a href="/blog/2019/02/21/how-we-migrated-from-nette-to-symfony-in-3-weeks-part-1/">from Nette to Symfony</a></li>
+<li>from Zend to Symfony</li>
+</ul>
+<p>It's possible and in a small fraction of costs of manual work, but &quot;why not&quot; is a very poor argument. That's like taking cocaine because it gives you more energy. Life is not about solutions, it's about trade-offs. I'd like to inform you about the cons of such migration, so you can decide with more solid arguments on both sides.</p>
+<h2 id="what-you-lose-by-switching-to-symfony">What you Lose by Switching to Symfony?</h2>
+<h3 id="1-quot-your-team-will-be-surprised-from-the-new-framework-they-never-used-quot">1. &quot;Your team will be surprised from the new framework they never used&quot;</h3>
+<p>In one Symfony project I consulted, they hired 2 programmers who knew only Nette. They didn't give them much attention, because delivering feature was more important than to educate your juniors. The problem is, they produced Nette-ish code in Symfony application, because of lack of attention. Switch framework under programmer's hands in a very short period could cause much more serious damage.</p>
+<h3 id="2-quot-your-team-loses-all-the-social-connections-with-your-old-framework-quot">2. &quot;Your team loses all the social connections with your old framework&quot;</h3>
+<p>The best way to learn and validate ideas is to go out and talk with people. You probably have many offline connections with people who use a similar framework, you use Slack channel for this framework, you know maintainers of packages from the framework ecosystem.
+When you break up with your girlfriend, your friends from &quot;her side&quot; will soon perish.</p>
+<p><br>
+<em>I'm obviously biased here, so if you have tips what will you lose, let me know in comments. I'll complete the article.</em></p>
+<h2 id="how-to-switch-del-quickly-del-smoothly">How to Switch <del>Quickly</del> Smoothly</h2>
+<p>The main goal in any transition is to <strong>have everyone on board</strong>. If your country creates reform for a pension that will take more money from young people, there will be frictions. If there is reform for cheaper education, that will decrease pensions to older people, there will be frictions. A reform, that improves educations for young people, that in conclusion will generate money for older people, will be much smoother. Not perfect, but smoother.</p>
+<p>There is a practice-proven way to for all the problems above. Let's look at them:</p>
+<h3 id="1-quot-del-your-team-will-be-surprised-from-the-new-framework-they-never-used-del-quot">1. &quot;<del>Your team will be surprised from the new framework they never used</del>&quot;</h3>
+<p>It doesn't make sense to switch in one week without discussing the whole team. It is as foolish as giving PHPStorm to someone who only used Sublime Text and expects them to know how to use it.</p>
+<p><strong>Always give your team proper daily mentoring on how to use and master a new tool.</strong> It will payback in higher quality code and faster feature delivery in the long term.</p>
+<h3 id="how-to-do-it-better">How to do it better?</h3>
+<p><strong>Install <a href="https://github.com/symfony/demo">symfony/demo</a></strong>, run it locally and try to break it.</p>
+<p>Talk about WTFs with your team. Are there differences to your old framework? Just hate them, let the frustration out. It's normal to compare and feel this way.</p>
+<p><strong>Look at <a href="https://symfonycasts.com">SymfonyCasts</a>, the best introduction to Symfony</strong>, even better than documentation - the text is always for free (videos are paid, but they contain the same content as text) - huge thanks <a href="https://twitter.com/weaverryan">Ryan Weaver</a> for funny videos.</p>
+<p><strong>Hire an onsite/hot-line mentor for first 2 months</strong>. It might be more expensive than paying a programmer, but cheaper than the technical debt that programmer without experience would create during these 2 months. The mentor or she will help you to quickly overcome all the WTFs and give you the confidence to master the framework yourself.</p>
+<h3 id="2-quot-del-your-team-loses-all-the-social-connections-with-your-old-framework-del-quot">2. &quot;<del>Your team loses all the social connections with your old framework</del>&quot;</h3>
+<p>If you know people that use Nette, Laravel, Lumen or Zend, there is a high probability that your friends use Symfony as well.
+Nowadays, <em>components over framework</em> model has become so popular, that most programmer actually uses more frameworks in one projects. So switching to Symfony only opens new topics to talk about.</p>
+<p>If you look for an offline meetup where you can talk about Symfony, look at <a href="https://friendsofphp.org">Friends of PHP</a>. Don't look just for &quot;Symfony&quot; keyword, but also PHP meetups in general. There you'll be able to talk about Symfony too since in Central and Western Europe Symfony is de facto &quot;the PHP framework&quot;.</p>
+<h2 id="what-you-gain-by-switching-to-symfony">What you Gain by Switching to Symfony?</h2>
+<h3 id="better-hiring-rates">Better Hiring Rates</h3>
+<p>Symfony ecosystem will not give you magically 10 new Symfony developers you now desperately need each year. But the symfony community trend is clear - it's active, it grows and attracts programmers that want to push their static programming to the next level.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/lose-symfony/conferences.png"><em>There is 8 upcoming conferences in 2019 all over the Europe and America</em>
+</div>
+<h3 id="community-of-testers">Community of Testers</h3>
+<p>Nette Application is downloaded <a href="https://packagist.org/packages/nette/application/stats">2 296× a day</a>. Symfony alternative HttpKernel is downloaded <a href="https://packagist.org/packages/symfony/http-kernel/stats">170 991× a day</a>. Each Symfony package is tested by a huge amount of developers right after it is released. In this case, <strong>there is 75× bigger chance the bug will be discovered and fixed</strong>.</p>
+<p>That's a huge advantage of the big and stable community.</p>
+<h3 id="rock-solid-stability">Rock-Solid Stability</h3>
+<p>Correct me if I'm wrong, but Symfony is <strong>the only PHP framework that has <a href="https://symfony.com/roadmap">predictable release</a></strong>. You can be 100 % sure that:</p>
+<ul>
+<li>every <strong>6 months</strong>, there will be a new release of Symfony with new hot features</li>
+<li>every <strong>6 months</strong> you can plan &quot;upgrade day&quot; for all you PHP projects</li>
+<li>every <strong>2 years</strong> there will be a new major version.</li>
+<li>every <strong>2 years</strong> there will be a new version with long-term support</li>
+</ul>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/lose-symfony/stable.png" class="img-thumbnail"></div>
+<p>I wrote about the importance of leader stability for the rest ecosystem in <a href="/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/">What Can You Learn from Menstruation and Symfony Releases</a>.</p>
+<h3 id="you-re-informed-about-important-stuff">You're Informed about Important Stuff</h3>
+<p>To get into Symfony you have to read every post, every tweet, read newsletters, be on Slack and go to meetups... well, that would be hell.</p>
+<ul>
+<li>All you need to know is in <a href="https://symfony.com/blog/category/living-on-the-edge">&quot;Living on the Edge&quot;</a> category or Symfony blog. 2-3 months prior to the release (now 4.3), you'll find nice, short and sexy posts about upcoming features.</li>
+</ul>
+<p>Do you have an extra 5 minutes a week?</p>
+<ul>
+<li>
+<p>Just follow <a href="https://twitter.com/symfony_en">@symfony_en</a> - cherry-picked tweets with important news</p>
+</li>
+<li>
+<p>I personally also sniff <a href="https://symfony.com/blog/category/a-week-of-symfony">&quot;A Week of Symfony&quot;</a> every week, with newest issues, PRs and posts about Symfony (mostly to check if my posts are there ;)) to learn from others.</p>
+</li>
+</ul>
+<p><strong><a href="https://github.com/javiereguiluz">Javier Eguiluz</a> is making this really easy for us, thank you!</strong></p>
+<h3 id="you-re-welcomed">You're Welcomed 🤗</h3>
+<p>There are no numbers to describe this, yet I find it the most important pillar of any community. <strong>You're welcomed</strong>. You're welcomed to talk about your ideas, to argue (as in &quot;discuss with arguments&quot;, not to shout at each other) in issues on Github, to put arguments to support your statements.</p>
+<p>I had many arguments with <a href="https://github.com/nicolas-grekas">Nicolas Grekas</a> about parameters, console or dependency injection features. In the end, there is always someone who decides to go for it or stops it, there must be so it's not chaos. Was I always happy about the decision? No. <strong>But I always feel respected. These discussions also help me to have a bigger picture and eventual implement the feature myself in a package.</strong></p>
+<p>Sometimes I created a package, people found it useful and in a year or two, it becomes implemented in Symfony core. Then I could deprecate them, like <a href="/blog/2017/05/29/symplify-packages-deprecations-brought-by-symfony-33/">these Symplify packages in Symfony 3.3</a>:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/symplify-deprecations/pr-notes.png" class="img-thumbnail"></div>
+<p>I love how Symfony is ruled by decisions makers, but at the same time <strong>is opened to a change</strong>.</p>
+<h2 id="it-s-not-a-marketing-it-s-a-family">It's not a Marketing, It's a Family</h2>
+<p>The best thing is, it's not just marketing, it's not a well-bended lie, it's not a way to get money from you then say goodbye.
+It's a company setting, that you can feel in the atmosphere of Symfony conference.</p>
+<p>When I was at my first <a href="https://pariscon2015.symfony.com">SymfonyCon in Paris 2015</a>, there was a keynote by Fabien Potencier (Symfony founder and CEO) about &quot;10 Years of Symfony&quot;. I thought it will be one of these boring self-promo talks about how is Symfony awesome and what it does and how big projects it runs.</p>
+<p>Instead, Fabien <strong>named people</strong>, who contributed to Symfony in any way, <strong>one by one and invited them to the stage, including his family</strong>.</p>
+<img src="https://blog.radumurzea.net/wp-content/uploads/keynote.png" style="max-width:40em">
+<p>It made me cry a bit and I still have goosebumps when I remember it.</p>
+<p>That's what you gain by switching to Symfony.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/04/04/how-to-upgrade-twig-from-underscored-to-namespaces" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Upgrade Twig from Underscored to Namespaces
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-04-08-what-you-lose-by-switching-to-symfony.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="What You Lose by Switching to Symfony" />
+    <meta property="og:description" content="Switching one framework for another is nowadays getting easier and easier. What you could do for months only on your private projects, where income and delivering features are not important, is now an option for big websites with millions of lines of code. What seems like a divorce and switching a partner, is now as simple as changing your shoes from work to jogging ones.
+
+
+&quot;Ok, we get it, it&#039;s simple. But why, what is the gain?&quot;
+" />
+    <meta property="og:url" content="/blog/2019/04/08/what-you-lose-by-switching-to-symfony" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="What You Lose by Switching to Symfony" />
+    <meta name="twitter:description" content="Switching one framework for another is nowadays getting easier and easier. What you could do for months only on your private projects, where income and delivering features are not important, is now an option for big websites with millions of lines of code. What seems like a divorce and switching a partner, is now as simple as changing your shoes from work to jogging ones.
+
+
+&quot;Ok, we get it, it&#039;s simple. But why, what is the gain?&quot;
+" />

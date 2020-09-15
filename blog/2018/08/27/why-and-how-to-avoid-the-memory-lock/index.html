@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why and How to Avoid the Memory Lock | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 135 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why and How to Avoid the Memory Lock</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-08-Mon">
+            
+                            Mon, Aug 27, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-27-why-and-how-to-avoid-the-memory-lock.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>When you close the door of my home, they're closed and you need a key to get in. But what if your door has door handle? You have to also lock them.
+<br><br>
+Instead of just closing the door you have to close the door and <em>that one more thing</em>. Why is that a bad thing in the code and how to avoid it?</p>
+                    </div>
+                </div>
+
+                <p>I started <a href="https://github.com/javiereguiluz/easybook/pull/185">refactoring <em>easybook</em> package</a> last week and I found a few interesting snippets there.</p>
+<p>Let's start with a simple question: which of following 7 code snippets <strong>opens space for potential bug</strong> that will take your new colleague 2-3 hours to solve?</p>
+<p><br></p>
+<p>1.</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+foreach ($this-&gt;publishingItems as $item) {
+   $item['content'] = $this-&gt;decorateContent($item['content']);
+}</code></pre>
+<p><br></p>
+<p>2.</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+final class SomeEventSubscriber implements EventSubscriberInterface
+{
+    /**
+     * @return string[]
+     */
+    public static function getSubscribedEvents(): array
+    {
+         return ['processEvent'];
+    }
+
+    public function processEvent(ItemAwareEvent $itemAwareEvent)
+    {
+        $item = $itemAwareEvent-&gt;getItem();
+        $item['content'] = 'new content';
+    }
+}</code></pre>
+<p><br></p>
+<p>3.</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+$this-&gt;bookGenerator-&gt;setBookDirectory($bookDirectory);
+$this-&gt;bookGenerator-&gt;generate();</code></pre>
+<p><br></p>
+<p>4.</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+protected function setUp(): void
+{
+    $this-&gt;epub2Publisher = $this-&gt;container-&gt;get(Epub2Publisher::class);
+}</code></pre>
+<p><br></p>
+<p>5.</p>
+<pre><code class="language-php">&lt;?php
+
+class SomeController
+{
+    public function someAction()
+    {
+        // ...
+
+        $product = ...;
+
+        $this-&gt;entityManager-&gt;persist($product);
+        $this-&gt;entityManager-&gt;flush();
+    }
+}</code></pre>
+<p><em>Don't mind the presence of Doctrine in Controller here. That's a code smell we don't look for right now.</em></p>
+<p><br></p>
+<p>6.</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\Console\Command\Command;
+
+class SomeCommand extends Command
+{
+    /**
+     * @var SomeDependency
+     */
+    private $someDependency;
+
+    public function __construct(SomeDependency $someDependency)
+    {
+        $this-&gt;someDependency = $someDependency;
+    }
+
+    // ...
+}</code></pre>
+<p><br></p>
+<p>7.</p>
+<pre><code class="language-php">&lt;?php
+use PhpParser\NodeTraverser;
+
+class SomeNodeTraverser extends NodeTraverser
+{
+    /**
+     * @var SomeDependency
+     */
+    private $someDependency;
+
+    public function __construct(SomeDependency $someDependency)
+    {
+        $this-&gt;someDependency = $someDependency;
+    }
+
+    public function process()
+    {
+        foreach ($this-&gt;visitors as $visitor) {
+            // ...
+        }
+    }
+}</code></pre>
+<p>Do you have your favorite number? Good, try to remember it.</p>
+<p>The memory-lock <strong>is very difficult to spot</strong>. We owe that to <em>author blindness</em> and <em>thinking heuristics</em> (brain short-cuts), that limits our ability to work effectively in the chaos or under pressure. If you've read <a href="https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B005MJFA2W/ref=sr_1_1?ie=UTF8&amp;qid=1535407760&amp;sr=8-1&amp;keywords=Thinking%2C+Fast+and+Slow">Thinking, Fast and Slow</a> (must have for anyone curious about his or her brain false positives) or any other book about social psychology, you know where I'm heading.</p>
+<h2 id="when-expectations-are-met">When Expectations are Met</h2>
+<p>Why it's difficult to spot? <strong>It depends on other code and it might code work if our expectations are met</strong>. What does it mean?</p>
+<p>Let's take code snippet 7. Will this work or not? Under what condition?</p>
+<pre><code class="language-php">&lt;?php
+
+foreach ($this-&gt;visitors as $visitor) {
+    // ...
+}</code></pre>
+<p><a href="https://github.com/nikic/PHP-Parser/pull/528">This pull-request</a> reveals the answer.</p>
+<p>Now back to your coding:</p>
+<ul>
+<li>Do you want to create a code that works under certain assumption?</li>
+<li>Do you want to remember to do the B after each A?</li>
+<li>Do you want to <strong>keep over 50 of such A-B pairs in your head</strong> every time you open your main project?</li>
+</ul>
+<p>I don't. I want to be effective and create a valuable bullet-proof code that can be used only one way. A code that doesn't put the burden on the developer to investigate my code first. A code that is safe to use and cannot be broken (if possible).</p>
+<p><br></p>
+<p>So which of those 7 code snippets above are dangerous?</p>
+<p><br></p>
+<p><em>Drum rolls...</em></p>
+<p><br></p>
+<p><strong>Yes, all of them!</strong> I knew you'd reveal my poor confusion.</p>
+<h3 id="don-t-make-the-programmer-think">Don't make the Programmer Think</h3>
+<p>I'm taking the title from my favorite <a href="http://sensible.com/dmmt.html">intro UX book</a> because it really punches the line. <strong>There are 3 groups of memory-locks that could be done better</strong> in the code snippets above.</p>
+<h2 id="1-change-array-return">1. Change Array Return</h2>
+<div class="card">
+    <div class="card-body">
+        The memory lock: <em>after I change array value, I have to put it back into an original set of an array or return it</em>.
+    </div>
+</div>
+<p>Snippets 1 and 2.</p>
+<p>This code would change the <code>$item['content</code>] value, but <code>$this-&gt;publishingItems</code> remains unchanged:</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+foreach ($this-&gt;publishingItems as $item) {
+    $item['content'] = $this-&gt;decorateContent($item['content']);
+}</code></pre>
+<h3 id="how-to-solve-it">How to Solve it?</h3>
+<pre><code class="language-diff"> &lt;?php
+
+ // ...
+
+-foreach ($this-&gt;publishingItems as $item) {
++foreach ($this-&gt;publishingItems as $key =&gt; $item) {
+     $item['content'] = $this-&gt;decorateContent($item['content']);
++    $this-&gt;publishingItems[$key] = $item;
+ }</code></pre>
+<p><strong>Use object instead</strong>:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ // ...
+
+ foreach ($this-&gt;publishingItems as $item) {
+-     $item['content'] = $this-&gt;decorateContent($item['content']);
++     $item-&gt;changeContent($this-&gt;decorateContent($item['content']));
+ }</code></pre>
+<p>Objects <a href="https://gist.github.com/nikic/5015323">consume less memory</a> anyway and <strong>you are safe</strong> - more importantly, <strong>anyone extending this code ever after is safer</strong>.</p>
+<h2 id="2-double-method-call">2. Double-Method Call</h2>
+<div class="card">
+    <div class="card-body">
+       The memory lock: <em>After I call this method I have to call that method to make it really work</em>.
+    </div>
+</div>
+<p>Snippets 3 and 5.</p>
+<p>You also have to think about the C - the order:</p>
+<pre><code class="language-php">$this-&gt;bookGenerator-&gt;setBookDirectory($bookDirectory);
+$this-&gt;bookGenerator-&gt;generate();</code></pre>
+<p>vs.</p>
+<pre><code class="language-php">$this-&gt;bookGenerator-&gt;generate();
+$this-&gt;bookGenerator-&gt;setBookDirectory($bookDirectory);</code></pre>
+<p>vs.</p>
+<pre><code class="language-php">$this-&gt;bookGenerator-&gt;generate();</code></pre>
+<h3 id="how-to-solve-it">How to Solve it?</h3>
+<p>Use one method that handles it both:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ // ...
+
+-$this-&gt;bookGenerator-&gt;setBookDirectory($bookDirectory);
+-$this-&gt;bookGenerator-&gt;generate();
++$this-&gt;bookGenerator-&gt;generateFromDirectory($bookDirectory);</code></pre>
+<p>Same applied to code snippet 5:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ // ...
+
+-$this-&gt;entityManager-&gt;persist($product);
+-$this-&gt;entityManager-&gt;flush();
++$this-&gt;productRepository-&gt;save($product);</code></pre>
+<p>I dare you to generate the book or save the product the wrong way now!</p>
+<h2 id="3-parent-logic">3. Parent Logic</h2>
+<p>Snippets 4, 6 and 7.</p>
+<div class="card">
+    <div class="card-body">
+       The memory lock: <em>After I call anything in parent method, I have check if I need to call the constructor to prepare some logic</em>.
+    </div>
+</div>
+<p>This would actually fail:</p>
+<pre><code class="language-php">&lt;?php
+
+foreach ($this-&gt;visitors as $visitor) {
+    // ...
+}</code></pre>
+<p>Why? Because in <code>parent::__construct()</code> is set default value for property with null:</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+public function __construct()
+{
+    $this-&gt;visitors = [];
+}</code></pre>
+<h3 id="how-to-solve-it">How to Solve it?</h3>
+<p>In this case just add default value to property itself:</p>
+<pre><code class="language-diff">-private $visitors;
++private $visitors = [];</code></pre>
+<p>There is even coding <a href="https://github.com/symplify/coding-standard#array-property-should-have-default-value-to-prevent-undefined-array-issues">standard fixer for that</a>.</p>
+<p>Also, <strong>do not add any logic to constructor</strong> apart dependency injection. Constructor injection is the main reason to use the constructor in 99 %, so most people probably don't expect any extra logic there. Create extra method instead or decouple a class, put it into the constructor and call the method on it.</p>
+<p><strong>Try to avoid these patterns in code, in door design or in architecture of the application as a whole.</strong> One day some programmer will silently thank you when he or she will find what <em>memory lock</em> is (the painful way).</p>
+<p><br></p>
+<p>Do you know any other <em>memory locks</em> we should watch out for? Share them in the comment!</p>
+<p><br></p>
+<blockquote class="twitter-tweet" data-lang="cs"><p lang="en" dir="ltr">"90% of the bugs I produced were for one of the two reasons:<br>1. Doing multiple things at one place<br>2. Doing one thing at multiple places" - <a href="https://twitter.com/pseudo_coder?ref_src=twsrc%5Etfw">@pseudo_coder</a></p>— Programming Wisdom (@CodeWisdom) <a href="https://twitter.com/CodeWisdom/status/998180793385209856?ref_src=twsrc%5Etfw">20. května 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+<p>Happy brain cells liberation!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/08/23/9-features-of-symfony-plugin-you-should-not-miss-in-gifs" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    9 Features of Symfony Plugin You Should Not Miss in Gifs
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-27-why-and-how-to-avoid-the-memory-lock.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why and How to Avoid the Memory Lock" />
+    <meta property="og:description" content="When you close the door of my home, they&#039;re closed and you need a key to get in. But what if your door has door handle? You have to also lock them.
+
+Instead of just closing the door you have to close the door and *that one more thing*. Why is that a bad thing in the code and how to avoid it?
+" />
+    <meta property="og:url" content="/blog/2018/08/27/why-and-how-to-avoid-the-memory-lock" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why and How to Avoid the Memory Lock" />
+    <meta name="twitter:description" content="When you close the door of my home, they&#039;re closed and you need a key to get in. But what if your door has door handle? You have to also lock them.
+
+Instead of just closing the door you have to close the door and *that one more thing*. Why is that a bad thing in the code and how to avoid it?
+" />

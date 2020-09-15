@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to upgrade Meetup.com API to OAuth2 with Guzzle | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 213 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to upgrade Meetup.com API to OAuth2 with Guzzle</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-06-Mon">
+            
+                            Mon, Jun 17, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/06/17/how-to-upgrade-meetup-com-api-to-oauth2-with-guzzle/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-06-17-how-to-upgrade-meetup-com-api-to-oauth2-with-guzzle.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I got an email from Meetup.com 5 days ago, that basically every API request will be paid since August 15, 2019. <strong>$ 30/month</strong>, that's like my phone bill.
+<br>
+<br>
+<strong>95 % of data on <a href="https://friendsofphp.org">Friends Of Php</a> depend on Meetup.com API</strong> - updated daily. The website is free, so it might kill the content or I'd have to move to crawlers and hope for the lack of protection on Meetup.com against them.
+<br>
+<br>
+<strong>Unless we use Oauth2 before August 15</strong>. I never used it, but how hard that can be, right?</p>
+                    </div>
+                </div>
+
+                <p>There is no information about Meetup.com API upgrade on <a href="https://medium.com/meetup">their blog</a>, so I'll share the email to give you an idea:</p>
+<ul>
+<li>
+<p>API Keys will be replaced by OAuth: We will be removing API keys on August 15, 2019 and requiring you to <a href="https://www.meetup.com/meetup_api/auth">authenticate with OAuth</a>.</p>
+</li>
+<li>
+<p>Move to OAuth soon for continued free API access: Until August 15, members will be able <a href="https://www.meetup.com/meetup_api/auth">to apply for OAuth access</a> free of charge. <strong>After August 15, anyone who wants to apply for API access through OAuth will need to have a <a href="https://www.meetup.com/pro">Meetup Pro account</a> in order to do so</strong>.</p>
+</li>
+</ul>
+<p><br></p>
+<h2 id="documentation-vs-code">Documentation vs. Code</h2>
+<p>This is a simple task, that in the end has simple 15 lines of new code. But documentation turned it into almost 3 hours of work.</p>
+<p>It seems like OAuth2 must be something very new, because Guzzle <a href="https://github.com/guzzle/oauth-subscriber">supports only Oauth (1)</a>. If the last commit in 2014 can be called &quot;supports&quot;.</p>
+<p>After a bit of Googling if found <a href="https://github.com/kamermans/guzzle-oauth2-subscriber">kamermans/guzzle-oauth2-subscriber</a>. I tried to copy-paste the code</p>
+<h3 id="choose-your-path">Choose Your Path</h3>
+<ul>
+<li>Do you want to just read copy paste solution? Jump to <a href="#5-steps-to-guzzle-oauth2">5 Steps to Guzzle OAuth2</a> headline.</li>
+<li>If you want to learn about writing software and documentation, keep on reading.</li>
+</ul>
+<h2 id="fuck-up-1-put-oldest-first">Fuck-up #1: Put Oldest First</h2>
+<p>Why would you put the newest content first, right? You know, like on Twitter, Facebook, basically any news, messages...</p>
+<img src="/assets/images/posts/2019/oauth2/old_first.png" class="img-thumbnail">
+<p>If you write a code that other people read, you should read <a href="https://www.amazon.com/Design-Everyday-Things-Donald-Norman/dp/1452654123">The Design of Everyday Things</a> or <a href="https://www.amazon.com/gp/product/0321965515">Don't Make Me Think</a></p>
+<p>So now you can imagine I'm using the latest Guzzle 6 and trying to implement a solution for Guzzle 4 &amp; 5.</p>
+<p><br></p>
+<div class="card">
+    <div class="card-body text-center bigger">
+        👍 Rule of the thumb: <strong>put news and important information first</strong>.
+    </div>
+</div>
+<h2 id="fuck-up-2-support-all-versions">Fuck-up #2: Support All Versions</h2>
+<p>Fuck-Up #1 is a natural consequence of trying to support multiple versions at one branch/tag. Instead of putting all code to one branch, <strong>let always the last branch support the latest LTS dependencies</strong>.</p>
+<p><em>What does that mean?</em></p>
+<p>Let's look at <a href="https://github.com/symfony/symfony">Symfony repository</a>. Instead of &quot;Symfony&quot; imagine any package that is version. Now there is Symfony 4, so there was version 3, 2, 1 in the past. Like Guzzle 6, 5, 4...</p>
+<p>Now you've decided to upgrade and look for <code>CHANGELOG.md</code> (because you haven't heard about <a href="/blog/2019/02/28/how-to-upgrade-symfony-2-8-to-3-4/">Rector</a> yet):</p>
+<img src="/assets/images/posts/2019/oauth2/symfony.png" class="img-thumbnail">
+<p>But how do you upgrade from Symfony 3? In the latest branch, there is always <strong>context-aware information</strong>. Do you need any older version? Switch to branch <code>3.x</code> or <code>2.x</code>.</p>
+<p>I love this, <strong>because it focuses on mainstream, providing minimal needed data, but also allows the same for minorities</strong>.</p>
+<p>The Symfony docs does the same:</p>
+<img src="/assets/images/posts/2019/oauth2/symfony_docs.png" class="img-thumbnail">
+<p>I wrote about this in detail in <a href="/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/">What can You Learn from Menstruation</a> post.</p>
+<p><br></p>
+<div class="card">
+    <div class="card-body text-center bigger">
+        👍 Rule of the thumb: <strong>never mix 2 major versions in one branch, unless LTS framework</strong>
+    </div>
+</div>
+<h2 id="fuck-up-3-provide-more-solutions">Fuck-up #3: Provide more solutions</h2>
+<p>After I figured out the <code>README</code> is not text for programmers but for detectives, I've found the code with middleware I though I was looking for:</p>
+<pre><code class="language-php">&lt;?php
+
+$oauth = new OAuth2Middleware($grant_type);
+
+$stack = HandlerStack::create();
+$stack-&gt;push($oauth);
+
+$client = new Client([
+    'auth'     =&gt; 'oauth',
+    'handler'  =&gt; $stack,
+]);</code></pre>
+<p>This supposes to work... but instead I got as useless exceptions as &quot;cannot authenticate&quot;. After 60 minutes of trying, I went to sleep with frustration.</p>
+<p>In the morning I've noticed little note:</p>
+<img src="/assets/images/posts/2019/oauth2/alter.png" class="img-thumbnail">
+<p>Tried it and it worked. WTF? Why there is a broken code first, then &quot;working alternative&quot; second?</p>
+<p>This is a common problem with double complexity = exponential bugs. If you translate your website to English and German, it will have more translation bugs than the English-only version. Of course, German might be important to your business, but <strong>the alternative code has as little added value as having a website in American English and British English</strong>.</p>
+<div class="card">
+    <div class="card-body text-center bigger">
+        👍 Rule of the thumb: <strong>don't create alternatives for mainstream, it mostly confuses people</strong>. People will always find alternatives themselves
+    </div>
+</div>
+<h2 id="how-to-write-perfect-documentation">How to Write Perfect Documentation?</h2>
+<p>It's important to know, that I don't try to make this about the specific documentation, but rather about <em>any</em> open-source documentation and how it's written.</p>
+<img src="/assets/images/posts/2019/oauth2/legacy.png" class="img-thumbnail" style="max-width:35em">
+<p>If I'd be sending an invoice to my employer, it would look like this:</p>
+<ul>
+<li>2,5 hours - debugging documentation</li>
+<li>0,5 hours - implementing OAuth2</li>
+</ul>
+<h3 id="how-to-lower-those-2-5-hours-to-15-minutes">How to Lower Those 2,5 hours to 15 minutes?</h3>
+<p>Let's pause a bit and think - <strong>what do we really need, when we use the package for the first time</strong>?</p>
+<ul>
+<li>get a code that solves our problem (e.g. use OAuth2 with Guzzle to prevent paying $ for Meetup.com API)</li>
+<li>solve it as fast as possible (e.g. in 30 minutes)</li>
+<li>a code, that we can copy paste and it works (e.g. without looking for missing use statements - I just hate this!)</li>
+<li>feel confident we understand the errors, so we can fix them ourselves (e.g. without StackOverflow, creating and issue on Github)</li>
+</ul>
+<p><br></p>
+<p>If we agree on these as our priorities, then all we need is working piece of code.</p>
+<h3 id="be-sure-the-code-works-without-testing-it">Be Sure the Code Works without Testing it</h3>
+<p><strong>How do we know the code is working?</strong></p>
+<ul>
+<li>it's tested</li>
+<li>test passing</li>
+<li>we can see test passing ourselves on Travis CI or Gitlab CI</li>
+</ul>
+<p>Instead of having documentation with text (= &quot;weak strings&quot;), the best would be:</p>
+<ul>
+<li>link to the code for Guzzle 6</li>
+<li>link to test case for Guzzle 6</li>
+<li>link to CI passing for a test case for Guzzle 6</li>
+</ul>
+<p>That's the perfect documentation, <strong>because we can skip the verification and detective part and trust it by validated contract</strong>.</p>
+<p><br></p>
+<p>Now finally to the solution ↓</p>
+<h2 id="5-steps-to-guzzle-oauth2">5 Steps to Guzzle Oauth2</h2>
+<ul>
+<li>Login to <a href="http://meetup.com">Meetup.com</a></li>
+<li>Create new consumer here - <a href="https://secure.meetup.com/meetup_api/oauth_consumers">https://secure.meetup.com/meetup_api/oauth_consumers</a> - it's <em>credentials</em> actually</li>
+<li>There you get Oauth key and secret</li>
+<li>Have the latest <code>guzzle</code> + <code>oauth2-subscriber</code></li>
+</ul>
+<pre><code class="language-bash">composer require guzzlehttp/guzzle:^6.3
+composer require kamermans/guzzle-oauth2-subscriber</code></pre>
+<ul>
+<li>Use Guzzle with Oauth2</li>
+</ul>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+require __DIR__ . '/vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use kamermans\OAuth2\GrantType\ClientCredentials;
+use kamermans\OAuth2\OAuth2Middleware;
+
+// get these here: https://secure.meetup.com/meetup_api/oauth_consumers
+$meetupComOauth2Key = '123';
+$meetupComOauth2Secret = 'ABC';
+
+// boilerplate code for Oauth2
+$oAuth2Client = new Client([
+    // URL for access_token request
+    'base_uri' =&gt; 'https://secure.meetup.com/oauth2/access',
+]);
+
+$oAuth2Config = [
+    'client_id' =&gt; $meetupComOauth2Key,
+    'client_secret' =&gt; $meetupComOauth2Secret,
+];
+$clientCredentials = new ClientCredentials($oAuth2Client, $oauthConfig);
+$oAuth2Middleware = new OAuth2Middleware($clientCredentials);
+
+// the main code
+$client = new Client();
+$client-&gt;getConfig('handler')-&gt;push($oAuth2Middleware);
+
+// call anything
+$response = $client-&gt;request('GET', '...');
+var_dump($response);</code></pre>
+<p>But does it still work?</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/05/16/don-t-ever-use-listeners" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Don&#039;t Ever use Symfony Listeners
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-06-17-how-to-upgrade-meetup-com-api-to-oauth2-with-guzzle.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to upgrade Meetup.com API to OAuth2 with Guzzle" />
+    <meta property="og:description" content="I got an email from Meetup.com 5 days ago, that basically every API request will be paid since August 15, 2019. **$ 30/month**, that&#039;s like my phone bill.
+
+
+ **95 % of data on [Friends Of Php](https://friendsofphp.org) depend on Meetup.com API** - updated daily. The website is free, so it might kill the content or I&#039;d have to move to crawlers and hope for the lack of protection on Meetup.com against them.
+
+
+**Unless we use Oauth2 before August 15**. I never used it, but how hard that can be, right?
+" />
+    <meta property="og:url" content="/blog/2019/06/17/how-to-upgrade-meetup-com-api-to-oauth2-with-guzzle" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to upgrade Meetup.com API to OAuth2 with Guzzle" />
+    <meta name="twitter:description" content="I got an email from Meetup.com 5 days ago, that basically every API request will be paid since August 15, 2019. **$ 30/month**, that&#039;s like my phone bill.
+
+
+ **95 % of data on [Friends Of Php](https://friendsofphp.org) depend on Meetup.com API** - updated daily. The website is free, so it might kill the content or I&#039;d have to move to crawlers and hope for the lack of protection on Meetup.com against them.
+
+
+**Unless we use Oauth2 before August 15**. I never used it, but how hard that can be, right?
+" />

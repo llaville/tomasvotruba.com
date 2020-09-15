@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>United PHP 7.1 Adoption 6 Months Later | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 64 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>United PHP 7.1 Adoption 6 Months Later</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-11-Mon">
+            
+                            Mon, Nov 27, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/11/27/united-php-71-adoption-6-months-later/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-11-27-united-php-71-adoption-6-months-later.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>A year since it's release and 6 months since GoPHP71 initiative.
+PHP 7.1 is <strong>the fastest adopted</strong> minor version of PHP already beating PHP 7.0.
+<br><br>
+How is adoption going in open-source and why it should continue from bleeding-edge projects?</p>
+                    </div>
+                </div>
+
+                <p><br></p>
+<blockquote class="blockquote text-center">
+    "United we stand, divided we fall."
+    <footer class="blockquote-footer">ancient Greek storyteller Aesop</footer></blockquote>
+<p><br></p>
+<img src="/assets/images/posts/2017/go-php-71-later/unity.jpg">
+<h2 id="how-is-gophp71-org-doing">How is GoPHP71.org Doing?</h2>
+<p>I've created a page <a href="https://gophp71.org">GoPHP71.org</a> half year ago, inspired by <a href="http://gophp7.org">GoPHP7.org</a> and by <a href="https://www.garfieldtech.com/blog/go-php-5-go">Go PHP 5</a> - read this one if you care about background values of this movement.</p>
+<p>In <a href="/blog/2017/06/05/go-php-71/">release post</a> I've explained <strong>why right to PHP 7.1</strong> and not PHP 7.0, how important is <strong>united community</strong> in this and how this can <strong>bring positive energy to open-source</strong> and as well host providers upgrades.</p>
+<p><br></p>
+<p>From 2 projects in <em>June 2015</em>:</p>
+<img src="/assets/images/posts/2017/go-php-71/first-version.png">
+<p>Now there are <strong>11 projects</strong>, including <em>big 3</em> - Symfony, Doctrine and Laravel.</p>
+<img src="/assets/images/posts/2017/go-php-71-later/current-version.png">
+<p>Is your project missing? <a href="https://github.com/TomasVotruba/gophp71.org/edit/master/_data/projects.yaml">Go and it!</a></p>
+<h3 id="prove-beats-promise-packagist-stats">Prove beats Promise - Packagist Stats</h3>
+<p>To support &quot;PHP 7.1 is the fastest adopted minor version of PHP&quot; statement, <a href="https://seld.be">Jordi</a> recently released <a href="https://seld.be/notes/php-versions-stats-2017-2-edition">PHP Versions Stats - 2017.2 Edition</a> with very nice result from packagist stats:</p>
+<img src="/assets/images/posts/2017/go-php-71-later/composer-bump.png" class="img-thumbnail">
+<h2 id="great-job-php-community">Great Job, PHP Community!</h2>
+<p>It makes me very happy, that <strong>people from PHP community are able to <a href="/blog/2017/10/30/what-can-you-learn-from-menstruation-and-symfony-releases/">synchronize</a></strong> despite their different opinions on things.
+<br></p>
+<h3 id="special-thanks-to-doctrine-project">Special Thanks to Doctrine Project</h3>
+<p>I really loved this <a href="http://www.doctrine-project.org/2017/07/25/php-7.1-requirement-and-composer.html">Doctrine bump PHP 7.1 announcement</a>. I completely agree with &quot;Why dropping PHP support in a minor version is not a BC break&quot; part. If you think PHP version bump is BC break, you should read it.</p>
+<p>I admit <a href="/blog/2017/03/27/why-is-doctrine-dying/">I wasn't nice</a> to Doctrine Project this Spring and <strong>I'm sincerely sorry about that</strong>. I'm trying to <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/">influence this better way</a>.</p>
+<p>Ever since I <strong>see Doctrine community are doing great</strong> - from <a href="https://github.com/doctrine/doctrine2/pull/5932">removing YAML references</a>, to <a href="https://github.com/doctrine/DoctrineBundle/pull/727">cleaner Symfony support</a>.</p>
+<h2 id="but-i-want-to-go-php-7-0">But I want to go PHP 7.0</h2>
+<p>Still not convinced about reasons? Check <a href="https://github.com/php-ai/php-ml/issues/148">this issue</a> on <code>php-ai/php-ml</code> library.</p>
+<p><a href="https://github.com/php-ai/php-ml/issues/148#issuecomment-346790142">@dmonllao poses question or rather idea</a> there: <em>I want to take is slowly <or another reason> and go only to PHP 7.0</em>.</p>
+<p>Let me explain how that could influence PHP ecosystem and slow down productivity of many projects:</p>
+<ul>
+<li>Imagine that in 6 months all of those 11 projects on gophp71.org will <strong>require PHP 7.1 in their LTS versions</strong>.</li>
+<li><em>Moodle</em> (could be any other package, it's just example) decides to go with <strong>PHP 7.0</strong>.</li>
+<li>If you work with PHP, there is quite big chance you'll be using at least one of those 11 packages.</li>
+<li>Let's say you want to use newest features + LTS, so you <strong>bump your local nad server to PHP 7.1</strong>.</li>
+</ul>
+<p>All good for now, but then:</p>
+<ul>
+<li>You need to use <em>Moodle</em> in your project. <strong>Its code contains only PHP 7.0 features</strong>.</li>
+<li>Your code naturally <strong>extends or implements 3rd party classes</strong>. You can use PHP 7.1 on most of them - e.g. <code>void</code> and nullable typehints of interfaces.</li>
+<li>But then your need to extends <em>Moodle</em>'s code and <strong>you have to be careful and use only PHP 7.0 features</strong>. Features like <code>void</code> or <code>nullable</code> would break it.</li>
+</ul>
+<h3 id="result-double-measures-amp-dichotomic-coding">Result? Double Measures &amp; Dichotomic Coding</h3>
+<ul>
+<li>You have to have <strong>2 different coding standards</strong> - one for PHP 7.0 and one for PHP 7.1 with various paths to scan.</li>
+<li>If you use static analysis like <a href="/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/">PHPStan</a>, you have to have 2 configs again to validate code properly.</li>
+<li>2 testing approaches etc.</li>
+</ul>
+<p>And that's <strong>only 1 package with different PHP version</strong>. Imagine there would another package that requires PHP 7.2... or if you combine PHP 7.0 and PHP 7.1 interface in single class.</p>
+<h2 id="but-i-don-t-want-to-drop-support-for-php-7-0">But I don't want to Drop Support for PHP 7.0</h2>
+<img src="/assets/images/posts/2017/go-php-71-later/old-releases.png" class="img-thumbnail">
+<p>I've borrowed this amazing picture from <a href="https://seld.be/notes/php-versions-stats-2016-2-edition">Jordi</a>.</p>
+<p>You <strong>can keep support for older PHP version</strong> even if you bump minimal requirement to PHP 7.1, just won't add new features to them.</p>
+<h3 id="spread-the-word">Spread the Word</h3>
+<p>At the moment only 4 projects on are tagged and it will take some timer before this becomes mainstream. Yet, we can see obvious trend moving to PHP 7.1 as minimal requirement. <strong>Thanks to community and people that are bold enough to ask the question</strong> or <a href="https://github.com/laravel/framework/pull/21995">even sending a PR</a>.</p>
+<p><br></p>
+<p><strong>If you see some next project bumping to PHP 7.0, think about possible consequences of that decision.</strong></p>
+<p><br><br></p>
+<p>Happy bumping!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-11-27-united-php-71-adoption-6-months-later.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="United PHP 7.1 Adoption 6 Months Later" />
+    <meta property="og:description" content="A year since it&#039;s release and 6 months since GoPHP71 initiative.
+PHP 7.1 is **the fastest adopted** minor version of PHP already beating PHP 7.0.
+
+How is adoption going in open-source and why it should continue from bleeding-edge projects?
+" />
+    <meta property="og:url" content="/blog/2017/11/27/united-php-71-adoption-6-months-later" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="United PHP 7.1 Adoption 6 Months Later" />
+    <meta name="twitter:description" content="A year since it&#039;s release and 6 months since GoPHP71 initiative.
+PHP 7.1 is **the fastest adopted** minor version of PHP already beating PHP 7.0.
+
+How is adoption going in open-source and why it should continue from bleeding-edge projects?
+" />

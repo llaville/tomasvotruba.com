@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Drop all Service Tags in Your Nette and Symfony Applications | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 27 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Drop all Service Tags in Your Nette and Symfony Applications</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-02-Sun">
+            <strike>
+                            Sun, Feb 12, 2017
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated May, 2017
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-02-12-drop-all-service-tags-in-your-nette-and-symfony-applications.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at May 2017</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>new Symfony 3.3 features <a href="https://symfony.com/blog/new-in-symfony-3-3-simpler-service-configuration">class based service naming, <code>_instanceof</code> configuration</a> and <a href="https://symfony.com/blog/new-in-symfony-3-3-service-autoconfiguration">autoconfiguration</a></strong> (plus PHP 7).</p>
+<p>It does pretty much the same, so package ServiceDefinitionDecorator for Symfony was deprecated.</p>
+<p>It is still available <a href="https://github.com/DeprecatedPackages/ServiceDefinitionDecorator">here for inspiration</a> though.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>What is tagging for? Why we should get rid of it?
+Today I will show you, how to do it gradually without breaking the application.</p>
+                    </div>
+                </div>
+
+                <p>This post is follow up to <em><a href="/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/">How to Avoid Inject Thanks to Decorator feature in Nette</a></em>. Go read it if you missed it.</p>
+<h2 id="what-is-tagging-for">What is Tagging For?</h2>
+<pre><code class="language-yaml"># app/config/services.neon / app/config/services.yml
+
+services:
+    simple_console_command:
+        class: "App\Command\SimpleConsoleCommand"
+        tags:
+            - "console.command"</code></pre>
+<p>It is a method to mark services, so Dependency Injection Container could find them easily.</p>
+<p>With that, we can add all Commands to Console Application during Dependency Injection Container compilation.</p>
+<pre><code class="language-php">$commands = $this-&gt;container-&gt;findByTag('console.command');
+$application-&gt;addMethod('addCommands', [$commands]);</code></pre>
+<h2 id="bare-tagging-is-duplicated-information">Bare Tagging is Duplicated Information</h2>
+<p>But is it really needed?</p>
+<p>Without tags, you would probably write something like this:</p>
+<pre><code class="language-php">$commands = $this-&gt;container-&gt;findAllByType(Command::class);
+$application-&gt;addMethod('addCommands', [$commands]);</code></pre>
+<p><strong>But it's here, because of historical reasons</strong>. Both Nette and Symfony ecosystem support it, so many packages adopted
+it without thinking twice.</p>
+<h3 id="the-only-place-to-consider-using-tags-metadata">The Only Place To Consider Using Tags: Metadata</h3>
+<p>If you need to setup service priority registration or <strong>any information, that you can't put inside the class
+itself</strong>, tagging is the only way:</p>
+<pre><code class="language-yaml"># app/config/services.neon / app/config/services.yml
+
+services:
+    simple_console_command:
+    class: "App\Command\SimpleConsoleCommand"
+    tags:
+        name: "console.command"
+        priority: 20</code></pre>
+<p>It's often used <strong>to duplicate information about a class or interface this service extends or implements</strong>. <code>Symfony\Component\Console\Command\Command</code> in this case.</p>
+<h3 id="how-to-get-rid-of-them-decorator-to-the-rescue">How to get rid of them? Decorator to the rescue!</h3>
+<p>When I see this pollution in the code, I try to explain there is no added value. Till now, there was only solution in
+Nette and Symfony application were doomed to use this anti-pattern.</p>
+<p>Now there is Decorator in Symfony as well. Let's see.</p>
+<h2 id="get-rid-of-tagging-in-nette">Get Rid of Tagging in Nette</h2>
+<p>In you Nette Application, you probably already use</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    -
+        class: App\Console\FirstCommand
+        tags: [kdyby.console.command]
+    -
+        class: App\Console\SecondCommand
+        tags: [kdyby.console.command]
+    -
+        class: App\Console\ThirdCommand
+        tags: [kdyby.console.command]
+    -
+        class: App\EventSubscriber\FirstEventSubscriber
+        tags: [kdyby.subscriber]
+    -
+        class: App\EventSubscriber\SecondEventSubscriber
+        tags: [kdyby.subscriber]
+    -
+        class: App\EventSubscriber\ThirdEventSubscriber
+        tags: [kdyby.subscriber]</code></pre>
+<p>So much reading, huh? Imagine 50 more of these.</p>
+<p>This is exactly the place to use <a href="/blog/2016/12/24/how-to-avoid-inject-thanks-to-decorator-feature-in-nette/">Nette Decorator feature</a>.</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    - App\Console\FirstCommand
+    - App\Console\SecondCommand
+    - App\Console\ThirdCommand
+    - App\EventSubscriber\FirstEventSubscriber
+    - App\EventSubscriber\SecondEventSubscriber
+    - App\EventSubscriber\ThirdEventSubscriber
+
+decorator:
+    Symfony\Component\Console\Command\Command:
+        tags: [kdyby.console.command]
+    Symfony\Component\EventDispatcher\EventSubscriberInterface:
+        tags: [kdyby.subscriber]</code></pre>
+<p>The more services you have, the more cleaner and readable code this approach brings.</p>
+<h3 id="minitip">Minitip</h3>
+<p>If you don't like the decorator and don't like to one service take 3 lines of config instead of 1, you can use this
+shortage:</p>
+<pre><code class="language-yaml"># app/config/config.neon
+
+services:
+    - { class: App\Console\FirstCommand, tags: [kdyby.console.command] }</code></pre>
+<p>This is what I did, before I used Decorator and before I dropped tags from my coding habbits.</p>
+<h2 id="get-rid-of-tagging-in-symfony">Get Rid of Tagging in Symfony</h2>
+<p>Symfony <a href="https://symfony.com/doc/current/reference/dic_tags.html">has over 40 tags</a> that are coupled to many internal parts. This is barely half of it:</p>
+<img src="/assets/images/posts/2017/decorator/symfony-tags-half.png" class="img-thumbnail" alt="Tag list">
+<p>If we use the same setup as we used in Nette above, in Symfony it would look like this:</p>
+<pre><code class="language-yaml"># app/config/config.yml
+
+services:
+    App\Console\FirstCommand:
+        tags:
+            - { name: console.command }
+    App\Console\SecondCommand:
+        tags:
+            - { name: console.command }
+    App\Console\ThirdCommand:
+        tags:
+            - { name: console.command }
+    App\EventSubscriber\FirstEventSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }
+    App\EventSubscriber\SecondEventSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }
+    App\EventSubscriber\ThirdEventSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }</code></pre>
+<p>I want to quit this project already... but wait!</p>
+<h3 id="you-can-use-new-a-href-https-symfony-com-blog-new-in-symfony-3-3-service-autoconfiguration-autoconfigure-a-since-symfony-3-3">You can use new <a href="https://symfony.com/blog/new-in-symfony-3-3-service-autoconfiguration">autoconfigure</a> since Symfony 3.3</h3>
+<pre><code class="language-yaml"># app/config/config.yml
+
+services:
+    _defaults:
+        autowire: true # recommended
+        autoconfigure: true
+
+    App\Console\FirstCommand: ~
+    App\Console\SecondCommand: ~
+    App\Console\ThirdCommand: ~
+    App\EventSubscriber\FirstEventSubscriber: ~
+    App\EventSubscriber\SecondEventSubscriber: ~
+    App\EventSubscriber\ThirdEventSubscriber: ~</code></pre>
+<p>That's it. Pretty cool, huh?</p>
+<h2 id="how-do-you-approach-this">How do you Approach This?</h2>
+<p>Again, this is my point of view on making things easy, KISS and DRY.</p>
+<p><strong>How do you approach this duplication?</strong> What do you like about it apart &quot;it's in the docs&quot; or &quot;everybody does that&quot;?</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-02-12-drop-all-service-tags-in-your-nette-and-symfony-applications.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Drop all Service Tags in Your Nette and Symfony Applications" />
+    <meta property="og:description" content="What is tagging for? Why we should get rid of it?
+Today I will show you, how to do it gradually without breaking the application.
+" />
+    <meta property="og:url" content="/blog/2017/02/12/drop-all-service-tags-in-your-nette-and-symfony-applications" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Drop all Service Tags in Your Nette and Symfony Applications" />
+    <meta name="twitter:description" content="What is tagging for? Why we should get rid of it?
+Today I will show you, how to do it gradually without breaking the application.
+" />

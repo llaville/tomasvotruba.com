@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Brief History of Tools Watching and Changing Your PHP Code | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 152 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Brief History of Tools Watching and Changing Your PHP Code</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-10-Mon">
+            
+                            Mon, Oct 22, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-22-brief-history-of-tools-watching-and-changing-your-php-code.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>From coding standard tools, over static analysis to instant upgrade tools. This post is going to be a geeky history trip. <br> <br> Which tool was first? How they <strong>build on shoulders of each other</strong>?</p>
+                    </div>
+                </div>
+
+                <h2 id="1-coding-standard-tools">1. Coding Standard Tools</h2>
+<h3 id="a-href-https-github-com-squizlabs-php-codesniffer-php-codesniffer-a-from-australia"><a href="https://github.com/squizlabs/PHP_CodeSniffer">PHP_CodeSniffer</a> from Australia</h3>
+<p><span class="badge badge-light">Tokens</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>The first tool that made it to the mainstream of coding standard tools was created around <strong>2007</strong> by Greg Sherwood from Australia. At least by date <a href="http://gregsherwood.blogspot.com/2006/12/if-not-test-first-then-test-really-soon.html">of the oldest post I could found</a>.</p>
+<p>Greg has been maintaining the repository for last <strong>11 years</strong> (at least). I don't know anyone else who would take care of his project for such a long time without stepping back - <strong>much respect</strong>!</p>
+<h3 id="a-href-https-github-com-friendsofphp-php-cs-fixer-php-cs-fixer-a-from-symfony"><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP CS Fixer</a> from Symfony</h3>
+<p><span class="badge badge-light">Tokens</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>Reporting errors are helpful, but fixing them for you is even more helpful. More people got a similar need and around <a href="https://gist.github.com/fabpot/3f25555dce956accd4dd">Symfony 2.0 times and 2011</a> next tools were born - PHP CS Fixer.</p>
+<p><a href="https://gist.github.com/fabpot/3f25555dce956accd4dd">The first version</a> was created by Fabien Potentier, author and founder of Symfony, and it used mostly regular expressions.</p>
+<p>The decision to <strong>fix everything by default was the huge jump in history</strong> of these tools. It was the first case of a tool that would be so bold to change your code for you. You had to believe it, you had to overcome the fear of modifying it the wrong way or even deleting. I mean, now we're used to it like to cars, but at one point of history, they were just riding bombs.</p>
+<p><br></p>
+<p>With <a href="http://fabien.potencier.org/php-cs-fixer-finally-reaches-version-1-0.html">PHP CS Fixer 1.0 release in 2014</a> and rising popularity of <strong>automated fixes</strong> was <strong>big motivation for PHP_CodeSniffer</strong> to add similar feature - <a href="https://github.com/squizlabs/PHP_CodeSniffer/wiki/Fixing-Errors-Automatically"><em>code beautifier</em></a> - to version 2.</p>
+<p>It also helped with another issue. The development of PHP_CodeSniffer 2.8 and later almost froze to zero. I remember because I started working on <a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a> right between
+PHP_CodeSniffer 2.8 and 3.0 (depending on <code>3.0-dev</code>), which took 14 uncertain months.</p>
+<p><strong>So PHP_CodeSniffer now holds <span class="badge badge-success">Modifies Code</span> as well.</strong></p>
+<p><br></p>
+<p>Both use <code>token_get_all()</code> that basically parses code to strings. Do you want to know <a href="/blog/2017/07/31/how-php-coding-standard-tools-actually-work/">how they actually work</a>?</p>
+<h3 id="a-href-https-github-com-symplify-easy-coding-standard-easycodingstandard-a-from-the-czech-republic"><a href="https://github.com/symplify/easy-coding-standard">EasyCodingStandard</a> from the Czech Republic</h3>
+<p><span class="badge badge-light">Tokens</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>I saw many projects that use both tools, yet very poorly - because split attention divides the focus in the same ratio. The mission of this tool is <strong>to help new generations to adopt coding standard with almost no effort</strong>. So in <strong>2016</strong> the EasyCodingStandard was born.</p>
+<h2 id="2-static-analysis-tools">2. Static Analysis Tools</h2>
+<h3 id="a-href-https-github-com-nikic-php-parser-nikic-php-parser-a"><a href="https://github.com/nikic/PHP-Parser">nikic/php-parser</a></h3>
+<p><span class="badge badge-danger">AST</span></p>
+<p>This package is barely known for code analysis. But it provides the technology that all the other tool builds on - <em>abstract syntax tree</em> (known as <em>AST</em>).</p>
+<p>It all started as a question on <a href="https://stackoverflow.com/questions/5586358/any-decent-php-parser-written-in-php">StackOverflow</a> - <em>Any decent PHP parser written in PHP?</em> nikic answered himself with a <a href="https://github.com/nikic/PHP-Parser"><code>php-parser</code></a> less than a 6 months later.</p>
+<p>I would not write this post and neither have my fuel for passion without this tool, so <strong>huge thank you, Nikita, for creating it and maintaining it</strong>.</p>
+<p><br></p>
+<p>All following tools use an <strong>AST analyzer</strong> - that's how they know what object is <code>$object</code> variable, like in this example:</p>
+<pre><code class="language-php">&lt;?php
+
+class SomeObject
+{
+    public function exist()
+    {
+    }
+}
+
+$object = new SomeObject; // AST remembers that "$object" is "SomeObject" type
+$object-&gt;missing(); // here we know that "missing" does not exist in "SomeObject"</code></pre>
+<h3 id="a-href-https-github-com-phpstan-phpstan-phpstan-a-by-ondrej-mirtes"><a href="https://github.com/phpstan/phpstan">PHPStan</a> by Ondrej Mirtes</h3>
+<p><span class="badge badge-danger">AST</span>
+<span class="badge badge-info">
+<a href="https://github.com/phpstan/phpstan/releases/tag/0.1">* 2016</a>
+</span></p>
+<p>If you don't use any static analysis tool, give PHPStan a try. I've made <a href="/blog/2017/01/28/why-I-switched-scrutinizer-for-phpstan-and-you-should-too/">minimalist intro that will help you with first steps </a>. It's worth investing even day or two to set it up because <strong>these tools will join toolkit of everyday use</strong>, like Composer or PHPUnit.</p>
+<h3 id="a-href-https-github-com-phan-phan-phan-a-by-rasmus-lerdorf"><a href="https://github.com/phan/phan">Phan</a> by Rasmus Lerdorf</h3>
+<p><span class="badge badge-danger">AST</span>
+<span class="badge badge-info">
+<a href="https://github.com/phan/phan/releases/tag/0.1">* 2015</a>
+</span></p>
+<h3 id="a-href-https-github-com-vimeo-psalm-vimeo-psalm-a-by-matthew-brown"><a href="https://github.com/vimeo/psalm">vimeo/psalm</a> by Matthew Brown</h3>
+<p><span class="badge badge-danger">AST</span>
+<span class="badge badge-info">
+<a href="https://github.com/vimeo/psalm/releases/tag/0.1">* 2016</a>
+</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>Psalm is a very interesting tool that was born to fight Vimeo code complexity. It was the first tool from this group of 3, <strong>that started <a href="https://psalm.dev/docs/fixing_code">fixing the code</a></strong>.</p>
+<h2 id="3-deprecation-detectors">3. Deprecation Detectors</h2>
+<p>This group is widely used in the framework-agnostic PHP community.</p>
+<h3 id="a-href-https-github-com-sstalle-php7cc-php-7-compatibility-checker-a"><a href="https://github.com/sstalle/php7cc">PHP 7 Compatibility Checker</a></h3>
+<p><span class="badge badge-secondary">Deprecated</span>
+<span class="badge badge-danger">AST</span></p>
+<p>This tool checked for compatibility with PHP 7.</p>
+<h3 id="a-href-https-github-com-sensiolabs-de-deprecation-detector-sensiolabs-de-deprecation-detector-a"><a href="https://github.com/sensiolabs-de/deprecation-detector">sensiolabs-de/deprecation-detector</a></h3>
+<p><span class="badge badge-secondary">Deprecated</span>
+<span class="badge badge-danger">AST</span></p>
+<p>This package helped to look for Symfony 3 deprecations in your code.</p>
+<h3 id="a-href-https-github-com-phpcompatibility-phpcompatibility-phpcompatibility-phpcompatibility-a"><a href="https://github.com/PHPCompatibility/PHPCompatibility">PHPCompatibility/PHPCompatibility</a></h3>
+<p><span class="badge badge-light">Tokens</span></p>
+<p>This tool checks for PHP cross-version compatibility. It allows you to analyze your code for compatibility with higher and lower versions of PHP.</p>
+<p><br></p>
+<p>It's useful to know what places are wrong, but you still have to fix them all manually.</p>
+<h2 id="4-instant-upgrade-tools">4. Instant Upgrade Tools</h2>
+<h3 id="a-href-https-github-com-umpirsky-symfony-upgrade-fixer-umpirsky-symfony-upgrade-fixer-a"><a href="https://github.com/umpirsky/Symfony-Upgrade-Fixer">umpirsky/Symfony-Upgrade-Fixer</a></h3>
+<p><span class="badge badge-light">Tokens</span>
+<span class="badge badge-success">Modifies Code</span>
+<span class="badge badge-secondary">Deprecated</span></p>
+<p>This tool was created in <strong>2015</strong> and it's revolutionary. Why? It wisely connects the token analysis of PHP CS Fixer with deprecations in Symfony 2 to 3. Imagine it like PHP CS Fixer + <code>sensiolabs-de/deprecation-detector</code> <strong>working for you</strong>.</p>
+<p>Isn't that amazing? <strong>You just sit, run this tool and send invoices. Genius!</strong> The features are limited due to Tokens, but still, I love this.</p>
+<h3 id="a-href-https-github-com-cakephp-upgrade-cakephp-upgrade-a"><a href="https://github.com/cakephp/upgrade">cakephp/upgrade</a></h3>
+<p><span class="badge badge-success">Modifies Code</span></p>
+<p>It's completely natural, that frameworks that evolve fast need a tool that helps their users to migrate.
+CakePHP is jumping faster and faster in recent years, they made their own tool. It's based on regular expressions.</p>
+<h3 id="a-href-https-github-com-silverstripe-silverstripe-upgrader-silverstripe-upgrader-a"><a href="https://github.com/silverstripe/silverstripe-upgrader">silverstripe-upgrader</a></h3>
+<p><span class="badge badge-danger">AST</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>SilverStripe is a PHP CMS coming from New Zealand. Its logic is very similar to Rector and I like it. It's also quite small, so the code is easy to understand. Be sure to check it!</p>
+<h3 id="a-href-github-com-rectorphp-rector-rector-a"><a href="github.com/rectorphp/rector">Rector</a></h3>
+<p><span class="badge badge-danger">AST</span>
+<span class="badge badge-success">Modifies Code</span></p>
+<p>It's <strong>2017</strong> and Rector still had to wait many months to be born. For what?</p>
+<p>Well, it's built on php-parser and as it modifies the code and prints it back, it <strong>needed to keep spacing</strong>. That's one of AST drawbacks - it doesn't care about all that coding standards spacings.</p>
+<p>They say &quot;history repeats&quot;, but I never trusted that. Untill I saw that similar need Fabien had while making the PHP CS Fixer in 2012 - <a href="https://github.com/nikic/PHP-Parser/issues/41">Optionally add nodes for whitespace</a>. More <strong>people wanted AST-based coding standards</strong>:</p>
+<blockquote class="twitter-tweet" data-lang="cs"><p lang="en" dir="ltr"><a href="https://twitter.com/fabpot?ref_src=twsrc%5Etfw">@fabpot</a> zendframework, though we are moving afay from php-cs-fixer because it is not AST-based</p>— Supervising Program (@Ocramius) <a href="https://twitter.com/Ocramius/status/532622405290971136?ref_src=twsrc%5Etfw">12. listopadu 2014</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>php-parser <code>4.0-dev</code> already had this feature, so Rector ran on it since the very start. It was not until <a href="https://github.com/nikic/PHP-Parser/releases/tag/v4.0.0"><strong>February 2018</strong></a> when it was finally released.</p>
+<p>Last giant Rector builds on is the one for type analysis - PHPStan. Thanks to that, it <strong>doesn't reinvent the wheel and can focus on the refactoring part</strong>.</p>
+<p><br></p>
+<p>And that's a brief history of big-brother tools that watch your code and modify it for you.</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/10/18/how-i-almost-missed-my-talk-in-php-asia-conference" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How I Almost Missed My Talk in PHP Asia Conference
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-22-brief-history-of-tools-watching-and-changing-your-php-code.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Brief History of Tools Watching and Changing Your PHP Code" />
+    <meta property="og:description" content="From coding standard tools, over static analysis to instant upgrade tools. This post is going to be a geeky history trip.   Which tool was first? How they **build on shoulders of each other**?" />
+    <meta property="og:url" content="/blog/2018/10/22/brief-history-of-tools-watching-and-changing-your-php-code" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Brief History of Tools Watching and Changing Your PHP Code" />
+    <meta name="twitter:description" content="From coding standard tools, over static analysis to instant upgrade tools. This post is going to be a geeky history trip.   Which tool was first? How they **build on shoulders of each other**?" />

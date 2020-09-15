@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 88 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-04-Mon">
+            
+                            Mon, Apr 2, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-02-rectify-turn-repositories-to-services-in-symfony.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Today I start new series called <em>Rectify</em>. It will be about <strong>instant refactoring</strong> to better code not manually, but with Rector.
+<br><br>
+That way there is no excuse left to change your legacy application to clean code you'll love to extend.
+<br><br>
+We'll start with very popular post - <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/">Repository with Doctrine as Service in Symfony</a>.</p>
+                    </div>
+                </div>
+
+                <p>I wrote about <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/">How to use Repository with Doctrine as Service Symfony</a> a while ago. There are many posts about this topic, but not as simple to apply as this one. At least for one repository.</p>
+<h2 id="the-one-to-many-problem-of-the-best-practise">The One-to-Many Problem of The Best Practise</h2>
+<p>It's always very simple to write 1 service, with <code>final</code>, constructor injection, design patterns and modern PHP 7.1 type hints and <code>strict_types</code>. That's why it's easy to write such posts as the one above :)</p>
+<p><strong>But what if you have 50 repositories? Would I write a post about how I refactored 50 repositories to services?</strong> Probably not, because it would take so much time and energy and you'd fell asleep while reading the first 1/10.</p>
+<h2 id="turn-m-complexity-to-1-with-rector">Turn M-complexity to 1 with Rector</h2>
+<p>What if you could <strong>change just 1 case and it would be promoted to the rest of your application</strong>? From 1:M to 1:1. That's exactly what Rector help you with.</p>
+<p>Let's see how it works. I'll use <a href="/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/#how-to-make-this-better-with-symfony-3-3">the example from the original post</a>, where I write about turning <a href="https://github.com/jupeter/clean-code-php#prefer-composition-over-inheritance">inheritance to composition</a> - one of SOLID principles.</p>
+<p><br></p>
+<p><strong>Instead of inheritance...</strong></p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Repository;
+
+use App\Entity\Post;
+use Doctrine\ORM\EntityRepository;
+
+final class PostRepository extends EntityRepository
+{
+}</code></pre>
+<p><strong>...we use composition:</strong></p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Repository;
+
+use App\Entity\Post;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+
+final class PostRepository
+{
+    /**
+     * @var EntityRepository
+     */
+    private $repository;
+
+    public function __construct(EntityManager $entityManager)
+    {
+        $this-&gt;repository = $entityManager-&gt;getRepository(Post::class);
+    }
+}</code></pre>
+<h2 id="4-steps-to-instant-refactoring-of-all-repositories">4 Steps to Instant Refactoring of All Repositories</h2>
+<h3 id="1-install-rector">1. Install Rector</h3>
+<pre><code class="language-bash">composer install rector/rector --dev</code></pre>
+<h3 id="2-setup-code-rector-php-code">2. Setup <code>rector.php</code></h3>
+<p>There you name all the changes you'd like to perform on you code:</p>
+<pre><code class="language-php">&lt;?php
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\Architecture\Rector\MethodCall\ReplaceParentRepositoryCallsByRepositoryPropertyRector;
+use Rector\Architecture\Rector\Class_\MoveRepositoryFromParentToConstructorRector;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    // order matters, this needs to be first to correctly detect parent repository
+
+    // this will replace parent calls by "$this-&gt;repository" property
+    $services-&gt;set(ReplaceParentRepositoryCallsByRepositoryPropertyRector::class);
+
+    // this will move the repository from parent to constructor
+    $services-&gt;set(MoveRepositoryFromParentToConstructorRector::class);
+};</code></pre>
+<h3 id="3-add-repository-entity-provider">3. Add Repository → Entity Provider</h3>
+<p>But how does Rector know what entity should it add to which repository? For that reasons, there is <code>Rector\Bridge\Contract\DoctrineEntityAndRepositoryMapperInterface</code> you need to implement.</p>
+<p>It could be as simple as:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Rector;
+
+use Rector\Bridge\Contract\DoctrineEntityAndRepositoryMapperInterface;
+
+final class DoctrineEntityAndRepositoryMapper implements DoctrineEntityAndRepositoryMapperInterface
+{
+    /**
+     * @var string[]
+     */
+    private $map = [
+        'App\Repository\PostRepository' =&gt; 'App\Entity\Post',
+        'App\Repository\ProductRepository' =&gt; 'App\Entity\Product',
+    ];
+    public function mapRepositoryToEntity(string $name): ?string
+    {
+        return $this-&gt;map[$name] ?? null;
+    }
+
+    public function mapEntityToRepository(string $name): ?string
+    {
+        $inversedMap = array_flip($this-&gt;map);
+
+        return $inversedMap[$name] ?? null;
+    }
+}</code></pre>
+<p>And register it:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+ use Rector\Rector\Architecture\RepositoryAsService\ReplaceParentRepositoryCallsByRepositoryPropertyRector;
+ use Rector\Rector\Architecture\RepositoryAsService\MoveRepositoryFromParentToConstructorRector;
+
+ return function (ContainerConfigurator $containerConfigurator): void {
+     $services = $containerConfigurator-&gt;services();
+
+     // order matters, this needs to be first to correctly detect parent repository
+
+     // this will replace parent calls by "$this-&gt;repository" property
+     $services-&gt;set(ReplaceParentRepositoryCallsByRepositoryPropertyRector::class);
+
+     // this will move the repository from parent to constructor
+     $services-&gt;set(MoveRepositoryFromParentToConstructorRector::class);
+
++    $services-&gt;set(\App\Rector\DoctrineEntityAndRepositoryMapper::class);
+ };</code></pre>
+<h3 id="4-run-on-your-code">4. Run on Your Code</h3>
+<p>Now the fun part:</p>
+<pre><code class="language-bash">vendor/bin/rector process /app --dry-run # "--config rector.php" as default</code></pre>
+<p>You should see diffs like:</p>
+<pre><code class="language-diff"> use App\Entity\Post;
+ use Doctrine\ORM\EntityRepository;
+
+-final class PostRepository extends EntityRepository
++final class PostRepository
+ {
+     /**
++     * @var \Doctrine\ORM\EntityRepository
++     */
++    private $repository;
++    public function __construct(\Doctrine\ORM\EntityManager $entityManager)
++    {
++        $this-&gt;repository = $entityManager-&gt;getRepository(\App\Entity\Post::class);
++    }
++    /**
+      * Our custom method
+      *
+      * @return Post[]
+@@ -14,7 +22,7 @@
+      */
+     public function findPostsByAuthor(int $authorId): array
+     {
+-        return $this-&gt;findBy([
++        return $this-&gt;repository-&gt;findBy([
+             'author' =&gt; $authorId
+         ]);
+     }</code></pre>
+<p>Are all looking good? Run it:</p>
+<pre><code class="language-bash">vendor/bin/rector process /app</code></pre>
+<h3 id="safety-first">Safety First</h3>
+<p>When the Rector finishes, be sure to check your code. While it can manage 80 % of cases for you, it's not perfect. I love to use <code>git diff</code> and <em>PgDown</em> - the best use case for this key I know.</p>
+<p>Ready? Add, commit, send an invoice for big refactoring and enjoy your coffee :)</p>
+<h2 id="clean-code-done-but-what-about-beautiful">Clean Code... Done, but What About Beautiful?</h2>
+<p>You've probably noticed that code itself is not looking too good. Rector's jobs is not to clean, but to change the code. It's not a hipster designer, but rather a thermonuclear engineer. <strong>That's why there are coding standards. You can apply your own or if not good enough use Rector's prepared set</strong>:</p>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev
+vendor/bin/ecs --config vendor/rector/rector/ecs-after-rector.php --fix</code></pre>
+<p>And your code is now both <strong>refactored and clean</strong>. That's it!</p>
+<p><br><br></p>
+<p>Happy instant refactoring!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/03/29/new-in-coding-standard-4-long-line-breaks-automated-and-3-legacy-prevention-fixers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    New in Coding Standard 4: Long Line Breaks Automated and 3 Legacy Prevention Fixers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-04-02-rectify-turn-repositories-to-services-in-symfony.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds" />
+    <meta property="og:description" content="Today I start new series called *Rectify*. It will be about **instant refactoring** to better code not manually, but with Rector.
+
+That way there is no excuse left to change your legacy application to clean code you&#039;ll love to extend.
+
+We&#039;ll start with very popular post - [Repository with Doctrine as Service in Symfony](/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/).
+" />
+    <meta property="og:url" content="/blog/2018/04/02/rectify-turn-repositories-to-services-in-symfony" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Rectify: Turn All Doctrine Repositories From Inheritance To Composition in Seconds" />
+    <meta name="twitter:description" content="Today I start new series called *Rectify*. It will be about **instant refactoring** to better code not manually, but with Rector.
+
+That way there is no excuse left to change your legacy application to clean code you&#039;ll love to extend.
+
+We&#039;ll start with very popular post - [Repository with Doctrine as Service in Symfony](/blog/2017/10/16/how-to-use-repository-with-doctrine-as-service-in-symfony/).
+" />

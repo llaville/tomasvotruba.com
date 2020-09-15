@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Manage Configuration in Symfony without Bundle, Extension, and Configuration? | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 163 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Manage Configuration in Symfony without Bundle, Extension, and Configuration?</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>6 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-11-Thu">
+            
+                            Thu, Nov 29, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/11/29/how-to-manage-configuration-in-symfony-without-bundle-extension-and-configuraiton/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-29-how-to-manage-configuration-in-symfony-without-bundle-extension-and-configuraiton.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Symfony Flex is moving towards of bundle-less applications. That doesn't mean you should create a monolith code in <code>/src</code> as fast as possible, but rather control everything via <code>.yaml</code> and <code>.env</code> files. It's takes <a href="/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#refactor-service-config-in-5-steps">few steps</a> to <strong>remove extension and move to import</strong> of <code>services.yaml</code>.
+<br>
+<br>
+But how would you approach a simple task <strong>as <em>setup an account number</em> parameter</strong>?</p>
+                    </div>
+                </div>
+
+                <p>If you hear about the <strong>trend of &quot;no-bundle&quot; application</strong> for the first time, is very nicely summarized in 10 points in <a href="https://symfonycasts.com/blog/AppBundle">SymfonyCasts</a>. Go check it, I'll wait here.</p>
+<img src="/assets/images/posts/2018/bundle-less/bundle-less.png" class="img-thumbnail" style="max-width:400px">
+<h2 id="1-how-this-affected-service-registration">1. How this Affected Service Registration?</h2>
+<p>Before you need 3 classes to get services to the application:</p>
+<pre><code class="language-bash">/app
+    AppKernel.php
+/packages
+    /accountant
+        /src
+            /DependencyInjection
+                AccountantExtension.php
+            AccountantBundle.php
+        /config
+            services.yaml</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App;
+
+use Project\Accountant\AccountantBundle;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+
+final class AppKernel extends Kernel
+{
+    /**
+     * @return BundleInterface[]
+     */
+    public function registerBundles(): array
+    {
+        return [new AccountantBundle];
+    }
+
+    // ...
+}</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant;
+
+use Project\Accountant\DependencyInjection\AccountantExtension;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+final class AccountantBundle extends Bundle
+{
+ public function getContainerExtension()
+    {
+        return new AccountantExtension();
+    }
+}</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant\DependencyInjection;
+
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Config\FileLocator;
+
+final class AccountantExtension extends Extension
+{
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config'));
+        $loader-&gt;load('services.yaml');
+    }
+}</code></pre>
+<pre><code class="language-yaml"># packages/accountant/config/services.yaml
+services:
+    Project\Accountant\:
+        resource: "../src"</code></pre>
+<p>Now we can drop all of the PHP <a href="https://matthiasnoback.nl/2013/10/symfony2-some-things-i-dont-like-about-bundles">magic code</a> down:</p>
+<pre><code class="language-diff"> /app
+     AppKernel.php
+ /packages
+     /accountant
+         /src
+-            /DependencyInjection
+-                AccountantExtension.php
+-            AccountantBundle.php
+         /config
+             services.yaml</code></pre>
+<p>...and load services in local config:</p>
+<pre><code class="language-yaml"># app/config.yaml
+imports:
+   - { resource: "packages/accountant/config/services.yaml" }</code></pre>
+<p>Or we can set this up just once for all <a href="/blog/2017/12/25/composer-local-packages-for-dummies/">local packages</a> with <a href="https://symfony.com/blog/new-in-symfony-3-3-import-config-files-with-glob-patterns">glob</a>:</p>
+<pre><code class="language-yaml"># app/config.yaml
+imports:
+   - { resource: "packages/*/config/services.yaml" }</code></pre>
+<p><strong>We deleted all PHP files and add 2 lines to config</strong> - that's what a good trade, right? Much less code can go wrong and the result is easy to read even for a programmer who was just hired today.</p>
+<p><br></p>
+<p>I think most of you already know this configuration shift and use it for months, right? Now the harder part, that many people still struggle with.</p>
+<h2 id="2-how-this-affected-configuration">2. How this Affected Configuration?</h2>
+<p>In the &quot;accountant&quot; package we have a service that sends money... no ordinary money, Bitcoins! And we need to <strong>set an account number parameter</strong> to it:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant;
+
+final class BitcoinSender
+{
+    /**
+     * @param string
+     */
+    private $accountNumber;
+
+    public function __construct(string $accountNumber)
+    {
+        $this-&gt;accountNumber = $accountNumber;
+    }
+
+    public function donateTo(float $amount, string $targetAccountNumber)
+    {
+        // move $amount
+        // from $this-&gt;accountNumber
+        // to $targetAccountNumber
+    }
+}</code></pre>
+<p>The configuration of <code>$accountNumber</code> value in <a href="https://stovepipe.systems/post/creating-bundle-configuration"><em>bundle-school</em> paradigm</a> looks like this:</p>
+<pre><code class="language-diff"> # packages/accountant/config/services.yaml
++accountant:
++     account_number: "123_secret_hash"
++
+ services:
+     Project\Accountant\:
+         resource: "../src"</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant;
+
+use Project\Accountant\DependencyInjection\AccountantExtension;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+final class AccountantBundle extends Bundle
+{
+    public function getContainerExtension()
+    {
+        return new AccountantExtension();
+    }
+}</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant\DependencyInjection;
+
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
+
+final class AccountantExtension extends Extension
+{
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $configuration = new AccountantConfiguration();
+        $config = $this-&gt;processConfiguration($configuration, $configs);
+
+        // for bitcoin sender
+        $container-&gt;getDefinition('Project\Accountant\BitcoinSender')
+            -&gt;setArgument('accountNumber', $config['account_number']);
+
+        // for further use (optional)
+        // $container-&gt;setParameter('account_number', $config['account_number']);
+    }
+}</code></pre>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Project\Accountant\DependencyInjection;
+
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
+final class AccountantConfiguration implements ConfigurationInterface
+{
+    public function getConfigTreeBuilder(): TreeBuilder
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder-&gt;root('accountant');
+        $rootNode
+            -&gt;children()
+                -&gt;scalarNode('account_number')
+                -&gt;end()
+            -&gt;end();
+
+        return $treeBuilder;
+    }
+}</code></pre>
+<p>All this fuss just to <strong>load single parameter</strong>? Not anymore:</p>
+<pre><code class="language-diff"> /app
+     AppKernel.php
+ /packages
+     /accountant
+         /src
+-            /DependencyInjection
+-                AccountantExtension.php
+-                AccountantConfiguration.php
+-            AccountantBundle.php
+         /config
+             services.yaml</code></pre>
+<p>All cleaned up. We run the app and...</p>
+<p><em>ERROR: &quot;$accountNumber&quot; argument was not set</em></p>
+<p>Damn! What now?</p>
+<h2 id="what-options-do-we-have">What Options do We Have?</h2>
+<h3 id="1-keep-the-extension">1. Keep the Extension</h3>
+<pre><code class="language-php">&lt;?php
+
+$container-&gt;getDefinition('Project\Accountant\BitcoinSender')
+    -&gt;setArgument('accountNumber', $config['account_number']);</code></pre>
+<p><em class="fas fa-lg fa-times text-danger"></em></p>
+<p>We want to get rid of this code, not to maintain it.</p>
+<h3 id="2-set-parameter-manually-in-the-config">2. Set Parameter Manually in the Config</h3>
+<pre><code class="language-diff"> # packages/accountant/config/services.yaml
+-accountant:
++parameters:
+     account_number: "123_secret_hash"
+
+ services:
+     Project\Accountant\:
+         resource: "../src"
+
++    Project\Accountant\BitcoinSender:
++        arguments:
++            $accountNumber: "%account_number%"</code></pre>
+<p>We want config to use PSR-4 autodiscovery to it's fullest potential, not go back to manual service definitions.</p>
+<h3 id="3-bind-the-parameter">3. Bind the parameter</h3>
+<p>Good idea! Since <a href="https://symfony.com/blog/new-in-symfony-3-4-local-service-binding">Symfony 3.4</a> we can do this:</p>
+<pre><code class="language-diff"> # packages/accountant/config/services.yaml
+-accountant:
++parameters:
+     account_number: "123_secret_hash"
+
+ services:
++    _defaults:
++        bind:
++            $accountNumber: "%account_number%"
++
+     Project\Accountant\:
+         resource: "../src"</code></pre>
+<p><em class="fas fa-lg fa-check text-success"></em></p>
+<h3 id="4-autowire-the-parameter">4. Autowire the Parameter</h3>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App;
+
+use Symplify\PackageBuilder\DependencyInjection\CompilerPass\AutowireArrayParameterCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Kernel;
+
+final class AppKernel extends Kernel
+{
+    protected function build(ContainerBuilder $container): void
+    {
+        $container-&gt;addCompilerPass(new AutowireArrayParameterCompilerPass());
+    }
+}</code></pre>
+<p>You set up this only once, but then you can enjoy short and clear configs:</p>
+<pre><code class="language-diff"> # packages/accountant/config/services.yaml
+-accountant:
++parameters:
+     account_number: "123_secret_hash"
+
+ services:
+     Project\Accountant\:
+         resource: "../src"</code></pre>
+<p><em class="fas fa-lg fa-check text-success"></em></p>
+<p>This compiler autowires parameters by convention:</p>
+<ul>
+<li><code>%parameter_name%</code> =&gt; <code>$parameterName</code></li>
+</ul>
+<p>You can <a href="/blog/2018/11/05/do-you-autowire-services-in-symfony-you-can-autowire-parameters-too/">read more about it here</a>.</p>
+<h2 id="final-results">Final Results</h2>
+<p>So how does our bundle-less application looks like in the end?</p>
+<ul>
+<li>we got rid of the <code>Configuration</code> class - no more tree fluent builds for a bunch of parameters</li>
+<li>we got rid of the <code>Extension</code> class - no more relative paths</li>
+<li>we got rid of the <code>Bundle</code> class - no more <code>createExtension()</code>, <code>getExtension()</code> typos</li>
+<li>we gain parameter binding/autowiring</li>
+</ul>
+<p><strong>We work with configs that clearly state all we parameters and services we use</strong>. Explicit, clear, in one place.</p>
+<p><br></p>
+<p>How do you approach parameter for your packages (previously bundles) in Symfony 4 applications?</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/11/26/14-tips-to-write-php-code-that-is-hard-to-maintain-and-upgrade" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    14 Tips to Write PHP Code that is Hard to Maintain and Upgrade
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-29-how-to-manage-configuration-in-symfony-without-bundle-extension-and-configuraiton.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Manage Configuration in Symfony without Bundle, Extension, and Configuration?" />
+    <meta property="og:description" content="Symfony Flex is moving towards of bundle-less applications. That doesn&#039;t mean you should create a monolith code in `/src` as fast as possible, but rather control everything via `.yaml` and `.env` files. It&#039;s takes [few steps](/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#refactor-service-config-in-5-steps) to **remove extension and move to import** of `services.yaml`.
+
+
+But how would you approach a simple task **as *setup an account number* parameter**?
+" />
+    <meta property="og:url" content="/blog/2018/11/29/how-to-manage-configuration-in-symfony-without-bundle-extension-and-configuraiton" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Manage Configuration in Symfony without Bundle, Extension, and Configuration?" />
+    <meta name="twitter:description" content="Symfony Flex is moving towards of bundle-less applications. That doesn&#039;t mean you should create a monolith code in `/src` as fast as possible, but rather control everything via `.yaml` and `.env` files. It&#039;s takes [few steps](/blog/2017/05/07/how-to-refactor-to-new-dependency-injection-features-in-symfony-3-3/#refactor-service-config-in-5-steps) to **remove extension and move to import** of `services.yaml`.
+
+
+But how would you approach a simple task **as *setup an account number* parameter**?
+" />

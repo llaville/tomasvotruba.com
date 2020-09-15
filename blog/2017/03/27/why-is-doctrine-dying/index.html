@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why Is Doctrine Dying | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 35 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why Is Doctrine Dying</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-03-Mon">
+            
+                            Mon, Mar 27, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/03/27/why-is-doctrine-dying/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-03-27-why-is-doctrine-dying.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at July 2018</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>Doctrine came through <strong>many great and healthy changes during last ~18 months</strong>, so this statement is no longer true.</p>
+<p>See <a href="/blog/2018/07/09/6-reasons-why-doctrine-is-alive-and-kicking/">Doctrine is Alive and Kicking post for more</a>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you use Doctrine ORM? If so, do you follow its evolution on Github? Symfony is evolving, Laravel is evolving, Nette is evolving, the world is evolving... Doctrine not. Today I will show you 3 reasons why.</p>
+                    </div>
+                </div>
+
+                <p>I've been thinking over 2 years about this post. I wasn't sure if it's only a negative hype feeling or the real thing. It's still the same so it's time to write about it.</p>
+<h2 id="doctrine-is-awesome-tool">Doctrine is Awesome Tool</h2>
+<p>To be clear, I have been using Doctrine for many years and it is <strong>the best ORM there is</strong>. Of course there is <a href="http://propelorm.org">Propel ORM</a> and <a href="https://laravel.com/docs/eloquent">Eloquent</a> from Laravel,
+<strong>but they use active record</strong>.</p>
+<p>I'm not an expert in databases, so active record might be actually a useful pattern, even architectonically, but I don't favor it now.</p>
+<h2 id="doctrine-is-stuck-in-its-legacy-unable-to-evolve">Doctrine is stuck in its Legacy, Unable to Evolve</h2>
+<p>But the main I see is that Doctrine is not evolving. Last useful feature was the <strong><a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/second-level-cache.html">2nd Level cache</a></strong> in <code>doctrine/orm</code> <a href="https://github.com/doctrine/doctrine2/releases/tag/v2.5.0">released in 2015</a>. In meaning not a few-person feature, but a feature, that can influence most of the applications.</p>
+<p>Would you be still using Symfony if the last feature was released 2 years ago? <strong>No, you would probably go for Laravel</strong>, Yii2, CakePHP, Nette or <strong>any other framework to see, if it works better for you</strong>. Because we programmers evolve and we need to do the same work in less time and work.</p>
+<h3 id="who-caused-this">Who Caused This?</h3>
+<p><strong>This has nothing to do with code quality, number of active maintainers or too few people contributing.</strong> Although all have a great part in an open-source life cycle.</p>
+<p>To put you in my seat, I've maintained many own and foreign packages. They had difficulty to stay alive with the same amount of energy invested. Does that sound like legacy code to you? Yep!</p>
+<p><strong>I see this is rather a system setup.</strong> Like any other system, it can lead both ways - slow down, or speed up. Depends on the vector you prepare.</p>
+<h3 id="donate-your-liver-for-free">Donate Your Liver, For Free</h3>
+<p>To demonstrate an example of how a system can go both ways, I will show you something nice to do when you die.</p>
+<p>Do you need your liver when you die? Somebody else might does, but it depends on your country's default law system, what will happen to it.</p>
+<ul>
+<li>In some countries, you can save a person by default.</li>
+<li>In some countries, you are just dead.</li>
+</ul>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/dying-doctrine/organ-donation.jpg" class="img-thumbnail"></div>
+<p>Of course, you can write an extra card saying &quot;Take my organs when I die&quot;, but who will actually do it?</p>
+<h2 id="things-that-might-save-doctrine">Things That Might Save Doctrine</h2>
+<p>Where is death, there is life. I believe Doctrine or any slowly dying project can be saved - by just a system setup.</p>
+<h3 id="1-create-a-competition">1. Create a Competition</h3>
+<p>&quot;Where you are the best, there is no one to learn from, so you stop.&quot;</p>
+<p>If Symfony would be the only framework, there would be no other choice, everyone would be using it. And Symfony would have no motivation to be better (better than who?).</p>
+<p>I think Fabien was aware of that, so he wrote a series <a href="http://fabien.potencier.org/create-your-own-framework-on-top-of-the-symfony2-components-part-1.html">Create your own framework... on top of the Symfony2 Components</a> in 2012, which promoted using only components of Symfony to create an own framework. So <a href="https://laravel.com">Laravel</a> was made on top of Symfony components.</p>
+<p><strong>Now these 2 frameworks are pushing industry standard like never before</strong>. Awesome to watch!</p>
+<p>There is no more powerful motivation than competition. Moreover in man's worlds. Missing one? Create one!</p>
+<h3 id="2-using-monolithic-repository">2. Using Monolithic Repository</h3>
+<p>I see Symfony, Laravel and many huge projects <a href="/blog/2017/01/31/how-monolithic-repository-in-open-source-saved-my-laziness/">using this pattern</a> and I am profiting a lot from it. After ~8 years in open-source, I've tried too (don't judge, just try for yourself) and it's the best! Trust me.</p>
+<p><strong>Having Doctrine (or any other project) split in over 20 repositories requires a lot of work</strong>.</p>
+<p>Now each repository:</p>
+<ul>
+<li>has own coding standard (if any)</li>
+<li>is tested on different database versions</li>
+<li>relies on the hope that new change won't break other 19 packages</li>
+<li>has different maintainer signature and standards</li>
+</ul>
+<p>That's how you spend more work on maintenance than on feature very easily.</p>
+<h3 id="3-using-dependency-injection-by-default">3. Using Dependency Injection by Default</h3>
+<p>The last thing that might turn it to the right direction is Dependency Injection via Constructor, also called autowiring.
+In many projects I see, while consulting big companies, this pattern <strong>would save them from 20-30 % complexity they have now</strong> (when used properly). Just by using it from the start.</p>
+<p>1,5 year ago, I sent a pull-request for a simple thing - <a href="https://github.com/doctrine/doctrine2/pull/1453">having modular filters</a>. It is actually just a single-service constructor injection implementation. Huge problem to integrate. And there is a lot more static code like <code>new SomeService</code> that could be easily resolved with this.</p>
+<h2 id="that-s-why-i-m-dropping-my-doctrine-packages">That's Why I'm Dropping My Doctrine Packages</h2>
+<p>I miss an evolution with Doctrine. When some packages are stuck for 2-3 years in one place, there is probably already a better replacement. Either on Packagist or in your mind.</p>
+<p>As <a href="/mission">I mentor and coach teams</a> to write better code with less work, <strong>I'd go against my own beliefs by putting a vendor lock-in their applications.</strong></p>
+<p>That's why I'm dropping support for my Zenify packages built for Doctrine.</p>
+<h3 id="what-repositories-are-this-concerned">What Repositories are This Concerned?</h3>
+<ul>
+<li><a href="https://github.com/Zenify/DoctrineFixtures">Zenify/DoctrineFixtures</a> - use <a href="https://github.com/nettrine/fixtures">nettrine/fixtures</a> or <a href="https://github.com/nelmio/alice">Nelmio/Alice</a> instead</li>
+<li><a href="https://github.com/Zenify/DoctrineBehaviors">Zenify/DoctrineBehaviors</a></li>
+<li><a href="https://github.com/Zenify/DoctrineExtensionsTree">Zenify/DoctrineExtensionsTree</a> - use <a href="https://github.com/nettrine/extensions">nettrine/extensions</a> instead</li>
+<li><a href="https://github.com/Zenify/DoctrineMigrations">Zenify/DoctrineMigrations</a> - use <a href="https://github.com/robmorgan/phinx">phinx</a> or <a href="https://github.com/nettrine/migrations">nettrine/migrations</a> instead</li>
+</ul>
+<h2 id="what-about-your-project">What about Your Project?</h2>
+<p>When you take a step back, you realize, all this can happen to your project too.
+I recommend taking some time to reflect, where your project goes and what is the reason - you, company or project's system?</p>
+<h2 id="let-me-know-your-opinion">Let me Know Your Opinion</h2>
+<p>What do you think? Do you see prosperity? Or alternatives like <a href="https://github.com/nextras/orm">NextrasORM</a> or <a href="https://github.com/atlasphp/Atlas.Orm">Atlas ORM</a>? Or even different pattern than ORM?
+Let me know. My knowledge is very limited and I'd be happy to learn something new. Thank you!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-03-27-why-is-doctrine-dying.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why Is Doctrine Dying" />
+    <meta property="og:description" content="Do you use Doctrine ORM? If so, do you follow its evolution on Github? Symfony is evolving, Laravel is evolving, Nette is evolving, the world is evolving... Doctrine not. Today I will show you 3 reasons why.
+" />
+    <meta property="og:url" content="/blog/2017/03/27/why-is-doctrine-dying" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why Is Doctrine Dying" />
+    <meta name="twitter:description" content="Do you use Doctrine ORM? If so, do you follow its evolution on Github? Symfony is evolving, Laravel is evolving, Nette is evolving, the world is evolving... Doctrine not. Today I will show you 3 reasons why.
+" />

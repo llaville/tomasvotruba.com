@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Shopsys, Spryker &amp; Sylius under Static Analysis | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 52 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Shopsys, Spryker & Sylius under Static Analysis</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-08-Mon">
+            
+                            Mon, Aug 28, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/08/28/shopsys-spriker-and-sylius-under-static-analysis/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-08-28-shopsys-spriker-and-sylius-under-static-analysis.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at December 2018</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>All 3 projects changed completely during last year, so <strong>these numbers are way outdated</strong>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>When you're building a new web project based on open-source, you'll pick a package you know, have good experience with or try a new one that might be even better.</p>
+<p>Lines of code, cyclomatic complexity, method count per class, length of method, number of interfaces relative to classes - these all can be just a superficial number or a <strong>quick measure how well is the project built</strong>.</p>
+                    </div>
+                </div>
+
+                <p><br></p>
+<blockquote class="blockquote text-center">
+ "Never trust any statistics that you didn't forge yourself."
+ <footer class="blockquote-footer">Nazi propaganda about Winston Churchill</footer></blockquote>
+<p><br></p>
+<h2 id="understanding-statistics">Understanding Statistics</h2>
+<p>I never trust posts with statistics without any data to re-run the results on or with such a complicated methodology that discourages me to try anything and rather trust the source.</p>
+<p>Therefore, I wanted to make this post different. To have you in control, not the hype.</p>
+<h3 id="try-it-yourself">Try It Yourself</h3>
+<p>I've put all the used data and methodology in an open-source way in a <a href="https://github.com/TomasVotruba/shopsys-spryker-and-sylius-analysis">Github repository</a>, where <strong>you can install it and re-run on your own</strong>. You'll need to <a href="https://www.shopsys.com/#contact">ask for a access to open-beta of Shopsys Framework</a> - that's the one extra step. I will update both this post and repository after Shopsys Framework is open-source in late 2017.</p>
+<h3 id="no-black-and-white">No Black and White</h3>
+<p>The aim of posts like these is usually just to put together arguments supporting author's opinion, so they are pretty useless for you if you disagree with the author.</p>
+<p>To be clear, I work with Shopsys as an open-source consultant. I try to be as strict and honest with them as possible in order to make the product better. And this article is another example of if.</p>
+<p>There is no winner and no loser, as you'll see. <strong>Let's dive into the numbers now</strong>.
+From over 50 various metrics, I've picked 4 of them. After reading them, you'll have a bit better picture of the code quality of these projects.</p>
+<p><br></p>
+<p>We are going to analyze 3 e-commerce projects build on Symfony components:</p>
+<p><br></p>
+<div class="col-6 mb-3">
+    <a href="https://www.shopsys.com/">
+        <img src="/assets/images/posts/2017/shopsys-static-anal/shopsys.png"></a>
+</div>
+<div class="col-5">
+    <a href="http://sylius.org/">
+        <img src="/assets/images/posts/2017/shopsys-static-anal/sylius.png"></a>
+</div>
+<div class="col-5">
+    <a href="https://spryker.com/">
+        <img src="/assets/images/posts/2017/shopsys-static-anal/spryker.png"></a>
+</div>
+<h2 id="1-lines-of-code">1. Lines of code</h2>
+<p>Smaller projects are easier to understand, especially when you want to send a PR and need to understand their architecture.</p>
+<h3 id="lines-of-code">Lines of code</h3>
+<ul>
+<li>Shopsys: <strong>94 590</strong></li>
+<li>Sylius: <strong>109 111</strong></li>
+<li>Spryker: <strong>368 245</strong></li>
+</ul>
+<p><a href="https://github.com/TomasVotruba/shopsys-spryker-and-sylius-analysis/blob/89ff354b5298ba831c9124039f217dd0c5687e3d/src/Finder/PhpFilesFinder.php#L27-L31">Tests excluded</a>.</p>
+<h2 id="2-duplicated-code">2. Duplicated Code</h2>
+<p>Duplicated code can be a sign of coupled code and flaws in reusability.
+<strong>Sylius has 0,24 % duplicated lines</strong>, Shopsys 0,67 % and lastly <strong>Spryker with 1,20 %</strong>.</p>
+<h2 id="3-cyclomatic-complexity">3. Cyclomatic Complexity</h2>
+<p>Cyclomatic Complexity is something like a train path with switches.</p>
+<p><strong>The number of paths you can take in the method.</strong></p>
+<p><strong>A.</strong> This is what we desire for in our code:</p>
+<div>
+    <img src="/assets/images/posts/2017/shopsys-static-anal/split-2.png" class="img-thumbnail"></div>
+<p><strong>B.</strong> And this what we often end-up with:</p>
+<div>
+    <img src="/assets/images/posts/2017/shopsys-static-anal/split-m.png" class="img-thumbnail"></div>
+<p>Which one would you pick if you'd be a programmer, in a method you never saw?</p>
+<p>Cyclomatic complexity in PHP code would, <strong>for the example B</strong>, look like this:</p>
+<pre><code class="language-php">final class ProductController extends Controller
+{
+    public function renderDetail(Request $request)
+    {
+        $id = $request-&gt;get('id'); # 1
+        if ($id === null) { # 2
+            throw new ProductIdMissingException('Id is required for product detail'.);
+        }
+
+        $product = $this-&gt;productRepository-&gt;get($id);
+        if ($product === null) { # 3
+            throw new ProductNotFoundException(sprintf('Product with id %d was not found.', $id);
+        }
+
+        if (! $product-&gt;isAvailable) { # 4
+            $this-&gt;redirect('sold-out');
+        }
+
+        if ($this-&gt;isOnMobile()) { # 5
+            foreach ($product-&gt;getImages() as $image) { # 6
+                $image-&gt;resizeToMobile();
+            }
+        }
+
+        $this-&gt;render('detail', [
+            'product' =&gt; $product;
+        ]);
+    }
+}</code></pre>
+<p>...<strong>6 in total</strong>.</p>
+<p>And for <strong>the example A</strong> like this:</p>
+<pre><code class="language-php">final class ProductController extends Controller
+{
+    public function renderDetail(Product $product)
+    {
+        $this-&gt;ensureIsAvailable($product); # 1
+        $this-&gt;prepareForMobile($product);
+
+        $this-&gt;render('detail', [
+            'product' =&gt; $product;
+        ]);
+    }
+}</code></pre>
+<p>...with <strong>just 1</strong>.</p>
+<p>This metric can give you a decent overview of hot spots that might need refactoring.
+<strong>When looking at this score, the lower the number the better</strong>. This applies to areas as readability, maintainability and testability.</p>
+<p><strong>Consider writing a unit test and having a function with a cyclomatic complexity of 12</strong>. This means that, <strong>if you want 100% code coverage</strong>, you need to test every of these 12 paths and end up in pretty messy tests.</p>
+<p>The results are:</p>
+<p><em>Shopsys</em></p>
+<ul>
+<li>Complexity / Class: <strong>2.89</strong></li>
+<li>Complexity / Method: <strong>1.53</strong></li>
+</ul>
+<p><em>Sylius</em></p>
+<ul>
+<li>Complexity / Class: <strong>2.52</strong></li>
+<li>Complexity / Method: <strong>1.52</strong></li>
+</ul>
+<p><em>Spryker</em></p>
+<ul>
+<li>Complexity / Class: <strong>2.46</strong></li>
+<li>Complexity / Method: <strong>1.46</strong></li>
+</ul>
+<p><br></p>
+<h3 id="extreme-is-never-good">Extreme Is Never Good</h3>
+<p>However, having the <strong>cyclomatic complexity = 1 in combination with low co-location</strong> could lead to issues like <a href="https://news.ycombinator.com/item?id=13364649"><em>ehnto</em> describes</a>:</p>
+<p><em>&quot;What you want is never nearby, and thanks to the Facade system used for service location it also isn't always clear which class is actually being used without digging through some configuration files...</em></p>
+<p><em>This leaves you digging through dozens of tiny files, some barely longer than the class definition itself, just to find even high level logic. I normally learn frameworks by simply reading the code, but I can't help but feel fatigued when having to try and find where a line of logic actually lives in Laravel. It is almost always a journey.&quot;</em></p>
+<p>You can <a href="https://medium.com/@taylorotwell/measuring-code-complexity-64356da605f9">read similar comparison of Code Complexity in Symfony and Laravel</a> by Taylor Otwell. <a href="https://blog.sonarsource.com/discussing-cyclomatic-complexity">Maintainer vs. contributor view on Cyclomatic Complexity</a> is briefly described on SonarCube.</p>
+<h2 id="4-it-s-all-about-methods">4. It's All About Methods</h2>
+<p>Last metrics focuses on the most used parts of the code - methods. Even if a project is small, long and complex methods can make it very difficult to use. On the other hand: <strong>huge projects with lines of clean and narrow methods can be fun and easy to work with</strong>.</p>
+<p>Let's look at the metrics of methods:</p>
+<p><em>Shopsys</em></p>
+<ul>
+<li>Max. Method Length: <strong>261 lines</strong></li>
+<li>Max. Method Cyclomatic Complexity: <strong>12</strong></li>
+</ul>
+<p><em>Sylius</em></p>
+<ul>
+<li>Max. Method Length: <strong>26 lines</strong></li>
+<li>Max. Method Cyclomatic Complexity: <strong>22</strong></li>
+</ul>
+<p><em>Spryker</em></p>
+<ul>
+<li>Max. Method Length: <strong>117 lines</strong></li>
+<li>Max. Method Cyclomatic Complexity: <strong>64</strong></li>
+</ul>
+<p><br></p>
+<p>Finally, I have a question for you. Based just on these numbers and without personal preferences, <strong>which one of the three projects would you pick and why</strong>?</p>
+<h2 id="stay-tuned">Stay Tuned!</h2>
+<p>In the follow up post, we'll look at these projects under PHPStan and Easy Coding Standard with PSR2 rulesets.</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-08-28-shopsys-spriker-and-sylius-under-static-analysis.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Shopsys, Spryker &amp; Sylius under Static Analysis" />
+    <meta property="og:description" content="When you&#039;re building a new web project based on open-source, you&#039;ll pick a package you know, have good experience with or try a new one that might be even better.
+
+Lines of code, cyclomatic complexity, method count per class, length of method, number of interfaces relative to classes - these all can be just a superficial number or a quick measure how well is the project built.
+" />
+    <meta property="og:url" content="/blog/2017/08/28/shopsys-spriker-and-sylius-under-static-analysis" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Shopsys, Spryker &amp; Sylius under Static Analysis" />
+    <meta name="twitter:description" content="When you&#039;re building a new web project based on open-source, you&#039;ll pick a package you know, have good experience with or try a new one that might be even better.
+
+Lines of code, cyclomatic complexity, method count per class, length of method, number of interfaces relative to classes - these all can be just a superficial number or a quick measure how well is the project built.
+" />

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Do you use PHP_CodeSniffer and PHP CS Fixer PHPStorm Plugin? You are Slow and Expensive | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 215 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Do you use PHP_CodeSniffer and PHP&nbsp;CS&nbsp;Fixer PHPStorm Plugin? You&nbsp;are&nbsp;Slow and Expensive</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-06-Mon">
+            
+                            Mon, Jun 24, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/06/24/do-you-use-php-codesniffer-and-php-cs-fixer-phpstorm-plugin-you-are-slow-and-expensive/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-06-24-do-you-use-php-codesniffer-and-php-cs-fixer-phpstorm-plugin-you-are-slow-and-expensive.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>People keep asking me about IDE plugins <a href="https://www.reddit.com/r/phpstorm/comments/am1qzv/update_phpdoc_comment_action/efqpv8o">for Rector</a> and Easy Coding Standard.
+Do you want it too? Do you use one for PHP_CodeSniffer of PHP CS Fixer? Have you ever thought about the benefits and costs of them?</p>
+                    </div>
+                </div>
+
+                <h2 id="benefits-of-instant-feedback">Benefits of Instant Feedback</h2>
+<p>When you a PHPStorm plugin that tells you what to do, you have this extra information that you can follow:</p>
+<img src="/assets/images/posts/2019/plugin/plugin.png">
+<p>That's pretty cool, right? It will:</p>
+<ul>
+<li>save you running coding standard tool from command line later - forget <code>vendor/bin/ecs check src</code></li>
+<li>help you to write code according to standards of the project</li>
+<li>help you to write better code</li>
+<li><strong>you have the information at the moment you made the mistake</strong></li>
+</ul>
+<p>The last benefit is wired to our brains.</p>
+<h2 id="trap-of-instant-gratification">Trap of Instant Gratification</h2>
+<blockquote class="blockquote">
+    "Everybody is addicted to dopamine."
+</blockquote>
+<img src="/assets/images/posts/2019/plugin/porn.jpg" class="img-thumbnail">
+<p>Slack notification, Instagram likes, underline of <span class="text-underline">typoes</span> and suggestions in your IDE.<br>
+<strong>This all makes us happy by brain design</strong>.</p>
+<p><br></p>
+<p>Coding standard tools are in your IDE already, next are static analyzers and instant upgraders:</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2019/plugin/psalm.png"><br>
+    Live report on <a href="https://psalm.dev/">Psalm.dev</a>
+</div>
+<p><br></p>
+<p>Everyone writes about the benefits of these plugins, but <strong>how much do you pay for it</strong>?</p>
+<p>&quot;It's free!&quot;</p>
+<h2 id="attention-economy">Attention Economy</h2>
+<p>Well, it's not. If you've never heard about <em>dopamine - notification</em> effect, read <a href="http://www.calnewport.com/blog/2017/10/02/are-you-using-social-media-or-being-used-by-it">Are You Using Social Media or Being Used By It?</a> by <em>Cal Newport</em>. This amazing guy helped me to <a href="/blog/2017/01/20/4-emotional-reasons-why-I-quit-my-twitter/">quit Twitter</a> and <a href="/blog/2017/09/25/3-non-it-books-that-help-you-to-become-better-programmer/#deep-work-by-cal-newport">go deeper</a> in topics I really care about in my life.</p>
+<img src="/assets/images/posts/2019/plugin/addict.jpg">
+<p>Basically, notifications turn your beautiful and dynamic brain capable of high abstract thinking to the <strong>brain of a heroin addict with instant feedback overloop</strong>.</p>
+<p><br></p>
+<p>Let's get back to our code again.</p>
+<h3 id="what-happens-when-we-type-code-in-phpstorm-with-php-code-sniffer-plugin">What Happens When we Type Code in PHPStorm with PHP Code Sniffer plugin?</h3>
+<img src="/assets/images/posts/2019/plugin/plugin.png">
+<ul>
+<li>we see an underscored text</li>
+<li>we move our cursor above it (2 s)</li>
+<li>we read the message (2 s)</li>
+<li>we try to understand it (3 s)</li>
+<li>we try to figure out what needs to be done to make it disappear (5-15 s)</li>
+<li>we try it (2 s)</li>
+</ul>
+<p><strong>If we're lucky, it's gone</strong> under 15 seconds. If not, we get back to &quot;we try to understand it&quot; step.
+In time, we get better, faster and we create a small database of &quot;message → solution&quot; in our brains. In a few weeks, we learn how to write perfect code without any underscores.</p>
+<p>Then our team extends rule set with <a href="/blog/2018/04/09/try-psr-12-on-your-code-today/">PSR-12</a> and we have to upgrade our brain database. So we start to hate extending of coding standards and prefer less.</p>
+<h2 id="expensive-fun">Expensive Fun</h2>
+<p>Now the important question: do you know how expensive this is? If you have a boss who doesn't care about productivity and you can whatever you need without critical business thinking, <strong>stop reading</strong>, because you're primed to waste money by your work design.</p>
+<p><strong>But if you're freelancer, or you pay your programmers or you desire to be effective by lazy</strong>, I have a comparison for you:</p>
+<p>Without PHPStorm plugins, you have to run the tool manually in your command line <strong>once per git push</strong>:</p>
+<ul>
+<li>
+<p>open command line (2 s)</p>
+</li>
+<li>
+<p>run coding standard command (2 s)</p>
+</li>
+<li>
+<p><strong>4 seconds per push</strong> vs <strong>15 seconds per 1 error + persisted database in your brain</strong></p>
+</li>
+</ul>
+<p>What is cheaper in money and brain damage?</p>
+<p><strong>Pro-lazy tip:</strong> I'm too lazy to type more than 2-3 chars manually, so I use <a href="https://blog.martinhujer.cz/have-you-tried-composer-scripts">composer scripts</a> and 2-3 chars long bash script shortcuts:</p>
+<pre><code class="language-bash">cs
+# aliased to vendor/bin/ecs check app packages tests
+
+fs
+# aliased to: vendor/bin/ecs check app packages tests --fix</code></pre>
+<h2 id="benefits-of-deep-work-and-scaled-automation">Benefits of Deep Work and Scaled Automation</h2>
+<p><strong>Rule of the Thumb</strong>: If something requires your attention multiple times with same <em>A → B</em> operation, automate the change and delegate it.</p>
+<p>PHP_CodeSniffer can actually report what should be changed, without any clear suggestion of how to change it (read-only). But PHP CS Fixer fixes the code by default, so you don't even have to think about the change. So using PHP CS Fixer manually is a pure waste of life and money.</p>
+<p><br></p>
+<p>And this just a very limited example of 1 programmer and 1 project. Most companies have multiple programmers and projects. *The waste of time for 10-programmer teams having 20 projects escalates quickly:</p>
+<ul>
+<li>plugin way: 15 seconds per one error <em> 10 programmers </em> 20 projects * (let's be optimistic) 50 errors per pull-request...</li>
+<li>automated CI way: validate PR and click merge request - <strong>20-40 seconds per pull-request</strong></li>
+</ul>
+<p>In simple words: <em>exponential</em> costs vs <em>constant</em> costs</p>
+<h2 id="scale-to-whole-php-world">Scale to Whole PHP World</h2>
+<p>Now imagine all the PHP projects in the world. Which of those is faster?</p>
+<p>Does it ring a bell? Now think about the same way about instant upgrades or refactoring?</p>
+<p>If there will be Rector plugin for PHPStorm (I honestly hope it won't), <strong>you'd have to find every <a href="/blog/2019/04/15/pattern-refactoring/">new pattern</a> there is in your project, again manually and randomly in your PHP files</strong> and hit the &quot;refactor&quot; button.</p>
+<p>If you're effective, lazy and don't want to produce waste, you'll run:</p>
+<pre><code class="language-bash">vendor/bin/rector process src --set php74</code></pre>
+<p>And save millions of your brain cells :)</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/06/20/7-news-and-changes-in-symplify-6" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    7 News and Changes in Symplify 6
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-06-24-do-you-use-php-codesniffer-and-php-cs-fixer-phpstorm-plugin-you-are-slow-and-expensive.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Do you use PHP_CodeSniffer and PHP CS Fixer PHPStorm Plugin? You are Slow and Expensive" />
+    <meta property="og:description" content="People keep asking me about IDE plugins [for Rector](https://www.reddit.com/r/phpstorm/comments/am1qzv/update_phpdoc_comment_action/efqpv8o) and Easy Coding Standard.
+Do you want it too? Do you use one for PHP_CodeSniffer of PHP CS Fixer? Have you ever thought about the benefits and costs of them?
+" />
+    <meta property="og:url" content="/blog/2019/06/24/do-you-use-php-codesniffer-and-php-cs-fixer-phpstorm-plugin-you-are-slow-and-expensive" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Do you use PHP_CodeSniffer and PHP CS Fixer PHPStorm Plugin? You are Slow and Expensive" />
+    <meta name="twitter:description" content="People keep asking me about IDE plugins [for Rector](https://www.reddit.com/r/phpstorm/comments/am1qzv/update_phpdoc_comment_action/efqpv8o) and Easy Coding Standard.
+Do you want it too? Do you use one for PHP_CodeSniffer of PHP CS Fixer? Have you ever thought about the benefits and costs of them?
+" />

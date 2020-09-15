@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Box Symfony App to PHAR without Killing Yourself | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 228 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Box Symfony App to PHAR without Killing Yourself</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-12-Mon">
+            
+                            Mon, Dec 2, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/12/02/how-to-box-symfony-app-to-phar-without-killing-yourself/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-02-how-to-box-symfony-app-to-phar-without-killing-yourself.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you have a Symfony Application like Composer and you want to ship it as a PHAR?
+Composer is actually pretty simple - just see the <a href="https://github.com/composer/composer/blob/master/src/Composer/Compiler.php"><code>Compiler</code></a> class.
+<br><br>
+<strong>But what if</strong> you use Symfony Dependency Injection with PSR-4 <strong>autodiscovery</strong> like <a href="https://github.com/rectorphp/rector">Rector</a> does? Well, better be ready for <strong>nasty traps</strong>.</p>
+                    </div>
+                </div>
+
+                <p><em>Note: all these tips take 5 minutes to apply (in total), but took us ~6 hours to discover. I'd like to thank Jan Linhart from Mautic, Kerrial Becket Newham and Ivan Kvasnica for cooperation that made <a href="https://github.com/rectorphp/rector/pull/2373">this happen</a>.</em></p>
+<p>Rector <a href="https://github.com/rectorphp/rector/issues/177">needs prefixed PHAR</a> for the same reasons PHPStan does.</p>
+<p>Let's say your <code>composer.json</code> looks like this:</p>
+<pre><code class="language-json">{
+    "require": {
+        "symfony/console": "2.8"
+    }
+}</code></pre>
+<p>If you want to install Rector:</p>
+<pre><code class="language-bash">composer require rector/rector --dev</code></pre>
+<p>You'll end up with an error:</p>
+<pre><code class="language-bash">rector/rector cannot be installed, because it requires symfony/* ^3.4|^4.4... but you have 2.8</code></pre>
+<p>This leads to many issues reported on Github, mostly <a href="https://github.com/rectorphp/rector/issues/177">grouped around this one</a>.</p>
+<h2 id="php-version-conflicts">PHP Version Conflicts</h2>
+<p>If you have PHP 5.6, you'll get a different error:</p>
+<pre><code class="language-bash">rector/rector needs at least PHP 7.2, you have PHP 5.6</code></pre>
+<p>That's where Docker becomes useful. Yet, it still <strong>doesn't solve the Symfony 2.8 in your project vs Symfony 4.4 in Rector project issue</strong>.</p>
+<p>That's why <strong>prefixed <code>rector.phar</code> is needed</strong>. With such a file, you don't care about Rector's dependencies, you just use it.</p>
+<h2 id="how-does-quot-scoping-quot-work">How Does &quot;Scoping&quot; Work?</h2>
+<p>Basically any <code>Symfony\Component\Console\Command</code> becomes <code>UniquePrefix\Symfony\Component\Console\Command</code>. That way there will never be conflicts between your code without prefix and unique Rector code.</p>
+<h2 id="box-scope-industry-standard">Box + Scope Industry Standard</h2>
+<p>To make it happen, we <strong>don't need to re-invent the wheel</strong>. There are 2 amazing tools maintained and developed by <a href="https://github.com/theofidry">Théo Fidry</a> (thank you!):</p>
+<ul>
+<li><a href="https://github.com/humbug/box">box</a> - a tool that creates PHAR (~= PHP zip) from an input directory</li>
+<li><a href="https://github.com/humbug/php-scoper">php-scoper</a> - box <em>plugin</em> that adds namespace prefix to all the files</li>
+</ul>
+<p>It takes around 10 seconds to scope + wraps 5 000 files of Rector to <code>rector.phar</code>. <strong>This speed is amazing.</strong></p>
+<h3 id="nobody-ever-used-symfony-in-phar-before">Nobody Ever used Symfony in PHAR Before</h3>
+<p>These 2 tools work very well for PHP-based <em>manual</em> containers like PHPStan has. But fails for Symfony autodiscovery that uses globs. It's not the fault of these tools, but rather Symfony, because nobody ever tested it to compiled PHAR :).</p>
+<p><strong>Where and how to overcome it?</strong> There are 4 steps you need to watch out for:</p>
+<h2 id="1-from-code-excluded-code-files-to-globs">1. From <code>excluded</code> files to Globs</h2>
+<p>If you have following config:</p>
+<pre><code class="language-yaml">services:
+    Rector\TypeDeclaration\:
+        resource: '../src'
+        exclude:
+            - '../src/ValueObject/SpecificFile.php'</code></pre>
+<p>You'll end up with an error:</p>
+<pre><code class="language-bash">Directory "../src/ValueObject/SpecificFile.php" was not found.</code></pre>
+<p>Where does it come from? It's an error from <a href="https://github.com/symfony/symfony/blob/c62bb82e27974ef4e389da523f0de451b6632266/src/Symfony/Component/Finder/Finder.php#L589">Symfony/Finder</a>.</p>
+<p>But how did Symfony got there? Well, the Symfony takes missing files from <a href="https://github.com/symfony/symfony/blob/c62bb82e27974ef4e389da523f0de451b6632266/src/Symfony/Component/DependencyInjection/Loader/FileLoader.php#L162">&quot;excluded&quot; as directory</a> and the rest is history.</p>
+<p>My super random guess is for missing local <code>phar://</code> prefix.</p>
+<h3 id="how-to-fix-it">How to Fix it?</h3>
+<p>Just change the relative path to each file to glob (<code>*</code>) and move your files there:</p>
+<pre><code class="language-diff"> services:
+     Rector\TypeDeclaration\:
+         resource: '../src'
+         exclude:
+-          - '../src/ValueObject/SpecificFile.php'
++          - '../src/ValueObject/*'</code></pre>
+<h3 id="positive-side-effect">Positive Side-Effect</h3>
+<p>In the end, it was architecture improvement, as we had to move files to a generic directory, that clearly states it's not a service - here <code>ValueObject</code>.</p>
+<h2 id="2-symfony-autodiscovery-slash-fail">2. Symfony Autodiscovery Slash Fail</h2>
+<p>This one give me an headache, but is simple to fix:</p>
+<pre><code class="language-diff"> services:
+     Rector\TypeDeclaration\:
+-        resource: '../src/'
++        resource: '../src'</code></pre>
+<h2 id="3-sha1-cannot-be-verified">3. SHA1 cannot be Verified...</h2>
+<p>This one is not strictly related to Symfony, but it happened while we shipped <code>box.phar</code>:</p>
+<pre><code class="language-bash">Error: Fatal error: Uncaught PharException: phar "compiler/build/box.phar" SHA1
+the signature could not be verified: broken signature in ...</code></pre>
+<p>What the <code>box.phar</code> worked locally but doesn't work on Travis?</p>
+<p>I re-downloaded files many times and it worked in other CI. WTF?</p>
+<p>Is that corrupted version of <code>box.phar</code>? I tried version before/after, still the same error.</p>
+<p><br></p>
+<p>2 hours later...</p>
+<p><br></p>
+<p>Damn. Spaces? Line-ending? <strong>Yes!</strong></p>
+<p>The solution is to remove this from <code>.gitattributes</code>:</p>
+<pre><code class="language-diff">-# Set default behavior, in case of users, don't have core.autocrlf set.
+-* text=auto
+-* text eol=lf</code></pre>
+<p>Because <a href="https://stackoverflow.com/questions/24763948/git-warning-lf-will-be-replaced-by-crlf">it changed line-endings</a> in the <code>box.phar</code> on commit and thus made it valid locally, but broken remotely on Travis CI.</p>
+<h2 id="4-don-t-do-multiple-code-bin-code-files">4. Don't do Multiple <code>bin</code> Files</h2>
+<p>Rector had multiple bin files, just to split the complexity:</p>
+<ul>
+<li><code>bin/rector</code> that included
+<ul>
+<li><code>bin/autoload.php</code></li>
+<li><code>bin/container.php</code></li>
+</ul></li>
+</ul>
+<p>The Box takes only the file in <code>compser.json</code> &gt; <code>bin</code> section, so the latter 2 were missed. I tried to change configuration many times, but it mostly failed on malformed paths.</p>
+<h3 id="how-to-solve-it">How to solve it?</h3>
+<p>Now we have just <strong>single file</strong>:</p>
+<ul>
+<li><code>bin/rector</code></li>
+</ul>
+<p>With use strict typed classes written on the bottom of the file and use them in the same file. Also, nice side effects as we moved from many-functions to few classes.</p>
+<p><br></p>
+<p>Do you want to know more about Box + Scoper automated Travis CI deploy in practice?</p>
+<p><a href="https://github.com/rectorphp/rector/pull/2373" class="btn btn-dark mt-3 mb-3">
+<em class="fab fa-github fa-fw"></em>
+Check this PR on Rector
+</a></p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/11/25/the-single-best-skill-to-master-command-line" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    The Single Best Skill to Master Command Line
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-12-02-how-to-box-symfony-app-to-phar-without-killing-yourself.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Box Symfony App to PHAR without Killing Yourself" />
+    <meta property="og:description" content="Do you have a Symfony Application like Composer and you want to ship it as a PHAR?
+Composer is actually pretty simple - just see the [`Compiler`](https://github.com/composer/composer/blob/master/src/Composer/Compiler.php) class.
+
+**But what if** you use Symfony Dependency Injection with PSR-4 **autodiscovery** like [Rector](https://github.com/rectorphp/rector) does? Well, better be ready for **nasty traps**.
+" />
+    <meta property="og:url" content="/blog/2019/12/02/how-to-box-symfony-app-to-phar-without-killing-yourself" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Box Symfony App to PHAR without Killing Yourself" />
+    <meta name="twitter:description" content="Do you have a Symfony Application like Composer and you want to ship it as a PHAR?
+Composer is actually pretty simple - just see the [`Compiler`](https://github.com/composer/composer/blob/master/src/Composer/Compiler.php) class.
+
+**But what if** you use Symfony Dependency Injection with PSR-4 **autodiscovery** like [Rector](https://github.com/rectorphp/rector) does? Well, better be ready for **nasty traps**.
+" />

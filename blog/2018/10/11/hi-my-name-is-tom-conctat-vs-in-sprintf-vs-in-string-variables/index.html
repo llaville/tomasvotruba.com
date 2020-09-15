@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Hi, my name is Tom - Concat vs. Sprintf vs. In-String Variable | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 148 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Hi, my name is Tom - Concat vs. Sprintf vs. In-String Variable</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-10-Thu">
+            
+                            Thu, Oct 11, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/10/11/hi-my-name-is-tom-conctat-vs-in-sprintf-vs-in-string-variables/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-11-hi-my-name-is-tom-conctat-vs-in-sprintf-vs-in-string-variables.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>My recent post about <a href="/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/">lovely exceptions</a> opened very interesting question. <a href="/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/#comment-4100904216">In comments bellow the post</a>, <a href="https://www.reddit.com/r/PHP/comments/9hehv6/7_tips_to_write_exceptions_everyone_will_love/e6d3hic">in Reddit thread</a> and <a href="https://mobile.twitter.com/geekovo/status/1043185111309713408">on  Twitter</a>.
+<br>
+<br>
+A questions about <strong>connecting string with variables</strong>.
+You have 3 options. Each has its strong and weak points. How do you pick the right one?</p>
+                    </div>
+                </div>
+
+                <p>In how many ways you can register a service in Symfony or call a service method in Laravel?
+PHP and PHP frameworks are so free, that you often have 3+ ways to do one 1 thing. But that comes with a price.</p>
+<p><strong>The more approaches you use, the more has to the reader learn about rules of coding and the less space he or she has for real algorithms</strong>. You can be really cool by using marginal PHP features, but if nobody except you understands it, you only hurt your code.</p>
+<h2 id="how-to-pick-the-best-solution">How to Pick The Best Solution?</h2>
+<p>Instead of using what you already use (the most common non-sense argument for everything), try to imagine that <strong>your colleague is about to create a pull-request with PHP features you've never seen before</strong>.</p>
+<p>What should it be like?</p>
+<ul>
+<li><strong>easy to learn</strong></li>
+<li><strong>easy to maintain</strong> = changed by somebody else who might see it for the first time</li>
+<li><strong>hard to fuck up</strong></li>
+</ul>
+<p><br></p>
+<p>Let's try the simplest example possible:</p>
+<blockquote class="blockquote text-center">
+    "Hi, my name is Tom."
+</blockquote>
+<h2 id="1-easy-to-learn">1. Easy To Learn</h2>
+<pre><code class="language-php">&lt;?php
+
+$name = 'Tom';
+
+# 1. concat
+$message = 'Hi, my name is ' . $name;
+
+# 2. sprintf
+$message = sprintf('Hi, my name is %s', $name);
+
+# 3. in-string variable
+$message = 'Hi, my name is $name';</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-concat"><em class="fas fa-fw fa-check text-success fa-lg"></em> Concat</h3>
+<p>Just like a <code>+</code> for numbers, but for strings.</p>
+<h3 id="em-class-fas-fa-fw-fa-times-text-danger-fa-lg-em-sprintf"><em class="fas fa-fw fa-times text-danger fa-lg"></em> Sprintf</h3>
+<p>What the hell is <code>%s</code>? I'd have to read <a href="http://php.net/manual/en/function.sprintf.php">the manual</a>... <code>%s</code> for strings, <code>%d</code> for numbers.</p>
+<h3 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-in-string-variable"><em class="fas fa-fw fa-check text-success fa-lg"></em> In-String Variable</h3>
+<p>I guess I copy the variable inside the string.</p>
+<h2 id="2-easy-to-maintain">2. Easy To Maintain</h2>
+<p>Let's say, I'd like to tell more about myself.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ $name = 'Tom';
++$love = 'PHP';
+
+ # 1. concat
+-$message = 'Hi, my name is ' . $name;
++$message = 'Hi, my name is ' . $name . ' and I love ' . $love;
+
+ # 2. sprintf
+-$message = sprintf('Hi, my name is %s', $name);
++$message = sprintf('Hi, my name is %s and I love %s', $name, $love);
+
+ # 3. in-string variable
+-$message = 'Hi, my name is $name';
++$message = 'Hi, my name is $name and I love $love';</code></pre>
+<p>Or quote the name to express it's a variable string:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ $name = 'Tom';
+ $love = 'PHP';
+
+ # 1. concat
+-$message = 'Hi, my name is ' . $name . ' and I love ' . $love;
++$message = 'Hi, my name is "' . $name . '" and I love ' . $love;
+
+ # 2. sprintf
+-$message = sprintf('Hi, my name is %s and I love %s', $name, $love);
++$message = sprintf('Hi, my name is "%s" and I love %s', $name, $love);
+
+ # 3. in-string variable
+-$message = 'Hi, my name is $name and I love $php';
++$message = 'Hi, my name is "$name" and I love $php';</code></pre>
+<h3 id="em-class-fas-fa-fw-fa-times-text-danger-fa-lg-em-concat"><em class="fas fa-fw fa-times text-danger fa-lg"></em> Concat</h3>
+<p>1 new element = 2 new dots <code>.</code>. I have to think where to put it. Imagine there will be 4 elements one day.
+I also type like a dyslexic, so seeing <code>'"'</code> hurts.</p>
+<h3 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-sprintf"><em class="fas fa-fw fa-check text-success fa-lg"></em> Sprintf</h3>
+<p>Nice to read.</p>
+<h3 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-in-string-variable"><em class="fas fa-fw fa-check text-success fa-lg"></em> In-String Variable</h3>
+<p>Still the same.</p>
+<h2 id="3-hard-to-fuck-up">3. Hard to Fuck Up</h2>
+<h3 id="em-class-fas-fa-fw-fa-times-text-danger-fa-lg-em-concat"><em class="fas fa-fw fa-times text-danger fa-lg"></em> Concat</h3>
+<pre><code class="language-php">&lt;?php
+
+$name = 'Tom';
+$love = 'PHP';
+$also =  'to travel';
+
+$message = 'Hi, my name is ' . $name . ' and I love ' . $love . 'and also' . $also;</code></pre>
+<p>Can you spot it? This already happened me million times. I never make extra spaces anywhere else in the code.</p>
+<h3 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-sprintf"><em class="fas fa-fw fa-check text-success fa-lg"></em> Sprintf</h3>
+<p>This also happens...</p>
+<pre><code class="language-php">&lt;?php
+
+$name = 'Tom';
+$love = 'PHP';
+
+$message = sprintf('Hi my name is %s and I love %s', $name);
+// PHP Warning: sprintf(): Too few arguments</code></pre>
+<p>...or this...</p>
+<pre><code class="language-php">&lt;?php
+
+$name = 'Tom';
+$love = 'PHP';
+
+$message = sprintf('Hi my name is %s and I love s', $name, $love);
+// PHPStan: Call to sprintf contains 1 placeholder, 2 values given.</code></pre>
+<p>...but PHP and PHPStan got us covered.</p>
+<h3 id="em-class-fas-fa-fw-fa-times-text-danger-fa-lg-em-em-class-fas-fa-fw-fa-times-text-danger-fa-lg-em-in-string-variable"><em class="fas fa-fw fa-times text-danger fa-lg"></em><em class="fas fa-fw fa-times text-danger fa-lg"></em> In-String Variable</h3>
+<p>I must confess, I've tricked you (and myself too until I tried <a href="https://3v4l.org/RXpu1">running the code</a>):</p>
+<img src="/assets/images/posts/2018/connect-strings/quote-fuckup.png" class="img-thumbnail">
+<p><strong>And PHP tells you... <em>nothing</em>, it happily prints the wrong strings.</strong></p>
+<p>From removing magic quotes, I'm very happy that I don't have to think about what is really working.</p>
+<p>This problem is <a href="http://php.net/manual/en/migration70.incompatible.php#migration70.incompatible.variable-handling.indirect">mentioned in PHP Doc</a> though, but who of you even read what <code>%f</code> in <code>sprintf</code> stands for:</p>
+<img src="/assets/images/posts/2018/connect-strings/php-fuckup.png" class="img-thumbnail">
+<p>And what about this, will it be escaped?</p>
+<img src="/assets/images/posts/2018/connect-strings/escaped.png" class="img-thumbnail">
+<p>Why stopping there. What about <strong>method calls</strong>?</p>
+<pre><code class="language-php">&lt;?php
+
+$nameProvider = new NameProvider();
+
+# 1. concat
+$message = 'Hi, my name is ' . $nameProvider-&gt;provide();
+
+# 2. sprintf
+$message = sprintf('Hi, my name is %s', $nameProvider-&gt;provide());
+
+# 3. in-string variable
+$message = 'Hi, my name is $nameProvider-&gt;provide()';
+$message = 'Hi, my name is ${nameProvider}-&gt;provide()';
+$message = 'Hi, my name is ${nameProvider-&gt;provide()}';
+$message = 'Hi, my name is {$nameProvider-&gt;provide()}';
+# ?</code></pre>
+<p>This is so complex, that there is even a <strong>coding standard fixer for such cases</strong>:</p>
+<img src="/assets/images/posts/2018/connect-strings/fixer.png" class="img-thumbnail">
+<p>Next image is not exclusively related to strings, but it shines the same <em>instant coolness</em> that will hunt you down later:</p>
+<img src="/assets/images/posts/2018/connect-strings/fuckup.png">
+<p>And it's a hell to upgrade such a code (even with Rector). Read more about it in <a href="https://secure.php.net/manual/en/language.types.string.php#language.types.string.parsing">PHP Doc</a></p>
+<p><br></p>
+<h2 id="em-class-fas-fa-fw-fa-check-text-success-fa-lg-em-whatever-you-pick-stick-with-it"><em class="fas fa-fw fa-check text-success fa-lg"></em> Whatever You Pick, Stick With It</h2>
+<p>We all <strong>start with one approach, then jump to another whenever we need</strong>. <em>Damn you, brain!</em></p>
+<p>That's how such code is born:</p>
+<img src="/assets/images/posts/2018/connect-strings/dual.png" class="img-thumbnail">
+<p>And your code readers will have to think:</p>
+<ul>
+<li>Is there some hidden reason I don't know?</li>
+<li>When is the line?</li>
+<li>What to use when?</li>
+</ul>
+<p><a href="https://www.amazon.com/Dont-Make-Me-Think-Usability/dp/0321344758">Don't make them think</a> and stick with one approach in your code.
+Your readers will have <strong>50 % more brain energy to improve your code</strong> then they'd have otherwise.</p>
+<p><br></p>
+<p>But still, <strong>which one of</strong>...</p>
+<ul>
+<li>concat</li>
+<li><code>sprintf</code></li>
+<li>in-string variable</li>
+</ul>
+<p>...<strong>is your favorite and why?</strong> Tell me in comments, I've definitely missed many fuckups.</p>
+<p><br></p>
+<p>Happy connecting!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/10/08/new-in-symplify-5-create-merge-and-split-monorepo-with-1-command" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    New in Symplify 5: Create, Merge and Split Monorepo with 1 Command
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-10-11-hi-my-name-is-tom-conctat-vs-in-sprintf-vs-in-string-variables.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Hi, my name is Tom - Concat vs. Sprintf vs. In-String Variable" />
+    <meta property="og:description" content="My recent post about [lovely exceptions](/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/) opened very interesting question. [In comments bellow the post](/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/#comment-4100904216), [in Reddit thread](https://www.reddit.com/r/PHP/comments/9hehv6/7_tips_to_write_exceptions_everyone_will_love/e6d3hic) and [on  Twitter](https://mobile.twitter.com/geekovo/status/1043185111309713408).
+
+
+A questions about **connecting string with variables**.
+You have 3 options. Each has its strong and weak points. How do you pick the right one?
+" />
+    <meta property="og:url" content="/blog/2018/10/11/hi-my-name-is-tom-conctat-vs-in-sprintf-vs-in-string-variables" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Hi, my name is Tom - Concat vs. Sprintf vs. In-String Variable" />
+    <meta name="twitter:description" content="My recent post about [lovely exceptions](/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/) opened very interesting question. [In comments bellow the post](/blog/2018/09/17/7-tips-to-write-exceptions-everyone-will-love/#comment-4100904216), [in Reddit thread](https://www.reddit.com/r/PHP/comments/9hehv6/7_tips_to_write_exceptions_everyone_will_love/e6d3hic) and [on  Twitter](https://mobile.twitter.com/geekovo/status/1043185111309713408).
+
+
+A questions about **connecting string with variables**.
+You have 3 options. Each has its strong and weak points. How do you pick the right one?
+" />

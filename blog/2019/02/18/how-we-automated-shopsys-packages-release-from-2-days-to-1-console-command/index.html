@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How we Automated Shopsys Packages Release from 2 days to 1 Console Command | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 187 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How we Automated Shopsys Packages Release from 2 days to 1&nbsp;Console Command</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-02-Mon">
+            
+                            Mon, Feb 18, 2019
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/02/18/how-we-automated-shopsys-packages-release-from-2-days-to-1-console-command/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-18-how-we-automated-shopsys-packages-release-from-2-days-to-1-console-command.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you <strong>release open-source</strong>? Do you have <strong>monorepo</strong>? Do you release over <strong>10 monorepo packages at once</strong>?
+Do you still do it manually per package just to be sure?
+<br><br>
+Good news, it's not a single day-task, but this whole process can be automated. Let's me show how we did it in Shopsys.</p>
+                    </div>
+                </div>
+
+                <p>Monorepo release management has <del>few</del> many gotchas. The one that requires most of your attention I described in <a href="/blog/2019/01/31/monorepo-composer-magic/">Monorepo Composer Magic</a> post. <strong>1 missed commit or forgotten version change</strong> in <code>composer.json</code> of your package and <strong>you've just released a broken package</strong>!</p>
+<p>I mean the ugly kind of errors you'll find out only after someone tries to install the package. Of course, you can improve this by <a href="/blog/2018/11/22/how-to-test-monorepo-in-3-layers/">3-layer monorepo tests</a>, but there is still a 50 % chance for human error.</p>
+<p>Let's get practical!</p>
+<h2 id="the-em-manual-em-shopsys-release-process">The <em>Manual</em> Shopsys Release Process</h2>
+<p><a href="https://github.com/shopsys/shopsys">Shopsys</a> is an open-source e-commerce build on Symfony. I helped them with monorepo, Symfony and open-source standards setup through 2018.</p>
+<p>When we first looked at release todo-document, it had roughly 17 steps. After a bit deeper look we realized some steps have actually 5-10 more steps in it. In the end, we found over <strong>40 steps in 3 various stages</strong>.</p>
+<p>Just to give you the idea...</p>
+<h3 id="before-release-stage">Before Release Stage</h3>
+<ul>
+<li>check if Travis passes for all packages</li>
+<li>bump package interdependency for tagged version</li>
+<li>bump Docker image version to tagged version</li>
+<li><a href="/blog/2018/10/08/new-in-symplify-5-create-merge-and-split-monorepo-with-1-command/#2-validate-it">validate <code>composer.json</code> dependencies</a> of each package</li>
+<li><a href="/blog/2018/06/25/let-changelog-linker-generate-changelog-for-you/">dump <code>CHANGELOG.md</code></a> since the previous release</li>
+<li>check <code>UPGRADE.md</code></li>
+<li>...</li>
+</ul>
+<h3 id="release-stage">Release Stage</h3>
+<ul>
+<li>check changelog has today's date</li>
+<li>push the tag (and let CI service do the split)</li>
+<li>...</li>
+</ul>
+<h3 id="after-release-stage">After Release Stage</h3>
+<ul>
+<li>open branch alias for <code>next-version-dev</code></li>
+<li>bump package interdependency for <code>next-version-dev</code></li>
+<li>bump Docker image version to <code>dev</code></li>
+<li>check packages are pushed on Packagist</li>
+<li>...</li>
+</ul>
+<p class="text-muted">
+Do you want to check them all? Just see <a href="https://github.com/shopsys/shopsys/tree/master/utils/releaser/src/ReleaseWorker">this directory on Github</a>.
+</p>
+<p><br></p>
+<p>Shopsys <a href="https://github.com/shopsys/shopsys/releases">releases new version every month</a> and they had to do all these steps manually. Until now. Automation of this process <strong>saves time and attention of 3 developers</strong> (2 for code-review), that could be used for new features.</p>
+<p>No surprise here, that the final <a href="https://github.com/shopsys/shopsys/pull/623">pull-request</a> got a bit out of hand...</p>
+<img src="/assets/images/posts/2019/release/pr.png" class="img-thumbnail text-center">
+<p>It <strong>took 49 days</strong> and <strong>3 900 new lines</strong> to get the PR merged. Why? Well, when you introduce simple automatization of a complex process, <strong>people start to see how easy is to convert manual daunting work to a new PHP class that does the work for them</strong>. So more and more ideas came.</p>
+<h2 id="from-human-check-list-to-command-with-workers">From Human Check-list to Command with Workers</h2>
+<p>To automate the process, we used MonorepoBuilder, resp. it's <a href="https://github.com/symplify/monorepobuilder#6-release-flow">release-flow feature</a>.</p>
+<pre><code class="language-bash">composer require symplify/monorepo-builder</code></pre>
+<p>The implements a worker for each step described above. Workers are grouped by stage and ordered by priority, so the whole process is under control.</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace Utils\Release\ReleaseWorker;
+
+use Nette\Utils\DateTime;
+use Nette\Utils\FileSystem;
+use Nette\Utils\Strings;
+use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker;
+use PharIo\Version\Version;
+
+final class UpdateChangelogToDateReleaseWorker implements ReleaseWorkerInterface
+{
+    /**
+     * 1 line description of what this worker does, in a commanding form! e.g.:
+     * - "Add new tag"
+     * - "Dump new items to CHANGELOG.md"
+     * - "Run coding standards"
+     */
+    public function getDescription(Version $version): string
+    {
+        return 'Update CHANGELOG.md "Unreleased" to version and today date';
+    }
+
+    /**
+     * Higher first
+     */
+    public function getPriority(): int
+    {
+        return 1000;
+    }
+
+    public function work(Version $version): void
+    {
+        $changelogPath = getcwd() . '/CHANGELOG.md';
+        $content = FileSystem::read($changelogPath);
+
+        // before: ## Unreleased
+        // after: ## v7.0.0-beta6 - 2019-02-18
+        $newContent = Strings::replace(
+            $content,
+            '#^\#\#Unreleased$#',
+            '## ' . $version-&gt;getVersionString() . ' - ' . DateTime::from('today')-&gt;format('Y-m-d')
+        );
+
+        FileSystem::write($changelogPath, $newContent);
+    }
+}</code></pre>
+<p>Each step is written this way.</p>
+<p class="text-muted">
+Do you want to include stages? We did, so the worker implemented <code>Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\StageAwareInterface</code>.
+</p>
+<p>In these workers, you can trigger Travis CI with API, use Packagist API to check new version are released... sky it the limit.</p>
+<h2 id="shopsys-release-process-em-now-em">Shopsys Release Process <em>Now</em>?</h2>
+<pre><code class="language-bash">vendor/bin/monorepo-builder release v7.0.0-beta6 --stage release-candidate
+
+# → review...
+
+vendor/bin/monorepo-builder release v7.0.0-beta6 --stage release
+
+# → CI work + 2nd review...
+
+vendor/bin/monorepo-builder release v7.0.0-beta6 --stage after-release</code></pre>
+<p>Complex process made simple with PHP! <em class="fas fa-lg fa-check text-success"></em></p>
+<p><br></p>
+<p>Btw, do you know how Symplify 14-package monorepo release process looks like?</p>
+<pre><code class="language-bash">vendor/bin/monorepo-builder release v5.4.1</code></pre>
+<p>Just with bare <a href="https://github.com/Symplify/MonorepoBuilder">MonorepoBuilder</a> install.</p>
+<p><br></p>
+<p><strong>How does your package release process look like?</strong></p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/02/14/why-config-coding-sucks" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Why Config Coding Sucks
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-02-18-how-we-automated-shopsys-packages-release-from-2-days-to-1-console-command.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How we Automated Shopsys Packages Release from 2 days to 1 Console Command" />
+    <meta property="og:description" content="Do you **release open-source**? Do you have **monorepo**? Do you release over **10 monorepo packages at once**?
+Do you still do it manually per package just to be sure?
+
+Good news, it&#039;s not a single day-task, but this whole process can be automated. Let&#039;s me show how we did it in Shopsys.
+" />
+    <meta property="og:url" content="/blog/2019/02/18/how-we-automated-shopsys-packages-release-from-2-days-to-1-console-command" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How we Automated Shopsys Packages Release from 2 days to 1 Console Command" />
+    <meta name="twitter:description" content="Do you **release open-source**? Do you have **monorepo**? Do you release over **10 monorepo packages at once**?
+Do you still do it manually per package just to be sure?
+
+Good news, it&#039;s not a single day-task, but this whole process can be automated. Let&#039;s me show how we did it in Shopsys.
+" />

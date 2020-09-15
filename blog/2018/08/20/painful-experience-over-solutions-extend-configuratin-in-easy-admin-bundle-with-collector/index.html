@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Painful Experience over Solutions: Extend Configuration in Easy Admin Bundle | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 133 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Painful Experience over Solutions: Extend Configuration in Easy Admin Bundle</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-08-Mon">
+            
+                            Mon, Aug 20, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/08/20/painful-experience-over-solutions-extend-configuratin-in-easy-admin-bundle-with-collector/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-20-painful-experience-over-solutions-extend-configuratin-in-easy-admin-bundle-with-collector.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><em>Use SOLID to write Clean Code...</em> Are you tired of theoretical post about how to do achieve some therm? So am I.
+<br>
+Instead, let's <strong>dive into real problems I came across while coding and let the code speak the theory between lines</strong>.
+<br><br>
+Today we try to add own config option to YAML of Easy Admin Bundle (without pull-request to the package).</p>
+                    </div>
+                </div>
+
+                <blockquote class="blockquote text-center">
+    Hindsight is 20/20.
+</blockquote>
+<p>Instead of writing about solution how to do and how awesome I am to know the solution right from the start of this page, I start right from the beginning, where I know nothing about it just like you.</p>
+<p><br></p>
+<h3 id="the-application">The Application</h3>
+<p>I'm coding an open-sourced training platform build Symfony 4.2 and Doctrine 2.7 for <a href="https://github.com/pehapkari">Pehapkari community training</a>. It's fully open-sourced on Github under the typical open-source name - <a href="https://github.com/tomasvotruba/open-training">Open Training</a>.</p>
+<p>Admin is just a CRUD to maintain few entities, so I use <a href="https://github.com/easyCorp/EasyAdminBundle">EasyAdminBundle</a> to handle forms, grids, update, create, delete actions in controllers for me. Huge thanks to <a href="https://github.com/javiereguiluz">Javier Eguiluz</a> for this amazingly simple and powerful idea.</p>
+<img src="https://symfony.com/doc/current/bundles/EasyAdminBundle/_images/easyadmin-default-backend.png">
+<h3 id="the-need">The Need</h3>
+<p>There is <code>Training</code> entity with <code>name</code> and relation to <code>TrainingTerm</code> entity:</p>
+<pre><code class="language-php">&lt;?php declare(strict_types=1);
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Training
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $name;
+
+    // ...
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\TrainingTerm", mappedBy="training")
+     * @var TrainingTerm[]|ArrayCollection
+     */
+    private $trainingTerms = [];
+}</code></pre>
+<p>I want to edit this entity in administration, so I add it to <code>config/packages/easy_admin.yaml</code>:</p>
+<pre><code class="language-yaml">easy_admin:
+    entities:
+        Training:
+            class: 'App\Entity\Training'</code></pre>
+<p>This creates a grid and form with all the entity properties - <code>name</code> and <code>trainingTerms</code>. So, when I click <em>Add</em> in the admin I can change them both. <strong>But I want to change the <code>name</code> only and handle <code>TrainingTerm</code> entity in a standalone form.</strong></p>
+<h3 id="google-first">Google First</h3>
+<p>Now what? I Google <em>easy admin custom field form</em> and after while I find <a href="https://symfony.com/doc/current/bundles/EasyAdminBundle/book/edit-new-configuration.html#customize-the-properties-displayed"><em>Customize the Properties Displayed</em></a> tutorial. It looks like exactly what I need.</p>
+<pre><code class="language-diff"> easy_admin:
+     entities:
+         Training:
+             class: 'App\Entity\Training'
++            fields: ['name']</code></pre>
+<p>It works! The <code>trainingTerms</code> property is hidden in the form.</p>
+<p><br></p>
+<h3 id="but">But...</h3>
+<p>After 2 hours I need to add <code>price</code>.</p>
+<pre><code class="language-diff"> &lt;?php declare(strict_types=1);
+
+ namespace App\Entity;
+
+ use Doctrine\Common\Collections\ArrayCollection;
+ use Doctrine\ORM\Mapping as ORM;
+
+ /**
+  * @ORM\Entity
+  */
+ class Training
+ {
+     // ...
+
++    /**
++     * @ORM\Column(type="integer")
++     * @var int
++     */
++    private $price;</code></pre>
+<p>Price is there, great! Now we can earn some money. I <em>edit</em> training in admin... but, where is the price?</p>
+<p>Because I'm coding many other features I don't realize, there is <em>memory-vendor-lock</em> - <strong>a code smell, when after doing the A, you always have to remember the B</strong>. Do you see it? When I add a property, I always have a to add it to <code>fields</code> in config.</p>
+<pre><code class="language-diff"> easy_admin:
+     entities:
+         Training:
+             class: 'App\Entity\Training'
+-            fields: ['name']
++            fields: ['name', 'price']</code></pre>
+<p>If this is the only case, that would be ok-ish. But now there are 10 entities with 50 properties. How the hell will I remember to do this on every new property I add?</p>
+<pre><code class="language-diff"># ...
+-            fields: ['name', 'price']
++            fields: ['name', 'price', 'capacity']</code></pre>
+<p>And how can will anyone else find this out without me doing the code-review and remembering?</p>
+<pre><code class="language-diff"># ...
+-            fields: ['name', 'price', 'capacity']
++            fields: ['name', 'price', 'capacity', 'duration']</code></pre>
+<p>So much <em>memory-leaks</em> it hurts my neurons.</p>
+<h3 id="creative-time">Creative Time</h3>
+<p>Life is not perfect and every code is legacy by the time you end the line with <code>;</code>.</p>
+<blockquote class="blockquote text-center">
+    There are no solutions. Just trade-offs.
+</blockquote>
+<p>I stop and think a bit. How can I write less code to prevent possible bugs and make changes as effective as possible?
+<strong>I see there are fewer properties to exclude than properties to include</strong>, by 1:10. It would not be perfect code, but still 10 times safer and more effective code. Worth it!</p>
+<pre><code class="language-diff"> easy_admin:
+     entities:
+         Training:
+             class: 'App\Entity\Training'
+-            fields: ['name', 'price', 'capacity', 'duration', 'perex', 'description', 'place', 'trainer']
++            exclude_fields: ['trainingTerms']</code></pre>
+<h3 id="make-that-happen-and-face-false-expectations">Make that Happen and Face False Expectations</h3>
+<p>But is that <code>exclude_fields</code> or <code>excluded_fields</code> or maybe <code>skip_fields</code>? I want to see the documentation, so I Google <a href="https://www.google.cz/search?q=easy+admin+bundle+exclude+fields&amp;oq=easy+admin+bundle+exclude+fields&amp;aqs=chrome..69i57.4891j0j7&amp;sourceid=chrome&amp;ie=UTF-8"><em>easy admin bundle excludes fields</em></a>. I find <a href="https://github.com/EasyCorp/EasyAdminBundle/issues/589"><em>Exclude fields in list fields</em> issue in EasyAdminBundle</a>. I read it and see the content <strong>is not what I need</strong>. It looks like this option is not supported. I'm sad. What now?</p>
+<p><br></p>
+<p>Open-source packages are closed to extension more than you'd expect. To add one custom feature, you have to basically copy and extend the whole class or use reflection. It's not <strong>because it's difficult to create an extendable code, it's because nobody <em>believes</em> it can be done in a nice way</strong>. It <em>can</em>, just keep reading.</p>
+<p><br></p>
+<p>Being that suspicious I start my <em>inner over-engineer</em> voice:</p>
+<ul>
+<li>&quot;Create own extension that will hack into the <code>EasyAdminExtension</code> and get the config and add <code>exclude_fields</code> option&quot;</li>
+<li>&quot;Create own <code>BetterEasyAdminBundle</code> that will be run before the <code>EasyAdminBundle</code> and will pass parameters there&quot;</li>
+</ul>
+<p><strong>This might end-up wasting many hours</strong> on custom and useless solution (like &quot;create own Doctrine&quot; idea, true story). Instead I try to invest a bit more time and I continue the brainstorming:</p>
+<ul>
+<li>&quot;Send pull-request with this feature to the core code&quot;</li>
+</ul>
+<p>Slightly better, but what if Javier doesn't like it? Or what if he's on holiday for 3 weeks? I know, it's summer and very rare to happen, but I have to finish the app in 2 weeks and I don't want to think about bugs like these in the meantime. The <strong>least I can do is to create <a href="https://github.com/EasyCorp/EasyAdminBundle/issues/2325">an issue</a></strong> with this idea and my reasons for it.</p>
+<h2 id="wander-in-the-code">Wander in the Code</h2>
+<p>I need a solution and I need it today. What can I do? No hacking, no pull-request, just looking for something in files:</p>
+<img src="/assets/images/posts/2018/collector-easy-admin-bundle/random.png" class="img-thumbnail">
+<p>Do you think this is just a random screen-shot not worth your attention?</p>
+<ul>
+<li>there is a checkbox in <em>Match case</em> because <code>'fields'</code> is lowercased and we want to focus on that only (no properties or methods with <code>Fields</code>)</li>
+<li>there is a limit to <code>*.php</code> because that <em>would be probably</em> place to extend</li>
+<li>there is a limit to <em>Directory</em>: <code>/../vendor/easycorp</code>, because we want to hack into this package</li>
+<li>there is <code>fields</code> word in search; later I improve it to <code>'fields'</code> to narrow results, because we know it's a string</li>
+</ul>
+<p><br></p>
+<p><strong>I still have no idea about the solution I'll pick. I'm only randomly looking for the light, blindfolded in a dark foggy forest.</strong>
+This is called <em>creative chaos</em> in coaching circles and it's the most important part of the client's work.</p>
+<p><br></p>
+<p>I scroll down a bit looking at both code and the file name. Suddenly, the fog starts slowly disappearing...</p>
+<img src="/assets/images/posts/2018/collector-easy-admin-bundle/pass.png" class="img-thumbnail">
+<p>I notice <code>*ConfigPass</code> suffix. Is that like <code>CompilerPassInterface</code>, a collector-pattern used in Symfony to modify services in the container?</p>
+<p>Being curious I open <code>NormalizerConfigPass.php</code> file:</p>
+<pre><code class="language-php">&lt;?php
+
+// ...
+
+namespace EasyCorp\Bundle\EasyAdminBundle\Configuration;
+
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+class NormalizerConfigPass implements ConfigPassInterface
+{
+    // ...
+}</code></pre>
+<p>An interface! That's a good sign.</p>
+<h3 id="keep-wandering">Keep Wandering</h3>
+<p>So I look for <code>ConfigPassInterface</code> in somewhere else than just <code>implements ConfigPassInterface</code>.</p>
+<p>That doesn't work, so I try to look for <code>ConfigPass</code>.</p>
+<p>That doesn't work, so I try to look for any file, not just <code>*.php</code>. That show as valuable, since services are defined in YAML or XML.</p>
+<img src="/assets/images/posts/2018/collector-easy-admin-bundle/services.png" class="img-thumbnail">
+<p>I see a tag: <code>easyadmin.config_pass</code>. Let's look for that string:</p>
+<img src="/assets/images/posts/2018/collector-easy-admin-bundle/bingo.png" class="img-thumbnail">
+<p>Warmer! <strong>I've just <a href="/clusters/#collector-pattern-the-shortcut-hack-to-solid-code/">found a collector</a>.</strong> To config, I look for service under <code>easyadmin.config.manager</code> name - <a href="https://github.com/EasyCorp/EasyAdminBundle/blob/07194017918aebe382e1ab0e53c68f6242547a0e/src/Configuration/ConfigManager.php#L112-L119"><code>ConfigManager</code></a> and look for <code>foreach</code> on collected services:</p>
+<pre><code class="language-php">private function doProcessConfig($backendConfig): array
+    {
+    foreach ($this-&gt;configPasses as $configPass) {
+        $backendConfig = $configPass-&gt;process($backendConfig);
+    }
+
+    return $backendConfig;
+}</code></pre>
+<p>Bingo! <strong>That means, when I register a service with <code>easyadmin.config_pass</code> tag, I'll be able to read and modify the YAML configuration</strong>.</p>
+<p>So I register a service:</p>
+<pre><code class="language-yaml">services:
+    ExcludeFieldsConfigPass:
+        tags:
+             -
+                 name: "easyadmin.config_pass"
+                 priority: 120 # it took me more time to figure out if -100 or 0 or 100 or 1000 means "the first"</code></pre>
+<p>That does 1 thing:</p>
+<p><code>fields</code> (value to be set) = entity properties − <code>exclude_fields</code> (value I set in the config)</p>
+<p><br></p>
+<p>It allows me to do simplify <code>config/packages/easy_admin.yaml</code> config:</p>
+<pre><code class="language-diff"> easy_admin:
+     entities:
+         Training:
+             class: 'App\Entity\Training'
+-            fields: ['name', 'price', 'capacity', 'duration', 'perex', 'description', 'place', 'trainer']
++            exclude_fields: ['trainingTerms']</code></pre>
+<p>You can see full code of <a href="https://github.com/TomasVotruba/open-training/pull/7/files#diff-318660bf4cd1ad8a5d0e608e94df8fae"><code>ExcludeFieldsConfigPass</code> on Github</a>.</p>
+<p>Very smart move Javier - thank you!</p>
+<h2 id="learn-1-algorithm-instead-of-10-solutions">Learn 1 Algorithm instead of 10 Solutions</h2>
+<p>And that's all folks. I hope I've shown you how to approach problems and how to find a way in situations you're the first time in.
+The same way I don't memorize Wikipedia and just Google it instead, <strong>I don't remember solutions to 100 PHP problems, but have a couple of algorithms to approach problem solving</strong>.</p>
+<ul>
+<li>Try A - Failed?</li>
+<li>Try B - Failed?</li>
+<li>Try C - Failed?</li>
+<li>Take a break to prevent <a href="https://en.wikipedia.org/wiki/Learned_helplessness">learned helplessness</a> :)</li>
+<li>Try D - Failed?</li>
+<li>Try E - Failed?</li>
+<li>Try F - Kaboom! It works!</li>
+</ul>
+<p><br>
+If artificial intelligence could figure this all out for us, we'd be screwed :).</p>
+<p>Btw, are you coming to <a href="https://www.hlai-conf.org">Human Level AI Conference</a> in Prague this weekend? I'll be there and I'd be happy if you stop me and say Hi!</p>
+<p><br></p>
+<p>Happy solving!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/08/16/whats-new-in-php-73-in-30-seconds-in-diffs" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    What&#039;s New in PHP 7.3 in 30 Seconds in Diffs
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-08-20-painful-experience-over-solutions-extend-configuratin-in-easy-admin-bundle-with-collector.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Painful Experience over Solutions: Extend Configuration in Easy Admin Bundle" />
+    <meta property="og:description" content="*Use SOLID to write Clean Code...* Are you tired of theoretical post about how to do achieve some therm? So am I.
+
+Instead, let&#039;s **dive into real problems I came across while coding and let the code speak the theory between lines**.
+
+Today we try to add own config option to YAML of Easy Admin Bundle (without pull-request to the package).
+" />
+    <meta property="og:url" content="/blog/2018/08/20/painful-experience-over-solutions-extend-configuratin-in-easy-admin-bundle-with-collector" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Painful Experience over Solutions: Extend Configuration in Easy Admin Bundle" />
+    <meta name="twitter:description" content="*Use SOLID to write Clean Code...* Are you tired of theoretical post about how to do achieve some therm? So am I.
+
+Instead, let&#039;s **dive into real problems I came across while coding and let the code speak the theory between lines**.
+
+Today we try to add own config option to YAML of Easy Admin Bundle (without pull-request to the package).
+" />

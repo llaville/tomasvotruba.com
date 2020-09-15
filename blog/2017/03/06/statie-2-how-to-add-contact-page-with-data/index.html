@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Statie - part 2: How to add Contact Page With Data | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 32 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Statie - part 2: How to add Contact Page With Data</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>5 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-03-Mon">
+            <strike>
+                            Mon, Mar 6, 2017
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Sep, 2018
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-03-06-statie-2-how-to-add-contact-page-with-data.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at January 2019</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>This post was moved to <a href="https://www.statie.org">statie.org</a>. Also, <strong>it's better to <a href="/blog/2019/01/07/how-to-create-your-first-php-twig-static-website-under-2-minutes-with-statie/">use <code>vendor/bin/statie init</code> command</a> now</strong>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at September 2018</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>Statie 5</strong>, NEON → YAML, Twig and <code>parameters</code> section in <code>statie.yml</code> config.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p><a href="/blog/2017/02/20/statie-how-to-run-it-locally/">In previous post about Statie</a> you generated simple index with layout. Today we look on first semi-dynamic feature: <strong>data structures</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="contact-page-with-socials-accounts-data-separated">Contact Page with Socials Accounts Data Separated</h2>
+<p>First, <strong>create a file</strong> in the <code>/source</code> directory called <code>contact.twig</code>.</p>
+<p>The file name is relevant to the url - this file will be accessible at <code>/contact</code>.</p>
+<pre><code class="language-twig">&lt;!-- source/contact.twig --&gt;
+---
+layout: "_layouts/default.twig"
+---
+
+{% block content %}
+    &lt;h1&gt;First Hour is on me - Call me now!&lt;/h1&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;Phone: &lt;a href="tel:123456789"&gt;123 456 789&lt;/a&gt;a&gt;&lt;/li&gt;
+        &lt;li&gt;Email: &lt;a href="mailto:hi@gmail.com"&gt;hi@gmail.com&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Twitter: &lt;a href="https://twitter.com/wise-programmer"&gt;@wiseProgrammer&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Facebook: &lt;a href="https://facebook.com/wise-programmer"&gt;Wise Programmer&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;LinkedIn: &lt;a href="https://linkedin.com/wise-programmer"&gt;Wise Programmer&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Github: &lt;a href="https://github.com/wise-programmer"&gt;@WiseProgrammer&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+{% endblock %}</code></pre>
+<p><br></p>
+<p>If you use <a href="/blog/2017/02/20/statie-how-to-run-it-locally#minitip-use-gulp-work-for-you">smart Gulp script</a>, you can already check the page at <a href="http://localhost:8000/contact">localhost:8000/contact</a>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/statie-2/statie-contact.png" class="img-thumbnail"></div>
+<h2 id="how-to-decouple-information-to-data-structures">How to decouple Information to Data Structures</h2>
+<p>We are programmers and we don't like data coupled to the code. You wouldn't put your repository class to your <code>Homepage.twig</code> template, would you?</p>
+<p>What if...</p>
+<ul>
+<li>we want to <strong>add new contact</strong>,</li>
+<li><strong>change it</strong></li>
+<li>or <strong>use in multiple parts</strong> of website.</li>
+</ul>
+<p>There are 2 basic ways to data structures. It depends, whether you need it locally or globally.</p>
+<p>In both cases, we modify the template the same way:</p>
+<pre><code class="language-twig">&lt;!-- source/contact.twig --&gt;
+---
+layout: "_layouts/default.twig"
+---
+
+{% block content %}
+    &lt;h1&gt;First Hour is on me - Call me now!&lt;/h1&gt;
+
+    &lt;ul&gt;
+        {% for contactMethod in contactMethods %}
+            &lt;li&gt;
+                {{ contactMethod.type }}:
+                &lt;a href="{{ contactMethod.link }}"&gt;{{ contactMethod.name }}&lt;/a&gt;
+            &lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+{% endblock %}</code></pre>
+<h2 id="1-local-values-in-between-code-code">1. Local Values in between <code>---</code></h2>
+<h3 id="how-does-it-work">How Does it Work?</h3>
+<p>Everything located between two &quot;triple-hyphens&quot; (<code>---</code>) will be accessible <strong>only in the one template as variables</strong>.</p>
+<p>In <em>code words</em>:</p>
+<pre><code class="language-html">---
+key: "value"
+---
+
+{{ key }} &lt;!-- shows "value" --&gt;</code></pre>
+<h3 id="how-to-use-it">How to Use it?</h3>
+<p>All we need for our contact page is simple array. Putting data above to an array in PHP would look like this:</p>
+<pre><code class="language-php">$contactMethods = [
+    [
+        'type' =&gt; 'Phone',
+        'link' =&gt; 'tel:123456789',
+        'name' =&gt; '123 456 789'
+    ], [
+        'type' =&gt; 'Email',
+        'link' =&gt; 'mailto:hi@gmail.com',
+        'name' =&gt; 'hi@gmail.com'
+    ], [
+        'type' =&gt; 'Twitter',
+        'link' =&gt; 'https://twitter.com/wise-programmer',
+        'name' =&gt; '@wiseProgrammer'
+    ], [
+        'type' =&gt; 'Facebook',
+        'link' =&gt; 'https://facebook.com/wise-programmer',
+        'name' =&gt; 'Wise Programmer'
+    ], [
+        'type' =&gt; 'LinkedIn',
+        'link' =&gt; 'https://linkedin.com/wise-programmer',
+        'name' =&gt; 'Wise Programmer'
+    ], [
+        'type' =&gt; 'Github',
+        'link' =&gt; 'https://github.com/wise-programmer',
+        'name' =&gt; '@WiseProgrammer'
+    ]
+];</code></pre>
+<p>Now we put this data to Yaml format and place them to our <code>contact.twig</code>.</p>
+<pre><code class="language-twig">&lt;!-- source/contact.twig --&gt;
+---
+layout: "_layouts/default.twig"
+contactMethods:
+    -
+        type: Phone
+        link: tel:123456789
+        name: 123 456 789
+    -
+        type: Email
+        link: mailto:hi@gmail.com
+        name: hi@gmail.com
+    -
+        type: Twitter
+        link: https://twitter.com/wise-programmer
+        name: @wiseProgrammer
+    -
+        type: Facebook
+        link: https://facebook.com/wise-programmer
+        name: Wise Programmer
+    -
+        type: LinkedIn
+        link: https://linkedin.com/wise-programmer
+        name: Wise Programmer
+    -
+        type: Github
+        link: https://github.com/wise-programmer
+        name: @WiseProgrammer
+---
+
+{% block content %}
+    &lt;h1&gt;First Hour is on me - Call me now!&lt;/h1&gt;
+
+    &lt;ul&gt;
+        {% for contactMethod in contactMethods %}
+            &lt;li&gt;
+                {{ contactMethod.type }}:
+                &lt;a href="{{ contactMethod.link }}"&gt;{{ contactMethod.name }}&lt;/a&gt;
+            &lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+{% endblock %}</code></pre>
+<p>Save file and <a href="http://localhost:8000/contact">look on the contact page</a>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/statie-2/statie-contact.png" class="img-thumbnail"></div>
+<h2 id="2-global-or-bigger-amount-of-data">2. Global or Bigger Amount of Data</h2>
+<p>I use this option in 2 cases:</p>
+<ul>
+<li><strong>I need those data globally</strong> (e.g. Google Analytics Code)</li>
+<li><strong>those data are 5+ lines big and they make template less readable</strong></li>
+</ul>
+<p>I would use this option in this case.</p>
+<h3 id="how-does-it-work">How does it Work?</h3>
+<p>Statie uses <code>statie.yml</code> in the root directory and its <code>parameters</code> section.</p>
+<p>As convention, I put global data to <code>/source/_data</code> directory. But it's up to you, where you put it.</p>
+<h3 id="how-to-use-it">How to Use it?</h3>
+<p>We simple move whole <code>contactMethods</code> to this file:</p>
+<pre><code class="language-yaml"># /source/_data/contacts.yml
+parameters:
+    contactMethods:
+        ...</code></pre>
+<p>And import it in <code>statie.yml</code>:</p>
+<pre><code class="language-yaml"># statie.yml
+imports:
+    - { resource: 'source/_data/contacts.yml' }</code></pre>
+<p>And that's it!</p>
+<p>Save file, <a href="http://localhost:8000/contact">look on the contact page</a> and it still works!</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/statie-2/statie-contact.png" class="img-thumbnail"></div>
+<h2 id="now-you-know">Now You Know</h2>
+<ul>
+<li>How to add data to your Statie page.</li>
+<li><strong>Where to put them for local and global access</strong>.</li>
+<li><strong>That its convention</strong> to use <code>/source/_data/&lt;some-data&gt;.yml</code> naming.</li>
+</ul>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-03-06-statie-2-how-to-add-contact-page-with-data.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Statie - part 2: How to add Contact Page With Data" />
+    <meta property="og:description" content="[In previous post about Statie](/blog/2017/02/20/statie-how-to-run-it-locally/) you generated simple index with layout. Today we look on first semi-dynamic feature: **data structures**.
+" />
+    <meta property="og:url" content="/blog/2017/03/06/statie-2-how-to-add-contact-page-with-data" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Statie - part 2: How to add Contact Page With Data" />
+    <meta name="twitter:description" content="[In previous post about Statie](/blog/2017/02/20/statie-how-to-run-it-locally/) you generated simple index with layout. Today we look on first semi-dynamic feature: **data structures**.
+" />

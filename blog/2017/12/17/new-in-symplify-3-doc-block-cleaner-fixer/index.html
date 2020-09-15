@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New in Symplify 3: DocBlock Cleaner Fixer | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 68 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>New in Symplify 3: DocBlock Cleaner Fixer</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>2 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-12-Sun">
+            
+                            Sun, Dec 17, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-12-17-new-in-symplify-3-doc-block-cleaner-fixer.md">Edit Post</a>
+        </li>
+    </ul>
+
+                                    <div class="card border-danger card-bigger">
+                        <div class="card-header text-white bg-danger">
+                            <strong>This post is deprecated at March 2019</strong>
+                        </div>
+                        <div class="card-body">
+                            <p>This fixer was <a href="https://github.com/symplify/symplify/pull/1473">deprecated</a> and removed in <strong>EasyCodingStandard 6</strong>. Use <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/pull/3734">official <code>NoSuperfluousPhpdocTagsFixer</code> instead</a>.</p>
+                        </div>
+                    </div>
+
+                    <br>
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Focus on docblock has increased thanks to <a href="https://php.net/manual/en/migration70.new-features.php#migration70.new-features.scalar-type-declarations">PHP 7 scalar types</a> and PHPStan with <a href="https://medium.com/@ondrejmirtes/phpstan-0-9-a-huge-leap-forward-1e9b0872d1cc">intersection and union types</a>. Thanks to that, more and more <strong>docblocks become just visual noise</strong> causing <a href="https://en.wikipedia.org/wiki/Cognitive_load">cognitive overload</a>.
+<br><br>
+Symplify 3 introduces a new help hand - <strong>fixer that cleans doc block noise for you and makes your code more valuable to the reader</strong>.</p>
+                    </div>
+                </div>
+
+                <blockquote class="blockquote text-center">
+    ...when you program, you have to <strong>think about how someone will read your code</strong>, not just how a computer will interpret it.
+    <footer class="blockquote-footer"><a href="https://en.wikiquote.org/wiki/Kent_Beck">Kent Beck</a>, creator of the Extreme Programming and Test Driven Development
+    </footer></blockquote>
+<p><br></p>
+<p>Do you find similar patterns in your code?</p>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param string $name
+ */
+public function addVisitor(string $name)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param InputInterface $input An Input instance
+ */
+public function getArguments(InputInterface $input)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @param array $items
+ */
+public function prependItems(array $items)
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<pre><code class="language-php">/**
+ * @return boolean
+ */
+public function getStorage(): bool
+{
+    // ...
+}</code></pre>
+<p><br></p>
+<p>Do you know what do they have in common?
+<strong>They only duplicate the typehint information and bring no extra value to the reader</strong>.</p>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/doc-block-cleaner/use-only-what-you-need.jpg" class="img-thumbnail"></div>
+<p><em>No big deal</em> you might say as code author. But your code is much more read that written, so making it as readable as possible should be your priority.</p>
+<p><br></p>
+<h2 id="how-to-remove-del-manually-del-automatically">How to Remove <del>Manually</del> Automatically?</h2>
+<p>Cleaning every single case would be crazy. Luckily, we <strong>live in CLI-refactoring generation</strong>,
+so all we need is <code>Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer</code>.</p>
+<p><a href="https://github.com/symplify/symplify/pull/427" class="btn btn-dark btn-sm">
+<em class="fab fa-github fa-fw"></em>
+See pull-request #427
+</a></p>
+<p>This fixer scans docs blocks, compares it with code types, evaluates value of each one (like you would do) and <strong>drops</strong> those, which do not add any extra value and only slow down the code reading time.</p>
+<h3 id="tested-on-many-open-source-projects">Tested on many Open-Source Projects</h3>
+<p>Docblocks don't have any standard format, so I <strong>first tested this Fixer</strong> on handful of PHP open-source projects. <strong>Open them</strong> to see, what this fixer can do in real code:</p>
+<ul>
+<li><a href="https://github.com/php-ai/php-ml/pull/145">php-ml</a> and <a href="https://github.com/php-ai/php-ml/pull/146">other PR</a></li>
+<li><a href="https://github.com/phpDocumentor/ReflectionDocBlock/pull/137">ReflectionDocBlock</a></li>
+<li>and <a href="https://github.com/symfony/symfony/pull/24931">Symfony</a></li>
+</ul>
+<p>Thanks to that Fixer now <strong>covers dozens of edge cases</strong>.</p>
+<h2 id="challenge-your-code">Challenge Your Code</h2>
+<h3 id="1-install">1. Install</h3>
+<pre><code class="language-bash">composer require symplify/easy-coding-standard --dev</code></pre>
+<h3 id="2-create-config">2. Create Config</h3>
+<pre><code class="language-php">&lt;?php
+
+// ecs.php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\CodingStandard\Fixer\Commenting\RemoveEmptyDocBlockFixer;
+use Symplify\CodingStandard\Fixer\Commenting\RemoveSuperfluousDocBlockWhitespaceFixer;
+use Symplify\CodingStandard\Fixer\Commenting\RemoveUselessDocBlockFixer;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    $services-&gt;set(RemoveUselessDocBlockFixer::class);
+
+    $services-&gt;set(RemoveSuperfluousDocBlockWhitespaceFixer::class);
+
+    $services-&gt;set(RemoveEmptyDocBlockFixer::class);
+};</code></pre>
+<h3 id="3-run-it">3. Run It</h3>
+<pre><code class="language-bash">vendor/bin/ecs check src</code></pre>
+<h3 id="4-see-the-diff">4. See the Diff</h3>
+<div class="text-center">
+    <img src="/assets/images/posts/2017/doc-block-cleaner/diff.png" class="img-thumbnail"></div>
+<h3 id="5-and-fix-it">5. And Fix It</h3>
+<pre><code class="language-bash">vendor/bin/ecs check src --fix</code></pre>
+<p>Happy eye resting!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/12/04/life30-what-will-you-do-when-ai-takes-over-the-world" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    Life 3.0: What Will You Do When AI Takes Over the World
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-12-17-new-in-symplify-3-doc-block-cleaner-fixer.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="New in Symplify 3: DocBlock Cleaner Fixer" />
+    <meta property="og:description" content="Focus on docblock has increased thanks to [PHP 7 scalar types](https://php.net/manual/en/migration70.new-features.php#migration70.new-features.scalar-type-declarations) and PHPStan with [intersection and union types](https://medium.com/@ondrejmirtes/phpstan-0-9-a-huge-leap-forward-1e9b0872d1cc). Thanks to that, more and more **docblocks become just visual noise** causing [cognitive overload](https://en.wikipedia.org/wiki/Cognitive_load).
+
+Symplify 3 introduces a new help hand - **fixer that cleans doc block noise for you and makes your code more valuable to the reader**.
+" />
+    <meta property="og:url" content="/blog/2017/12/17/new-in-symplify-3-doc-block-cleaner-fixer" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="New in Symplify 3: DocBlock Cleaner Fixer" />
+    <meta name="twitter:description" content="Focus on docblock has increased thanks to [PHP 7 scalar types](https://php.net/manual/en/migration70.new-features.php#migration70.new-features.scalar-type-declarations) and PHPStan with [intersection and union types](https://medium.com/@ondrejmirtes/phpstan-0-9-a-huge-leap-forward-1e9b0872d1cc). Thanks to that, more and more **docblocks become just visual noise** causing [cognitive overload](https://en.wikipedia.org/wiki/Cognitive_load).
+
+Symplify 3 introduces a new help hand - **fixer that cleans doc block noise for you and makes your code more valuable to the reader**.
+" />

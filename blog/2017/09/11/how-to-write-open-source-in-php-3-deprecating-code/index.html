@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to write Open-Source in PHP 3: Deprecating Code | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 54 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to write Open-Source in PHP 3: Deprecating Code</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-09-Mon">
+            
+                            Mon, Sep 11, 2017
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-09-11-how-to-write-open-source-in-php-3-deprecating-code.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Humans, world and PHP Frameworks constantly evolve - their code functionality changes. Class or method is renamed, method has 1 new argument or new class is decoupled.
+<br><br>
+In Symfony world you probably know about <a href="https://symfony.com/doc/current/contributing/code/bc.html">Backward Compatibility Promise</a>.
+It <strong>prevents from unexpected and frustrating BC breaks</strong> and helps users to upgrade gradually thanks to deprecation messages.
+<br><br>
+In this post I will show you <strong>how to work with deprecation messages</strong>.</p>
+                    </div>
+                </div>
+
+                <p>This technique is quite rare to see (apart PHP frameworks). It's very simple to add to your open-source code workflow though - let me convince you.</p>
+<h2 id="why-write-deprecation-messages">Why Write Deprecation Messages?</h2>
+<h3 id="if-you-don-t">If you DON'T</h3>
+<ul>
+<li>people will have to find deprecations themselves in the commits - <strong>from programmer to detective</strong></li>
+<li>you'll <strong>find issues</strong> like &quot;autowire() method missing - what should I do?&quot; at your package on Github</li>
+<li>you'll have to remember, when you upgrade some project using your package few months later</li>
+</ul>
+<h3 id="if-you-do">If you DO</h3>
+<ul>
+<li>people will like you</li>
+<li>you'll be able to do more BC breaks in your code, because people will know they're taken care off</li>
+<li><strong>upgrade of your package will be much easier</strong></li>
+<li><strong>machine-readable messages will allow automate upgrades</strong></li>
+</ul>
+<p>To explain last point a bit more: if you write your message in a way, that some parser would be able to understand it, <strong>it would be able to refactor other code accordingly</strong>.</p>
+<ol>
+<li>
+<p>Read</p>
+<pre><code class="language-bash">SomeClass::oldMethod =&gt; SomeClass::newMethod</code></pre>
+</li>
+<li>
+<p>Run</p>
+<pre><code class="language-bash">bin/refactor app src</code></pre>
+</li>
+<li>
+<p>Enjoy new code!</p>
+</li>
+</ol>
+<p>That was <a href="https://github.com/tomasvotruba/Rector">the future</a>, now back to the present.</p>
+<h2 id="today-s-topic-changed-method-name">Today's topic: Changed Method Name</h2>
+<p>Let's take real example from real code - a class from <a href="https://doc.nette.org/en/2.4/html-elements#toc-elements-content"><code>Nette\Utils</code> 2.4</a>.</p>
+<p>What we need to know?</p>
+<ul>
+<li><strong>a method name has changed</strong></li>
+<li>from &quot;add&quot; to &quot;addHtml&quot;</li>
+<li>on <code>Nette\Utils\Html</code> object</li>
+</ul>
+<p><strong>Before</strong> this change you used:</p>
+<pre><code class="language-php">$html = Html::el('div');
+$html-&gt;add('&lt;strong&gt;I am brand new!&lt;/strong&gt;');</code></pre>
+<p>And <strong>after</strong> this change you will use:</p>
+<pre><code class="language-php">$html = Html::el('div');
+$html-&gt;addHtml('&lt;strong&gt;I am brand new!&lt;/strong&gt;');</code></pre>
+<p>This is the snippet from the <code>Nette\Util\Html</code> class we are interested in:</p>
+<pre><code class="language-php">namespace Nette\Utils;
+
+class Html
+{
+    public function add(...)
+    {
+        // ...
+    }
+}</code></pre>
+<p>So how to inform all ends users about this?</p>
+<p>You can choose from <strong>2 ways to write deprecations messages</strong>, based on your preference.</p>
+<h3 id="1-a-code-deprecate-code-annotation">1. A <code>@deprecate</code> annotation</h3>
+<pre><code class="language-php">namespace Nette\Utils;
+
+class Html
+{
+    /**
+     * @deprecated
+     */
+    public function add(...)
+    {
+        $this-&gt;addHtml(...);
+    }
+
+    public function addHtml(...)
+    {
+        // ...
+    }
+}</code></pre>
+<p>This is the least you can do. But you could do better, right?</p>
+<pre><code class="language-php">/**
+ * @deprecated Method add() is deprecated.
+ */
+public function add(...)</code></pre>
+<p>Should I delete all those methods calls in my code?</p>
+<pre><code class="language-php">/**
+ * @deprecated Method add() is deprecated, use addHtml() instead.
+ */
+public function add(...)</code></pre>
+<p><strong>A-ha, that's better!</strong></p>
+<p><br></p>
+<p>I Have 1 Question for you: <strong>What happens when programmer runs <code>$html-&gt;add(...)</code> method now?</strong></p>
+<p>...</p>
+<p>Well, exactly... <strong>nothing</strong>. <strong>Annotations have no influence on code run</strong>, so it will work and programmer won't notice anything.</p>
+<p><br></p>
+<p>Luckily, there is option that <strong>will actually inform about the deprecation</strong>.</p>
+<h3 id="2-a-code-trigger-error-code">2. A <code>trigger_error()</code></h3>
+<p>A <a href="https://php.net/manual/en/function.trigger-error.php"><code>trigger_error()</code></a> is native PHP function, that can inform user about changes in the code.</p>
+<p>With the 2nd argument is level of these messages - there is special constant <code>E_USER_DEPRECATED</code> destined for this case.</p>
+<pre><code class="language-php">namespace Nette\Utils;
+
+class Html
+{
+    public function add(...)
+    {
+        # we already know how to write useful mesagges
+        trigger_error('Method add() is deprecated, use addHtml() instead.', E_USER_DEPRECATED);
+
+        $this-&gt;addHtml(...);
+    })
+
+    public function addHtml(...)
+    {
+        // ...
+    }
+}</code></pre>
+<p>You can <a href="https://github.com/nette/utils/blob/f1584033b5af945b470533b466b81a789d532034/src/Utils/Html.php#L362">see it used in similar way</a> in the original code.</p>
+<p><strong>What happens when programmer runs <code>$html-&gt;add(...)</code> method with this type of deprecation?</strong></p>
+<p>2 things:</p>
+<ul>
+<li>The code will run</li>
+<li><strong>The programmer will be informed</strong></li>
+</ul>
+<p>In case he or she is not ready for upgrade, it can be disabled in application <code>bootstrap</code> file:</p>
+<pre><code class="language-php">error_reporting(~E_USER_DEPRECATED);</code></pre>
+<p><a href="https://phpfashion.com/jak-spravne-updatovat-nette">Source</a> (Czech only)</p>
+<p>I said...</p>
+<p><em>It's very simple to add to your open-source code workflow...</em></p>
+<p>...and this is it!</p>
+<p>That was <a href="https://symfony.com/doc/current/contributing/code/bc.html">Symfony's Backward Compatibility Promise</a> in a nutshell.</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-09-11-how-to-write-open-source-in-php-3-deprecating-code.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to write Open-Source in PHP 3: Deprecating Code" />
+    <meta property="og:description" content="Humans, world and PHP Frameworks constantly evolve - their code functionality changes. Class or method is renamed, method has 1 new argument or new class is decoupled.
+
+In Symfony world you probably know about Backward Compatibility Promise.
+It prevents from unexpected and frustrating BC breaks and helps users to upgrade gradually thanks to deprecation messages.
+
+In this post I will show you how to work with deprecation messages.
+" />
+    <meta property="og:url" content="/blog/2017/09/11/how-to-write-open-source-in-php-3-deprecating-code" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to write Open-Source in PHP 3: Deprecating Code" />
+    <meta name="twitter:description" content="Humans, world and PHP Frameworks constantly evolve - their code functionality changes. Class or method is renamed, method has 1 new argument or new class is decoupled.
+
+In Symfony world you probably know about Backward Compatibility Promise.
+It prevents from unexpected and frustrating BC breaks and helps users to upgrade gradually thanks to deprecation messages.
+
+In this post I will show you how to work with deprecation messages.
+" />

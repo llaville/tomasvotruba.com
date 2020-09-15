@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Write Custom Sniff for Code Sniffer 3.3 | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 46 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Write Custom Sniff for Code Sniffer 3.3</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>4 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2017-07-Mon">
+            <strike>
+                            Mon, Jul 17, 2017
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-07-17-how-to-write-custom-sniff-for-code-sniffer-3.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated with <strong>EasyCodingStandard 5</strong>, Neon to YAML migration and <code>checkers</code> to <code>services</code> migration.<br>
+Updated ECS YAML to PHP configuration since <strong>ECS 8</strong>.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>When I give talks about coding standards, I ask people 2 questions: do you use coding standards? Do you write your own sniffs? On average, above 50 % uses it, but only 1-2 people wrote their own sniff.
+<br><br>
+PSR-2 is great for start, but main power is in those own sniffs. Every project has their own need, every person has different preferences.
+<br><br>
+I Google then and found outdated or complicated sources, so I've decided to write down a reference post for those, who want to start with sniffs.
+Let's look what will show all you need (and nothing more) to <strong>know to write your first sniff</strong>.</p>
+                    </div>
+                </div>
+
+                <p><strong>Are you new to PHP Coding Standard Tools</strong>? You can read intro <a href="/blog/2017/07/31/how-php-coding-standard-tools-actually-work/">How PHP Coding Standard Tools Actually Work</a> to grasp the idea behind them. Or <a href="https://www.youtube.com/watch?v=t99KH0TR-J4&amp;feature=youtu.be&amp;t=16">just go on</a> if you're ready to start...
+<br></p>
+<p>Today we'll pick an example a from my friend <a href="https://www.martinhujer.cz">Martin Hujer</a>. Once told me about sniff that checks <strong>that all exception classes have &quot;Exception&quot; suffix</strong>.</p>
+<p>I said: How is it useful in practise? We all know that is common knowledge to write them this way. He replied: Well, we found some even in our code base.</p>
+<p>The point is not in the count of fixed cases, but in <em>CI based responsibility</em>. From now on, <strong>people'll NEVER have to think about it</strong> and they can <strong>focus on more valuable processes</strong> that CI cannot do, like writing AliPay integration.</p>
+<h2 id="6-steps-to-code-exceptionnamesniff-code">6 Steps To <code>ExceptionNameSniff</code></h2>
+<h3 id="1-start-with-sentence-that-declares-what-sniff-does">1. Start With Sentence That Declares What Sniff Does</h3>
+<p>&quot;An exception class should have &quot;Exception&quot; suffix.&quot;</p>
+<h3 id="2-create-a-sniff-class-and-implement-a-code-php-codesniffer-sniffs-sniff-code-interface">2. Create a Sniff Class and Implement a <code>PHP_CodeSniffer\Sniffs\Sniff</code> interface</h3>
+<p>It covers 2 required methods:</p>
+<pre><code class="language-php">use PHP_CodeSniffer\Sniffs\Sniff;
+
+final class ExceptionNameSniff implements Sniff
+{
+    /**
+     * @return int[]
+     */
+    public function register(): array
+    {
+    }
+
+    public function process(File $file, $position): void
+    {
+    }
+}</code></pre>
+<p>A <code>register()</code> method returns list of tokens to subscribe to. Which token should we put there?</p>
+<p><em>Note: You can find all tokens in <a href="https://php.net/manual/en/tokens.php">PHP manual</a>.</em></p>
+<p>From &quot;An exception class should have &quot;Exception&quot; suffix.&quot; I thought the <code>T_CLASS</code> would be ideal:</p>
+<pre><code class="language-php">public function register(): array
+{
+    return [T_CLASS];
+}</code></pre>
+<p>It would match this part of php code:</p>
+<pre><code class="language-php">**class** SomeException extends Exception { # this is one line in your code</code></pre>
+<p><code>T_CLASS</code> would match also these false positives:</p>
+<pre><code class="language-php">new **class**() extends Exception { # anonymous class
+**class** SomeClass { # class without parent</code></pre>
+<p>It might be a little tricky to find out the easiest way to check the rule. Here you'd have to detect these cases and skip them as well.</p>
+<p>What is exception in natural language description (not PHP)? <em>A class that extends another class that has suffix &quot;Exception&quot;.</em></p>
+<p>So this would save us bit of coding and thinking:</p>
+<pre><code class="language-php">public function register(): array
+{
+    return [T_EXTENDS];
+}</code></pre>
+<h3 id="3-create-code-process-code-method">3. Create <code>process()</code> Method</h3>
+<p>This method has 2 arguments.</p>
+<pre><code class="language-php">public function process(File $file, $position)
+{
+}</code></pre>
+<ul>
+<li>
+<ol>
+<li>The <code>File $file</code> object holds all tokens of the file and helper methods.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>The <code>$position</code> is int for current located <code>T_EXTENDS</code> token.</li>
+</ol>
+</li>
+</ul>
+<p>There are 2 parts while writing a sniff:</p>
+<ul>
+<li>First we need to detect, if this is the use case we try to match - an exception class. Because <code>T_EXTENDS</code> doesn't tell a lot.</li>
+<li>Then we need to check if it meets our rules and add error if not.</li>
+</ul>
+<p>Let's take it one a by one:</p>
+<h3 id="4-detect-the-exception-class">4. Detect the Exception Class</h3>
+<p><em>A class that extends another class that has suffix &quot;Exception&quot;.</em></p>
+<p>A <code>File</code> has useful <code>findNext()</code> method:</p>
+<pre><code class="language-php">$file-&gt;findNext(array ['tokens to find'], int 'where to start looking');</code></pre>
+<p>It returns position of token found or null, if none.</p>
+<p>We need to <strong>find a string after</strong> <code>T_EXTENDS</code>.</p>
+<pre><code class="language-php">$parentClassNamePosition = $file-&gt;findNext([T_STRING], $position);
+// File has all the tokens, so we get the one with name
+$parentClassNameToken = $file-&gt;getTokens()[$parentClassNamePosition];
+
+// and check it's Exception
+if (substr($parentClassNameToken['content'], -strlen('Exception')) !== 'Exception')) {
+    // the parent class it not and exception
+    return;
+}</code></pre>
+<p>When the code gets pass this check, we know we have exception there.</p>
+<h3 id="5-make-sure-it-ends-with-quot-exception-quot">5. Make Sure it Ends with &quot;Exception&quot;</h3>
+<p>Would you what to do know? The process will be the same - to check if class name ends with &quot;Exception&quot; -, but instead of <code>findNext()</code> method we'll use <code>findPrevious()</code>:</p>
+<pre><code class="language-php">// Get position of nearest previous string token
+$classNamePosition = $file-&gt;findPrevious([T_STRING], $position);
+// Get the token for it
+$classNameToken = $file-&gt;getTokens()[$classNamePosition];
+// Detect the content of token ends with "Exception"
+if (substr($classNamePosition['content'], -strlen('Exception')) === 'Exception')) {
+    // the current class ends with "Exception"
+    return;
+}</code></pre>
+<p>When this section passes, we know we have exception without &quot;Exception&quot; suffix there.</p>
+<p><strong>Reporting the error</strong></p>
+<p>The last method we will use is <code>addFixableError()</code>.</p>
+<p>In pseudo code:</p>
+<pre><code class="language-php">$file-&gt;addFixableError(
+    'Infomative message about error',
+    'Where is the token with invalid content',
+    'ID of this Sniff to display in error report - class or some string'
+);</code></pre>
+<p>In out case:</p>
+<pre><code class="language-php">$file-&gt;addFixableError(
+    'An exception class should have "Exception" suffix.',
+    $position - 2,
+    self::class
+);</code></pre>
+<p>Tada!</p>
+<h3 id="6-put-together-the-final-sniff">6. Put Together The Final Sniff</h3>
+<p>And extract <code>stringEndsWith()</code> method to make code more readable.</p>
+<pre><code class="language-php">use PHP_CodeSniffer\Sniffs\Sniff;
+
+final class ExceptionNameSniff implements Sniff
+{
+    /**
+     * @return int[]
+     */
+    public function register(): array
+    {
+        return [T_EXTENDS];
+    }
+
+    public function process(File $file, $position): void
+    {
+        $parentClassNamePosition = $file-&gt;findNext([T_STRING], $position);
+        $parentClassNameToken = $file-&gt;getTokens()[$parentClassNamePosition];
+
+        // Does it ends with "Exception"?
+        if (! $this-&gt;stringEndsWith($parentClassNameToken['content'], 'Exception')) {
+            // The parent class it not and exception, neiter it this
+            return;
+        }
+
+        $classNamePosition = $file-&gt;findPrevious([T_STRING], $position);
+        $classNameToken = $file-&gt;getTokens()[$classNamePosition];
+        if ($this-&gt;stringEndsWith($classNamePosition['content'], 'Exception')) {
+            // The current class ends with "Exception", it's ok
+            return;
+        }
+
+        $file-&gt;addFixableError('An exception class should have "Exception" suffix.', $position - 2, self::class)
+    }
+
+    private function stringEndsWith(string $name, string $needle): bool
+    {
+        return (substr($name, -strlen($needle)) === $needle);
+    }
+}</code></pre>
+<p>You can find <a href="https://github.com/symplify/symplify/blob/eeeaab688f6b349e55ab0b3179749dc9e5e49035/packages/CodingStandard/src/Sniffs/Naming/ExceptionNameSniff.php">final Sniff on Github</a> and use it right away of course.</p>
+<h2 id="how-to-run-it">How to run it?</h2>
+<p>With <a href="https://github.com/symplify/easy-coding-standard">ECS</a> put the class to <code>ecs.php</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+// ecs.php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\CodingStandard\Sniffs\Naming\ExceptionNameSniff;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(ExceptionNameSniff::class);
+};</code></pre>
+<p>And run:</p>
+<pre><code class="language-bash">vendor/bin/ecs check src</code></pre>
+<p>Congrats to your first sniffs! How do you like it?</p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2017/11/20/how-to-write-interesting-job-offers-for-programmers" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Write Interesting Jobs Offers for Programmers
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2017/2017-07-17-how-to-write-custom-sniff-for-code-sniffer-3.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Write Custom Sniff for Code Sniffer 3.3" />
+    <meta property="og:description" content="When I give talks about coding standards, I ask people 2 questions: do you use coding standards? Do you write your own sniffs? On average, above 50 % uses it, but only 1-2 people wrote their own sniff.
+
+PSR-2 is great for start, but main power is in those own sniffs. Every project has their own need, every person has different preferences.
+
+I Google then and found outdated or complicated sources, so I&#039;ve decided to write down a reference post for those, who want to start with sniffs.
+Let&#039;s look what will show all you need (and nothing more) to know to write your first sniff.
+" />
+    <meta property="og:url" content="/blog/2017/07/17/how-to-write-custom-sniff-for-code-sniffer-3" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Write Custom Sniff for Code Sniffer 3.3" />
+    <meta name="twitter:description" content="When I give talks about coding standards, I ask people 2 questions: do you use coding standards? Do you write your own sniffs? On average, above 50 % uses it, but only 1-2 people wrote their own sniff.
+
+PSR-2 is great for start, but main power is in those own sniffs. Every project has their own need, every person has different preferences.
+
+I Google then and found outdated or complicated sources, so I&#039;ve decided to write down a reference post for those, who want to start with sniffs.
+Let&#039;s look what will show all you need (and nothing more) to know to write your first sniff.
+" />

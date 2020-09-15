@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How we Completed Thousands of Missing @var Annotations in a Day | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 221 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How we Completed Thousands of Missing @var Annotations in a Day</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>7 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2019-07-Mon">
+            <strike>
+                            Mon, Jul 29, 2019
+            
+            </strike>        </time>
+    </li>
+
+            <li class="list-inline-item mr-3 text-success">
+            <em class="fas fa-fw fa-sync"></em> Updated Aug, 2020
+        </li>
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-29-how-we-completed-thousands-of-missing-var-annotations-in-a-day.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                                    <div class="card border-success card-bigger mt-5">
+                        <div class="card-header text-white bg-success">
+                            <strong>This post was updated at August 2020</strong>
+                        </div>
+                                                    <div class="card-body">
+                                <p>Updated Rector/ECS YAML to PHP configuration, as current standard.</p>
+                            </div>
+                                            </div>
+
+                    <br>
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>I'm currently working as Rector consultant for <a href="https://spaceflow.io/en">Spaceflow</a>, Prague-based rising startup with very nice codebase. One of the pre-requisites for Rector is to have code that static analyser can work with. PHPStan that Rector uses depends on <code>@var</code> annotations and not every property had that. Well... <strong>over 2500 of them</strong>.
+<br><br>
+I'll show you how we completed them without any manual change of the code and how you can do the same... today.</p>
+                    </div>
+                </div>
+
+                <p>This post has 2 parts:</p>
+<ul>
+<li>1st is about how we use other parts of class to infer <code>@var</code> types of used properties - <strong>good for analytical thinking and pattern-algorithms</strong></li>
+<li>2nd is about <a href="#do-it-yourself">how to do it yourself</a> - <strong>good for your project</strong></li>
+</ul>
+<p><br></p>
+<p>The latter part increased the <strong><code>@var</code> annotation count from 1790 to 4418</strong>.</p>
+<p>Here you can see the whole process in real-time:</p>
+<img src="/assets/images/posts/2019/var/rector-final-optimized.gif" alt="How the ECS + Rector change 2500+ missing `@var` annotations" class="img-thumbnail">
+<p><br></p>
+<p>So what will you do when you see property like this?</p>
+<pre><code class="language-php">&lt;?php
+
+class ProductController
+{
+    private $productRepository;
+}</code></pre>
+<h3 id="1-from-constructor-injection-assign">1. From Constructor Injection Assign</h3>
+<p>This is the most common case in most projects:</p>
+<pre><code class="language-php">&lt;?php
+
+class ProductController
+{
+    private $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        // ah, it's a "ProductRepository"
+        $this-&gt;productRepository = $productRepository;
+    }
+}</code></pre>
+<h3 id="2-from-code-setup-code-assign-in-tests">2. From <code>setUp</code> Assign in Tests</h3>
+<p>The next biggest group of missing <code>@var</code> annotations was in tests. Instead of <code>__construct</code> we have<code>setUp</code>:</p>
+<pre><code class="language-php">&lt;?php
+
+class BuilderTest extends TestCase
+{
+    private $factory;
+
+    protected function setUp()
+    {
+        // ah, it's a "Builder"
+        $this-&gt;factory = new Builder;
+    }
+}</code></pre>
+<h3 id="3-from-assign-in-constructor">3. From Assign in Constructor</h3>
+<p>Sometimes constructor is for setting default values:</p>
+<pre><code class="language-php">&lt;?php
+
+class HomeController
+{
+    private $maxNumberOfGirlfriends;
+
+    public function __construct()
+    {
+        // ah, it's an "int"
+        $this-&gt;maxNumberOfGirlfriends = 1;
+    }
+}</code></pre>
+<p>So far quite simple, right? 3 files are ok, but imagine doing this for 2500+ properties 🧠🤯</p>
+<h3 id="4-from-setters-and-getters">4. From Setters and Getters</h3>
+<p>Some object don't have constructor injection, or are missing the information there, e.g.:</p>
+<pre><code class="language-php">&lt;?php
+
+class Product
+{
+    private $name;
+
+    public function __construct($name)
+    {
+         $this-&gt;name = $name;
+    }
+}</code></pre>
+<p>How can we know, what is <code>$name</code>? Well, we don't. Statical analysis can't help here, we can only guess and maybe crash the production code. To solve cases like this <strong>we need dynamical analysis</strong> - data are much better and solid than &quot;probability guessing&quot; of static analysis. Don't worry, I'll write about it in the future with a case study.</p>
+<p>But what about this code:</p>
+<pre><code class="language-php">&lt;?php
+
+class Product
+{
+    private $name;
+
+    public function __construct($name)
+    {
+         $this-&gt;name = $name;
+    }
+
+    public function getName(): string
+    {
+        // now we know it's a "string"
+        return $this-&gt;name;
+    }
+}</code></pre>
+<p>Although it could be also non-string value:</p>
+<pre><code class="language-php">&lt;?php
+
+$product = new Product(5); // this passes without error</code></pre>
+<p>But the working code <code>getName(): string</code> says <strong>it must be <code>string</code></strong>, so we can rely on it.</p>
+<p>Also, this is just <code>@var</code> annotation not <a href="/blog/2018/11/15/how-to-get-php-74-typed-properties-to-your-code-in-few-seconds/">typed properties</a>, so the change cannot break anything.</p>
+<h3 id="5-from-nullables">5. From Nullables</h3>
+<p>Let's take this one step further. Also, let's be more realistic - there are barely any type declarations (PHP 7.0+) out there, so we have to take annotations into account:</p>
+<pre><code class="language-php">&lt;?php
+
+class Product
+{
+    private $name;
+
+    /**
+     * @param string $name
+     */
+    public function __construct($name = null)
+    {
+         $this-&gt;name = $name;
+    }
+
+    /**
+     * @param $name
+     */
+    public function setName($name)
+    {
+        $this-&gt;name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+}</code></pre>
+<p>What types can be in <code>$name</code>?</p>
+<p>There is a type <code>string</code> everywhere, so probably <code>string</code>. But what happens in this case?</p>
+<pre><code class="language-php">&lt;?php
+
+$product = new Product();</code></pre>
+<p>The <code>$name</code> will be actually <code>null</code>. So this is final correct code change:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class Product
+ {
++     /**
++      * @var string|null
++      */
+      private $name;
+ }</code></pre>
+<h3 id="6-from-default-value">6. From Default Value</h3>
+<p>Before we get into Doctrine entities, let's get relaxed with a simple case:</p>
+<pre><code class="language-php">&lt;?php
+
+class Victim
+{
+     private $name = 'Tomas';
+
+     public function getName()
+     {
+         return $this-&gt;name;
+     }
+}</code></pre>
+<p>I don't have to tell you the <code>$name</code> property is always <code>string</code>.</p>
+<h3 id="7-from-all-the-other-assigns">7. From all the Other Assigns</h3>
+<p>What if we have no constructor, no getters, no setters, no default values... are we lost?</p>
+<p>This actually happens more often than you think. Take this as just an example, in reality it could be much better, but is often much worse:</p>
+<pre><code class="language-php">&lt;?php
+
+class ProductController
+{
+    private $activeProduct;
+
+    /**
+     * @var ProductRepository
+     */
+    private $productRepository;
+
+    public function default($id = null)
+    {
+        if ($id) {
+            $this-&gt;activeProduct = $this-&gt;productRepository-&gt;get($id);
+        } else {
+            $this-&gt;activeProduct = $this-&gt;productRepository-&gt;getMainProduct();
+        }
+
+        // ...
+    }
+}</code></pre>
+<p>This is hell to do manually. Not in 5 lines-long method, but in 30, 60 or even 100 lines in one method (don't forget you have to deliver feature and don't have paid time to play with stupid useless <code>@var</code> annotation).</p>
+<p>The process has just 2 step:</p>
+<ul>
+<li>go through all <code>$this-&gt;activeProduct = X</code></li>
+<li>resolve type for the <code>X</code> expression</li>
+</ul>
+<p>And that's it:</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class ProductController
+ {
++    /**
++     * @var Product
++     */
+     private $activeProduct;
+
+     // ...
+ }</code></pre>
+<p>We could argue if the <code>$activeProduct</code> could be also <code>null</code>. It can, but in our case base it never was. But if you find such a case that is invalid for your code, <a href="https://github.com/rectorphp/rector/issues/new?template=1_Bug_report.md">please report an issue</a> to improve this Rector rule.</p>
+<h3 id="8-from-doctrine-column-annotations">8. From Doctrine Column Annotations</h3>
+<p>Missing Doctrine annotations are hard to spot, because there is always <em>some</em> annotation. Just not the one we need:</p>
+<pre><code class="language-php">&lt;?php
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Product
+{
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $content;
+}</code></pre>
+<p>Pretty easy, right?</p>
+<pre><code class="language-diff"> /**
+  * @ORM\Column(type="text", nullable=true)
++ * @var text|null
+  */
+  private $content;</code></pre>
+<p>Ups, not so fast. Database types and PHP scalar types are not 1:1 compatible. To pick a few: <em>longblob</em>, <em>decimal</em>, <em>set</em>, <em>time</em> or <em>year</em> (mini-quiz: <code>int</code> or <code>DateTimeInterface</code>)?</p>
+<p><code>string</code> is the correct choice here:</p>
+<pre><code class="language-diff"> /**
+  * @ORM\Column(type="text", nullable=true)
++ * @var string|null
+  */
+  private $content;</code></pre>
+<h3 id="9-from-doctrine-relation-annotations">9. From Doctrine Relation Annotations</h3>
+<p>Let's finish with the most complex case, yet brutally common. What do we mean by Doctrine Relation annotations?</p>
+<pre><code class="language-php">&lt;?php
+
+class Product
+{
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Storage")
+     */
+    private $storage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
+     */
+    private $category;
+}</code></pre>
+<p>The docblock looks full and rich for useful content, so it's hard to spot the missing <code>@var</code> in there.</p>
+<p>You probably know, that <code>OneToMany</code> and <code>ManyToMany</code> are not just an array of objects, but also <code>Doctrine\Common\Collections\Collection</code>.</p>
+<p>So what <code>@var</code> we'd add here?</p>
+<pre><code class="language-diff"> &lt;?php
+
+ class Product
+ {
+     /**
+      * @ORM\ManyToMany(targetEntity="App\Entity\Storage")
++     * @var \App\Entity\Storage[]|\Doctrine\Common\Collections\Collection
+      */
+     private $storage;
+
+     /**
+      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
+      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
++     * @var \App\Entity\Category|null
+      */
+     private $category;
+ }</code></pre>
+<p>That's it! Did you find any more cases that we forgot? Share with us in the comments.</p>
+<p><br></p>
+<p>Now the 2nd practical part - <strong>your project</strong> ↓</p>
+<h2 id="do-it-yourself">Do It Yourself</h2>
+<p>All above is not limited just to our project. You can use it too!</p>
+<p>I'll guide you from step zero to final merge of pull-request, <strong>so the gif will not be just a picture, but a real change in your project</strong>.</p>
+<p><strong>Install Rector + ECS</strong></p>
+<pre><code class="language-bash">composer require rector/rector --dev
+composer require symplify/easy-coding-standard --dev
+composer require slevomat/coding-standard --dev</code></pre>
+<p><strong>Run ECS to check missing <code>@var</code> annotations at properties</strong></p>
+<pre><code class="language-php">&lt;?php
+
+// ecs.php
+
+declare(strict_types=1);
+
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Configuration\Option;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    // every property should have @var annotation
+    $services-&gt;set(SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff::class);
+
+    $parameters = $containerConfigurator-&gt;parameters();
+    $parameters-&gt;set(Option::SKIP, [
+        //  this part is needed, because `TypeHintDeclarationSniff` is actually mix of 7 rules we don't need
+        // (they also delete code, so be sure to have this section here)
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.UselessDocComment' =&gt; null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingTraversablePropertyTypeHintSpecification' =&gt; null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingTraversableReturnTypeHintSpecification' =&gt; null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingTraversableParameterTypeHintSpecification' =&gt; null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingParameterTypeHint' =&gt; null,
+        'SlevomatCodingStandard\Sniffs\TypeHints\TypeHintDeclarationSniff.MissingReturnTypeHint' =&gt; null,
+    ]);
+};</code></pre>
+<p>Run coding standard on your code:</p>
+<pre><code class="language-bash">vendor/bin/ecs check src tests</code></pre>
+<p>↓</p>
+<p>2 500 errors? Not a problem.</p>
+<p><br></p>
+<p><strong>1. Configure Rector</strong></p>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\TypeDeclaration\Rector\Property\PropertyTypeDeclarationRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+    $services-&gt;set(PropertyTypeDeclarationRector::class);
+};</code></pre>
+<p><strong>2. Run Rector to fix your code</strong></p>
+<pre><code class="language-bash">vendor/bin/rector process src tests</code></pre>
+<p>Then run coding standard again, to see how useful Rector was:</p>
+<pre><code class="language-bash">vendor/bin/ecs check src tests</code></pre>
+<ul>
+<li>
+<p>0 errors? Congrats and enjoy your vacation :)</p>
+</li>
+<li>
+<p>1+ errors? Create an <a href="https://github.com/rectorphp/rector/issues/new?template=1_Bug_report.md">issue with missed PHP code snippet</a>. We'll look at it and add support for it to Rector if possible.</p>
+</li>
+</ul>
+<p><br></p>
+<blockquote class="blockquote">
+    I hope you'll find this useful as we did!
+</blockquote>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2019/07/22/how-to-convert-listeners-to-subscribers-and-reduce-your-configs" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to Convert Listeners to Subscribers and Reduce your Configs
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2019/2019-07-29-how-we-completed-thousands-of-missing-var-annotations-in-a-day.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How we Completed Thousands of Missing @var Annotations in a Day" />
+    <meta property="og:description" content="I&#039;m currently working as Rector consultant for [Spaceflow](https://spaceflow.io/en), Prague-based rising startup with very nice codebase. One of the pre-requisites for Rector is to have code that static analyser can work with. PHPStan that Rector uses depends on `@var` annotations and not every property had that. Well... **over 2500 of them**.
+
+I&#039;ll show you how we completed them without any manual change of the code and how you can do the same... today.
+" />
+    <meta property="og:url" content="/blog/2019/07/29/how-we-completed-thousands-of-missing-var-annotations-in-a-day" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How we Completed Thousands of Missing @var Annotations in a Day" />
+    <meta name="twitter:description" content="I&#039;m currently working as Rector consultant for [Spaceflow](https://spaceflow.io/en), Prague-based rising startup with very nice codebase. One of the pre-requisites for Rector is to have code that static analyser can work with. PHPStan that Rector uses depends on `@var` annotations and not every property had that. Well... **over 2500 of them**.
+
+I&#039;ll show you how we completed them without any manual change of the code and how you can do the same... today.
+" />

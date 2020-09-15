@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>How to Teach Your Team Private Method Sorting in 3 mins | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 155 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>How to Teach Your Team Private Method Sorting in&nbsp;3&nbsp;mins</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2018-11-Thu">
+            
+                            Thu, Nov 1, 2018
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2018/11/01/how-teach-your-team-private-method-sorting-in-3-mins/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-01-how-teach-your-team-private-method-sorting-in-3-mins.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>When I started PHP in 2004, all you had to do is to learn a few functions to become the most senior dev in your town. Nowadays, devs have to learn a framework, IDE and coding patterns to get at least to an average level. <br><br> Instead of reading 346 pages of <a href="https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code</a>, you need to produce code and learn as you read it at the same time. <strong>There will be never less information than it is today.</strong> <br><br> That's why effective learning is a killer skill. <strong>Today we learn how to sort private methods in 2 mins</strong>.</p>
+                    </div>
+                </div>
+
+                <h2 id="why-is-private-method-order-so-important">Why is Private Method Order so Important?</h2>
+<p>This simple class is in your code now:</p>
+<pre><code class="language-php">&lt;?php
+
+class SomeClass
+{
+    public function run()
+    {
+        $this-&gt;call1();
+        $this-&gt;call2();
+    }
+
+    private function call3()
+    {
+    }
+
+    private function call2()
+    {
+    }
+
+    private function call1()
+    {
+        $this-&gt;call3();
+    }
+}</code></pre>
+<p>Thanks to Gregor Harlan, there is a coding standard <code>OrderedClassElementsFixer</code>, that already takes care about <code>public</code>/<code>protected</code>/<code>private</code> elements order.</p>
+<p>But what about these <strong>private methods</strong> - are they ok for you?</p>
+<p><br></p>
+<p>When you read such a code for the firs time, you might think:</p>
+<ul>
+<li><code>private function call3()</code> - ah, it does this and that... but wait, <strong>who is using it?</strong></li>
+<li><code>private function call2()</code> - it does this and that, it was called in <code>run()</code> method</li>
+<li><code>private function call1()</code> - it does this and... the <code>call3()</code> is used here, yes... <strong>what it actually did?</strong></li>
+</ul>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    <p>
+        "Be able to read down the file from top to bottom like a newspaper article,<br>
+    which would naturally suggest that <strong>helper methods appear after the methods they are helping</strong>.<br>
+    This would lead to maximum readability of the code structure."
+    </p>
+    <footer class="blockquote-footer text-right"><a href="https://softwareengineering.stackexchange.com/a/186421/148956">Anthony Pegram</a>, Clean Code reader
+    </footer></blockquote>
+<h2 id="nice-theory-bro-but-real-life">Nice Theory, Bro, but... Real-Life?</h2>
+<p>It's easy to spot and correct the example above...</p>
+<pre><code class="language-php">&lt;?php
+
+class SomeClass
+{
+    public function run()
+    {
+        $this-&gt;call1();
+        $this-&gt;call2();
+    }
+
+    private function call1()
+    {
+        $this-&gt;call3();
+    }
+
+    private function call2()
+    {
+    }
+
+    private function call3()
+    {
+    }
+}</code></pre>
+<p>...but in real life pull-requests are usually longer than 20 lines:</p>
+<div class="text-center mb-5">
+    <img src="/assets/images/posts/2018/private-method-order/example.png" class="img-thumbnail"><p>
+        Taken from <a href="https://github.com/shopsys/shopsys/pull/554/files">my 5 days-old-PR</a>
+    </p>
+</div>
+<p>Nor junior nor senior dev is able to check the proper private method order in these big chunks of code.</p>
+<h2 id="unless">Unless...</h2>
+<p>...somebody or something does it for you.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+    "Automate everything that brings you <strong>more value until you die<br>compared to value lost to create it</strong>."
+</blockquote>
+<p>There is now a Rector rule that does exactly what we need in an <strong>automated way</strong>:</p>
+<pre><code class="language-bash">composer require rector/rector --dev</code></pre>
+<pre><code class="language-php">&lt;?php
+
+// rector.php
+
+declare(strict_types=1);
+
+use Rector\Order\Rector\Class_\OrderPrivateMethodsByUseRector;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+
+return static function (ContainerConfigurator $containerConfigurator): void {
+    $services = $containerConfigurator-&gt;services();
+
+    $services-&gt;set(OrderPrivateMethodsByUseRector::class);
+};</code></pre>
+<p>And run Rector:</p>
+<pre><code class="language-bash">vendor/bin/rector process src</code></pre>
+<p>At first, you might need to re-run the command few times, because of the new order of private methods will automatically change calling order. But that's it:</p>
+<ul>
+<li>no books,</li>
+<li>no lectures,</li>
+<li>0 hours wasted on code-reviews.</li>
+</ul>
+<p><br></p>
+<p>Let finish with <em>Martin Fowler</em> quote:</p>
+<blockquote class="blockquote text-center">
+    "Any fool can write code that a computer can understand.<br>
+    Good programmers write code that <strong>humans can understand</strong>."
+</blockquote>
+<p>I think we're coming to times, where:</p>
+<blockquote class="blockquote text-center">
+    "Any computer can write a code that humans can understand."
+</blockquote>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2018/10/29/7-tips-to-get-the-most-out-of-travis-ci" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    7 Tips to Get the Most out of Travis CI
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2018/2018-11-01-how-teach-your-team-private-method-sorting-in-3-mins.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Teach Your Team Private Method Sorting in 3 mins" />
+    <meta property="og:description" content="When I started PHP in 2004, all you had to do is to learn a few functions to become the most senior dev in your town. Nowadays, devs have to learn a framework, IDE and coding patterns to get at least to an average level.  Instead of reading 346 pages of [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882), you need to produce code and learn as you read it at the same time. **There will be never less information than it is today.**  That&#039;s why effective learning is a killer skill. **Today we learn how to sort private methods in 2 mins**." />
+    <meta property="og:url" content="/blog/2018/11/01/how-teach-your-team-private-method-sorting-in-3-mins" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="How to Teach Your Team Private Method Sorting in 3 mins" />
+    <meta name="twitter:description" content="When I started PHP in 2004, all you had to do is to learn a few functions to become the most senior dev in your town. Nowadays, devs have to learn a framework, IDE and coding patterns to get at least to an average level.  Instead of reading 346 pages of [Clean Code](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882), you need to produce code and learn as you read it at the same time. **There will be never less information than it is today.**  That&#039;s why effective learning is a killer skill. **Today we learn how to sort private methods in 2 mins**." />

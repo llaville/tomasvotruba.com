@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Why Class Constants Should be Typed | Tomas Votruba</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="Tomas Votruba Blog RSS" href="/rss.xml">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/brands.css" integrity="sha384-nT8r1Kzllf71iZl81CdFzObMsaLOhqBU1JD2+XoAALbdtWaXDOlWOZTR4v1ktjPE" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+
+        <link href="/assets/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/prism/prism.css" rel="stylesheet" type="text/css" />
+
+        <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+        <link href="/assets/css/checklist.css" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+                <!-- post_id: 264 -->
+
+        
+<div class="hidden-sm-down">
+    <nav class="navbar">
+        <div class="container-fluid">
+            <ul>
+                <li id="logo">
+                    <img src="https://avatars1.githubusercontent.com/u/924196?s=60&v=4" class="me_avatar">
+                    Tomas Votruba
+                </li>
+                <li class="active">
+                    <a href="/">Blog</a>
+                </li>
+                <li class="">
+                    <a href="/php-framework-trends">Trends</a>
+                </li>
+                <li class="">
+                    <a href="/clusters">Clusters</a>
+                </li>
+                <li class="">
+                    <a href="/mission">Mission</a>
+                </li>
+                <li class="">
+                    <a href="/talks">Talks</a>
+                </li>
+                <li class="">
+                    <a href="/contact">Contact</a>
+                </li>
+                <li id="top-menu-search">
+                    <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="hidden-md-up">
+    <nav class="navbar" id="mobile-menu">
+        <div class="container">
+            <a href="/" class="col-3 col-sm-3 active">
+                <em class="fas fa-book"></em>
+                <br>
+                Blog
+            </a>
+
+
+            <a href="/clusters" class="col-3 col-sm-3 ">
+                <em class="fas fa-share-alt"></em>
+                <br>
+                Clusters
+            </a>
+
+            <a href="/php-framework-trends" class="col-3 col-sm-3 ">
+                <em class="fas fa-chart-bar"></em>
+                <br>
+                Trends
+            </a>
+
+            <a href="/contact" class="col-3 col-sm-3 ">
+                <em class="fas fa-phone"></em>
+                <br>
+                Contact
+            </a>
+        </div>
+    </nav>
+
+    <div class="hidden-md-up text-center" id="top-menu-search-mobile">
+        <form method="get" action="https://www.google.com/search" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+    <meta itemprop="target" content="https://www.google.com/search?q={q}"/>
+    <input name="sitesearch" value="tomasvotruba.com" type="hidden"/>
+    <input itemprop="query-input" type="text" id="search-query" class="form-control" required="required" name="q" placeholder="Search..." autocomplete="off"/>
+</form>
+    </div>
+</div>
+
+        <div class="mainContent">
+            <div class="container-fluid" id="post">
+                <h1>Why Class&nbsp;Constants Should&nbsp;be&nbsp;Typed</h1>
+
+                <ul class="list-inline post-metadata">
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-clock fa-fw"></em>
+        <strong>3 min</strong>
+    </li>
+
+    <li class="list-inline-item mr-3">
+        <em class="fas fa-calendar fa-fw"></em>
+        <time datetime="2020-06-Mon">
+            
+                            Mon, Jun 22
+            
+            </strike>        </time>
+    </li>
+
+    
+            <li class="list-inline-item mr-3">
+            <em class="fas fa-fw fa-comments"></em>
+            <a href="/blog/2020/06/22/why-class-constants-should-be-typed/#disqus_thread">X</a> comments
+        </li>
+    
+    
+            <li class="list-inline-item mr-3 text-primary">
+            <em class="fab fa-fw fa-github"></em>
+            <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-22-why-class-constants-should-be-typed.md">Edit Post</a>
+        </li>
+    </ul>
+
+                
+                
+                <div class="card card-bigger mb-5">
+                    <div class="card-body">
+                        <p>Do you use PHP 7.4 <a href="/blog/2018/11/15/how-to-get-php-74-typed-properties-to-your-code-in-few-seconds/">typed properties</a>? Do you know why?
+<br>
+<br>
+I use them, so <strong>I don't have to think and validate the property type</strong> every time. We just know its type or PHP would crash otherwise.
+<br>
+<br>
+Until PHP 7.4 this was not possible and code was kinda crappy.
+Where are we now with constant type? Do you trust your class constants type?</p>
+                    </div>
+                </div>
+
+                <p>With typed properties, the incorrect type-bug was completely removed:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+final class Person
+{
+    public string $name;
+
+    public function __construct(string $name)
+    {
+        $this-&gt;name = $name;
+    }
+}</code></pre>
+<pre><code class="language-php">$name = new Person(20_20);</code></pre>
+<p>You would not use the <code>Name</code> object like this, right?</p>
+<p><br></p>
+<h2 id="what-about-constants">What About Constants?</h2>
+<p><strong>What</strong> are constants? They hold value, like properties, but <strong>the value doesn't change</strong>. We can change the value in the code, but not during runtime.</p>
+<p><em>Pro-tip: Do you think all your properties have values that can change? <a href="https://github.com/rectorphp/rector/blob/master/docs/rector_rules_overview.md#changereadonlypropertywithdefaultvaluetoconstantrector">Dare Rector to find them</a>.</em></p>
+<p>How do you define a class constant?</p>
+<pre><code class="language-php">&lt;?php
+
+final class SomeClass
+{
+    private const ORDER = 'first';
+
+    // ...
+}</code></pre>
+<p>How is this dangerous? Sometimes, in 2 years future from today, there will be pull-request that changes it like this:</p>
+<pre><code class="language-php">&lt;?php
+
+final class SomeClass
+{
+    private const ORDER = 1;
+}</code></pre>
+<p>Because if you're first, you're 1, right? I had the pleasure to debug such cases only to figure out the constant type was changed. Why? Because it could.</p>
+<p><strong>Constants value can be changed manually - so their type.</strong> It's rarely desired behavior, moreover, when using these constants in 3rd party code or from one.</p>
+<h2 id="how-can-we-prevent-constant-re-type">How Can We Prevent Constant Re-type?</h2>
+<pre><code class="language-php">&lt;?php
+
+final class SomeClass
+{
+    /**
+     * Should be a string
+     */
+    private const ORDER = 'first';
+}</code></pre>
+<p>We read comments, READMEs, or manuals... only when something goes wrong.</p>
+<pre><code class="language-php">&lt;?php
+
+final class SomeClass
+{
+    /**
+     * @var string
+     */
+    private const ORDER = 'first';
+}</code></pre>
+<p>Slightly better, but still no way to enforce it.</p>
+<pre><code class="language-php">&lt;?php
+
+final class SomeClass
+{
+    private string const ORDER = 'first';
+}</code></pre>
+<p>Great! But maybe in 2025?</p>
+<h2 id="future-scoping">Future Scoping</h2>
+<p>The <a href="https://stitcher.io/blog/new-in-php-8">PHP 8.0 release will be a blast</a>. It's already ~30 merged features, and feature freeze is still <a href="https://thephp.website/en/issue/php8-release-schedule">23 days ahead of us</a>.</p>
+<p>If we look at selected features in PHP 8:</p>
+<ul>
+<li><a href="https://wiki.php.net/rfc/constructor_promotion">Constructor Property Promotion</a></li>
+<li><a href="https://wiki.php.net/rfc/union_types_v2">Union Types 2.0</a></li>
+<li><a href="https://wiki.php.net/rfc/mixed_type_v2">Mixed Type v2</a></li>
+<li><a href="https://wiki.php.net/rfc/static_return_type">Static return type</a></li>
+<li><a href="https://wiki.php.net/rfc/magic-methods-signature">Ensure correct signatures of magic methods</a></li>
+<li><a href="https://wiki.php.net/rfc/make_ctor_ret_void">Make constructors and destructors return void</a> (WIP)</li>
+</ul>
+<p>We can see there is a handful of changes <strong>towards more strict and reliable types</strong>. We are moving from docblocks to in-code types.</p>
+<p><strong>We can expect</strong> similar future for constants. Maybe even sooner before <code>TypedArrays[]</code> will be added.</p>
+<p><strong>In 2015, we wished for typed properties, and in 2020 we have union strictly typed properties</strong>. We can go for typed constants now.</p>
+<blockquote class="blockquote text-center mt-5 mb-5">
+Check trends to predict code syntax,<br>
+and write future compatible code your children will thank you for.
+</blockquote>
+<p><br></p>
+<h2 id="let-computer-work-for-you">Let Computer work For You</h2>
+<p><a href="/blog/2020/01/13/why-is-first-instant-feedback-crucial-to-developers/">The sooner you discover the error</a>, the better.</p>
+<p>Do you use continuous integration (Github Actions, Gitlab CI, Travis CI...) and PHPStan? Add <a href="https://github.com/symplify/coding-standard#constant-type-must-match-its-value">PHPStan rule that checks <code>@var</code> definition vs the real value</a>.</p>
+<pre><code class="language-diff"> &lt;?php
+
+ final class SomeClass
+ {
+     /**
+      * @var string
+      */
+-    private const ORDER = 'first';
++    private const ORDER = 1;
+ }</code></pre>
+<p>If this change occurs in pull-request, the CI will tell you it's not consistent with the <code>@var</code> type.</p>
+<p>This way, you'll be <strong>aware of the type change right before the merge</strong>, which is much better than 2 years later after 4 hours of debugging. Trust me.</p>
+<p><br></p>
+<p>Happy coding!</p>
+
+                <br>
+
+                <div class="row mb-5 mt-5">
+                    <div class="col-12 mb-5">
+                                                                            <a href="/blog/2020/06/15/how-to-create-monorepo-from-existing-repositories-in-7-steps" class="d-block pt-4 pb-4 pl-4 pr-4 btn btn-success btn-wrappable">
+                                <em class="fas fa-fw fa-forward"></em>
+                                <strong>Read Next</strong>
+                                <br>
+                                <span class="text-bigger">
+                                    How to create a Monorepo from Existing Repositories in 7 Steps
+                                </span>
+                            </a>
+                                            </div>
+
+                    <div class="col-12">
+                        <a href="https://github.com/tomasvotruba/tomasvotruba.com/edit/master/packages/blog/config/data/2020/2020-06-22-why-class-constants-should-be-typed.md" class="d-block btn btn-dark btn-wrappable">
+                            <em class="fab fa-fw fa-github"></em>
+                            <strong>Found a typo?</strong> Fix it and join team of 94&nbsp;contributors
+                        </a>
+                    </div>
+                </div>
+
+                <br>
+
+                <a name="comments"></a>
+                <div id="disqus_thread"></div>
+
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://itsworthsharing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+            </div>
+
+            <script id="dsq-count-scr" src="https://itsworthsharing.disqus.com/count.js" async defer></script>
+        </div>
+
+        <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/assets/js/cluster-checklist.js"></script>
+<script src="/assets/js/cluster-expanable.js"></script>
+
+<script src="/assets/js/cleaning-lady-checklist.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    ga=function(){ ga.q.push(arguments) };
+    ga.q=[];
+    ga.l=+new Date;
+    ga('create', 'UA-46082345-1', 'auto');
+    ga('send','pageview');
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+<script src="/assets/prism/prism.js"></script>
+
+<script>
+    // sortable table
+    $('.sortable_table').DataTable({
+        // see https://datatables.net/examples/basic_init/filter_only.html
+        "searching": false,
+        "paging": false,
+        "info": false,
+        "order": [[1, "desc"]],
+        // see https://datatables.net/examples/advanced_init/sort_direction_control.html
+        "aoColumns": [
+            null,
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] },
+            { "orderSequence": [ "desc", "asc" ] }
+        ]
+    });
+</script>
+
+<div class="text-center mt-5" id="footer">
+    <div class="row">
+        <div class="col-12">
+                        Join 25 087 growing PHP developers every month: <a href="https://twitter.com/votrubaT">@votrubaT</a> or <a href="/rss.xml">RSS</a>
+        </div>
+    </div>
+
+    <p>
+        Build by <a href="/thank-you">94 people</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/archive">Archive</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="https://github.com/sponsors/TomasVotruba"><em class="fas fa-fw fa-heart"></em> Support me</a>
+
+        <span class="pl-2 pr-2">•</span>
+
+        <a href="/cleaning-lady-checklist">
+            <em class="fas fa-fw fa-broom"></em>
+            Cleaning Lady Checklist
+        </a>
+    </p>
+
+    <p class="hidden-sm-down">
+        Hosted with <a href="https://github.com/symplify/symfony-static-dumper">Symfony Static Dumper</a> on <a href="https://github.com/tomasvotruba/tomasvotruba.com">GitHub</a>
+    </p>
+
+    <br>
+
+    <p>
+        Did you know my daily focus goes to <strong>turning working with legacy code into joy</strong> again?
+
+        <br>
+
+        Mostly with awesome <a href="https://getrector.org/">instant refactoring tool called Rector</a>.
+    </p>
+</div>
+    </body>
+</html>
+
+        <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why Class Constants Should be Typed" />
+    <meta property="og:description" content="Do you use PHP 7.4 [typed properties](/blog/2018/11/15/how-to-get-php-74-typed-properties-to-your-code-in-few-seconds/)? Do you know why?
+
+
+I use them, so **I don&#039;t have to think and validate the property type** every time. We just know its type or PHP would crash otherwise.
+
+
+Until PHP 7.4 this was not possible and code was kinda crappy.
+Where are we now with constant type? Do you trust your class constants type?
+" />
+    <meta property="og:url" content="/blog/2020/06/22/why-class-constants-should-be-typed" />
+
+        <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@votrubaT">
+    <meta name="twitter:title" content="Why Class Constants Should be Typed" />
+    <meta name="twitter:description" content="Do you use PHP 7.4 [typed properties](/blog/2018/11/15/how-to-get-php-74-typed-properties-to-your-code-in-few-seconds/)? Do you know why?
+
+
+I use them, so **I don&#039;t have to think and validate the property type** every time. We just know its type or PHP would crash otherwise.
+
+
+Until PHP 7.4 this was not possible and code was kinda crappy.
+Where are we now with constant type? Do you trust your class constants type?
+" />
